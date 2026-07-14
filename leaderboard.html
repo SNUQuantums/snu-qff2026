@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko" data-lang="kr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>(function(){try{var t=localStorage.getItem('qff-theme')||'original';var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<title>Leaderboard · Qiskit Fall Fest 2026 @ SNU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="2.1" style="fill:var(--navy-ink)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(120 12 12)"/>
+        </svg>
+      </span>
+      Qiskit Fall Fest <small>@ SNU · SQRT</small>
+    </a>
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="index.html" data-nav="index.html"><span data-kr>홈</span><span data-en>Home</span></a></li>
+        <li><a href="about.html" data-nav="about.html"><span data-kr>소개</span><span data-en>About</span></a></li>
+        <li><a href="schedule.html" data-nav="schedule.html"><span data-kr>일정</span><span data-en>Schedule</span></a></li>
+        <li><a href="speakers.html" data-nav="speakers.html"><span data-kr>연사</span><span data-en>Speakers</span></a></li>
+        <li><a href="hackathon.html" data-nav="hackathon.html"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
+        <li><a href="posters.html" data-nav="posters.html"><span data-kr>포스터 세션</span><span data-en>Posters</span></a></li>
+        <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="theme-switch" role="group" aria-label="Color theme">
+          <button class="theme-dot" data-theme-option="original" title="Original" aria-pressed="false" style="--dot:#c8481a"></button>
+          <button class="theme-dot" data-theme-option="ibm" title="IBM Quantum Native" aria-pressed="false" style="--dot:#0f62fe"></button>
+          <button class="theme-dot" data-theme-option="snu" title="SNU Heritage" aria-pressed="false" style="--dot:#003380"></button>
+          <button class="theme-dot" data-theme-option="neon" title="Quantum Circuit Neon" aria-pressed="false" style="--dot:#22e6d0"></button>
+        </div>
+        <a href="submit.html" class="btn btn-outline"><span data-kr>제출하기</span><span data-en>Submit</span></a>
+        <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
+        <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
+        <button class="menu-btn" aria-label="Menu"><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>NO CODING NEEDED · 전공 무관 참가 가능 · 32,000+ PARTICIPANTS IN 2025 · 150 STUDENT HOSTS WORLDWIDE · IBM QUANTUM PARTNERED · A DECADE OF QUANTUM ON THE CLOUD ·</span>
+    <span>NO CODING NEEDED · 전공 무관 참가 가능 · 32,000+ PARTICIPANTS IN 2025 · 150 STUDENT HOSTS WORLDWIDE · IBM QUANTUM PARTNERED · A DECADE OF QUANTUM ON THE CLOUD ·</span>
+  </div>
+</div>
+
+<main>
+  <section class="paper-surface">
+    <div class="wrap">
+      <span class="track-badge" style="background:var(--accent);color:var(--accent-ink);display:inline-block;margin-bottom:var(--sp-1)">TRACK A</span>
+      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">
+        <span data-kr>실시간 순위</span>
+        <span data-en>Live standings</span>
+      </h1>
+      <p class="lede">
+        <span data-kr>Track A 제출작이 채점되는 대로 순위가 갱신됩니다. 점수는 별도의 채점 서버가 QASM 회로를
+        실행한 뒤 기록합니다. 아직 채점 중인 제출작은 순위표 아래에 대기 건수로 표시됩니다.</span>
+        <span data-en>Rankings update as Track A submissions are scored by a separate backend that runs each
+        QASM circuit. Submissions still awaiting scoring are shown as a pending count below the table.</span>
+      </p>
+
+      <div class="leaderboard-toolbar">
+        <button id="refresh-btn" class="btn btn-outline">
+          <span data-kr>새로고침</span><span data-en>Refresh</span>
+        </button>
+        <span id="last-updated" class="mono" style="font-size:.8rem;color:var(--ink-soft)"></span>
+      </div>
+
+      <div id="leaderboard-status" class="form-banner" hidden></div>
+
+      <table class="compare leaderboard-table" id="leaderboard-table" hidden>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><span data-kr>팀</span><span data-en>Team</span></th>
+            <th><span data-kr>점수</span><span data-en>Score</span></th>
+            <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+
+      <p id="pending-note" class="pending-note" style="margin-top:var(--sp-2)"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="sponsor-strip">
+      <span data-kr>IBM Quantum과 함께합니다</span><span data-en>In partnership with IBM Quantum</span>
+      <span aria-hidden="true">·</span>
+      <span data-kr>주관: SQRT, 서울대학교</span><span data-en>Hosted by SQRT, Seoul National University</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:snuquantums@gmail.com">Contact</a>
+      <a href="https://www.youtube.com/@sqrtsnuquantumresearchteam6066">YouTube</a>
+      <a href="about.html"><span data-kr>SQRT 소개</span><span data-en>About SQRT</span></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="assets/supabase-config.js"></script>
+<script src="assets/supabase.js"></script>
+<script src="assets/script.js"></script>
+<script>
+(function () {
+  var tableEl = document.getElementById("leaderboard-table");
+  var bodyEl = document.getElementById("leaderboard-body");
+  var statusEl = document.getElementById("leaderboard-status");
+  var pendingEl = document.getElementById("pending-note");
+  var lastUpdatedEl = document.getElementById("last-updated");
+  var refreshBtn = document.getElementById("refresh-btn");
+  var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function showBanner(kind, kr, en) {
+    statusEl.hidden = false;
+    statusEl.className = "form-banner" + (kind ? " " + kind : "");
+    statusEl.textContent = isEn() ? en : kr;
+  }
+
+  function load() {
+    tableEl.hidden = true;
+    pendingEl.textContent = "";
+    showBanner(null, "불러오는 중...", "Loading...");
+
+    if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
+      showBanner(
+        "error",
+        "아직 리더보드가 연결되지 않았습니다. 운영진은 assets/supabase-config.js를 설정해주세요.",
+        "Leaderboard isn't connected yet. Organizers: fill in assets/supabase-config.js."
+      );
+      return;
+    }
+
+    window.QFF_SUPABASE.fetchLeaderboard().then(function (result) {
+      if (result.error) {
+        showBanner("error", "리더보드를 불러오지 못했습니다: " + result.error, "Could not load leaderboard: " + result.error);
+        return;
+      }
+      var rows = result.data || [];
+      var scored = rows.filter(function (r) { return r.status === "scored" && r.score !== null && r.score !== undefined; });
+      var pending = rows.filter(function (r) { return r.status !== "scored"; });
+
+      if (scored.length === 0) {
+        showBanner(null, "아직 채점된 제출작이 없습니다.", "No scored entries yet.");
+      } else {
+        statusEl.hidden = true;
+      }
+
+      bodyEl.innerHTML = scored
+        .map(function (r, i) {
+          var when = r.submitted_at ? new Date(r.submitted_at).toLocaleString() : "";
+          return (
+            "<tr><td class=\"rank\">" + (i + 1) + "</td><td>" + escapeHtml(r.team_name) +
+            "</td><td class=\"score\">" + Number(r.score).toFixed(2) +
+            "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + escapeHtml(when) + "</td></tr>"
+          );
+        })
+        .join("");
+      tableEl.hidden = scored.length === 0;
+
+      if (pending.length > 0) {
+        pendingEl.textContent = isEn()
+          ? pending.length + " submission(s) awaiting scoring."
+          : pending.length + "건의 제출작이 채점을 기다리고 있습니다.";
+      }
+      lastUpdatedEl.textContent = (isEn() ? "Updated " : "업데이트: ") + new Date().toLocaleTimeString();
+    });
+  }
+
+  if (refreshBtn) refreshBtn.addEventListener("click", load);
+  document.addEventListener("DOMContentLoaded", load);
+})();
+</script>
+</body>
+</html>
