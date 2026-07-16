@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script>(function(){try{var t=localStorage.getItem('qff-theme')||'original';var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>Register · Qiskit Fall Fest 2026 @ SNU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,12 +36,6 @@
         <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="theme-switch" role="group" aria-label="Color theme">
-          <button class="theme-dot" data-theme-option="original" title="Original" aria-pressed="false" style="--dot:#c8481a"></button>
-          <button class="theme-dot" data-theme-option="ibm" title="IBM Quantum Native" aria-pressed="false" style="--dot:#0f62fe"></button>
-          <button class="theme-dot" data-theme-option="snu" title="SNU Heritage" aria-pressed="false" style="--dot:#003380"></button>
-          <button class="theme-dot" data-theme-option="neon" title="Quantum Circuit Neon" aria-pressed="false" style="--dot:#22e6d0"></button>
-        </div>
         <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="true" aria-label="English coming soon">EN · coming soon</button>
         <a href="register.html" class="btn btn-solid" aria-current="page">신청하기</a>
@@ -64,7 +58,8 @@
       <span class="eyebrow">신청</span>
       <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">참가 방법을 선택하세요</h1>
       <p class="lede">
-        아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 신청서는 데모 단계라 실제
+        아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 전공과 상관없이 원하는 트랙을
+        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다. 신청서는 데모 단계라 실제
         구글폼 대신 자리 표시 링크로 연결됩니다.
       </p>
 
@@ -72,14 +67,14 @@
         <div class="route-card">
           <span class="chip">TRACK A</span>
           <h3 style="margin-top:.6rem">해커톤 (심화)</h3>
-          <p class="lede" style="font-size:.95rem">Qiskit 또는 코딩 경험이 있는 분께 추천합니다. 대면, 주말 최종 발표.</p>
+          <p class="lede" style="font-size:.95rem">Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 온라인 진행(대면 장소 제공), 주말 최종 발표.</p>
           <a href="#" class="btn btn-solid">Track A 신청서 (TBD)</a>
           <p class="lede" style="font-size:.85rem;margin-top:.6rem">이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</p>
         </div>
         <div class="route-card">
           <span class="chip">TRACK B</span>
           <h3 style="margin-top:.6rem">아이디어 경진대회 (입문)</h3>
-          <p class="lede" style="font-size:.95rem">코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 형식.</p>
+          <p class="lede" style="font-size:.95rem">코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</p>
           <a href="#" class="btn btn-solid">Track B 신청서 (TBD)</a>
         </div>
         <div class="route-card">
@@ -102,7 +97,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
-      <span>IBM Quantum과 함께합니다</span>
+      <span>IBM Quantum · Next Quantum · Jane Street와 함께합니다</span>
       <span aria-hidden="true">·</span>
       <span>주관: SQRT, 서울대학교</span>
     </div>

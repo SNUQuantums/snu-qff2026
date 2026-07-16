@@ -9,101 +9,8 @@
    ========================================================================== */
 
 :root{
-  /* -- theme A "Original" (warm terracotta) -- default / fallback -- */
-  --paper: #faf7f1;
-  --paper-alt: #f2ead9;
-  --paper-line: #e3d9c4;
-  --ink: #1c2333;
-  --ink-soft: #55607a;
-
-  --navy: #0b1b3a;
-  --navy-alt: #142a52;
-  --navy-line: rgba(255,255,255,.14);
-  --navy-ink: #eef1f8;
-  --navy-ink-soft: #a9b4ce;
-
-  --accent: #c8481a;
-  --accent-ink: #fff;
-  --accent-strong: #93390f;
-  --accent-tint: #f0ddce;
-  --accent-on-navy: #ff9d54;
-  --accent-glow: #ffb37a;
-
-  --tag-blue: #4e7fe0;
-  --tag-blue-onpaper: #2e56b0;
-  --tag-teal: #1f8f72;
-  --tag-violet: #7859b0;
-
-  --header-bg: rgba(250,247,241,.92);
-
-  /* -- form feedback (submission / leaderboard states) -- */
-  --success: #1f8f4d;
-  --success-tint: #e3f3e9;
-  --error: #b3261e;
-  --error-tint: #fbe4e2;
-
-  /* -- type -- */
-  --font-sans: "IBM Plex Sans KR", "IBM Plex Sans", -apple-system, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
-
-  /* -- one radius system, applied by element role -- */
-  --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 22px;
-
-  /* -- spacing scale -- */
-  --sp-1: .5rem;
-  --sp-2: 1rem;
-  --sp-3: 1.5rem;
-  --sp-4: 2.5rem;
-  --sp-5: 4rem;
-  --sp-6: 6.5rem;
-
-  --content-w: 1120px;
-}
-
-/* ==========================================================================
-   Theme B "IBM Quantum Native" - Carbon Design System blue/purple/cyan/teal,
-   cool gray-white surfaces. Source: IBM Design Language / Carbon color tokens.
-   ========================================================================== */
-html[data-theme="ibm"]{
-  --paper: #f2f4f8;
-  --paper-alt: #e4e9f5;
-  --paper-line: #d0d7e6;
-  --ink: #121620;
-  --ink-soft: #525f7a;
-
-  --navy: #0b0f19;
-  --navy-alt: #161c2c;
-  --navy-line: rgba(255,255,255,.14);
-  --navy-ink: #f4f4f8;
-  --navy-ink-soft: #a7b0c4;
-
-  --accent: #0f62fe;
-  --accent-ink: #fff;
-  --accent-strong: #0043ce;
-  --accent-tint: #d0e2ff;
-  --accent-on-navy: #78a9ff;
-  --accent-glow: #a6c8ff;
-
-  --tag-blue: #1192e8;
-  --tag-blue-onpaper: #0043ce;
-  --tag-teal: #007d79;
-  --tag-violet: #6929c4;
-
-  --header-bg: rgba(242,244,248,.92);
-
-  --success: #0f7a4d;
-  --success-tint: #defbe6;
-  --error: #da1e28;
-  --error-tint: #fff1f1;
-}
-
-/* ==========================================================================
-   Theme C "SNU Heritage" - official SNU blue #003380 leads, laurel-gold
-   accent, IBM colors demoted to small partner tags.
-   ========================================================================== */
-html[data-theme="snu"]{
+  /* -- SNU Heritage palette (locked) - official SNU blue #003380 leads,
+     laurel-gold accent, IBM colors demoted to small partner tags -- */
   --paper: #f7f5ee;
   --paper-alt: #efe8d4;
   --paper-line: #e0d3ac;
@@ -130,47 +37,30 @@ html[data-theme="snu"]{
 
   --header-bg: rgba(247,245,238,.92);
 
+  /* -- form feedback (submission / leaderboard states) -- */
   --success: #1f7a4d;
   --success-tint: #e6f2e6;
   --error: #a3341c;
   --error-tint: #f7e6dd;
-}
 
-/* ==========================================================================
-   Theme D "Quantum Circuit Neon" - dark near-black site-wide, neon cyan /
-   magenta / violet micro-accents. Ink flips to light-on-dark throughout.
-   ========================================================================== */
-html[data-theme="neon"]{
-  --paper: #11151f;
-  --paper-alt: #171c29;
-  --paper-line: rgba(255,255,255,.10);
-  --ink: #eef1f8;
-  --ink-soft: #9aa3b8;
+  /* -- type -- */
+  --font-sans: "IBM Plex Sans KR", "IBM Plex Sans", -apple-system, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
 
-  --navy: #05070d;
-  --navy-alt: #0b0e18;
-  --navy-line: rgba(255,255,255,.14);
-  --navy-ink: #eef1f8;
-  --navy-ink-soft: #8b93a8;
+  /* -- one radius system, applied by element role -- */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 22px;
 
-  --accent: #22e6d0;
-  --accent-ink: #05070d;
-  --accent-strong: #5ff0df;
-  --accent-tint: rgba(34,230,208,.16);
-  --accent-on-navy: #22e6d0;
-  --accent-glow: #8ff5e8;
+  /* -- spacing scale -- */
+  --sp-1: .5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6.5rem;
 
-  --tag-blue: #ff3d81;
-  --tag-blue-onpaper: #ff6fa0;
-  --tag-teal: #22e6d0;
-  --tag-violet: #7c5cff;
-
-  --header-bg: rgba(17,21,31,.85);
-
-  --success: #4ee6a8;
-  --success-tint: rgba(78,230,168,.14);
-  --error: #ff6b6b;
-  --error-tint: rgba(255,107,107,.14);
+  --content-w: 1120px;
 }
 
 *{ box-sizing: border-box; }
@@ -254,21 +144,6 @@ nav.primary-nav a:hover, nav.primary-nav a[aria-current="page"]{
 .lang-toggle[data-disabled="true"]{ opacity:.55; cursor:not-allowed; }
 .menu-btn{ display:none; background:none; border:none; cursor:pointer; padding:.4rem; }
 .menu-btn span, .menu-btn::before, .menu-btn::after{ content:""; display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
-
-.theme-switch{
-  display:flex; align-items:center; gap:.4rem;
-  padding:.3rem; border:1px solid var(--paper-line); border-radius: var(--r-sm);
-  background: var(--paper-alt);
-}
-.theme-dot{
-  width:16px; height:16px; border-radius:50%; padding:0; cursor:pointer;
-  background: var(--dot, #999); border: 2px solid var(--paper);
-  box-shadow: 0 0 0 1px var(--paper-line);
-  transition: transform .12s ease, box-shadow .15s ease;
-}
-.theme-dot:hover{ transform: scale(1.18); }
-.theme-dot[data-active="true"]{ box-shadow: 0 0 0 1px var(--paper-line), 0 0 0 3px var(--ink); }
-@media (max-width: 560px){ .theme-switch{ display:none; } }
 
 /* ---------------------------------------------------------------------- */
 /* Buttons / chips                                                         */
@@ -426,10 +301,14 @@ nav.primary-nav a:hover, nav.primary-nav a[aria-current="page"]{
   padding-top: var(--sp-4);
 }
 .timeline-track::before{
-  content:""; position:absolute; top: 14px; left: 6%; right:6%; height:2px;
+  /* line must run exactly from the Day 1 dot's center to the Day 3 dot's
+     center, not an arbitrary inset - dot centers sit 8px (half the dot
+     width) from the start of the 1st and 3rd grid columns. */
+  content:""; position:absolute; top: calc(var(--sp-4) + 13px);
+  left: 8px; right: calc(33.333% - 18.667px); height:2px;
   background: var(--paper-line);
 }
-.timeline-day{ position:relative; padding-top: var(--sp-3); }
+.timeline-day{ position:relative; padding-top: var(--sp-4); }
 .timeline-day::before{
   content:""; position:absolute; top:6px; left:0; width:16px; height:16px;
   border-radius:50%; background: var(--navy); border:3px solid var(--paper);
@@ -476,7 +355,7 @@ table.compare .col-label{ font-weight:600; }
 .track-panel.trackA{ background: var(--navy); color: var(--navy-ink); }
 .track-panel .wrap{ display:grid; grid-template-columns: .9fr 1.1fr; gap: var(--sp-4); align-items:start; }
 .track-panel h2{ display:flex; align-items:center; gap: .6rem; }
-.track-badge{ font-family: var(--font-mono); font-size:.78rem; padding:.25rem .6rem; border-radius: var(--r-sm); }
+.track-badge{ display:inline-block; margin-bottom:.7rem; font-family: var(--font-mono); font-size:.78rem; padding:.25rem .6rem; border-radius: var(--r-sm); }
 .trackB .track-badge{ background: var(--accent); color: var(--accent-ink); }
 .trackA .track-badge{ background: rgba(255,255,255,.12); color: var(--accent-on-navy); border: 1px solid var(--navy-line); }
 .trackA code, .trackA .mono{ font-family: var(--font-mono); }
@@ -636,6 +515,6 @@ html[data-lang="en"] [data-en].block{ display:block; }
 @media (max-width: 400px){
   .brand{ font-size:.92rem; }
   .nav-actions{ gap:.25rem; }
-  .nav-actions .btn{ padding:.4rem .55rem; font-size:.8rem; }
+  .nav-actions .btn{ padding:.5rem 1rem; font-size:.8rem; }
   .lang-toggle{ padding:.32rem .45rem; font-size:.66rem; }
 }

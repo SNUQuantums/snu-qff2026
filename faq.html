@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script>(function(){try{var t=localStorage.getItem('qff-theme')||'original';var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>FAQ · Qiskit Fall Fest 2026 @ SNU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,12 +36,6 @@
         <li><a href="faq.html" data-nav="faq.html" aria-current="page">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="theme-switch" role="group" aria-label="Color theme">
-          <button class="theme-dot" data-theme-option="original" title="Original" aria-pressed="false" style="--dot:#c8481a"></button>
-          <button class="theme-dot" data-theme-option="ibm" title="IBM Quantum Native" aria-pressed="false" style="--dot:#0f62fe"></button>
-          <button class="theme-dot" data-theme-option="snu" title="SNU Heritage" aria-pressed="false" style="--dot:#003380"></button>
-          <button class="theme-dot" data-theme-option="neon" title="Quantum Circuit Neon" aria-pressed="false" style="--dot:#22e6d0"></button>
-        </div>
         <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
         <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
@@ -75,9 +69,25 @@
         </summary>
         <p>
           <span data-kr>네, 물론입니다. Track B(아이디어 경진대회)는 코딩이나 물리 배경이 전혀 없어도 참가할 수 있도록
-          설계되었습니다. 경제, 정책, 디자인, 경영 등 어떤 전공이든 환영합니다.</span>
+          설계되었습니다. 경제, 경영, 인문학, 디자인 등 어떤 전공이든 환영합니다.</span>
           <span data-en>Yes, absolutely. Track B (Idea Contest) is designed so you can join with zero coding
-          or physics background. Econ, policy, design, business, any major is welcome.</span>
+          or physics background. Econ, business, humanities, design, any major is welcome.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-kr>전공에 따라 참가할 수 있는 트랙이 정해져 있나요?</span>
+          <span data-en>Is track eligibility limited by major?</span>
+          <span class="faq-toggle"></span>
+        </summary>
+        <p>
+          <span data-kr>아니요. 두 트랙 모두 전공과 무관하게 참가할 수 있습니다. Track A는 전공이 아니라 코딩 또는
+          Qiskit 경험을 기준으로 하고, Track B는 처음 접하는 분들을 위한 트랙입니다. 다만 한 사람당 하나의
+          트랙에만 참가할 수 있습니다 (교차 신청 불가).</span>
+          <span data-en>No. Neither track is restricted by major. Track A is based on coding or Qiskit
+          experience, not your field of study, and Track B is built for first-timers. Note that each
+          participant may join only one track (no double-registering across both).</span>
         </p>
       </details>
 
@@ -178,7 +188,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
-      <span data-kr>IBM Quantum과 함께합니다</span><span data-en>In partnership with IBM Quantum</span>
+      <span data-kr>IBM Quantum · Next Quantum · Jane Street와 함께합니다</span><span data-en>In partnership with IBM Quantum, Next Quantum, and Jane Street</span>
       <span aria-hidden="true">·</span>
       <span data-kr>주관: SQRT, 서울대학교</span><span data-en>Hosted by SQRT, Seoul National University</span>
     </div>

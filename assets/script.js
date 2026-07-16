@@ -1,37 +1,9 @@
 // Qiskit Fall Fest 2026 @ SNU - shared site behavior
-// Language toggle (persisted), color theme switcher (persisted), mobile nav,
-// FAQ accordion is native <details>.
+// Language toggle (persisted), mobile nav, FAQ accordion is native <details>.
 
 (function () {
   var STORAGE_KEY = "qff-lang";
-  var THEME_KEY = "qff-theme";
-  var THEMES = ["original", "ibm", "snu", "neon"];
   var html = document.documentElement;
-
-  function applyTheme(theme) {
-    if (THEMES.indexOf(theme) === -1) theme = "original";
-    html.setAttribute("data-theme", theme);
-    document.querySelectorAll(".theme-dot").forEach(function (dot) {
-      var isActive = dot.dataset.themeOption === theme;
-      dot.setAttribute("data-active", isActive ? "true" : "false");
-      dot.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
-  }
-
-  function initTheme() {
-    var saved = localStorage.getItem(THEME_KEY) || "original";
-    applyTheme(saved);
-  }
-
-  function bindThemeSwitch() {
-    document.querySelectorAll(".theme-dot").forEach(function (dot) {
-      dot.addEventListener("click", function () {
-        var theme = dot.dataset.themeOption;
-        localStorage.setItem(THEME_KEY, theme);
-        applyTheme(theme);
-      });
-    });
-  }
 
   function applyLang(lang) {
     html.setAttribute("data-lang", lang);
@@ -88,8 +60,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     initLang();
     bindLangToggle();
-    initTheme();
-    bindThemeSwitch();
     bindMobileNav();
     markActiveNav();
   });

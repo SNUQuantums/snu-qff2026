@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script>(function(){try{var t=localStorage.getItem('qff-theme')||'original';var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>About · Qiskit Fall Fest 2026 @ SNU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,12 +36,6 @@
         <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="theme-switch" role="group" aria-label="Color theme">
-          <button class="theme-dot" data-theme-option="original" title="Original" aria-pressed="false" style="--dot:#c8481a"></button>
-          <button class="theme-dot" data-theme-option="ibm" title="IBM Quantum Native" aria-pressed="false" style="--dot:#0f62fe"></button>
-          <button class="theme-dot" data-theme-option="snu" title="SNU Heritage" aria-pressed="false" style="--dot:#003380"></button>
-          <button class="theme-dot" data-theme-option="neon" title="Quantum Circuit Neon" aria-pressed="false" style="--dot:#22e6d0"></button>
-        </div>
         <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
         <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
@@ -84,16 +78,16 @@
     <div class="wrap">
       <span class="eyebrow"><span data-kr>Qiskit Fall Fest란</span><span data-en>What is Qiskit Fall Fest</span></span>
       <h2>
-        <span data-kr>학생이 만드는 전 세계 양자컴퓨팅 축제</span>
-        <span data-en>A global quantum computing celebration, run by students</span>
+        <span data-kr>전 세계 곳곳에서 열리는 양자컴퓨팅 축제</span>
+        <span data-en>A global quantum computing celebration</span>
       </h2>
       <p class="lede">
-        <span data-kr>Qiskit Fall Fest는 IBM Quantum이 지원하고 전 세계 대학과 커뮤니티의 학생 리더들이 직접 기획, 운영하는
-        캠퍼스 행사 시리즈입니다. 2025년에는 150명의 호스트가 이끈 행사에 3만 2천 명 이상이 참여했습니다.
+        <span data-kr>Qiskit Fall Fest는 IBM Quantum이 지원하고 전 세계 각지의 호스트 팀이 자율적으로 기획, 운영하는
+        행사 시리즈입니다. 2025년에는 150명의 호스트가 이끈 행사에 3만 2천 명 이상이 참여했습니다.
         2026년의 테마는 "10년의 양자 클라우드"로, IBM이 최초로 개방형 양자컴퓨터를 클라우드에 공개한 지
         10년이 되는 해를 기념합니다.</span>
-        <span data-en>Qiskit Fall Fest is IBM Quantum's global series of campus events, planned and run
-        directly by student leaders at universities and communities worldwide. In 2025, over 32,000
+        <span data-en>Qiskit Fall Fest is IBM Quantum's global series of events, planned and run
+        independently by host teams around the world. In 2025, over 32,000
         participants joined events led by 150 hosts. The 2026 theme, "a decade of quantum on the cloud,"
         marks ten years since IBM first opened a quantum computer to the cloud.</span>
       </p>
@@ -114,10 +108,12 @@
         <span data-kr>공식 로고 및 후원 확정 전 자리 표시입니다.</span>
         <span data-en>Placeholder until official logos and sponsors are confirmed.</span>
       </p>
-      <div class="bento" style="grid-template-columns:repeat(4,1fr)">
+      <div class="bento" style="grid-template-columns:repeat(3,1fr)">
         <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">IBM Quantum</div>
         <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">Seoul National University</div>
         <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">SQRT</div>
+        <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">Next Quantum</div>
+        <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">Jane Street</div>
         <div class="card" style="text-align:center;color:var(--ink-soft);font-family:var(--font-mono);font-size:.85rem">Sponsor · TBD</div>
       </div>
     </div>
@@ -127,7 +123,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
-      <span data-kr>IBM Quantum과 함께합니다</span><span data-en>In partnership with IBM Quantum</span>
+      <span data-kr>IBM Quantum · Next Quantum · Jane Street와 함께합니다</span><span data-en>In partnership with IBM Quantum, Next Quantum, and Jane Street</span>
       <span aria-hidden="true">·</span>
       <span data-kr>주관: SQRT, 서울대학교</span><span data-en>Hosted by SQRT, Seoul National University</span>
     </div>

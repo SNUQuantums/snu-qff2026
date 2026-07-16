@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script>(function(){try{var t=localStorage.getItem('qff-theme')||'original';var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>Qiskit Fall Fest 2026 @ SNU · Hosted by SQRT</title>
 <meta name="description" content="Qiskit Fall Fest 2026 at Seoul National University, hosted by SQRT. A 3-day quantum computing event open to every major: no coding or physics background required for the Idea Contest track." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,12 +37,6 @@
         <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="theme-switch" role="group" aria-label="Color theme">
-          <button class="theme-dot" data-theme-option="original" title="Original" aria-pressed="false" style="--dot:#c8481a"></button>
-          <button class="theme-dot" data-theme-option="ibm" title="IBM Quantum Native" aria-pressed="false" style="--dot:#0f62fe"></button>
-          <button class="theme-dot" data-theme-option="snu" title="SNU Heritage" aria-pressed="false" style="--dot:#003380"></button>
-          <button class="theme-dot" data-theme-option="neon" title="Quantum Circuit Neon" aria-pressed="false" style="--dot:#22e6d0"></button>
-        </div>
         <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
         <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
@@ -74,7 +68,7 @@
           <span data-kr>최전선에 도전하거나, 그 첫걸음을 내딛거나. SQRT와 함께하는 3일간의 양자컴퓨팅 행사입니다.</span>
           <span data-en>Push the frontier, or take your first step into it. Three days of quantum computing with SQRT.</span>
         </p>
-        <span class="date-chip"><span data-kr>2026년 10월 · 날짜 확정 예정</span><span data-en>October 2026 · dates TBD</span></span>
+        <span class="date-chip"><span data-kr>2026년 10월 29일(목)~31일(토)</span><span data-en>October 29-31, 2026</span></span>
         <div class="hero-cta">
           <a href="hackathon.html#trackA" class="btn btn-solid"><span data-kr>해커톤 참가하기</span><span data-en>Join the hackathon</span></a>
           <a href="#who-is-this-for" class="btn btn-outline on-navy-accent"><span data-kr>처음이라면, 여기서 시작</span><span data-en>New to quantum? Start here</span></a>
@@ -112,14 +106,14 @@
   <!-- ============================ WHAT IS QFF =========================== -->
   <section class="paper-surface">
     <div class="wrap">
-      <span class="eyebrow"><span data-kr>퀴스킷 폴 페스트란</span><span data-en>What is Qiskit Fall Fest</span></span>
+      <span class="eyebrow"><span data-kr>Qiskit Fall Fest란</span><span data-en>What is Qiskit Fall Fest</span></span>
       <h2 style="max-width:22ch">
-        <span data-kr>전 세계 캠퍼스에서 열리는, 학생이 주도하는 양자컴퓨팅 축제</span>
-        <span data-en>A global, student-run quantum computing celebration</span>
+        <span data-kr>전 세계 곳곳에서 열리는 양자컴퓨팅 축제</span>
+        <span data-en>A global quantum computing celebration</span>
       </h2>
       <p class="lede">
-        <span data-kr>Qiskit Fall Fest는 IBM Quantum이 지원하고 전 세계 학생 리더들이 직접 기획·운영하는 캠퍼스 행사 시리즈입니다. 2025년에는 150개 팀, 3만 2천 명 이상이 참여했습니다. SNU에서는 SQRT(SNU Quantum Research Team)가 호스트를 맡아, 2026년 "10년의 양자 클라우드" 테마 아래 강연·해커톤·포스터 세션으로 구성된 3일간의 행사를 준비합니다.</span>
-        <span data-en>Qiskit Fall Fest is IBM Quantum's global series of student-run campus events. In 2025 alone, over 32,000 participants joined events led by 150 student organizers worldwide. At SNU, SQRT (SNU Quantum Research Team) is hosting a 3-day event for 2026's "decade of quantum on the cloud" theme: a mix of talks, a two-track hackathon, and a poster session.</span>
+        <span data-kr>Qiskit Fall Fest는 IBM Quantum이 지원하고 전 세계 각지의 호스트 팀이 자율적으로 기획·운영하는 행사 시리즈입니다. 2025년에는 150개 팀, 3만 2천 명 이상이 참여했습니다. SNU에서는 SQRT(SNU Quantum Research Team)가 호스트를 맡아, 2026년 "10년의 양자 클라우드" 테마 아래 강연·해커톤·포스터 세션으로 구성된 3일간의 행사를 준비합니다.</span>
+        <span data-en>Qiskit Fall Fest is IBM Quantum's global series of events, organized independently by host teams around the world. In 2025 alone, over 32,000 participants joined events led by 150 hosts worldwide. At SNU, SQRT (SNU Quantum Research Team) is hosting a 3-day event for 2026's "decade of quantum on the cloud" theme: a mix of talks, a two-track hackathon, and a poster session.</span>
       </p>
       <div class="stat-band">
         <div class="stat">
@@ -146,20 +140,20 @@
       <div class="split-band">
         <div class="split-card for-experienced">
           <h3><span data-kr>이미 큐비트 회로를 짜본 적 있다면</span><span data-en>You already write quantum circuits</span></h3>
-          <p class="lede"><span data-kr>Qiskit 경험이 있는 물리·컴퓨터공학 전공자를 위한 트랙입니다. 오픈 문제를 받아 주말 최종 발표까지 몰입형으로 진행합니다.</span><span data-en>For physics and CS students with some Qiskit background. Tackle an open-ended problem and present your results on the final weekend.</span></p>
+          <p class="lede"><span data-kr>Qiskit이나 코딩 경험이 있다면 전공에 상관없이 참여할 수 있는 트랙입니다. 오픈 문제를 받아 주말 최종 발표까지 진행합니다.</span><span data-en>Open to any major, as long as you have some Qiskit or coding experience. Tackle an open-ended problem and present your results on the final weekend.</span></p>
           <a href="hackathon.html#trackA" class="btn btn-outline on-navy-accent"><span data-kr>Track A · 해커톤 자세히 보기</span><span data-en>See Track A · Hackathon</span></a>
         </div>
         <div class="split-card for-new">
           <h3><span data-kr>코드를 한 번도 짜본 적 없다면</span><span data-en>You've never written code</span></h3>
-          <p class="lede" style="color:var(--ink-soft)"><span data-kr>코딩도, 물리도 필요 없습니다. 자기 전공의 문제의식을 양자컴퓨팅 아이디어로 발전시키는 테이크홈 형식의 트랙입니다.</span><span data-en>No coding, no physics required. A take-home track for turning a question from your own field into a quantum computing idea.</span></p>
+          <p class="lede" style="color:var(--ink-soft)"><span data-kr>코딩도, 물리도 필요 없습니다. 자기 전공의 문제의식을 양자컴퓨팅 아이디어로 발전시키는 테이크홈 형식의 트랙으로, 주말에 짧게 발표합니다.</span><span data-en>No coding, no physics required. A take-home track for turning a question from your own field into a quantum computing idea, with a short weekend presentation.</span></p>
           <a href="hackathon.html#trackB" class="btn btn-solid"><span data-kr>Track B · 아이디어 경진대회</span><span data-en>See Track B · Idea Contest</span></a>
         </div>
       </div>
       <div class="major-chips" role="list" aria-label="relevant fields">
         <span class="major-chip" data-kr role="listitem">경제학 · 금융 모델링</span><span class="major-chip" data-en role="listitem">Econ · finance modeling</span>
-        <span class="major-chip" data-kr role="listitem">정책 · 사회과학 최적화</span><span class="major-chip" data-en role="listitem">Policy · social science</span>
-        <span class="major-chip" data-kr role="listitem">디자인 · 크리에이티브 컴퓨팅</span><span class="major-chip" data-en role="listitem">Design · creative computing</span>
         <span class="major-chip" data-kr role="listitem">경영 · 신기술 전략</span><span class="major-chip" data-en role="listitem">Business strategy</span>
+        <span class="major-chip" data-kr role="listitem">인문학 · 인간 중심 질문</span><span class="major-chip" data-en role="listitem">Humanities · human-centered questions</span>
+        <span class="major-chip" data-kr role="listitem">디자인 · 크리에이티브 컴퓨팅</span><span class="major-chip" data-en role="listitem">Design · creative computing</span>
         <span class="major-chip" data-kr role="listitem">물리학</span><span class="major-chip" data-en role="listitem">Physics</span>
         <span class="major-chip" data-kr role="listitem">컴퓨터공학</span><span class="major-chip" data-en role="listitem">Computer science</span>
       </div>
@@ -176,7 +170,7 @@
           <div class="timeline-day">
             <h4>Day 1</h4>
             <p><strong><span data-kr>세미나</span><span data-en>Seminar</span></strong></p>
-            <p class="lede" style="font-size:.94rem"><span data-kr>IBM·교수진·SQRT 연사 강연</span><span data-en>Talks from IBM, SNU faculty, and SQRT</span></p>
+            <p class="lede" style="font-size:.94rem"><span data-kr>교수진·SQRT 연사 강연, IBM Quantum 후원</span><span data-en>Talks from SNU faculty and SQRT, with support from IBM Quantum</span></p>
           </div>
           <div class="timeline-day">
             <h4>Day 2</h4>
@@ -207,7 +201,7 @@
           <div>
             <span class="tag" style="color:var(--accent-on-navy)">DAY 1</span>
             <h3><span data-kr>세미나</span><span data-en>Seminar</span></h3>
-            <p class="lede" style="font-size:.94rem"><span data-kr>IBM, SNU 교수진, SQRT 연사의 강연으로 여는 첫날</span><span data-en>Opening day of talks from IBM, SNU faculty, and SQRT</span></p>
+            <p class="lede" style="font-size:.94rem"><span data-kr>SNU 교수진, SQRT 연사의 강연으로 여는 첫날 (IBM Quantum 후원)</span><span data-en>Opening day of talks from SNU faculty and SQRT, supported by IBM Quantum</span></p>
           </div>
           <a href="schedule.html" class="btn btn-outline on-navy-accent"><span data-kr>일정 보기</span><span data-en>View schedule</span></a>
         </div>
@@ -220,7 +214,7 @@
         <div class="card trackB">
           <span class="tag">TRACK B</span>
           <h3><span data-kr>아이디어 경진대회 (입문)</span><span data-en>Idea Contest (Beginner)</span></h3>
-          <p class="lede" style="font-size:.94rem"><span data-kr>테이크홈 · 코딩/물리 불필요</span><span data-en>Take-home · no coding or physics needed</span></p>
+          <p class="lede" style="font-size:.94rem"><span data-kr>테이크홈 + 주말 발표 · 코딩/물리 불필요</span><span data-en>Take-home + weekend presentation · no coding or physics needed</span></p>
           <a href="hackathon.html#trackB" class="btn btn-outline" style="margin-top:.8rem"><span data-kr>자세히 보기</span><span data-en>Learn more</span></a>
         </div>
         <div class="card poster">
@@ -238,7 +232,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
-      <span data-kr>IBM Quantum과 함께합니다</span><span data-en>In partnership with IBM Quantum</span>
+      <span data-kr>IBM Quantum · Next Quantum · Jane Street와 함께합니다</span><span data-en>In partnership with IBM Quantum, Next Quantum, and Jane Street</span>
       <span aria-hidden="true">·</span>
       <span data-kr>주관: SQRT, 서울대학교</span><span data-en>Hosted by SQRT, Seoul National University</span>
     </div>
