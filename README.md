@@ -1,6 +1,6 @@
 # Qiskit Fall Fest 2026 @ SNU
 
-Static, no-build demo site for Qiskit Fall Fest 2026, hosted by SQRT (SNU Quantum Research Team), plus a QASM submission + leaderboard flow for the Track A hackathon backed by Supabase.
+Static, no-build demo site for Qiskit Fall Fest 2026, hosted by SQRT (SNU Quantum Research Team), plus a QASM submission + leaderboard flow for the hackathon backed by Supabase.
 
 No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, and the only external dependencies (Google Fonts, the Supabase JS client) are loaded via `<link>`/`<script>` tags from a CDN.
 
@@ -12,12 +12,12 @@ No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, 
 ├── about.html          About SQRT / Qiskit Fall Fest
 ├── schedule.html       3-day schedule
 ├── speakers.html       Speakers (IBM / SNU faculty / SQRT)
-├── hackathon.html      Track A + Track B details
+├── hackathon.html      Hackathon + Ideathon details
 ├── posters.html        Poster Session
 ├── faq.html
-├── register.html       Sign-up router (Track A / Track B / Poster / Day 1)
-├── submit.html         Track A: submit a QASM circuit (writes to Supabase)
-├── leaderboard.html    Track A: live standings (reads from Supabase)
+├── register.html       Sign-up router (Hackathon / Ideathon / Poster / Day 1)
+├── submit.html         Hackathon: submit a QASM circuit (writes to Supabase)
+├── leaderboard.html    Hackathon: live standings (reads from Supabase)
 ├── assets/
 │   ├── style.css              design system, incl. 4 switchable color themes
 │   ├── script.js               language toggle, theme switcher, mobile nav
