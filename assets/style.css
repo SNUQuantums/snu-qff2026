@@ -645,3 +645,20 @@ footer.site-footer { margin-top:24px; padding:44px 0; }
 
 .mobile-leaderboard { display:none; }
 @media(max-width:880px) { .mobile-leaderboard { display:list-item; } }
+
+/* Each page has a matching, locally bundled two-tone pictogram. */
+.nav-page-icon { display:inline-block; width:20px; height:20px; vertical-align:-4px; margin-right:7px; flex:none; }
+nav.primary-nav .btn .nav-page-icon { margin-right:0; }
+nav.primary-nav .btn-solid .nav-page-icon { background:#eae2f7; border-radius:3px; padding:1px; }
+.page-intro-icon { float:right; width:144px; height:144px; margin:0 24px 28px 48px; }
+main>section:first-child>.wrap::after { content:''; display:table; clear:both; }
+@media(min-width:1251px) and (max-width:1400px) {
+ nav.primary-nav ul { gap:10px; } nav.primary-nav { gap:14px; }
+ .nav-page-icon { width:17px; height:17px; margin-right:4px; }
+ .brand small { display:none; }
+}
+@media(max-width:880px) { .page-intro-icon { width:104px; height:104px; margin:0 0 24px 28px; } }
+@media(max-width:560px) {
+ .page-intro-icon { float:none; width:72px; height:72px; margin:0 0 24px; }
+ .nav-actions>.btn .nav-page-icon { display:none; }
+}
