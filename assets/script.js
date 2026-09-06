@@ -6,7 +6,9 @@
   var html = document.documentElement;
 
   function applyLang(lang) {
+    lang = lang === "en" ? "en" : "kr";
     html.setAttribute("data-lang", lang);
+    html.setAttribute("lang", lang === "kr" ? "ko" : "en");
     document.querySelectorAll(".lang-toggle").forEach(function (btn) {
       if (btn.dataset.disabled === "true") {
         btn.textContent = "EN · coming soon";
@@ -17,7 +19,8 @@
   }
 
   function initLang() {
-    var saved = localStorage.getItem(STORAGE_KEY) || "kr";
+    var saved = "kr";
+    try { saved = localStorage.getItem(STORAGE_KEY) || "kr"; } catch (e) {}
     applyLang(saved);
   }
 
@@ -31,7 +34,7 @@
         }
         var current = html.getAttribute("data-lang") || "kr";
         var next = current === "kr" ? "en" : "kr";
-        localStorage.setItem(STORAGE_KEY, next);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
         applyLang(next);
       });
     });
@@ -41,10 +44,25 @@
     var menuBtn = document.querySelector(".menu-btn");
     var nav = document.querySelector("nav.primary-nav ul");
     if (!menuBtn || !nav) return;
+    nav.id = "primary-menu";
+    menuBtn.setAttribute("aria-controls", nav.id);
+    menuBtn.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      nav.setAttribute("data-open", String(open));
+      menuBtn.setAttribute("aria-expanded", String(open));
+    }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.getAttribute("data-open") === "true") {
+        setOpen(false); menuBtn.focus();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1250) setOpen(false);
+    });
+    nav.addEventListener("click", function(e) { if (e.target.closest("a")) setOpen(false); });
     menuBtn.addEventListener("click", function () {
       var open = nav.getAttribute("data-open") === "true";
-      nav.setAttribute("data-open", open ? "false" : "true");
-      nav.style.display = open ? "none" : "flex";
+      setOpen(!open);
     });
   }
 

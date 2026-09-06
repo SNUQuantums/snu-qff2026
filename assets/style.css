@@ -1,41 +1,32 @@
-/* ==========================================================================
-   Qiskit Fall Fest 2026 @ SNU - design system
-   Concept: the page gets more technical as content gets more specialized.
-   Warm paper = "everyone zone" (Home, Track B, FAQ, About).
-   Deep navy   = "technical zone" (Hero, Track A, Speakers headers).
-   One accent color (terracotta) carries every call-to-action across both
-   zones; blue / teal / violet are used ONLY as small categorical tags
-   (hackathon track / speaker group), never as competing buttons.
-   ========================================================================== */
+/* Qiskit Fall Fest — Luminous Editorial: ivory, midnight navy, and radiant light. */
 
 :root{
-  /* -- SNU Heritage palette (locked) - official SNU blue #003380 leads,
-     laurel-gold accent, IBM colors demoted to small partner tags -- */
-  --paper: #f7f5ee;
-  --paper-alt: #efe8d4;
-  --paper-line: #e0d3ac;
-  --ink: #1c2333;
-  --ink-soft: #6b6555;
+  /* Shared editorial palette across all event pages. */
+  --paper: #faf9f7;
+  --paper-alt: #f0ecf7;
+  --paper-line: #dcdde5;
+  --ink: #0b1c40;
+  --ink-soft: #505c73;
 
-  --navy: #003380;
-  --navy-alt: #0a4099;
+  --navy: #081831;
+  --navy-alt: #17294b;
   --navy-line: rgba(255,255,255,.16);
-  --navy-ink: #f5f0e0;
-  --navy-ink-soft: #c9d6ea;
+  --navy-ink: #faf9ff;
+  --navy-ink-soft: #c5cee1;
 
-  --accent: #c9a227;
-  --accent-ink: #1a1400;
-  --accent-strong: #8a6d16;
-  --accent-tint: #f2e6bd;
-  --accent-on-navy: #e3c66a;
-  --accent-glow: #f2dfa0;
+  --accent: #182e55;
+  --accent-ink: #ffffff;
+  --accent-strong: #67478e;
+  --accent-tint: #eae2f7;
+  --accent-on-navy: #d9c4ff;
+  --accent-glow: #f4d7d6;
 
   --tag-blue: #5596e6;
   --tag-blue-onpaper: #0f62fe;
-  --tag-teal: #0a4099;
-  --tag-violet: #c9a227;
+  --tag-teal: #17294b;
+  --tag-violet: #7953ac;
 
-  --header-bg: rgba(247,245,238,.92);
+  --header-bg: rgba(250,249,247,.95);
 
   /* -- form feedback (submission / leaderboard states) -- */
   --success: #1f7a4d;
@@ -60,7 +51,7 @@
   --sp-5: 4rem;
   --sp-6: 6.5rem;
 
-  --content-w: 1120px;
+  --content-w: 1240px;
 }
 
 *{ box-sizing: border-box; }
@@ -518,3 +509,139 @@ html[data-lang="en"] [data-en].block{ display:block; }
   .nav-actions .btn{ padding:.5rem 1rem; font-size:.8rem; }
   .lang-toggle{ padding:.32rem .45rem; font-size:.66rem; }
 }
+
+/* Luminous Editorial layouts. Shared by the static GitHub Pages routes. */
+html { scroll-padding-top:100px; }
+body { font-size:1rem; line-height:1.7; }
+h1,h2,h3 { line-height:1.2; word-break:keep-all; overflow-wrap:break-word; }
+:focus-visible { outline:3px solid #8b65c4; outline-offset:4px; }
+.site-header { border-bottom:0; }
+.site-header .wrap { max-width:1480px; height:84px; gap:20px; }
+nav.primary-nav { gap:24px; }
+nav.primary-nav ul { gap:18px; }
+nav.primary-nav a { font-size:.875rem; }
+nav.primary-nav .btn { padding:10px 14px; min-height:44px; }
+nav.primary-nav .btn-solid { color:var(--accent-ink); }
+.lang-toggle,.menu-btn { min-height:44px; min-width:44px; }
+.lang-toggle { font-size:.8125rem; background:transparent; border:0; }
+.btn { white-space:normal; text-align:center; justify-content:center; min-height:48px; }
+.eyebrow { font-size:.8125rem; letter-spacing:.12em; }
+.hero { background-color:var(--navy); }
+.luminous-hero { width:calc(100% - 48px); max-width:1440px; margin:8px auto 0; border-radius:18px; padding:76px 0 64px; background:#07142d url('luminous-hero.png') center/cover no-repeat; }
+.luminous-hero::after { content:''; position:absolute; inset:12px; border:1px solid rgba(240,236,255,.3); border-radius:10px; pointer-events:none; }
+.luminous-hero .wrap { display:block; padding-inline:clamp(28px,5vw,76px); }
+.luminous-hero .hero-copy { max-width:780px; }
+.luminous-hero .eyebrow { color:#d5dcee; margin-bottom:28px; }
+.festival-title { font-size:clamp(3.8rem,7vw,6.6rem); font-weight:700; line-height:1.02; letter-spacing:-.055em; margin-bottom:26px!important; }
+.festival-title>span { font-weight:400; color:#e9dbff; }
+.hero-theme { font-size:clamp(1.3rem,2.1vw,1.85rem); line-height:1.45; margin-bottom:18px; font-weight:500; }
+.luminous-hero .lede { color:#e0e5f0; max-width:48ch; }
+.luminous-hero .date-chip { border:0; padding:8px 0; font-size:.9375rem; color:#e4d5f9; }
+.luminous-hero .hero-cta { margin-top:12px; }
+.luminous-hero .btn-solid { background:#fff; color:#0b1c40; }
+.luminous-hero .btn-outline { color:#fff; border-color:rgba(255,255,255,.7); background:rgba(6,19,42,.35); }
+.hero-partner { display:flex; align-items:center; gap:24px; margin-top:34px; color:#d1d9eb; font-size:.8125rem; }
+.hero-partner img { width:128px; height:42px; object-fit:contain; }
+.hero-partner>span { border-left:1px solid #617089; padding-left:24px; }
+.diagonal-cut::after { display:none; }
+section { padding:80px 0; }
+main>.paper-surface:first-of-type h2 { max-width:28ch; }
+.stat-band { margin-top:40px; gap:40px; }
+.stat { border-top:1px solid var(--paper-line); padding-top:22px; }
+.stat .num { font-family:var(--font-sans); font-weight:500; }
+.alt-surface { background:var(--paper); }
+.split-band { gap:0; margin-top:40px; }
+.split-card,.split-card.for-experienced,.split-card.for-new { background:transparent; color:var(--ink); border:0; border-radius:0; padding:0 42px 0 0; }
+.split-card+.split-card { border-left:1px solid var(--paper-line); padding:0 0 0 42px; }
+.split-card .lede { color:var(--ink-soft); }
+.split-card .btn-outline.on-navy-accent { color:var(--ink); border-color:var(--ink); }
+.major-chips { margin-top:34px; gap:10px 22px; }
+.major-chip { border:0; border-radius:0; background:transparent; padding:6px 0; }
+.timeline-track { gap:32px; }
+.bento { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 48px; }
+.bento .card,.bento .card.wide,.bento .card.trackA,.bento .card.trackB,.bento .card.poster {
+ grid-column:auto; display:block; border:0; border-top:1px solid var(--paper-line); border-radius:0;
+ background:transparent; color:var(--ink); padding:30px 0; box-shadow:none;
+}
+.bento .card h3 { font-size:1.6rem; margin-top:14px; }
+.bento .card .lede,.bento .card p { color:var(--ink-soft)!important; }
+.bento .card .tag { color:#67478e; font-size:.8125rem; }
+.bento .card .btn-outline { color:var(--ink); border-color:var(--ink); }
+.bento .card:hover,.speaker-card:hover,.route-card:hover,.split-card:hover { transform:none; box-shadow:none; }
+.speaker-grid { gap:32px; }
+.speaker-card { border:0; padding:0 0 24px; border-radius:0; background:transparent; }
+.speaker-photo { background:var(--paper-alt); border-radius:8px; margin-bottom:18px; }
+.route-grid { gap:0 48px; }
+.route-card { border:0; border-top:1px solid var(--paper-line); border-radius:0; background:transparent; padding:30px 0; }
+.track-panel.trackB { background:#eee7f8; }
+.track-panel.trackA { background:#0b1b36; }
+.track-panel h2 { flex-wrap:wrap; }
+footer.site-footer { margin-top:24px; padding:44px 0; }
+.footer-links { flex-wrap:wrap; }
+.sponsor-strip { opacity:1; }
+.sponsor-strip img { width:150px; height:auto; }
+@media(max-width:1250px) {
+ nav.primary-nav ul { display:none; }
+ .menu-btn { display:block; }
+ .brand small { display:none; }
+ nav.primary-nav ul[data-open='true'] { display:flex; position:absolute; top:84px; left:0; right:0; flex-direction:column; gap:0; padding:16px 24px; background:var(--paper); border-bottom:1px solid var(--paper-line); max-height:calc(100dvh - 84px); overflow:auto; }
+ nav.primary-nav ul[data-open='true'] a { display:block; padding:12px 0; }
+}
+@media(max-width:880px) {
+ .site-header .wrap { height:76px; }
+ nav.primary-nav ul[data-open='true'] { top:76px; max-height:calc(100dvh - 76px); }
+ .luminous-hero { background-position:60% center; }
+ .luminous-hero .hero-copy { max-width:620px; }
+ .luminous-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,15,35,.65),rgba(5,15,35,.08)); }
+ .split-card,.split-card.for-experienced,.split-card.for-new { padding:28px 0; }
+ .split-card+.split-card { border-left:0; border-top:1px solid var(--paper-line); }
+ .bento .card,.bento .card.wide,.bento .card.trackA,.bento .card.trackB,.bento .card.poster { grid-column:auto; }
+ .timeline-track { gap:24px; }
+ .route-grid { grid-template-columns:1fr; }
+ section { padding:60px 0; }
+}
+@media(max-width:560px) {
+ .brand { font-size:.875rem; gap:6px; }
+ .brand .mark { width:24px; height:24px; }
+ .site-header .wrap { gap:8px; padding-inline:12px; }
+ nav.primary-nav .btn { font-size:.8125rem; padding:8px 10px; }
+ .nav-actions { gap:4px; }
+ .lang-toggle { font-size:.75rem; padding:4px; }
+ .luminous-hero { width:calc(100% - 24px); border-radius:12px; padding:54px 0 42px; background-position:65% center; }
+ .luminous-hero .wrap { padding-inline:26px; }
+ .luminous-hero .eyebrow { font-size:.75rem; letter-spacing:.06em; max-width:28ch; }
+ .festival-title { font-size:clamp(3.1rem,12vw,4.5rem); }
+ .festival-title>span { display:block; }
+ .hero-theme { font-size:1.3rem; }
+ .luminous-hero .lede { font-size:1rem; }
+ .hero-cta { flex-direction:column; gap:12px; }
+ .hero-cta .btn { width:100%; }
+ .hero-partner { gap:16px; flex-wrap:wrap; }
+ .hero-partner>span { padding-left:16px; }
+ .stat-band { gap:20px; grid-template-columns:1fr; }
+ .stat { display:flex; align-items:baseline; justify-content:space-between; gap:20px; }
+ .stat .num { font-size:2rem; flex:none; }
+ .stat .label { text-align:right; }
+ .bento { grid-template-columns:1fr; }
+ .speaker-grid { grid-template-columns:1fr; }
+ table.compare { font-size:.875rem; }
+ table.compare th,table.compare td { padding:12px 8px; overflow-wrap:anywhere; }
+}
+@media(max-width:360px) {
+ .brand .mark { display:none; }
+ .brand { font-size:.8125rem; }
+ .site-header .wrap { padding-inline:8px; }
+ nav.primary-nav .btn { padding-inline:6px; }
+ .nav-actions { gap:2px; }
+}
+/* Official Qiskit pictogram replaces the generic atom in the masthead. */
+.brand .mark { background:transparent url('qiskit-purple.png') center/contain no-repeat; border-radius:0; }
+.brand .mark svg { visibility:hidden; }
+/* Align actions across columns even when their descriptions wrap differently. */
+.split-card { display:flex; flex-direction:column; align-items:flex-start; }
+.split-card>.btn { margin-top:auto; }
+.bento .card,.bento .card.wide,.bento .card.trackA,.bento .card.trackB,.bento .card.poster { display:flex; flex-direction:column; align-items:flex-start; }
+.bento .card>.btn { margin-top:auto; }
+
+.mobile-leaderboard { display:none; }
+@media(max-width:880px) { .mobile-leaderboard { display:list-item; } }
