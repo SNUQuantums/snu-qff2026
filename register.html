@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20260906-open" />
+<link rel="stylesheet" href="assets/style.css?v=38cbe77f0589" />
 </head>
 <body>
 
@@ -50,8 +50,8 @@
 
 <main>
   <section class="paper-surface">
-    <div class="wrap">
-      <img class="page-intro-icon" src="assets/icons/register.svg" alt="" width="144" height="144" aria-hidden="true">
+    <div class="wrap page-intro-layout">
+      <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/register.svg');-webkit-mask-image:url('assets/icons/register.svg')" aria-hidden="true"></span>
       <span class="eyebrow">신청</span>
       <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">참가 방법을 선택하세요</h1>
       <p class="lede">
@@ -65,26 +65,26 @@
           <span class="chip">TRACK A</span>
           <h3 style="margin-top:.6rem">해커톤 (심화)</h3>
           <p class="lede" style="font-size:.95rem">Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 관악캠퍼스 28동 101호 대면 진행(Zoom 송출), 자동 채점, 우수 팀은 시상식에서 발표.</p>
-          <a href="#" class="btn btn-solid">Track A 신청서 (TBD)</a>
+          <button type="button" class="btn btn-solid" disabled aria-disabled="true">Track A 신청서 (TBD)</button>
           <p class="lede" style="font-size:.85rem;margin-top:.6rem">이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</p>
         </div>
         <div class="route-card">
           <span class="chip">TRACK B</span>
           <h3 style="margin-top:.6rem">아이디어 경진대회 (입문)</h3>
           <p class="lede" style="font-size:.95rem">코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</p>
-          <a href="#" class="btn btn-solid">Track B 신청서 (TBD)</a>
+          <button type="button" class="btn btn-solid" disabled aria-disabled="true">Track B 신청서 (TBD)</button>
         </div>
         <div class="route-card">
           <span class="chip" style="background:transparent;border:1.5px solid var(--tag-teal);color:var(--tag-teal)">POSTER</span>
           <h3 style="margin-top:.6rem">포스터 세션</h3>
           <p class="lede" style="font-size:.95rem">기존 연구 결과가 있는 학생을 위한 발표 자리입니다.</p>
-          <a href="#" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)">포스터 제출 (TBD)</a>
+          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true">포스터 제출 (TBD)</button>
         </div>
         <div class="route-card">
           <span class="chip" style="background:transparent;border:1.5px solid var(--ink-soft);color:var(--ink-soft)">DAY 1</span>
           <h3 style="margin-top:.6rem">세미나만 참석</h3>
           <p class="lede" style="font-size:.95rem">해커톤 신청 없이 세미나만 듣고 싶다면 여기로 RSVP하세요.</p>
-          <a href="#" class="btn btn-outline">세미나 RSVP (TBD)</a>
+          <button type="button" class="btn btn-outline" disabled aria-disabled="true">세미나 RSVP (TBD)</button>
         </div>
       </div>
     </div>
@@ -106,6 +106,6 @@
   </div>
 </footer>
 
-<script src="assets/script.js?v=20260906-open"></script>
+<script src="assets/script.js?v=62e66318a697"></script>
 </body>
 </html>
