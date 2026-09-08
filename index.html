@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=38cbe77f0589" />
+<link rel="stylesheet" href="assets/reference-design.css?v=a611db04ec3d">
 </head>
-<body>
-
+<body class="reference-home">
 <header class="site-header">
   <div class="wrap">
     <a href="index.html" class="brand">
@@ -46,161 +46,45 @@
     </nav>
   </div>
 </header>
+<main><section class="hero reference-hero" id="top">
+    <svg class="hero-visual" viewBox="0 0 1440 700" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="qff-blue" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#476FCB" stop-opacity=".1"/><stop offset="36%" stop-color="#8ED9F6"/><stop offset="76%" stop-color="#B797ED"/><stop offset="100%" stop-color="#476FCB" stop-opacity=".1"/></linearGradient>
+        <linearGradient id="qff-warm" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8ED9F6" stop-opacity=".06"/><stop offset="38%" stop-color="#B797ED"/><stop offset="61%" stop-color="#FFC18E"/><stop offset="100%" stop-color="#8ED9F6"/></linearGradient>
+        <radialGradient id="qff-glow"><stop offset="0%" stop-color="#FFF6E9"/><stop offset="18%" stop-color="#FFC18E" stop-opacity=".95"/><stop offset="49%" stop-color="#B797ED" stop-opacity=".42"/><stop offset="100%" stop-color="#476FCB" stop-opacity="0"/></radialGradient>
+        <filter id="qff-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="17"/></filter>
+        <filter id="qff-bloom" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+      </defs>
+      <g fill="#FFFFFF" opacity=".5"><circle cx="790" cy="70" r="1.5"/><circle cx="856" cy="92" r="1.2"/><circle cx="922" cy="57" r="1.4"/><circle cx="990" cy="118" r="1.2"/><circle cx="1075" cy="79" r="1.5"/><circle cx="1160" cy="124" r="1.1"/><circle cx="1260" cy="52" r="1.4"/><circle cx="1342" cy="143" r="1.1"/><circle cx="1208" cy="207" r="1.3"/><circle cx="1090" cy="185" r="1.2"/></g>
+      <path d="M420 730 C620 575 815 562 958 398 C1083 255 1137 72 1480 -42" fill="none" stroke="#476FCB" stroke-width="92" opacity=".2" filter="url(#qff-soft)"/>
+      <path d="M456 723 C653 581 825 549 973 393 C1092 267 1132 87 1462 -31" fill="none" stroke="url(#qff-blue)" stroke-width="31" opacity=".9" filter="url(#qff-bloom)"/>
+      <path d="M481 708 C699 569 843 538 984 385 C1086 274 1141 121 1453 -9" fill="none" stroke="#D9F3FF" stroke-width="4" opacity=".86"/>
+      <path d="M566 728 C725 599 883 558 1025 429 C1137 327 1190 183 1446 68" fill="none" stroke="url(#qff-warm)" stroke-width="78" opacity=".23" filter="url(#qff-soft)"/>
+      <path d="M579 721 C752 602 890 558 1035 432 C1154 328 1190 191 1443 80" fill="none" stroke="url(#qff-warm)" stroke-width="20" opacity=".98" filter="url(#qff-bloom)"/>
+      <path d="M590 713 C762 603 909 562 1044 438 C1154 339 1201 202 1440 94" fill="none" stroke="#FFF0D9" stroke-width="3.5" opacity=".9"/>
+      <path d="M651 698 C814 584 974 581 1136 490 C1270 415 1362 300 1480 222" fill="none" stroke="#8ED9F6" stroke-width="2" opacity=".56"/>
+      <path d="M530 642 C645 506 864 445 1068 278 C1210 162 1304 80 1490 42" fill="none" stroke="#B797ED" stroke-width="1.4" opacity=".62"/>
+      <ellipse cx="1075" cy="278" rx="16" ry="16" fill="url(#qff-glow)" filter="url(#qff-soft)"/><circle cx="1075" cy="278" r="5.5" fill="#F7D2AE"/>
+      <ellipse cx="1202" cy="177" rx="14" ry="14" fill="url(#qff-glow)" filter="url(#qff-soft)"/><circle cx="1202" cy="177" r="4.5" fill="#B797ED"/>
+      <ellipse cx="928" cy="443" rx="18" ry="18" fill="url(#qff-glow)" filter="url(#qff-soft)"/><circle cx="928" cy="443" r="5" fill="#8ED9F6"/>
+      <path d="M0 608 C250 683 556 629 795 552 C1025 478 1214 396 1440 373 L1440 700 L0 700Z" fill="#F8F6F2"/>
+    </svg>
 
-<main>
-
-  <!-- ============================== HERO ============================== -->
-  <section class="hero luminous-hero">
-    <div class="wrap">
-      <div class="hero-copy">
-        <span class="eyebrow">SEOUL NATIONAL UNIVERSITY · HOSTED BY SQRT</span>
-        <h1 class="festival-title">Qiskit<br>Fall Fest <span>2026</span></h1>
-        <p class="hero-theme"><span data-kr>10년의 양자 클라우드,<br>그 다음 이야기를 씁니다.</span><span data-en>Ten years of quantum on the cloud.<br>Here's what's next.</span></p>
-        <p class="lede">
-          <span data-kr>최전선에 도전하거나, 그 첫걸음을 내딛거나. SQRT와 함께하는 3일간의 양자컴퓨팅 행사입니다.</span>
-          <span data-en>Push the frontier, or take your first step into it. Three days of quantum computing with SQRT.</span>
-        </p>
-        <span class="date-chip"><span data-kr>2026년 10월 29일(목)~31일(토)</span><span data-en>October 29-31, 2026</span></span>
-        <div class="hero-cta">
-          <a href="hackathon.html#trackA" class="btn btn-solid"><span data-kr>해커톤 참가하기</span><span data-en>Join the hackathon</span></a>
-          <a href="#who-is-this-for" class="btn btn-outline on-navy-accent"><span data-kr>처음이라면, 여기서 시작</span><span data-en>New to quantum? Start here</span></a>
-        </div>
-        <div class="hero-partner"><img src="assets/ibm-quantum-white.png" width="156" height="60" alt="IBM Quantum"><span>Hosted by SQRT</span></div>
-      </div>
-
-    </div>
+    <div class="shell hero-copy"><p class="eyebrow">Qiskit Fall Fest 2026 · Seoul National University</p><h1>QISKIT<br>FALL FEST<br>2026<span>Hosted by SQRT</span></h1><p class="summary"><span data-kr>양자 컴퓨팅을 배우고, 만들고, 연결되는 시간. Qiskit Fall Fest 2026은 SQRT가 주최하는 서울대학교 양자 컴퓨팅 커뮤니티 행사입니다.</span><span data-en>Learn, build, and connect. Qiskit Fall Fest 2026 is Seoul National University’s quantum computing community event, hosted by SQRT.</span></p><a class="pill pill--red" href="register.html"><span data-kr>행사 등록하기</span><span data-en>Register for the event</span> <b>→</b></a></div>
+    <div class="shell hero-index"><div><strong>03</strong><span>Days of learning<br>and connection</span></div><div><strong>04</strong><span>Ways to<br>take part</span></div><div><strong>10.29–31</strong><span>October<br>2026</span></div></div>
   </section>
+    <section class="about" id="about"><div class="shell about-grid">
+      <div class="art-collage" aria-label="활동 미리보기"><article class="art-tile art-tile--a"><span class="tile-label"><span class="tile-number">01 / LEARN</span><span data-kr>Qiskit과 양자 컴퓨팅의 시작</span><span data-en>Discover Qiskit and quantum computing</span></span></article><article class="art-tile art-tile--b"><span class="tile-label"><span class="tile-number">02 / BUILD</span><span data-kr>해커톤 · 아이디어톤</span><span data-en>Hackathon · Ideathon</span></span></article><article class="art-tile art-tile--c"><span class="tile-label"><span class="tile-number">03 / CONNECT</span><span data-kr>연사와 동료를 만나는 자리</span><span data-en>Meet speakers and fellow explorers</span></span></article></div>
+      <div class="about-copy"><p class="eyebrow">About Qiskit Fall Fest</p><h2>Quantum, learned<br>together.</h2><p><span data-kr>Qiskit Fall Fest는 양자 컴퓨팅에 관심 있는 사람들이 함께 배우고 실험하는 글로벌 커뮤니티 행사입니다. 서울대학교에서는 <b>SQRT</b>가 기초 학습부터 해커톤·포스터 세션까지, 각자의 관심이 다음 시도로 이어지는 자리를 만듭니다.</span><span data-en>Qiskit Fall Fest brings a global community together to learn and experiment with quantum computing. At SNU, <b>SQRT</b> connects introductory learning, the hackathon, ideathon, and poster session—helping curiosity become a next step.</span></p><ul class="experience-list"><li><span data-kr>처음 접하는 참여자도 개념을 이해하고 도구를 손에 익힐 수 있도록 구성합니다.</span><span data-en>Start with concepts and tools, even if quantum computing is new to you.</span></li><li><span data-kr>문제를 정의하고, QASM 회로를 구현하며, 직접 결과를 만들어 봅니다.</span><span data-en>Define a problem, implement QASM circuits, and build a result.</span></li><li><span data-kr>IBM Quantum의 후원으로 SNU 연구진, SQRT 구성원과 양자 기술의 현재와 다음을 나눕니다.</span><span data-en>Explore quantum computing with SNU researchers and SQRT, supported by IBM Quantum.</span></li></ul></div>
+    </div></section>
 
-  <!-- ============================ PROGRAMS ================================ -->
-  <section class="program-editorial" aria-labelledby="program-heading">
-    <div class="wrap">
-      <span class="eyebrow"><span data-kr>프로그램</span><span data-en>Programs</span></span>
-      <h2 id="program-heading"><span data-kr>네 가지 참여 방법</span><span data-en>Four ways to take part</span></h2>
-      <div class="bento">
-        <div class="card wide"><span class="program-number">01</span>
-            <span class="tag" style="color:var(--accent-on-navy)">DAY 1</span>
-            <h3><span data-kr>세미나</span><span data-en>Seminar</span></h3>
-            <p class="lede" style="font-size:.94rem"><span data-kr>SNU 교수진, SQRT 연사의 강연으로 여는 첫날 (IBM Quantum 후원)</span><span data-en>Opening day of talks from SNU faculty and SQRT, supported by IBM Quantum</span></p>
-          <span class="program-illustration icon-art" style="mask-image:url('assets/icons/speakers.svg');-webkit-mask-image:url('assets/icons/speakers.svg')" aria-hidden="true"></span>
-          <a href="schedule.html" class="editorial-link"><span data-kr>일정 보기</span><span data-en>View schedule</span><span class="link-arrow" aria-hidden="true">→</span></a>
-        </div>
-        <div class="card trackA"><span class="program-number">02</span>
+<section class="program" id="program"><div class="shell"><h2 class="program-heading"><span data-kr>네 가지 참여 방법</span><span data-en>Four ways to take part</span></h2><div class="program-grid"><article class="program-item"><span class="program-number">01</span><span class="program-art icon-art" style="mask-image:url(assets/icons/speakers.svg);-webkit-mask-image:url(assets/icons/speakers.svg)" aria-hidden="true"></span><h3><span data-kr>세미나</span><span data-en>Seminar</span></h3><p><span data-kr>SNU 교수진과 SQRT 연사의 강연으로 여는 첫날.</span><span data-en>Opening-day talks from SNU faculty and SQRT.</span></p><a href="speakers.html"><span data-kr>자세히 보기</span><span data-en>Learn more</span> →</a></article><article class="program-item"><span class="program-number">02</span><span class="program-art icon-art" style="mask-image:url(assets/icons/hackathon.svg);-webkit-mask-image:url(assets/icons/hackathon.svg)" aria-hidden="true"></span><h3><span data-kr>해커톤</span><span data-en>Hackathon</span></h3><p><span data-kr>Qiskit 회로로 오픈 문제에 도전하고 결과를 제출합니다.</span><span data-en>Solve an open-ended problem with Qiskit and submit your circuit.</span></p><a href="hackathon.html#trackA"><span data-kr>자세히 보기</span><span data-en>Learn more</span> →</a></article><article class="program-item"><span class="program-number">03</span><span class="program-art icon-art" style="mask-image:url(assets/icons/idea.svg);-webkit-mask-image:url(assets/icons/idea.svg)" aria-hidden="true"></span><h3><span data-kr>아이디어톤</span><span data-en>Ideathon</span></h3><p><span data-kr>코딩 경험 없이도, 자기 전공에서 양자 기술의 가능성을 찾습니다.</span><span data-en>Explore quantum ideas from your field. No coding experience required.</span></p><a href="hackathon.html#trackB"><span data-kr>자세히 보기</span><span data-en>Learn more</span> →</a></article><article class="program-item"><span class="program-number">04</span><span class="program-art icon-art" style="mask-image:url(assets/icons/posters.svg);-webkit-mask-image:url(assets/icons/posters.svg)" aria-hidden="true"></span><h3><span data-kr>포스터 세션</span><span data-en>Poster Session</span></h3><p><span data-kr>기존 연구와 프로젝트를 공유하고 대화를 시작합니다.</span><span data-en>Share existing research and projects, and start a conversation.</span></p><a href="posters.html"><span data-kr>자세히 보기</span><span data-en>Learn more</span> →</a></article></div></div></section>    <section class="festival" id="schedule"><div class="shell">
+      <div class="event-head"><div class="event-title"><p class="eyebrow">Three-day schedule</p><h2><span data-kr>배움에서 도전으로,<br>그리고 연결로.</span><span data-en>Learn. Build.<br>Connect.</span></h2><p><span data-kr>세부 시간표와 각 세션의 안내는 기존 행사 페이지에서 확인할 수 있습니다.</span><span data-en>Explore the full schedule for session details and confirmed times.</span></p></div><a class="outline-button" href="schedule.html"><span data-kr>전체 일정 보기</span><span data-en>View full schedule</span> <b>→</b></a></div>
+      <div class="event-cards"><article class="event-card event-card--one"><span class="day-label">DAY 01</span><h3>Open & Learn</h3><p><span data-kr>행사의 문을 열고, Qiskit과 양자 컴퓨팅의 기본 언어를 함께 익히는 시간입니다.</span><span data-en>Open the festival with talks and a shared introduction to quantum computing.</span></p><a href="schedule.html" aria-label="Day 1 일정 보기">→</a></article><article class="event-card event-card--two"><span class="day-label">DAY 02</span><h3>Build & Hack</h3><p><span data-kr>해커톤 문제와 아이디어톤 프롬프트가 공개됩니다. 직접 구현하고 아이디어를 발전시킵니다.</span><span data-en>The hackathon problem and ideathon prompt are released. Start building and exploring.</span></p><a href="hackathon.html" aria-label="해커톤 안내 보기">→</a></article><article class="event-card event-card--three"><span class="day-label">DAY 03</span><h3>Share & Connect</h3><p><span data-kr>프로젝트와 아이디어를 발표하고, 함께 도전의 결과를 나누고 축하합니다.</span><span data-en>Share projects, present ideas, and celebrate results together.</span></p><a href="schedule.html" aria-label="Day 3 schedule">→</a></article></div>
+    </div></section>
 
-          <h3><span data-kr>해커톤 (심화)</span><span data-en>Hackathon (Advanced)</span></h3>
-          <p class="lede" style="font-size:.94rem;color:var(--navy-ink-soft)"><span data-kr>오픈 문제 · 자동 채점</span><span data-en>Open-ended problem · auto-graded</span></p>
-          <span class="program-illustration icon-art" style="mask-image:url('assets/icons/hackathon.svg');-webkit-mask-image:url('assets/icons/hackathon.svg')" aria-hidden="true"></span>
-          <a href="hackathon.html#trackA" class="editorial-link" ><span data-kr>자세히 보기</span><span data-en>Learn more</span><span class="link-arrow" aria-hidden="true">→</span></a>
-        </div>
-        <div class="card trackB"><span class="program-number">03</span>
-
-          <h3><span data-kr>아이디어톤 (입문)</span><span data-en>Ideathon (Beginner)</span></h3>
-          <p class="lede" style="font-size:.94rem"><span data-kr>테이크홈 + 주말 발표 · 코딩/물리 불필요</span><span data-en>Take-home + weekend presentation · no coding or physics needed</span></p>
-          <span class="program-illustration icon-art" style="mask-image:url('assets/icons/idea.svg');-webkit-mask-image:url('assets/icons/idea.svg')" aria-hidden="true"></span>
-          <a href="hackathon.html#trackB" class="editorial-link" ><span data-kr>자세히 보기</span><span data-en>Learn more</span><span class="link-arrow" aria-hidden="true">→</span></a>
-        </div>
-        <div class="card poster"><span class="program-number">04</span>
-          <span class="tag">POSTER SESSION</span>
-          <h3><span data-kr>포스터 세션</span><span data-en>Poster Session</span></h3>
-          <p class="lede" style="font-size:.94rem"><span data-kr>기존 연구 결과를 짧은 포스터 발표로 공유 (해커톤과 별개)</span><span data-en>Share existing research as a short poster talk, separate from the hackathon tracks</span></p>
-          <span class="program-illustration icon-art" style="mask-image:url('assets/icons/posters.svg');-webkit-mask-image:url('assets/icons/posters.svg')" aria-hidden="true"></span>
-          <a href="posters.html" class="editorial-link" ><span data-kr>자세히 보기</span><span data-en>Learn more</span><span class="link-arrow" aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ WHAT IS QFF =========================== -->
-  <section class="festival-intro">
-    <div class="wrap">
-      <img class="festival-pictogram" src="assets/qiskit-purple.png" alt="" width="180" height="180">
-      <span class="eyebrow"><span data-kr>Qiskit Fall Fest란</span><span data-en>What is Qiskit Fall Fest</span></span>
-      <h2 style="max-width:22ch">
-        <span data-kr>전 세계 곳곳에서 열리는 양자컴퓨팅 축제</span>
-        <span data-en>A global quantum computing celebration</span>
-      </h2>
-      <p class="lede">
-        <span data-kr>Qiskit Fall Fest는 IBM Quantum이 지원하고 전 세계 각지의 호스트 팀이 자율적으로 기획·운영하는 행사 시리즈입니다. 2025년에는 150개 팀, 3만 2천 명 이상이 참여했습니다. SNU에서는 SQRT(SNU Quantum Research Team)가 호스트를 맡아, 2026년 "10년의 양자 클라우드" 테마 아래 강연·해커톤·포스터 세션으로 구성된 3일간의 행사를 준비합니다.</span>
-        <span data-en>Qiskit Fall Fest is IBM Quantum's global series of events, organized independently by host teams around the world. In 2025 alone, over 32,000 participants joined events led by 150 hosts worldwide. At SNU, SQRT (SNU Quantum Research Team) is hosting a 3-day event for 2026's "decade of quantum on the cloud" theme: a mix of talks, a two-track hackathon, and a poster session.</span>
-      </p>
-      <div class="stat-band">
-        <div class="stat">
-          <span class="num">32,000+</span>
-          <span class="label"><span data-kr>2025년 전 세계 참가자</span><span data-en>Participants worldwide, 2025</span></span>
-        </div>
-        <div class="stat">
-          <span class="num">150</span>
-          <span class="label"><span data-kr>전 세계 학생 호스트</span><span data-en>Student hosts worldwide</span></span>
-        </div>
-        <div class="stat">
-          <span class="num">10<span style="font-size:.5em">yr</span></span>
-          <span class="label"><span data-kr>IBM 클라우드 양자컴퓨터 10주년</span><span data-en>Since IBM's first cloud quantum computer</span></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= WHO IS THIS FOR =========================== -->
-  <section class="alt-surface" id="who-is-this-for">
-    <div class="wrap">
-      <span class="eyebrow"><span data-kr>누구를 위한 행사인가요</span><span data-en>Who is this for</span></span>
-      <h2><span data-kr>전공은 상관없습니다. 관심만 있으면 됩니다</span><span data-en>Any major. Just bring curiosity.</span></h2>
-      <div class="split-band">
-        <div class="split-card for-experienced">
-          <h3><span data-kr>이미 큐비트 회로를 짜본 적 있다면</span><span data-en>You already write quantum circuits</span></h3>
-          <p class="lede"><span data-kr>Qiskit이나 코딩 경험이 있다면 전공에 상관없이 참여할 수 있는 트랙입니다. 오픈 문제를 풀어 제출하면 자동으로 채점되며, 우수 팀은 시상식에서 발표합니다.</span><span data-en>Open to any major, as long as you have some Qiskit or coding experience. Submit your solution to an open-ended problem for automatic grading, and top teams present at the awards ceremony.</span></p>
-          <a href="hackathon.html#trackA" class="btn btn-outline on-navy-accent"><span data-kr>해커톤 자세히 보기</span><span data-en>See Hackathon</span></a>
-        </div>
-        <div class="split-card for-new">
-          <h3><span data-kr>코드를 한 번도 짜본 적 없다면</span><span data-en>You've never written code</span></h3>
-          <p class="lede" style="color:var(--ink-soft)"><span data-kr>코딩도, 물리도 필요 없습니다. 자기 전공의 문제의식을 양자컴퓨팅 아이디어로 발전시키는 테이크홈 형식의 트랙으로, 주말에 짧게 발표합니다.</span><span data-en>No coding, no physics required. A take-home track for turning a question from your own field into a quantum computing idea, with a short weekend presentation.</span></p>
-          <a href="hackathon.html#trackB" class="btn btn-solid"><span data-kr>아이디어톤</span><span data-en>See Ideathon</span></a>
-        </div>
-      </div>
-      <div class="major-chips" role="list" aria-label="relevant fields">
-        <span class="major-chip" data-kr role="listitem">경제학 · 금융 모델링</span><span class="major-chip" data-en role="listitem">Econ · finance modeling</span>
-        <span class="major-chip" data-kr role="listitem">경영 · 신기술 전략</span><span class="major-chip" data-en role="listitem">Business strategy</span>
-        <span class="major-chip" data-kr role="listitem">인문학 · 인간 중심 질문</span><span class="major-chip" data-en role="listitem">Humanities · human-centered questions</span>
-        <span class="major-chip" data-kr role="listitem">디자인 · 크리에이티브 컴퓨팅</span><span class="major-chip" data-en role="listitem">Design · creative computing</span>
-        <span class="major-chip" data-kr role="listitem">물리학</span><span class="major-chip" data-en role="listitem">Physics</span>
-        <span class="major-chip" data-kr role="listitem">컴퓨터공학</span><span class="major-chip" data-en role="listitem">Computer science</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ TIMELINE =============================== -->
-  <section class="paper-surface">
-    <div class="wrap">
-      <span class="eyebrow"><span data-kr>3일간의 흐름</span><span data-en>3 days, at a glance</span></span>
-      <h2><span data-kr>세미나로 시작해, 트랙별 해커톤으로</span><span data-en>Starts with a seminar, splits into two tracks</span></h2>
-      <div class="timeline">
-        <div class="timeline-track">
-          <div class="timeline-day">
-            <h4>Day 1</h4>
-            <p><strong><span data-kr>세미나</span><span data-en>Seminar</span></strong></p>
-            <p class="lede" style="font-size:.94rem"><span data-kr>교수진·SQRT 연사 강연, IBM Quantum 후원</span><span data-en>Talks from SNU faculty and SQRT, with support from IBM Quantum</span></p>
-          </div>
-          <div class="timeline-day">
-            <h4>Day 2</h4>
-            <p><strong><span data-kr>해커톤 시작</span><span data-en>Hackathon kickoff</span></strong></p>
-            <p class="lede" style="font-size:.94rem"><span data-kr>해커톤 문제 공개 · 아이디어톤 브리핑</span><span data-en>Hackathon problem released · Ideathon briefing</span></p>
-          </div>
-          <div class="timeline-day">
-            <h4>Day 3</h4>
-            <p><strong><span data-kr>최종 발표</span><span data-en>Final presentations</span></strong></p>
-            <p class="lede" style="font-size:.94rem"><span data-kr>주말 발표 및 시상</span><span data-en>Weekend presentations and awards</span></p>
-          </div>
-        </div>
-        <span class="poster-flag">
-          <span data-kr>포스터 세션 · 일정 별도 (TBD)</span>
-          <span data-en>Poster Session · separate slot (TBD)</span>
-        </span>
-      </div>
-    </div>
-  </section>
-
-
-</main>
-
+    <section class="shell"><div class="join" id="register"><p class="eyebrow">Join Qiskit Fall Fest 2026</p><h2><span data-kr>관심이 있다면,<br>첫 번째 회로부터 함께.</span><span data-en>Bring your curiosity.<br>Find your next step.</span></h2><p><span data-kr>세미나, 해커톤, 아이디어톤, 포스터 세션 중 원하는 참여 방식을 확인하고 등록해 주세요.</span><span data-en>Choose your way to participate: Seminar, Hackathon, Ideathon, or Poster Session.</span></p><a class="pill pill--red" href="register.html"><span data-kr>참가 등록하기</span><span data-en>Register to participate</span> <b>→</b></a></div></section>
+  </main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
@@ -215,7 +99,6 @@
     </div>
   </div>
 </footer>
-
 <script src="assets/script.js?v=62e66318a697"></script>
 </body>
 </html>
