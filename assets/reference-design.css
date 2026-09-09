@@ -66,7 +66,7 @@ body.reference-home .site-footer { background:var(--paper); color:var(--ink-soft
 @media(max-width:600px) { table.compare { min-width:560px; } table.compare th,table.compare td { overflow-wrap:normal; } }
 /* Concept-specific artwork: waves, circuits, networks, discovery, construction, exchange. */
 body.reference-home .art-tile--a { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/learn.svg'); }
-body.reference-home .art-tile--b { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/build.svg'); }
+body.reference-home .art-tile--b { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/build.svg?v=de97783e5c66'); }
 body.reference-home .art-tile--c { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/connect.svg'); }
 body.reference-home .event-card--one { background-image:linear-gradient(90deg,#071a42e8,transparent),url('concepts/day-learn.svg'); }
 body.reference-home .event-card--two { background-image:linear-gradient(90deg,#071a42e8,transparent),url('concepts/day-build.svg'); }
@@ -90,3 +90,14 @@ body.reference-home .partner-logos span { font-size:.65rem; text-align:center; c
 body.reference-home .footer-links { justify-content:center; border-top:1px solid #ffffff25; padding-top:26px; }
 @media(max-width:600px) { body.reference-home .partner-logos { grid-template-columns:1fr 1fr; gap:20px; } body.reference-home .partner-logos img { height:48px; } body.reference-home .join-orbit { width:135%; right:-48%; opacity:.45; } }
 body.reference-home .site-footer .wrap { display:block; }
+
+/* Refined Home artwork and ambient banner motion. */
+body.reference-home .art-tile .tile-label { right:24px; left:24px; overflow-wrap:break-word; }
+body.reference-home .art-tile--a .tile-label { max-width:calc(100% - 48px); line-height:1.5; }
+body.reference-home .program-item .icon-art { background:#899ab8; }
+body.reference-home .program-item .icon-art::after { opacity:0; transition:opacity .45s ease,background-position .7s ease; }
+body.reference-home .program-item:hover .icon-art::after,
+body.reference-home .program-item:focus-within .icon-art::after { opacity:1; }
+body.reference-home .banner-curves { transform-origin:75% 50%; animation:banner-drift 14s ease-in-out infinite alternate; }
+@keyframes banner-drift { from { transform:translate(-12px,8px) rotate(-1deg) scale(1.015); } to { transform:translate(14px,-12px) rotate(1.3deg) scale(1.035); } }
+@media(prefers-reduced-motion:reduce) { body.reference-home .banner-curves { animation:none; } }
