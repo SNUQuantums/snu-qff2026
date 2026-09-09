@@ -98,6 +98,22 @@ body.reference-home .program-item .icon-art { background:#899ab8; }
 body.reference-home .program-item .icon-art::after { opacity:0; transition:opacity .45s ease,background-position .7s ease; }
 body.reference-home .program-item:hover .icon-art::after,
 body.reference-home .program-item:focus-within .icon-art::after { opacity:1; }
-body.reference-home .banner-curves { transform-origin:75% 50%; animation:banner-drift 14s ease-in-out infinite alternate; }
-@keyframes banner-drift { from { transform:translate(-12px,8px) rotate(-1deg) scale(1.015); } to { transform:translate(14px,-12px) rotate(1.3deg) scale(1.035); } }
 @media(prefers-reduced-motion:reduce) { body.reference-home .banner-curves { animation:none; } }
+/* Pre-rendered motion: no live SVG blur or transform animation. */
+body.reference-home .banner-curves { animation:none; }
+body.reference-home .hero-visual { display:none; }
+body.reference-home .reference-hero::before { display:none; }
+body.reference-home .reference-hero { background:#0b1b40 url('motion/banner-still.png') center/100% 100% no-repeat; }
+body.reference-home .reference-hero.motion-playing { background-image:url('motion/banner.gif'); }
+body.reference-home .art-tile--a { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/learn-still.png'); }
+body.reference-home .art-tile--b { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/build-still.png'); }
+body.reference-home .art-tile--c { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/connect-still.png'); }
+body.reference-home .art-tile--a.motion-playing { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/learn.gif'); }
+body.reference-home .art-tile--b.motion-playing { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/build.gif'); }
+body.reference-home .art-tile--c.motion-playing { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/connect.gif'); }
+body.reference-home .program-item:nth-child(n) .icon-art::after { background:linear-gradient(135deg,rgba(143,102,202,.25),rgba(226,145,132,.2)),url('luminous-hero.png') 84% 60%/340% auto; }
+body.reference-home .program-item:hover .icon-art::after { background-position:95% 45%; }
+@media(max-width:820px) {
+ body.reference-home .reference-hero { background-size:auto 100%; background-position:38% center; }
+ body.reference-home .reference-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#0b1b40ed,#0b1b40bf); z-index:1; pointer-events:none; }
+}

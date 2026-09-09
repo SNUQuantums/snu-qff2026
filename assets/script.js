@@ -105,3 +105,23 @@
   reduced.addEventListener('change', queue);
   render();
 })();
+
+// Decode pre-rendered motion only for visible Home artwork.
+(function () {
+  var elements = document.querySelectorAll('.reference-hero, .art-tile');
+  if (!elements.length || !('IntersectionObserver' in window)) return;
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  var visible = new Set();
+  function update() {
+    elements.forEach(function (el) {
+      el.classList.toggle('motion-playing', visible.has(el) && !reduced.matches && !document.hidden);
+    });
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) { if (entry.isIntersecting) visible.add(entry.target); else visible.delete(entry.target); });
+    update();
+  });
+  elements.forEach(function (el) { observer.observe(el); });
+  reduced.addEventListener('change', update);
+  document.addEventListener('visibilitychange', update);
+})();
