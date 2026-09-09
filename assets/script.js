@@ -82,3 +82,26 @@
     markActiveNav();
   });
 })();
+
+// Scroll-scrubbed registration orbit, with a static position for reduced motion.
+(function () {
+  var section = document.querySelector('.join');
+  var particle = document.querySelector('.orbit-particle');
+  if (!section || !particle) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var pending = false;
+  function render() {
+    pending = false;
+    var rect = section.getBoundingClientRect();
+    var progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+    var theta = (reduced.matches ? .15 : progress) * Math.PI * 2;
+    var rotation = -24 * Math.PI / 180;
+    var x = 330 * Math.cos(theta), y = 145 * Math.sin(theta);
+    particle.setAttribute('transform', 'translate(' + (400 + x * Math.cos(rotation) - y * Math.sin(rotation)) + ' ' + (250 + x * Math.sin(rotation) + y * Math.cos(rotation)) + ')');
+  }
+  function queue() { if (!pending) { pending = true; requestAnimationFrame(render); } }
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  reduced.addEventListener('change', queue);
+  render();
+})();

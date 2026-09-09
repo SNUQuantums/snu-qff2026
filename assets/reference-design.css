@@ -64,3 +64,29 @@ body.reference-home .site-footer { background:var(--paper); color:var(--ink-soft
 
 .comparison-scroll { overflow-x:auto; grid-column:1 / -1; }
 @media(max-width:600px) { table.compare { min-width:560px; } table.compare th,table.compare td { overflow-wrap:normal; } }
+/* Concept-specific artwork: waves, circuits, networks, discovery, construction, exchange. */
+body.reference-home .art-tile--a { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/learn.svg'); }
+body.reference-home .art-tile--b { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/build.svg'); }
+body.reference-home .art-tile--c { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('concepts/connect.svg'); }
+body.reference-home .event-card--one { background-image:linear-gradient(90deg,#071a42e8,transparent),url('concepts/day-learn.svg'); }
+body.reference-home .event-card--two { background-image:linear-gradient(90deg,#071a42e8,transparent),url('concepts/day-build.svg'); }
+body.reference-home .event-card--three { background-image:linear-gradient(90deg,#071a42e8,transparent),url('concepts/day-share.svg'); }
+body.reference-home .art-tile,body.reference-home .event-card { background-position:center; }
+body.reference-home .program-item .icon-art::after { background-image:repeating-radial-gradient(ellipse at 25% 75%,#8ed9f6 0 5%,#b797ed 8%,#ffc18e 12%,#8ed9f6 17%); }
+body.reference-home .program-item:nth-child(2) .icon-art::after { background-image:repeating-linear-gradient(90deg,#8ed9f6 0 14%,#b797ed 18% 28%,#ffc18e 32% 35%); }
+body.reference-home .program-item:nth-child(3) .icon-art::after { background-image:radial-gradient(ellipse at 50% 15%,#fff4df,#ffc18e 22%,#b797ed 50%,#8ed9f6); }
+body.reference-home .program-item:nth-child(4) .icon-art::after { background-image:conic-gradient(from 45deg,#8ed9f6,#b797ed,#ffc18e,#8ed9f6); }
+body.reference-home .join::before,body.reference-home .join::after { display:none; }
+body.reference-home .join-orbit { position:absolute; right:-8%; top:0; width:72%; height:100%; pointer-events:none; opacity:.85; }
+body.reference-home .join { isolation:isolate; }
+body.reference-home .join-orbit { z-index:0; }
+body.reference-home .site-footer { background:#071a42; color:#dbe5fb; padding:64px 0 32px; }
+body.reference-home .partner-section>.eyebrow { color:#b797ed; text-align:center; }
+body.reference-home .partner-logos { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:40px; align-items:center; padding:46px 0; }
+body.reference-home .partner-logos a { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:90px; gap:10px; padding:12px; }
+body.reference-home .partner-logos img { width:100%; height:62px; object-fit:contain; }
+body.reference-home .partner-logos a:last-child img { max-width:152px; }
+body.reference-home .partner-logos span { font-size:.65rem; text-align:center; color:#c5cee1; }
+body.reference-home .footer-links { justify-content:center; border-top:1px solid #ffffff25; padding-top:26px; }
+@media(max-width:600px) { body.reference-home .partner-logos { grid-template-columns:1fr 1fr; gap:20px; } body.reference-home .partner-logos img { height:48px; } body.reference-home .join-orbit { width:135%; right:-48%; opacity:.45; } }
+body.reference-home .site-footer .wrap { display:block; }
