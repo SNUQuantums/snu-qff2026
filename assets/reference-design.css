@@ -103,8 +103,8 @@ body.reference-home .program-item:focus-within .icon-art::after { opacity:1; }
 body.reference-home .banner-curves { animation:none; }
 body.reference-home .hero-visual { display:none; }
 body.reference-home .reference-hero::before { display:none; }
-body.reference-home .reference-hero { background:#0b1b40 url('motion/banner-still.png') center/100% 100% no-repeat; }
-body.reference-home .reference-hero.motion-playing { background-image:url('motion/banner.gif'); }
+body.reference-home .reference-hero { background:#0b1b40 url('motion/banner-still.png?v=b67e428ab62c') center/100% 100% no-repeat; }
+body.reference-home .reference-hero.motion-playing { background-image:url('motion/banner.gif?v=d210961fbacd'); }
 body.reference-home .art-tile--a { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/learn-still.png'); }
 body.reference-home .art-tile--b { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/build-still.png'); }
 body.reference-home .art-tile--c { background-image:linear-gradient(0deg,#071a42e8,transparent 65%),url('motion/connect-still.png'); }
