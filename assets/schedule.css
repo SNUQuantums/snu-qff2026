@@ -1,0 +1,61 @@
+/* An editorial agenda: separate day columns with a stable time rail. */
+.schedule-page .schedule-intro { padding:64px 0 32px; }
+.schedule-intro .eyebrow { color:#7653a0; }
+.schedule-intro h1 { margin:18px 0; font-size:clamp(2.2rem,4.5vw,4rem); letter-spacing:-.055em; line-height:1.15; }
+.schedule-intro h1 em { color:#7653a0; font-style:normal; }
+.schedule-summary { font-size:1.15rem; color:#334565; }
+.schedule-meta { display:flex; flex-wrap:wrap; gap:12px 24px; margin:24px 0 10px; font-size:.9rem; font-weight:600; }
+.schedule-meta>span:first-child { color:#73529a; }
+.schedule-disclaimer { font-size:.85rem; color:#627088; }
+.day-jumps { display:flex; gap:12px; margin-top:28px; }
+.day-jumps a { display:flex; gap:16px; align-items:center; padding:12px 20px; border:1px solid #d8d2e3; border-radius:30px; text-decoration:none; font-weight:600; }
+.day-jumps a span { color:#6d6680; font-size:.8rem; }
+.day-jumps a:hover { background:#eae3f5; }
+.schedule-page .schedule-board { padding:0 0 80px; }
+.release-note { display:flex; align-items:center; gap:32px; padding:24px 28px; margin:4px 0 28px; background:#eee8f7; border-radius:12px; }
+.release-note .eyebrow { display:block; font-size:.65rem; color:#73529a; margin-bottom:8px; }
+.release-note strong { font-size:1.3rem; white-space:nowrap; }
+.release-note strong span { font-size:.85rem; margin-left:12px; font-family:var(--font-mono); }
+.release-note p { margin:0; font-weight:600; }
+.schedule-days { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; align-items:start; }
+.schedule-day { min-width:0; scroll-margin-top:24px; background:#fffdfa; border-radius:14px; overflow:hidden; border:1px solid #e3dfeb; }
+.day-head { padding:26px 24px 24px; background:#102344; color:#fff; }
+.day-number { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em; color:#c8b3ee; }
+.day-head h2 { display:flex; align-items:baseline; gap:14px; margin:12px 0 8px; font-size:2.1rem; }
+.day-head h2>span { font-size:.9rem; font-weight:400; color:#d4deed; }
+.day-head p { margin:0; font-size:.86rem; color:#d4deed; }
+.session-list { list-style:none; padding:0; margin:0; }
+.session { display:grid; grid-template-columns:76px minmax(0,1fr); gap:16px; padding:24px; border-top:1px solid #e7e2ed; }
+.session:first-child { border-top:0; }
+.session-time { font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+.session-time>time { display:block; font-size:1.02rem; color:#70509a; font-weight:600; }
+.session-time>span { display:block; font-size:.75rem; color:#67718a; margin-top:5px; }
+.session-copy h3 { margin:0; font-size:1rem; line-height:1.55; letter-spacing:-.025em; word-break:keep-all; overflow-wrap:break-word; }
+.session-copy p { margin:8px 0 0; font-size:.78rem; color:#65718a; line-height:1.65; word-break:keep-all; }
+.session.quiet { background:#f5f3f7; }
+.session.quiet .session-copy h3 { color:#58647c; font-weight:500; }
+.session.deadline { background:#f2eafa; box-shadow:inset 3px 0 #8a65b4; }
+.session.deadline .session-time>span { color:#775198; font-size:.63rem; font-weight:600; }
+.schedule-notes { display:flex; align-items:center; justify-content:space-between; gap:36px; padding:32px 4px 0; }
+.schedule-notes h2 { font-size:1rem; }
+.schedule-notes p { font-size:.86rem; color:#65718a; max-width:75ch; margin:0; }
+.schedule-notes .btn { flex-shrink:0; }
+@media(max-width:1050px) {
+ .schedule-days { gap:12px; }
+ .session { padding:20px 16px; gap:10px; grid-template-columns:68px minmax(0,1fr); }
+ .day-head { padding:24px 18px; }
+}
+@media(max-width:800px) {
+ .schedule-days { grid-template-columns:1fr; gap:28px; }
+ .session { padding:22px 24px; grid-template-columns:92px minmax(0,1fr); gap:20px; }
+ .day-head { padding:24px; }
+ .schedule-notes { display:block; }
+ .schedule-notes .btn { margin-top:20px; }
+}
+@media(max-width:480px) {
+ .schedule-page .schedule-intro { padding-top:40px; }
+ .release-note { align-items:flex-start; flex-direction:column; gap:14px; padding:22px; }
+ .day-jumps { gap:8px; }
+ .day-jumps a { flex:1; flex-direction:column; gap:2px; padding:10px 8px; }
+ .session { padding:22px 18px; grid-template-columns:76px minmax(0,1fr); gap:14px; }
+}
