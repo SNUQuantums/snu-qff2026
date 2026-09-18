@@ -42,8 +42,8 @@
       </ul>
       <div class="nav-actions">
         <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
-        <button class="lang-toggle" data-disabled="true" aria-label="English coming soon">EN · coming soon</button>
-        <a href="register.html" class="btn btn-solid" aria-current="page">신청하기</a>
+        <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
+        <a href="register.html" class="btn btn-solid" aria-current="page"><span data-kr>신청하기</span><span data-en>Register</span></a>
         <button class="menu-btn" aria-label="Menu"><span></span></button>
       </div>
     </nav>
@@ -56,50 +56,51 @@
   <section class="paper-surface">
     <div class="wrap page-intro-layout">
       <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/register.svg');-webkit-mask-image:url('assets/icons/register.svg')" aria-hidden="true"></span>
-      <span class="eyebrow">신청</span>
-      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">참가 방법을 선택하세요</h1>
+      <span class="eyebrow"><span data-kr>신청</span><span data-en>Register</span></span>
+      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)"><span data-kr>참가 방법을 선택하세요</span><span data-en>Choose how you'll take part</span></h1>
       <p class="lede">
-        아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 전공과 상관없이 원하는 트랙을
-        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다.
+        <span data-kr>아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 전공과 상관없이 원하는 트랙을
+        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다.</span>
+        <span data-en>Pick the option that fits you and fill in its form. Any major can choose any track,
+        but each participant may join only one track.</span>
       </p>
 
       <div class="reg-open-callout" style="max-width:65ch;margin:1.5rem 0 .5rem;padding:1.15rem 1.3rem;border:1px solid var(--accent);border-left-width:5px;border-radius:var(--r-sm);background:var(--accent-tint)">
         <p style="margin:0;font-size:1.08rem;font-weight:700;color:var(--accent-strong)">
-          등록은 2026년 10월 23일 금요일에 시작됩니다.
+          <span data-kr>등록은 2026년 10월 23일 금요일에 시작됩니다.</span>
+          <span data-en>Registration opens on Friday, October 23, 2026.</span>
         </p>
-        <p style="margin:.45rem 0 0;font-size:1rem;font-weight:600;color:var(--accent-strong)">
-          Registration opens on Friday, October 23, 2026.
-        </p>
-        <p style="margin:.6rem 0 0;font-size:.92rem;line-height:1.6;color:var(--ink-soft)">
-          그날 아래 네 가지 신청서 버튼이 모두 열립니다. · The four forms below open on that day.
+        <p style="margin:.6rem 0 0;font-size:.95rem;line-height:1.6;color:var(--ink-soft)">
+          <span data-kr>그날 아래 네 가지 신청서 버튼이 모두 열립니다.</span>
+          <span data-en>All four forms below go live on that day.</span>
         </p>
       </div>
 
       <div class="route-grid">
         <div class="route-card">
 
-          <h3 style="margin-top:.6rem">해커톤 (심화)</h3>
-          <p class="lede" style="font-size:.95rem">Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 관악캠퍼스 28동 101호 대면 진행(Zoom 송출), 자동 채점, 우수 팀은 시상식에서 발표.</p>
-          <button type="button" class="btn btn-solid" disabled aria-disabled="true">해커톤 신청서 · 10월 23일(금) 오픈</button>
-          <p class="lede" style="font-size:.85rem;margin-top:.6rem">이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</p>
+          <h3 style="margin-top:.6rem"><span data-kr>해커톤 (심화)</span><span data-en>Hackathon (advanced)</span></h3>
+          <p class="lede" style="font-size:.95rem"><span data-kr>Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 관악캠퍼스 28동 101호 대면 진행(Zoom 송출), 자동 채점, 우수 팀은 시상식에서 발표.</span><span data-en>Recommended if you have coding or Qiskit experience, whatever your major. In person at Building 28, Room 101 on the Gwanak campus (streamed on Zoom), automatically scored, with top teams presenting at the awards ceremony.</span></p>
+          <button type="button" class="btn btn-solid" disabled aria-disabled="true"><span data-kr>해커톤 신청서 · 10월 23일(금) 오픈</span><span data-en>Hackathon form · opens Fri, Oct 23</span></button>
+          <p class="lede" style="font-size:.85rem;margin-top:.6rem"><span data-kr>이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</span><span data-en>Already registered? <a href="submit.html" style="color:var(--accent);font-weight:600">Submit your circuit here</a>.</span></p>
         </div>
         <div class="route-card">
 
-          <h3 style="margin-top:.6rem">아이디어톤 (입문)</h3>
-          <p class="lede" style="font-size:.95rem">코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</p>
-          <button type="button" class="btn btn-solid" disabled aria-disabled="true">아이디어톤 신청서 · 10월 23일(금) 오픈</button>
+          <h3 style="margin-top:.6rem"><span data-kr>아이디어톤 (입문)</span><span data-en>Ideathon (beginner)</span></h3>
+          <p class="lede" style="font-size:.95rem"><span data-kr>코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</span><span data-en>No coding or physics background needed. Take-home work plus a short presentation over the weekend.</span></p>
+          <button type="button" class="btn btn-solid" disabled aria-disabled="true"><span data-kr>아이디어톤 신청서 · 10월 23일(금) 오픈</span><span data-en>Ideathon form · opens Fri, Oct 23</span></button>
         </div>
         <div class="route-card">
           <span class="chip" style="background:transparent;border:1.5px solid var(--tag-teal);color:var(--tag-teal)">POSTER</span>
-          <h3 style="margin-top:.6rem">포스터 세션</h3>
-          <p class="lede" style="font-size:.95rem">기존 연구 결과가 있는 학생을 위한 발표 자리입니다.</p>
-          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true">포스터 제출 · 10월 23일(금) 오픈</button>
+          <h3 style="margin-top:.6rem"><span data-kr>포스터 세션</span><span data-en>Poster Session</span></h3>
+          <p class="lede" style="font-size:.95rem"><span data-kr>기존 연구 결과가 있는 학생을 위한 발표 자리입니다.</span><span data-en>A space for students to present research they have already done.</span></p>
+          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true"><span data-kr>포스터 제출 · 10월 23일(금) 오픈</span><span data-en>Poster submission · opens Fri, Oct 23</span></button>
         </div>
         <div class="route-card">
           <span class="chip" style="background:transparent;border:1.5px solid var(--ink-soft);color:var(--ink-soft)">DAY 1</span>
-          <h3 style="margin-top:.6rem">세미나만 참석</h3>
-          <p class="lede" style="font-size:.95rem">해커톤 신청 없이 세미나만 듣고 싶다면 여기로 RSVP하세요.</p>
-          <button type="button" class="btn btn-outline" disabled aria-disabled="true">세미나 RSVP · 10월 23일(금) 오픈</button>
+          <h3 style="margin-top:.6rem"><span data-kr>세미나만 참석</span><span data-en>Seminar only</span></h3>
+          <p class="lede" style="font-size:.95rem"><span data-kr>해커톤 신청 없이 세미나만 듣고 싶다면 여기로 RSVP하세요.</span><span data-en>Want to attend the talks without joining the Hackathon? RSVP here.</span></p>
+          <button type="button" class="btn btn-outline" disabled aria-disabled="true"><span data-kr>세미나 RSVP · 10월 23일(금) 오픈</span><span data-en>Seminar RSVP · opens Fri, Oct 23</span></button>
         </div>
       </div>
     </div>
@@ -109,14 +110,14 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="sponsor-strip">
-      <span>IBM Quantum · 서울대 하이브리드 양자컴퓨팅 센터(IRC) · Next Quantum · Jane Street와 함께합니다</span>
+      <span data-kr>IBM Quantum · 서울대 하이브리드 양자컴퓨팅 센터(IRC) · Next Quantum · Jane Street와 함께합니다</span><span data-en>In partnership with IBM Quantum, SNU Hybrid Quantum Computing Center (IRC), Next Quantum, and Jane Street</span>
       <span aria-hidden="true">·</span>
-      <span>주관: SQRT, 서울대학교</span>
+      <span data-kr>주관: SQRT, 서울대학교</span><span data-en>Hosted by SQRT, Seoul National University</span>
     </div>
     <div class="footer-links">
       <a href="mailto:snuquantums@gmail.com">Contact</a>
       <a href="https://www.youtube.com/@sqrtsnuquantumresearchteam6066">YouTube</a>
-      <a href="https://sites.google.com/view/sqrt-quantum">SQRT 소개</a>
+      <a href="https://sites.google.com/view/sqrt-quantum"><span data-kr>SQRT 소개</span><span data-en>About SQRT</span></a>
     </div>
   </div>
 </footer>
