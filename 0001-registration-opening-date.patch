@@ -1,0 +1,144 @@
+From 265b6afcff3664153c5c56dcda93af4901c24a48 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 18 Sep 2026 17:06:11 +0900
+Subject: [PATCH] Add registration opening date (Fri, Oct 23, 2026)
+
+Per IBM Quantum Events request: state a registration opening date on the site.
+
+- index.html: badge in the hero + callout in the Join section (KR/EN), meta description
+- register.html: opening-date callout, form buttons relabeled from "TBD" to the open date
+- faq.html: new first FAQ "When does registration open?"
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01RPi3TzvLJ65hXW2qJkeXqq
+---
+ faq.html      | 14 ++++++++++++++
+ index.html    |  6 +++---
+ register.html | 25 ++++++++++++++++++-------
+ 3 files changed, 35 insertions(+), 10 deletions(-)
+
+diff --git a/faq.html b/faq.html
+index 4ce90c3..118c0ec 100644
+--- a/faq.html
++++ b/faq.html
+@@ -63,6 +63,20 @@
+       </h1>
+ 
+       <details class="faq-item" open>
++        <summary>
++          <span data-kr>신청은 언제부터 할 수 있나요?</span>
++          <span data-en>When does registration open?</span>
++          <span class="faq-toggle"></span>
++        </summary>
++        <p>
++          <span data-kr>등록은 <b>2026년 10월 23일 금요일</b>에 시작됩니다. 그날 신청 페이지의 네 가지
++          신청서(해커톤 · 아이디어톤 · 포스터 세션 · 세미나 RSVP)가 모두 열립니다.</span>
++          <span data-en>Registration opens on <b>Friday, October 23, 2026</b>. All four forms
++          (Hackathon, Ideathon, Poster Session, and Seminar RSVP) go live on the Register page that day.</span>
++        </p>
++      </details>
++
++      <details class="faq-item">
+         <summary>
+           <span data-kr>저는 물리학이나 컴퓨터공학 전공이 아닌데, 참가할 수 있나요?</span>
+           <span data-en>I'm not a physics or CS major, can I still join?</span>
+diff --git a/index.html b/index.html
+index 0acb762..dee7b28 100644
+--- a/index.html
++++ b/index.html
+@@ -5,7 +5,7 @@
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+ <title>Qiskit Fall Fest 2026 at Seoul National University | QFF SNU</title>
+-<meta name="description" content="Qiskit Fall Fest 2026, hosted by SQRT at Seoul National University, October 29–31. Explore the schedule, talks, Hackathon, Ideathon, and Poster Session.">
++<meta name="description" content="Qiskit Fall Fest 2026, hosted by SQRT at Seoul National University, October 29–31. Registration opens on Friday, October 23, 2026. Explore the schedule, talks, Hackathon, Ideathon, and Poster Session.">
+ <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/">
+ 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -75,7 +75,7 @@
+       <path d="M0 608 C250 683 556 629 795 552 C1025 478 1214 396 1440 373 L1440 700 L0 700Z" fill="#F8F6F2"/>
+     </svg>
+ 
+-    <div class="shell hero-copy"><p class="eyebrow">Qiskit Fall Fest 2026 · Seoul National University</p><h1>QISKIT<br>FALL FEST<br>2026<span>Hosted by SQRT</span></h1><p class="summary"><span data-kr>서울대학교 퀴스킷 가을 축제, Qiskit Fall Fest 2026. 2026년 10월 29–31일, SQRT와 함께 양자 컴퓨팅을 배우고, 만들고, 연결됩니다.</span><span data-en>Qiskit Fall Fest 2026, hosted by SQRT at Seoul National University, takes place October 29–31, 2026.<br>Learn, build, and connect through quantum computing.</span></p><a class="pill pill--red" href="register.html"><span data-kr>행사 등록하기</span><span data-en>Register for the event</span> <b>→</b></a></div>
++    <div class="shell hero-copy"><p class="eyebrow">Qiskit Fall Fest 2026 · Seoul National University</p><h1>QISKIT<br>FALL FEST<br>2026<span>Hosted by SQRT</span></h1><p class="summary"><span data-kr>서울대학교 퀴스킷 가을 축제, Qiskit Fall Fest 2026. 2026년 10월 29–31일, SQRT와 함께 양자 컴퓨팅을 배우고, 만들고, 연결됩니다.</span><span data-en>Qiskit Fall Fest 2026, hosted by SQRT at Seoul National University, takes place October 29–31, 2026.<br>Learn, build, and connect through quantum computing.</span></p><p class="reg-open" style="display:inline-flex;align-items:center;gap:10px;margin:0 0 20px;padding:9px 17px;border:1px solid rgba(142,217,246,.6);border-radius:999px;background:rgba(142,217,246,.13);color:#d9f3ff;font-size:.82rem;font-weight:800;line-height:1.45"><span aria-hidden="true" style="width:7px;height:7px;flex:none;border-radius:50%;background:#ffc18e;box-shadow:0 0 10px 2px rgba(255,193,142,.7)"></span><span data-kr>등록은 2026년 10월 23일 금요일에 시작됩니다</span><span data-en>Registration opens on Friday, October 23, 2026</span></p><br><a class="pill pill--red" href="register.html"><span data-kr>등록 안내 보기</span><span data-en>See registration details</span> <b>→</b></a></div>
+     <div class="shell hero-index"><div><strong>03</strong><span>Days of learning<br>and connection</span></div><div><strong>04</strong><span>Ways to<br>take part</span></div><div><strong>10.29–31</strong><span>October<br>2026</span></div></div>
+   </section>
+     <section class="about" id="about"><div class="shell about-grid">
+@@ -88,7 +88,7 @@
+       <div class="event-cards"><article class="event-card event-card--one"><span class="day-label">DAY 01</span><h3>Open & Learn</h3><p><span data-kr>행사의 문을 열고, Qiskit과 양자 컴퓨팅의 기본 언어를 함께 익히는 시간입니다.</span><span data-en>Open the festival with talks and a shared introduction to quantum computing.</span></p><a href="schedule.html" aria-label="Day 1 일정 보기">→</a></article><article class="event-card event-card--two"><span class="day-label">DAY 02</span><h3>Build & Hack</h3><p><span data-kr>해커톤 문제와 아이디어톤 프롬프트가 공개됩니다. 직접 구현하고 아이디어를 발전시킵니다.</span><span data-en>The hackathon problem and ideathon prompt are released. Start building and exploring.</span></p><a href="hackathon.html" aria-label="해커톤 안내 보기">→</a></article><article class="event-card event-card--three"><span class="day-label">DAY 03</span><h3>Share & Connect</h3><p><span data-kr>프로젝트와 아이디어를 발표하고, 함께 도전의 결과를 나누고 축하합니다.</span><span data-en>Share projects, present ideas, and celebrate results together.</span></p><a href="schedule.html" aria-label="Day 3 schedule">→</a></article></div>
+     </div></section>
+ 
+-    <section class="shell"><div class="join" id="register"><svg class="join-orbit" viewBox="0 0 800 500" aria-hidden="true"><defs><radialGradient id="particle-glow"><stop stop-color="#fff4e5"/><stop offset=".25" stop-color="#ffc18e" stop-opacity=".8"/><stop offset="1" stop-color="#b797ed" stop-opacity="0"/></radialGradient></defs><ellipse cx="400" cy="250" rx="330" ry="145" transform="rotate(-24 400 250)" fill="none" stroke="#b797ed" stroke-opacity=".65"/><g class="orbit-particle"><circle r="32" fill="url(#particle-glow)"/><circle r="6" fill="#ffe3bf"/></g></svg><p class="eyebrow">Join Qiskit Fall Fest 2026</p><h2><span data-kr>관심이 있다면,<br>첫 번째 회로부터 함께.</span><span data-en>Bring your curiosity.<br>Find your next step.</span></h2><p><span data-kr>세미나, 해커톤, 아이디어톤, 포스터 세션 중 원하는 참여 방식을 확인하고 등록해 주세요.</span><span data-en>Choose your way to participate: Seminar, Hackathon, Ideathon, or Poster Session.</span></p><a class="pill pill--red" href="register.html"><span data-kr>참가 등록하기</span><span data-en>Register to participate</span> <b>→</b></a></div></section>
++    <section class="shell"><div class="join" id="register"><svg class="join-orbit" viewBox="0 0 800 500" aria-hidden="true"><defs><radialGradient id="particle-glow"><stop stop-color="#fff4e5"/><stop offset=".25" stop-color="#ffc18e" stop-opacity=".8"/><stop offset="1" stop-color="#b797ed" stop-opacity="0"/></radialGradient></defs><ellipse cx="400" cy="250" rx="330" ry="145" transform="rotate(-24 400 250)" fill="none" stroke="#b797ed" stroke-opacity=".65"/><g class="orbit-particle"><circle r="32" fill="url(#particle-glow)"/><circle r="6" fill="#ffe3bf"/></g></svg><p class="eyebrow">Join Qiskit Fall Fest 2026</p><h2><span data-kr>관심이 있다면,<br>첫 번째 회로부터 함께.</span><span data-en>Bring your curiosity.<br>Find your next step.</span></h2><p><span data-kr>세미나, 해커톤, 아이디어톤, 포스터 세션 중 원하는 참여 방식을 확인하고 등록해 주세요.</span><span data-en>Choose your way to participate: Seminar, Hackathon, Ideathon, or Poster Session.</span></p><p style="max-width:460px;margin:-14px 0 28px;padding-left:16px;border-left:3px solid #ffc18e;color:#fff;font-weight:800;line-height:1.6"><span data-kr>등록은 2026년 10월 23일 금요일에 시작됩니다.<br><span style="font-weight:600;color:#dce6ff">Registration opens on Friday, October 23, 2026.</span></span><span data-en>Registration opens on Friday, October 23, 2026.</span></p><a class="pill pill--red" href="register.html"><span data-kr>등록 안내 보기</span><span data-en>See registration details</span> <b>→</b></a></div></section>
+   </main>
+ <footer class="site-footer">
+   <div class="wrap">
+diff --git a/register.html b/register.html
+index cd62b5f..1a9cd1d 100644
+--- a/register.html
++++ b/register.html
+@@ -5,7 +5,7 @@
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+ <title>Registration | QFF SNU 2026 · Qiskit Fall Fest</title>
+-<meta name="description" content="Explore participation options for Qiskit Fall Fest 2026 at Seoul National University: Seminar, Hackathon, Ideathon, and Poster Session. Registration details to follow.">
++<meta name="description" content="Registration for Qiskit Fall Fest 2026 at Seoul National University opens on Friday, October 23, 2026. Choose your track: Seminar, Hackathon, Ideathon, or Poster Session.">
+ <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/register.html">
+ 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+@@ -60,35 +60,46 @@
+       <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">참가 방법을 선택하세요</h1>
+       <p class="lede">
+         아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 전공과 상관없이 원하는 트랙을
+-        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다. 신청서는 데모 단계라 실제
+-        구글폼 대신 자리 표시 링크로 연결됩니다.
++        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다.
+       </p>
+ 
++      <div class="reg-open-callout" style="max-width:65ch;margin:1.5rem 0 .5rem;padding:1.15rem 1.3rem;border:1px solid var(--accent);border-left-width:5px;border-radius:var(--r-sm);background:var(--accent-tint)">
++        <p style="margin:0;font-size:1.08rem;font-weight:700;color:var(--accent-strong)">
++          등록은 2026년 10월 23일 금요일에 시작됩니다.
++        </p>
++        <p style="margin:.45rem 0 0;font-size:1rem;font-weight:600;color:var(--accent-strong)">
++          Registration opens on Friday, October 23, 2026.
++        </p>
++        <p style="margin:.6rem 0 0;font-size:.92rem;line-height:1.6;color:var(--ink-soft)">
++          그날 아래 네 가지 신청서 버튼이 모두 열립니다. · The four forms below open on that day.
++        </p>
++      </div>
++
+       <div class="route-grid">
+         <div class="route-card">
+ 
+           <h3 style="margin-top:.6rem">해커톤 (심화)</h3>
+           <p class="lede" style="font-size:.95rem">Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 관악캠퍼스 28동 101호 대면 진행(Zoom 송출), 자동 채점, 우수 팀은 시상식에서 발표.</p>
+-          <button type="button" class="btn btn-solid" disabled aria-disabled="true">해커톤 신청서 (TBD)</button>
++          <button type="button" class="btn btn-solid" disabled aria-disabled="true">해커톤 신청서 · 10월 23일(금) 오픈</button>
+           <p class="lede" style="font-size:.85rem;margin-top:.6rem">이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</p>
+         </div>
+         <div class="route-card">
+ 
+           <h3 style="margin-top:.6rem">아이디어톤 (입문)</h3>
+           <p class="lede" style="font-size:.95rem">코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</p>
+-          <button type="button" class="btn btn-solid" disabled aria-disabled="true">아이디어톤 신청서 (TBD)</button>
++          <button type="button" class="btn btn-solid" disabled aria-disabled="true">아이디어톤 신청서 · 10월 23일(금) 오픈</button>
+         </div>
+         <div class="route-card">
+           <span class="chip" style="background:transparent;border:1.5px solid var(--tag-teal);color:var(--tag-teal)">POSTER</span>
+           <h3 style="margin-top:.6rem">포스터 세션</h3>
+           <p class="lede" style="font-size:.95rem">기존 연구 결과가 있는 학생을 위한 발표 자리입니다.</p>
+-          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true">포스터 제출 (TBD)</button>
++          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true">포스터 제출 · 10월 23일(금) 오픈</button>
+         </div>
+         <div class="route-card">
+           <span class="chip" style="background:transparent;border:1.5px solid var(--ink-soft);color:var(--ink-soft)">DAY 1</span>
+           <h3 style="margin-top:.6rem">세미나만 참석</h3>
+           <p class="lede" style="font-size:.95rem">해커톤 신청 없이 세미나만 듣고 싶다면 여기로 RSVP하세요.</p>
+-          <button type="button" class="btn btn-outline" disabled aria-disabled="true">세미나 RSVP (TBD)</button>
++          <button type="button" class="btn btn-outline" disabled aria-disabled="true">세미나 RSVP · 10월 23일(금) 오픈</button>
+         </div>
+       </div>
+     </div>
+-- 
+2.43.0
+
