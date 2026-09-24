@@ -6,3 +6,6 @@ node_modules/
 *.log
 .vscode/
 .idea/
+assets/supabase-config.local.js
+__pycache__/
+*.pyc

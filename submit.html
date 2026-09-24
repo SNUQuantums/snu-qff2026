@@ -62,10 +62,10 @@
         <span data-en>Submit your circuit</span>
       </h1>
       <p class="lede">
-        <span data-kr>해커톤 참가자용 제출 폼입니다. 팀/개인 이름과 QASM 회로를 붙여넣거나 파일로 업로드하세요.
+        <span data-kr>해커톤 Course 3 제출 폼입니다. 팀 이름, 제출 비밀번호, data qubit 배치와 QASM 회로를 입력하세요.
         제출 후 별도의 채점 서버가 회로를 실행해 점수를 매기며, 결과는 <a href="leaderboard.html" style="color:var(--accent);font-weight:600">리더보드</a>에 반영됩니다.</span>
-        <span data-en>Submission form for Hackathon participants. Paste your QASM circuit or upload a small file, along
-        with your team/participant name. A separate scoring backend runs each submission and the result appears
+        <span data-en>Course 3 submission form. Enter your team name, submission password, data-qubit placement,
+        and QASM circuit. A separate scoring backend runs each submission and the result appears
         on the <a href="leaderboard.html" style="color:var(--accent);font-weight:600">leaderboard</a>.</span>
       </p>
 
@@ -73,16 +73,23 @@
 
       <form id="submit-form" class="submit-form" novalidate>
         <label>
-          <span><span data-kr>팀 / 참가자 이름</span><span data-en>Team / participant name</span></span>
-          <input type="text" name="teamName" maxlength="80" required />
+          <span><span data-kr>팀 이름</span><span data-en>Team name</span></span>
+          <select name="teamName" id="team-name" required disabled>
+            <option value="">Loading teams...</option>
+          </select>
         </label>
         <label>
-          <span><span data-kr>연락처 이메일 (선택, 운영진 전용)</span><span data-en>Contact email (optional, organizers only)</span></span>
-          <input type="email" name="email" />
+          <span><span data-kr>제출 비밀번호</span><span data-en>Submission password</span></span>
+          <input type="password" name="password" minlength="8" maxlength="200" autocomplete="current-password" required />
+        </label>
+        <label>
+          <span><span data-kr>Data qubits (code qubit 0–6 순서)</span><span data-en>Data qubits (in code-qubit 0–6 order)</span></span>
+          <input type="text" name="dataQubits" inputmode="numeric" placeholder="1, 2, 3, 6, 10, 9, 11" required />
+          <small class="submit-hint"><span data-kr>0부터 11까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Enter seven distinct physical qubits from 0 through 11, separated by commas.</span></small>
         </label>
         <label>
           <span><span data-kr>QASM 회로</span><span data-en>QASM circuit</span></span>
-          <textarea name="qasm" rows="12" required placeholder="OPENQASM 2.0;&#10;include &quot;qelib1.inc&quot;;&#10;qreg q[2];&#10;creg c[2];&#10;h q[0];&#10;cx q[0],q[1];&#10;measure q -> c;"></textarea>
+          <textarea name="qasm" rows="12" maxlength="200000" required placeholder="OPENQASM 2.0;&#10;include &quot;qelib1.inc&quot;;&#10;qreg q[12];&#10;creg flags[1];&#10;..."></textarea>
         </label>
         <div class="file-row">
           <span data-kr>또는 .qasm 파일 업로드</span><span data-en>or upload a .qasm file</span>
@@ -116,8 +123,13 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/supabase-config.js"></script>
-<script src="assets/supabase.js"></script>
+<script>
+if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
+  document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
+}
+</script>
+<script src="assets/supabase-config.js?v=20260924"></script>
+<script src="assets/supabase.js?v=20260924"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -127,6 +139,11 @@
     fileInput.addEventListener("change", function (e) {
       var file = e.target.files[0];
       if (!file) return;
+      if (file.size > 200000) {
+        fileInput.value = "";
+        showBanner("error", "QASM 파일은 200 KB 이하여야 합니다.", "The QASM file must be 200 KB or smaller.");
+        return;
+      }
       var reader = new FileReader();
       reader.onload = function (ev) {
         textarea.value = ev.target.result;
@@ -136,6 +153,7 @@
   }
 
   var form = document.getElementById("submit-form");
+  var teamSelect = document.getElementById("team-name");
   var status = document.getElementById("submit-status");
   var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
 
@@ -145,16 +163,58 @@
     status.textContent = isEn() ? en : kr;
   }
 
+  function loadTeams() {
+    if (!teamSelect || !window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) return;
+    window.QFF_SUPABASE.fetchTeams().then(function (result) {
+      if (result.error) {
+        teamSelect.innerHTML = '<option value="">Could not load teams</option>';
+        showBanner("error", "팀 목록을 불러오지 못했습니다: " + result.error, "Could not load teams: " + result.error);
+        return;
+      }
+      var teams = result.data || [];
+      teamSelect.innerHTML = "";
+      var placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = isEn() ? "Select your team" : "팀을 선택하세요";
+      teamSelect.appendChild(placeholder);
+      teams.forEach(function (team) {
+        var option = document.createElement("option");
+        option.value = team;
+        option.textContent = team;
+        teamSelect.appendChild(option);
+      });
+      teamSelect.disabled = teams.length === 0;
+      if (teams.length === 0) {
+        placeholder.textContent = isEn() ? "No active teams" : "활성화된 팀이 없습니다";
+      } else if (teams.length === 1) {
+        teamSelect.value = teams[0];
+      }
+    });
+  }
+
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var fd = new FormData(form);
       var teamName = (fd.get("teamName") || "").toString().trim();
       var qasm = (fd.get("qasm") || "").toString().trim();
-      var email = (fd.get("email") || "").toString().trim();
+      var password = (fd.get("password") || "").toString();
+      var dataQubitsText = (fd.get("dataQubits") || "").toString().trim();
+      var dataQubits = dataQubitsText.split(/[\s,]+/).filter(Boolean).map(Number);
+      var validPlacement = dataQubits.length === 7 && dataQubits.every(function (q) {
+        return Number.isInteger(q) && q >= 0 && q < 12;
+      }) && new Set(dataQubits).size === 7;
 
-      if (!teamName || !qasm) {
-        showBanner("error", "팀 이름과 QASM 내용을 모두 입력해주세요.", "Team name and QASM content are both required.");
+      if (!teamName || !password || !qasm) {
+        showBanner("error", "팀 이름, 비밀번호와 QASM 내용을 모두 입력해주세요.", "Team name, password, and QASM are required.");
+        return;
+      }
+      if (!validPlacement) {
+        showBanner("error", "Data qubits에는 0–11 사이의 서로 다른 정수 7개가 필요합니다.", "Data qubits must be seven distinct integers from 0 through 11.");
+        return;
+      }
+      if (new Blob([qasm]).size > 200000) {
+        showBanner("error", "QASM은 200 KB 이하여야 합니다.", "QASM must be 200 KB or smaller.");
         return;
       }
       if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
@@ -170,17 +230,24 @@
       btn.disabled = true;
       showBanner(null, "제출 중...", "Submitting...");
 
-      window.QFF_SUPABASE.submitEntry({ teamName: teamName, qasm: qasm, email: email }).then(function (result) {
+      window.QFF_SUPABASE.submitEntry({
+        teamName: teamName,
+        password: password,
+        qasm: qasm,
+        dataQubits: dataQubits
+      }).then(function (result) {
         btn.disabled = false;
         if (result.error) {
           showBanner("error", "제출하지 못했습니다: " + result.error, "Could not submit: " + result.error);
           return;
         }
-        showBanner("success", "제출 완료! 채점 대기열에 등록되었습니다.", "Submitted! Your entry is queued for scoring.");
+        var receipt = result.data && result.data.submission_id ? " (" + result.data.submission_id.slice(0, 8) + ")" : "";
+        showBanner("success", "제출 완료! 채점 대기열에 등록되었습니다." + receipt, "Submitted and queued for scoring." + receipt);
         form.reset();
       });
     });
   }
+  loadTeams();
 })();
 </script>
 </body>

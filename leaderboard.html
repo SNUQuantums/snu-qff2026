@@ -62,10 +62,10 @@
         <span data-en>Live standings</span>
       </h1>
       <p class="lede">
-        <span data-kr>해커톤 제출작이 채점되는 대로 순위가 갱신됩니다. 점수는 별도의 채점 서버가 QASM 회로를
-        실행한 뒤 기록합니다. 아직 채점 중인 제출작은 순위표 아래에 대기 건수로 표시됩니다.</span>
-        <span data-en>Rankings update as Hackathon submissions are scored by a separate backend that runs each
-        QASM circuit. Submissions still awaiting scoring are shown as a pending count below the table.</span>
+        <span data-kr>팀별 최고 Course 3 제출작이 자동으로 반영됩니다. 점수 A가 낮을수록 높은 순위이며,
+        동점은 2-qubit gate 수, tick 수, 제출 시각 순으로 결정됩니다.</span>
+        <span data-en>Each team's best Course 3 submission appears automatically. Lower A ranks higher;
+        ties are broken by two-qubit gate count, tick count, then submission time.</span>
       </p>
 
       <div class="leaderboard-toolbar">
@@ -82,7 +82,9 @@
           <tr>
             <th>#</th>
             <th><span data-kr>팀</span><span data-en>Team</span></th>
-            <th><span data-kr>점수</span><span data-en>Score</span></th>
+            <th><span data-kr>점수 A ↓</span><span data-en>Score A ↓</span></th>
+            <th>2Q</th>
+            <th>Ticks</th>
             <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
           </tr>
         </thead>
@@ -110,8 +112,13 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="assets/supabase-config.js"></script>
-<script src="assets/supabase.js"></script>
+<script>
+if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
+  document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
+}
+</script>
+<script src="assets/supabase-config.js?v=20260924"></script>
+<script src="assets/supabase.js?v=20260924"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -154,9 +161,7 @@
         showBanner("error", "리더보드를 불러오지 못했습니다: " + result.error, "Could not load leaderboard: " + result.error);
         return;
       }
-      var rows = result.data || [];
-      var scored = rows.filter(function (r) { return r.status === "scored" && r.score !== null && r.score !== undefined; });
-      var pending = rows.filter(function (r) { return r.status !== "scored"; });
+      var scored = result.data || [];
 
       if (scored.length === 0) {
         showBanner(null, "아직 채점된 제출작이 없습니다.", "No scored entries yet.");
@@ -169,24 +174,27 @@
           var when = r.submitted_at ? new Date(r.submitted_at).toLocaleString() : "";
           return (
             "<tr><td class=\"rank\">" + (i + 1) + "</td><td>" + escapeHtml(r.team_name) +
-            "</td><td class=\"score\">" + Number(r.score).toFixed(2) +
+            "</td><td class=\"score\">" + Number(r.score_a).toFixed(4) +
+            "</td><td class=\"mono\">" + Number(r.n_2q) +
+            "</td><td class=\"mono\">" + Number(r.n_ticks) +
             "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + escapeHtml(when) + "</td></tr>"
           );
         })
         .join("");
       tableEl.hidden = scored.length === 0;
 
-      if (pending.length > 0) {
-        pendingEl.textContent = isEn()
-          ? pending.length + " submission(s) awaiting scoring."
-          : pending.length + "건의 제출작이 채점을 기다리고 있습니다.";
-      }
+      pendingEl.textContent = isEn()
+        ? "This page checks for new scores every 15 seconds."
+        : "새 점수는 15초마다 자동으로 확인합니다.";
       lastUpdatedEl.textContent = (isEn() ? "Updated " : "업데이트: ") + new Date().toLocaleTimeString();
     });
   }
 
   if (refreshBtn) refreshBtn.addEventListener("click", load);
   document.addEventListener("DOMContentLoaded", load);
+  window.setInterval(function () {
+    if (!document.hidden) load();
+  }, 15000);
 })();
 </script>
 </body>

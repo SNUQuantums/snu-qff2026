@@ -403,12 +403,12 @@ details.faq-item p{ margin-top:.7rem; color: var(--ink-soft); max-width: 65ch; }
 /* ---------------------------------------------------------------------- */
 .submit-form{ display:grid; gap: var(--sp-2); max-width: 640px; margin-top: var(--sp-3); }
 .submit-form label{ display:grid; gap:.4rem; font-size:.9rem; font-weight:600; color: var(--ink); }
-.submit-form input[type="text"], .submit-form input[type="email"], .submit-form textarea{
+.submit-form input[type="text"], .submit-form input[type="email"], .submit-form input[type="password"], .submit-form select, .submit-form textarea{
   font-family: var(--font-sans); font-size:.95rem; font-weight:400;
   padding:.7rem .85rem; border-radius: var(--r-sm); border:1px solid var(--paper-line);
   background: var(--paper); color: var(--ink);
 }
-.submit-form input[type="text"]:focus, .submit-form input[type="email"]:focus, .submit-form textarea:focus{
+.submit-form input[type="text"]:focus, .submit-form input[type="email"]:focus, .submit-form input[type="password"]:focus, .submit-form select:focus, .submit-form textarea:focus{
   outline: 2px solid var(--accent); outline-offset: 1px;
 }
 .submit-form textarea{ font-family: var(--font-mono); font-size:.85rem; resize: vertical; min-height:220px; line-height:1.5; }

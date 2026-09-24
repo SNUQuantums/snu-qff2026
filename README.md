@@ -16,14 +16,14 @@ No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, 
 ├── posters.html        Poster Session
 ├── faq.html
 ├── register.html       Sign-up router (Hackathon / Ideathon / Poster / Day 1)
-├── submit.html         Hackathon: submit a QASM circuit (writes to Supabase)
-├── leaderboard.html    Hackathon: live standings (reads from Supabase)
+├── submit.html         Course 3: authenticated QASM + data-qubit submission
+├── leaderboard.html    Course 3: team-best standings (lower A is better)
 ├── assets/
 │   ├── style.css              design system, incl. 4 switchable color themes
 │   ├── script.js               language toggle, theme switcher, mobile nav
-│   ├── supabase-config.js      YOUR project URL + anon key go here
-│   └── supabase.js             thin client wrapper (submitEntry / fetchLeaderboard)
-├── supabase-schema.sql  run once in the Supabase SQL editor
+│   ├── supabase-config.js      project URL + public/anon key go here
+│   └── supabase.js             guarded RPC + public leaderboard wrapper
+├── supabase-schema.sql  private queue, team auth, worker RPCs, leaderboard
 └── .github/workflows/deploy-pages.yml   auto-deploy to GitHub Pages
 ```
 
@@ -38,12 +38,22 @@ python3 -m http.server 8000
 
 or `npx serve .` if Node is installed.
 
+For a private end-to-end test with a localhost Supabase database and the real
+scoring worker, follow [LOCAL_TESTING.md](LOCAL_TESTING.md). Nothing is pushed
+to GitHub or a hosted Supabase project in that workflow.
+
 ## Supabase setup (for submit.html / leaderboard.html)
 
 1. Create a free project at [supabase.com](https://supabase.com).
-2. Open the SQL Editor and run `supabase-schema.sql` — creates the `submissions` table and Row Level Security policies (public can insert + read, nothing else).
-3. Project Settings → API → copy the **Project URL** and the **anon public** key (not `service_role`) into `assets/supabase-config.js`.
-4. A separate scoring backend (not part of this repo) should connect with the `service_role` key, poll `submissions` for `status = 'pending'`, run the QASM circuit, and write back `status` (`scored`/`error`) and `score`.
+2. Open the SQL Editor and run `supabase-schema.sql`. It creates private team/submission tables, a public sanitized leaderboard, and the guarded RPCs used by the browser and worker.
+3. Project Settings → API → copy the **Project URL** and **public/anon** key (never the service-role key) into `assets/supabase-config.js`.
+4. Create teams in the SQL Editor with `select public.admin_upsert_team('Team name', 'random-password-at-least-8-chars');`.
+5. On the private scoring machine, configure and run the worker in the `snu-qff/worker` directory. Its service-role key belongs only in the worker's local `.env` file.
+
+The browser can list active team display names for the submission dropdown, execute
+`submit_solution(...)`, and read `qff_leaderboard`. It never reads submitted QASM,
+password hashes, or judge diagnostics. Team/password validation happens inside the
+database function before a private queue row is created.
 
 Until step 3 is done, `submit.html` and `leaderboard.html` will show a clear "not connected yet" message instead of failing silently — that's expected on a fresh clone.
 
