@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>Submit a Circuit | QFF SNU 2026 Hackathon</title>
-<meta name="description" content="QASM circuit submission page for Qiskit Fall Fest 2026 Hackathon participants at Seoul National University. See submission instructions and system availability.">
+<meta name="description" content="Circuit submission page for Qiskit Fall Fest 2026 Hackathon participants at Seoul National University. See submission instructions and system availability.">
 <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/submit.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,11 +62,13 @@
         <span data-en>Submit your circuit</span>
       </h1>
       <p class="lede">
-        <span data-kr>해커톤 Course 3 제출 폼입니다. 팀 이름, 제출 비밀번호, data qubit 배치와 QASM 회로를 입력하세요.
-        제출 후 별도의 채점 서버가 회로를 실행해 점수를 매기며, 결과는 <a href="leaderboard.html" style="color:var(--accent);font-weight:600">리더보드</a>에 반영됩니다.</span>
-        <span data-en>Course 3 submission form. Enter your team name, submission password, data-qubit placement,
-        and QASM circuit. A separate scoring backend runs each submission and the result appears
-        on the <a href="leaderboard.html" style="color:var(--accent);font-weight:600">leaderboard</a>.</span>
+        <span data-kr>해커톤 제출 폼입니다. 팀 이름, 제출 비밀번호, data qubit 배치와 회로(Stim 형식 텍스트)를 입력하세요.
+        제출 후 별도의 채점 서버가 회로를 채점하며(제출 하나에 몇 분 걸릴 수 있습니다), 결과는 아래 <b>내 제출 결과</b>와
+        <a href="leaderboard.html" style="color:var(--accent);font-weight:600">리더보드</a>에 반영됩니다.</span>
+        <span data-en>Hackathon submission form. Enter your team name, submission password, data-qubit placement,
+        and circuit (Stim-format text). A separate scoring backend grades each submission, which can take a few
+        minutes; results appear under <b>My results</b> below and on the
+        <a href="leaderboard.html" style="color:var(--accent);font-weight:600">leaderboard</a>.</span>
       </p>
 
       <div id="submit-status" class="form-banner" hidden></div>
@@ -85,15 +87,15 @@
         <label>
           <span><span data-kr>Data qubits (code qubit 0–6 순서)</span><span data-en>Data qubits (in code-qubit 0–6 order)</span></span>
           <input type="text" name="dataQubits" inputmode="numeric" placeholder="1, 2, 3, 6, 10, 9, 11" required />
-          <small class="submit-hint"><span data-kr>0부터 11까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Enter seven distinct physical qubits from 0 through 11, separated by commas.</span></small>
+          <small class="submit-hint"><span data-kr>0부터 35까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Enter seven distinct physical qubits from 0 through 35, separated by commas.</span></small>
         </label>
         <label>
-          <span><span data-kr>QASM 회로</span><span data-en>QASM circuit</span></span>
-          <textarea name="qasm" rows="12" maxlength="200000" required placeholder="OPENQASM 2.0;&#10;include &quot;qelib1.inc&quot;;&#10;qreg q[12];&#10;creg flags[1];&#10;..."></textarea>
+          <span><span data-kr>회로 (Stim 형식)</span><span data-en>Circuit (Stim format)</span></span>
+          <textarea name="qasm" rows="12" maxlength="200000" required placeholder="H 0&#10;T 0&#10;CX 0 1&#10;...&#10;M 2&#10;DETECTOR rec[-1]"></textarea>
         </label>
         <div class="file-row">
-          <span data-kr>또는 .qasm 파일 업로드</span><span data-en>or upload a .qasm file</span>
-          <input type="file" id="qasm-file" accept=".qasm,.txt" />
+          <span data-kr>또는 .stim 파일 업로드</span><span data-en>or upload a .stim file</span>
+          <input type="file" id="qasm-file" accept=".stim,.txt" />
         </div>
         <button type="submit" class="btn btn-solid">
           <span data-kr>제출하기</span><span data-en>Submit entry</span>
@@ -103,6 +105,32 @@
           <span data-en>Uploading a file fills the text box above with its contents. Please review before submitting.</span>
         </p>
       </form>
+
+      <h2 style="margin-top:var(--sp-4);font-size:1.4rem">
+        <span data-kr>내 제출 결과</span><span data-en>My results</span>
+      </h2>
+      <p class="submit-hint">
+        <span data-kr>위 폼에서 팀과 비밀번호를 고른 뒤 누르면, 최근 제출의 채점 상태와 점수, 실패했다면 그 이유를 보여 줍니다.</span>
+        <span data-en>Pick your team and enter the password above, then press the button to see the status, score, and,
+        for a failed submission, the reason.</span>
+      </p>
+      <button type="button" id="my-results-btn" class="btn btn-outline">
+        <span data-kr>내 제출 결과 보기</span><span data-en>Show my results</span>
+      </button>
+      <div id="my-results-status" class="form-banner" hidden></div>
+      <table class="compare leaderboard-table" id="my-results-table" hidden>
+        <thead>
+          <tr>
+            <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
+            <th><span data-kr>상태</span><span data-en>Status</span></th>
+            <th>1-F</th>
+            <th><span data-kr>Acceptance</span><span data-en>Acceptance</span></th>
+            <th>2Q</th>
+            <th><span data-kr>메시지</span><span data-en>Message</span></th>
+          </tr>
+        </thead>
+        <tbody id="my-results-body"></tbody>
+      </table>
     </div>
   </section>
 </main>
@@ -141,7 +169,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       if (!file) return;
       if (file.size > 200000) {
         fileInput.value = "";
-        showBanner("error", "QASM 파일은 200 KB 이하여야 합니다.", "The QASM file must be 200 KB or smaller.");
+        showBanner("error", "회로 파일은 200 KB 이하여야 합니다.", "The circuit file must be 200 KB or smaller.");
         return;
       }
       var reader = new FileReader();
@@ -202,19 +230,19 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       var dataQubitsText = (fd.get("dataQubits") || "").toString().trim();
       var dataQubits = dataQubitsText.split(/[\s,]+/).filter(Boolean).map(Number);
       var validPlacement = dataQubits.length === 7 && dataQubits.every(function (q) {
-        return Number.isInteger(q) && q >= 0 && q < 12;
+        return Number.isInteger(q) && q >= 0 && q < 36;
       }) && new Set(dataQubits).size === 7;
 
       if (!teamName || !password || !qasm) {
-        showBanner("error", "팀 이름, 비밀번호와 QASM 내용을 모두 입력해주세요.", "Team name, password, and QASM are required.");
+        showBanner("error", "팀 이름, 비밀번호와 회로를 모두 입력해주세요.", "Team name, password, and circuit are required.");
         return;
       }
       if (!validPlacement) {
-        showBanner("error", "Data qubits에는 0–11 사이의 서로 다른 정수 7개가 필요합니다.", "Data qubits must be seven distinct integers from 0 through 11.");
+        showBanner("error", "Data qubits에는 0–35 사이의 서로 다른 정수 7개가 필요합니다.", "Data qubits must be seven distinct integers from 0 through 35.");
         return;
       }
       if (new Blob([qasm]).size > 200000) {
-        showBanner("error", "QASM은 200 KB 이하여야 합니다.", "QASM must be 200 KB or smaller.");
+        showBanner("error", "회로는 200 KB 이하여야 합니다.", "The circuit must be 200 KB or smaller.");
         return;
       }
       if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
@@ -243,7 +271,67 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
         }
         var receipt = result.data && result.data.submission_id ? " (" + result.data.submission_id.slice(0, 8) + ")" : "";
         showBanner("success", "제출 완료! 채점 대기열에 등록되었습니다." + receipt, "Submitted and queued for scoring." + receipt);
-        form.reset();
+        form.querySelector('textarea[name="qasm"]').value = "";
+        fileInput.value = "";
+      });
+    });
+  }
+
+  var resultsBtn = document.getElementById("my-results-btn");
+  var resultsStatus = document.getElementById("my-results-status");
+  var resultsTable = document.getElementById("my-results-table");
+  var resultsBody = document.getElementById("my-results-body");
+  var STATUS = {
+    queued: ["대기 중", "queued"], processing: ["채점 중", "scoring"], scored: ["채점 완료", "scored"],
+    invalid: ["실격", "invalid"], error: ["오류", "error"]
+  };
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function resultsBanner(kind, kr, en) {
+    resultsStatus.hidden = false;
+    resultsStatus.className = "form-banner" + (kind ? " " + kind : "");
+    resultsStatus.textContent = isEn() ? en : kr;
+  }
+  if (resultsBtn) {
+    resultsBtn.addEventListener("click", function () {
+      var fd = new FormData(form);
+      var teamName = (fd.get("teamName") || "").toString().trim();
+      var password = (fd.get("password") || "").toString();
+      if (!teamName || !password) {
+        resultsBanner("error", "위 폼에서 팀과 비밀번호를 먼저 입력해주세요.", "Enter your team and password in the form above first.");
+        return;
+      }
+      if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
+        resultsBanner("error", "아직 제출 시스템이 연결되지 않았습니다.", "Submissions aren't connected yet.");
+        return;
+      }
+      resultsBanner(null, "불러오는 중...", "Loading...");
+      window.QFF_SUPABASE.fetchMySubmissions(teamName, password).then(function (result) {
+        if (result.error) {
+          resultsTable.hidden = true;
+          resultsBanner("error", "불러오지 못했습니다: " + result.error, "Could not load: " + result.error);
+          return;
+        }
+        var rows = result.data || [];
+        if (rows.length === 0) {
+          resultsTable.hidden = true;
+          resultsBanner(null, "아직 제출이 없습니다.", "No submissions yet.");
+          return;
+        }
+        resultsStatus.hidden = true;
+        resultsBody.innerHTML = rows.map(function (r) {
+          var label = STATUS[r.status] ? STATUS[r.status][isEn() ? 1 : 0] : r.status;
+          return "<tr><td class=\"mono\" style=\"font-size:.85rem\">" + escapeHtml(new Date(r.submitted_at).toLocaleString()) +
+            "</td><td>" + escapeHtml(label) +
+            "</td><td class=\"score\">" + (r.score == null ? "" : Number(r.score).toExponential(2)) +
+            "</td><td class=\"mono\">" + (r.acceptance == null ? "" : Number(r.acceptance).toFixed(4)) +
+            "</td><td class=\"mono\">" + (r.n_2q == null ? "" : Number(r.n_2q)) +
+            "</td><td style=\"font-size:.85rem\">" + escapeHtml(r.public_message) + "</td></tr>";
+        }).join("");
+        resultsTable.hidden = false;
       });
     });
   }

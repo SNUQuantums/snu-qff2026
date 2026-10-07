@@ -62,10 +62,10 @@
         <span data-en>Live standings</span>
       </h1>
       <p class="lede">
-        <span data-kr>팀별 최고 Course 3 제출작이 자동으로 반영됩니다. 점수 A가 낮을수록 높은 순위이며,
-        동점은 2-qubit gate 수, tick 수, 제출 시각 순으로 결정됩니다.</span>
-        <span data-en>Each team's best Course 3 submission appears automatically. Lower A ranks higher;
-        ties are broken by two-qubit gate count, tick count, then submission time.</span>
+        <span data-kr>팀별 최고 제출작이 자동으로 반영됩니다. 점수 1-F가 낮을수록 높은 순위이며, 유효숫자 2자리로
+        비교합니다. 그 자리까지 같으면 2-qubit gate 수, 그다음 제출 시각 순으로 결정됩니다.</span>
+        <span data-en>Each team's best submission appears automatically. Lower 1-F ranks higher, compared at two
+        significant figures; ties are broken by two-qubit gate count, then submission time.</span>
       </p>
 
       <div class="leaderboard-toolbar">
@@ -82,9 +82,8 @@
           <tr>
             <th>#</th>
             <th><span data-kr>팀</span><span data-en>Team</span></th>
-            <th><span data-kr>점수 A ↓</span><span data-en>Score A ↓</span></th>
+            <th><span data-kr>1-F ↓</span><span data-en>1-F ↓</span></th>
             <th>2Q</th>
-            <th>Ticks</th>
             <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
           </tr>
         </thead>
@@ -174,9 +173,9 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
           var when = r.submitted_at ? new Date(r.submitted_at).toLocaleString() : "";
           return (
             "<tr><td class=\"rank\">" + (i + 1) + "</td><td>" + escapeHtml(r.team_name) +
-            "</td><td class=\"score\">" + Number(r.score_a).toFixed(4) +
+            "</td><td class=\"score\" title=\"" + Number(r.score_a).toPrecision(6) + "\">" +
+            Number(r.score_key).toExponential(1) +
             "</td><td class=\"mono\">" + Number(r.n_2q) +
-            "</td><td class=\"mono\">" + Number(r.n_ticks) +
             "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + escapeHtml(when) + "</td></tr>"
           );
         })

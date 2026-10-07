@@ -2,11 +2,16 @@
 --
 -- Run this file once in a fresh Supabase project's SQL editor. It deliberately
 -- uses qff_* table names so it can coexist with the earlier demo `submissions`
--- table without deleting data.
+-- table without deleting data. A project created from the first version of
+-- this file is brought up to date by supabase-migrate-v2.sql instead.
+--
+-- The `qasm` column holds the submitted circuit text (Stim format) and
+-- `score_a` holds the score 1-F; the names are historical.
 --
 -- Security model:
 --   * Browser users can list active team names, execute submit_solution(...),
---     and read qff_leaderboard.
+--     read their own team's results with team_submissions(...) (password
+--     required), and read qff_leaderboard.
 --   * Browser users cannot read qff_teams or qff_submissions directly.
 --   * The local worker uses the service-role key to claim and finish jobs.
 --   * Team passwords are stored only as pgcrypto hashes.
@@ -58,8 +63,10 @@ create table if not exists public.qff_leaderboard (
   submission_id uuid not null unique references public.qff_submissions(id),
   team_name text not null,
   score_a double precision not null,
+  -- score_a at two significant figures, the precision the ranking uses
+  score_key double precision not null,
   n_2q integer not null,
-  n_ticks integer not null,
+  n_ticks integer,
   submitted_at timestamptz not null,
   updated_at timestamptz not null default now()
 );
@@ -157,12 +164,12 @@ begin
   end if;
 
   if octet_length(p_qasm) not between 1 and 200000 then
-    raise exception 'QASM must be between 1 byte and 200 KB';
+    raise exception 'The circuit must be between 1 byte and 200 KB';
   end if;
   if array_length(p_data_qubits, 1) <> 7
-     or exists (select 1 from unnest(p_data_qubits) as q where q < 0 or q >= 12)
+     or exists (select 1 from unnest(p_data_qubits) as q where q < 0 or q >= 36)
      or (select count(distinct q) from unnest(p_data_qubits) as q) <> 7 then
-    raise exception 'data_qubits must contain 7 distinct integers from 0 through 11';
+    raise exception 'data_qubits must contain 7 distinct integers from 0 through 35';
   end if;
 
   if exists (
@@ -236,7 +243,8 @@ end;
 $$;
 
 -- Finishes a leased job and updates the team's best public result when the new
--- result wins by (A, two-qubit gates, ticks, submission time).
+-- result wins by (1-F at two significant figures, two-qubit gates, submission
+-- time).
 create or replace function public.finish_submission(
   p_submission_id uuid,
   p_worker_id text,
@@ -260,11 +268,11 @@ begin
     raise exception 'Invalid terminal status';
   end if;
   if p_status = 'scored' and (
-    p_score_a is null or p_n_2q is null or p_n_ticks is null
+    p_score_a is null or p_n_2q is null
     or p_score_a = 'NaN'::double precision
     or abs(p_score_a) = 'Infinity'::double precision
   ) then
-    raise exception 'A scored submission requires finite score and tie-break metrics';
+    raise exception 'A scored submission requires a finite score and a gate count';
   end if;
 
   update public.qff_submissions
@@ -288,9 +296,12 @@ begin
 
   if p_status = 'scored' then
     insert into public.qff_leaderboard (
-      team_id, submission_id, team_name, score_a, n_2q, n_ticks, submitted_at
+      team_id, submission_id, team_name, score_a, score_key, n_2q, n_ticks, submitted_at
     )
-    select s.team_id, s.id, t.team_name, s.score_a, s.n_2q, s.n_ticks, s.submitted_at
+    select s.team_id, s.id, t.team_name, s.score_a,
+           -- two significant figures: 0.002597 -> 0.0026
+           to_char(s.score_a, '9.9EEEE')::double precision,
+           s.n_2q, s.n_ticks, s.submitted_at
     from public.qff_submissions as s
     join public.qff_teams as t on t.id = s.team_id
     where s.id = v_submission.id
@@ -298,26 +309,73 @@ begin
       set submission_id = excluded.submission_id,
           team_name = excluded.team_name,
           score_a = excluded.score_a,
+          score_key = excluded.score_key,
           n_2q = excluded.n_2q,
           n_ticks = excluded.n_ticks,
           submitted_at = excluded.submitted_at,
           updated_at = now()
-      where (excluded.score_a, excluded.n_2q, excluded.n_ticks, excluded.submitted_at)
-          < (qff_leaderboard.score_a, qff_leaderboard.n_2q,
-             qff_leaderboard.n_ticks, qff_leaderboard.submitted_at);
+      where (excluded.score_key, excluded.n_2q, excluded.submitted_at)
+          < (qff_leaderboard.score_key, qff_leaderboard.n_2q, qff_leaderboard.submitted_at);
   end if;
+end;
+$$;
+
+-- A team's own recent submissions, with the judge's public message, so a team
+-- can see why a circuit failed. Authenticated like submit_solution; internal
+-- errors and circuit text are not returned.
+create or replace function public.team_submissions(
+  p_team_name text,
+  p_password text,
+  p_limit integer default 20
+)
+returns table (
+  submission_id uuid,
+  status text,
+  submitted_at timestamptz,
+  scored_at timestamptz,
+  score double precision,
+  acceptance double precision,
+  n_2q integer,
+  public_message text
+)
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+declare
+  v_team public.qff_teams%rowtype;
+begin
+  select * into v_team
+  from public.qff_teams
+  where lower(trim(team_name)) = lower(trim(p_team_name))
+    and active;
+
+  if v_team.id is null
+     or extensions.crypt(p_password, v_team.password_hash) <> v_team.password_hash then
+    raise exception 'Invalid team name or submission password';
+  end if;
+
+  return query
+  select s.id, s.status, s.submitted_at, s.scored_at, s.score_a, s.p_acc, s.n_2q, s.public_message
+  from public.qff_submissions as s
+  where s.team_id = v_team.id
+  order by s.submitted_at desc
+  limit least(greatest(coalesce(p_limit, 20), 1), 100);
 end;
 $$;
 
 revoke all on function public.admin_upsert_team(text, text) from public, anon, authenticated;
 revoke all on function public.list_active_teams() from public;
 revoke all on function public.submit_solution(text, text, text, smallint[]) from public;
+revoke all on function public.team_submissions(text, text, integer) from public;
 revoke all on function public.claim_submission(text, integer) from public, anon, authenticated;
 revoke all on function public.finish_submission(uuid, text, text, double precision, double precision, integer, integer, text, text) from public, anon, authenticated;
 
 grant execute on function public.admin_upsert_team(text, text) to service_role;
 grant execute on function public.list_active_teams() to anon, authenticated, service_role;
 grant execute on function public.submit_solution(text, text, text, smallint[]) to anon, authenticated, service_role;
+grant execute on function public.team_submissions(text, text, integer) to anon, authenticated, service_role;
 grant execute on function public.claim_submission(text, integer) to service_role;
 grant execute on function public.finish_submission(uuid, text, text, double precision, double precision, integer, integer, text, text) to service_role;
 
