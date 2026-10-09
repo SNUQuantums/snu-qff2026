@@ -81,6 +81,17 @@ revoke all on table public.qff_leaderboard from anon, authenticated;
 grant select on table public.qff_leaderboard to anon, authenticated;
 grant all on table public.qff_teams, public.qff_submissions, public.qff_leaderboard to service_role;
 
+-- Organizer settings, one row. Change the cooldown during the event with
+--   update public.qff_settings set cooldown_seconds = 300;
+create table if not exists public.qff_settings (
+  id boolean primary key default true check (id),
+  cooldown_seconds integer not null default 600 check (cooldown_seconds >= 0)
+);
+insert into public.qff_settings (id) values (true) on conflict (id) do nothing;
+alter table public.qff_settings enable row level security;
+revoke all on table public.qff_settings from anon, authenticated;
+grant all on table public.qff_settings to service_role;
+
 drop policy if exists "public leaderboard is readable" on public.qff_leaderboard;
 create policy "public leaderboard is readable"
   on public.qff_leaderboard for select
@@ -137,13 +148,53 @@ $$;
 
 -- Public browser entry point. It authenticates the team and inserts only a
 -- queued job; callers never receive access to either private table.
-create or replace function public.submit_solution(
+-- How long a team must wait before its next submission, and why. A team waits
+-- for the cooldown after its last submission, and while a submission of its own
+-- is still queued or being graded. A graded job whose worker died stops counting
+-- once its lease runs out, so a stuck row cannot block a team for good.
+create or replace function public.team_wait(p_team_id uuid)
+returns table (wait_seconds integer, pending boolean)
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select
+    greatest(0, ceil(extract(epoch from (
+      (select max(s.submitted_at) from public.qff_submissions as s where s.team_id = p_team_id)
+      + make_interval(secs => (select cooldown_seconds from public.qff_settings))
+      - now()))))::integer,
+    exists (
+      select 1 from public.qff_submissions as s
+      where s.team_id = p_team_id
+        and (s.status = 'queued' or (s.status = 'processing' and s.lease_expires_at > now()))
+    );
+$$;
+
+-- Queued submissions of any team ahead of this one; no team names are exposed.
+create or replace function public.queue_ahead(p_submitted_at timestamptz)
+returns integer
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select count(*)::integer from public.qff_submissions as s
+  where s.status = 'queued' and s.submitted_at < p_submitted_at;
+$$;
+
+-- Public browser entry point. It authenticates the team and inserts only a
+-- queued job; callers never receive access to either private table. A refusal
+-- for waiting reads "Next submission allowed in N seconds" or "Previous
+-- submission is still queued or being graded", which the submit page parses.
+drop function if exists public.submit_solution(text, text, text, smallint[]);
+create function public.submit_solution(
   p_team_name text,
   p_password text,
   p_qasm text,
   p_data_qubits smallint[]
 )
-returns table (submission_id uuid, status text, submitted_at timestamptz)
+returns table (submission_id uuid, status text, submitted_at timestamptz, ahead integer)
 language plpgsql
 security definer
 set search_path = ''
@@ -151,6 +202,8 @@ as $$
 declare
   v_team public.qff_teams%rowtype;
   v_name text := trim(p_team_name);
+  v_wait integer;
+  v_pending boolean;
 begin
   select * into v_team
   from public.qff_teams
@@ -172,18 +225,21 @@ begin
     raise exception 'data_qubits must contain 7 distinct integers from 0 through 35';
   end if;
 
-  if exists (
-    select 1 from public.qff_submissions as recent
-    where recent.team_id = v_team.id
-      and recent.submitted_at > now() - interval '5 seconds'
-  ) then
-    raise exception 'Please wait five seconds before submitting again';
+  select w.wait_seconds, w.pending into v_wait, v_pending from public.team_wait(v_team.id) as w;
+  if v_pending then
+    raise exception 'Previous submission is still queued or being graded';
+  end if;
+  if v_wait > 0 then
+    raise exception 'Next submission allowed in % seconds', v_wait;
   end if;
 
   return query
-  insert into public.qff_submissions as s (team_id, qasm, data_qubits)
-  values (v_team.id, p_qasm, p_data_qubits)
-  returning s.id, s.status, s.submitted_at;
+  with ins as (
+    insert into public.qff_submissions as s (team_id, qasm, data_qubits)
+    values (v_team.id, p_qasm, p_data_qubits)
+    returning s.id, s.status, s.submitted_at
+  )
+  select ins.id, ins.status, ins.submitted_at, public.queue_ahead(ins.submitted_at) from ins;
 end;
 $$;
 
@@ -339,7 +395,8 @@ returns table (
   acceptance double precision,
   n_2q integer,
   public_message text,
-  worker text
+  worker text,
+  ahead integer
 )
 language plpgsql
 stable
@@ -361,7 +418,8 @@ begin
 
   return query
   select s.id, s.status, s.submitted_at, s.scored_at, s.score_a, s.p_acc, s.n_2q, s.public_message,
-         s.worker_id
+         s.worker_id,
+         case when s.status = 'queued' then public.queue_ahead(s.submitted_at) end
   from public.qff_submissions as s
   where s.team_id = v_team.id
   order by s.submitted_at desc
@@ -369,10 +427,40 @@ begin
 end;
 $$;
 
+-- When a team may submit next, for the countdown on the submit page.
+create or replace function public.team_next_submission(p_team_name text, p_password text)
+returns table (wait_seconds integer, pending boolean, cooldown_seconds integer)
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+declare
+  v_team public.qff_teams%rowtype;
+begin
+  select * into v_team
+  from public.qff_teams
+  where lower(trim(team_name)) = lower(trim(p_team_name))
+    and active;
+
+  if v_team.id is null
+     or extensions.crypt(p_password, v_team.password_hash) <> v_team.password_hash then
+    raise exception 'Invalid team name or submission password';
+  end if;
+
+  return query
+  select w.wait_seconds, w.pending, (select c.cooldown_seconds from public.qff_settings as c)
+  from public.team_wait(v_team.id) as w;
+end;
+$$;
+
 revoke all on function public.admin_upsert_team(text, text) from public, anon, authenticated;
 revoke all on function public.list_active_teams() from public;
 revoke all on function public.submit_solution(text, text, text, smallint[]) from public;
 revoke all on function public.team_submissions(text, text, integer) from public;
+revoke all on function public.team_next_submission(text, text) from public;
+revoke all on function public.team_wait(uuid) from public, anon, authenticated;
+revoke all on function public.queue_ahead(timestamptz) from public, anon, authenticated;
 revoke all on function public.claim_submission(text, integer) from public, anon, authenticated;
 revoke all on function public.finish_submission(uuid, text, text, double precision, double precision, integer, integer, text, text) from public, anon, authenticated;
 
@@ -380,6 +468,9 @@ grant execute on function public.admin_upsert_team(text, text) to service_role;
 grant execute on function public.list_active_teams() to anon, authenticated, service_role;
 grant execute on function public.submit_solution(text, text, text, smallint[]) to anon, authenticated, service_role;
 grant execute on function public.team_submissions(text, text, integer) to anon, authenticated, service_role;
+grant execute on function public.team_next_submission(text, text) to anon, authenticated, service_role;
+grant execute on function public.team_wait(uuid) to service_role;
+grant execute on function public.queue_ahead(timestamptz) to service_role;
 grant execute on function public.claim_submission(text, integer) to service_role;
 grant execute on function public.finish_submission(uuid, text, text, double precision, double precision, integer, integer, text, text) to service_role;
 

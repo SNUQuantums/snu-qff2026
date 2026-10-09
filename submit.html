@@ -118,11 +118,12 @@
       <button type="button" id="my-results-btn" class="btn btn-outline">
         <span data-kr>내 제출 결과 보기</span><span data-en>Show my results</span>
       </button>
+      <div id="next-submit" class="form-banner" hidden></div>
       <div id="my-results-status" class="form-banner" hidden></div>
       <table class="compare leaderboard-table" id="my-results-table" hidden>
         <thead>
           <tr>
-            <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
+            <th><span data-kr>제출 ID / 시각</span><span data-en>ID / submitted</span></th>
             <th><span data-kr>상태</span><span data-en>Status</span></th>
             <th>1-F</th>
             <th><span data-kr>Acceptance</span><span data-en>Acceptance</span></th>
@@ -159,7 +160,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 }
 </script>
 <script src="assets/supabase-config.js?v=20260924"></script>
-<script src="assets/supabase.js?v=20261009"></script>
+<script src="assets/supabase.js?v=20261010"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -222,6 +223,31 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     });
   }
 
+  // Waiting: the server says how many seconds are left; the page counts down from there.
+  function mmss(sec) {
+    var m = Math.floor(sec / 60), r = sec % 60;
+    return isEn() ? (m ? m + " min " : "") + r + " s" : (m ? m + "분 " : "") + r + "초";
+  }
+  var timers = {};
+  function countdown(key, seconds, render) {
+    clearInterval(timers[key]);
+    var end = Date.now() + seconds * 1000;
+    function tick() {
+      var left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+      render(left);
+      if (left === 0) clearInterval(timers[key]);
+    }
+    tick();
+    timers[key] = setInterval(tick, 1000);
+  }
+  function credentials() {
+    var fd = new FormData(form);
+    return {
+      teamName: (fd.get("teamName") || "").toString().trim(),
+      password: (fd.get("password") || "").toString()
+    };
+  }
+
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -258,6 +284,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
+      clearInterval(timers.submit);
       showBanner(null, "제출 중...", "Submitting...");
 
       window.QFF_SUPABASE.submitEntry({
@@ -268,13 +295,33 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       }).then(function (result) {
         btn.disabled = false;
         if (result.error) {
-          showBanner("error", "제출하지 못했습니다: " + result.error, "Could not submit: " + result.error);
+          var wait = /allowed in (\d+) seconds/.exec(result.error);
+          if (wait) {
+            countdown("submit", Number(wait[1]), function (left) {
+              if (left > 0) {
+                showBanner("error", mmss(left) + " 뒤에 제출할 수 있습니다. (팀별 제출 간격 제한)",
+                           "You can submit again in " + mmss(left) + ". (submissions per team are rate-limited)");
+              } else {
+                showBanner("success", "지금 제출할 수 있습니다.", "You can submit now.");
+              }
+            });
+          } else if (/still queued or being graded/.test(result.error)) {
+            showBanner("error", "이전 제출의 채점 결과가 나온 뒤에 제출할 수 있습니다. 아래 '내 제출 결과'에서 진행 상황을 확인하세요.",
+                       "You can submit once your previous submission is graded. See 'My results' below.");
+          } else {
+            showBanner("error", "제출하지 못했습니다: " + result.error, "Could not submit: " + result.error);
+          }
           return;
         }
-        var receipt = result.data && result.data.submission_id ? " (" + result.data.submission_id.slice(0, 8) + ")" : "";
-        showBanner("success", "제출 완료! 채점 대기열에 등록되었습니다." + receipt, "Submitted and queued for scoring." + receipt);
+        var row = result.data || {};
+        var id = row.submission_id ? row.submission_id.slice(0, 8) : "";
+        var ahead = row.ahead == null ? 0 : Number(row.ahead);
+        showBanner("success",
+          "제출 완료! (ID " + id + ") 앞에 대기 중인 제출 " + ahead + "개. 진행 상황은 아래 '내 제출 결과'에 표시됩니다.",
+          "Submitted (ID " + id + "). " + ahead + " submission(s) ahead in the queue. Progress appears under 'My results' below.");
         form.querySelector('textarea[name="qasm"]').value = "";
         fileInput.value = "";
+        loadResults();
       });
     });
   }
@@ -283,8 +330,9 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   var resultsStatus = document.getElementById("my-results-status");
   var resultsTable = document.getElementById("my-results-table");
   var resultsBody = document.getElementById("my-results-body");
+  var nextEl = document.getElementById("next-submit");
   var STATUS = {
-    queued: ["대기 중", "queued"], processing: ["채점 중", "scoring"], scored: ["채점 완료", "scored"],
+    queued: ["대기 중", "queued"], processing: ["채점 중", "grading"], scored: ["채점 완료", "scored"],
     invalid: ["실격", "invalid"], error: ["오류", "error"]
   };
   function escapeHtml(s) {
@@ -297,47 +345,102 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     resultsStatus.className = "form-banner" + (kind ? " " + kind : "");
     resultsStatus.textContent = isEn() ? en : kr;
   }
-  if (resultsBtn) {
-    resultsBtn.addEventListener("click", function () {
-      var fd = new FormData(form);
-      var teamName = (fd.get("teamName") || "").toString().trim();
-      var password = (fd.get("password") || "").toString();
-      if (!teamName || !password) {
-        resultsBanner("error", "위 폼에서 팀과 비밀번호를 먼저 입력해주세요.", "Enter your team and password in the form above first.");
+  function nextBanner(kind, kr, en) {
+    nextEl.hidden = false;
+    nextEl.className = "form-banner" + (kind ? " " + kind : "");
+    nextEl.textContent = isEn() ? en : kr;
+  }
+  function statusLabel(r) {
+    var label = STATUS[r.status] ? STATUS[r.status][isEn() ? 1 : 0] : r.status;
+    if (r.status === "queued" && r.ahead != null) {
+      label += isEn() ? " — " + r.ahead + " ahead" : " — 앞에 " + r.ahead + "개";
+    }
+    return label;
+  }
+
+  function loadNext(c) {
+    window.QFF_SUPABASE.fetchNextSubmission(c.teamName, c.password).then(function (result) {
+      if (result.error || !result.data) {
+        nextEl.hidden = true;
         return;
       }
-      if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
-        resultsBanner("error", "아직 제출 시스템이 연결되지 않았습니다.", "Submissions aren't connected yet.");
-        return;
-      }
-      resultsBanner(null, "불러오는 중...", "Loading...");
-      window.QFF_SUPABASE.fetchMySubmissions(teamName, password).then(function (result) {
-        if (result.error) {
-          resultsTable.hidden = true;
-          resultsBanner("error", "불러오지 못했습니다: " + result.error, "Could not load: " + result.error);
-          return;
+      var info = result.data;
+      countdown("next", Number(info.wait_seconds) || 0, function (left) {
+        if (info.pending) {
+          nextBanner(null,
+            "이전 제출이 아직 대기 중이거나 채점 중입니다. 결과가 나오고" + (left > 0 ? " " + mmss(left) + "이 지나면" : "") + " 제출할 수 있습니다.",
+            "Your previous submission is still queued or being graded. You can submit once it is graded" +
+            (left > 0 ? " and " + mmss(left) + " have passed." : "."));
+        } else if (left > 0) {
+          nextBanner(null, "다음 제출까지 " + mmss(left), "Next submission in " + mmss(left));
+        } else {
+          nextBanner("success", "지금 제출할 수 있습니다.", "You can submit now.");
         }
-        var rows = result.data || [];
-        if (rows.length === 0) {
-          resultsTable.hidden = true;
-          resultsBanner(null, "아직 제출이 없습니다.", "No submissions yet.");
-          return;
-        }
-        resultsStatus.hidden = true;
-        resultsBody.innerHTML = rows.map(function (r) {
-          var label = STATUS[r.status] ? STATUS[r.status][isEn() ? 1 : 0] : r.status;
-          return "<tr><td class=\"mono\" style=\"font-size:.85rem\">" + escapeHtml(new Date(r.submitted_at).toLocaleString()) +
-            "</td><td>" + escapeHtml(label) +
-            "</td><td class=\"score\">" + (r.score == null ? "" : Number(r.score).toExponential(2)) +
-            "</td><td class=\"mono\">" + (r.acceptance == null ? "" : Number(r.acceptance).toFixed(4)) +
-            "</td><td class=\"mono\">" + (r.n_2q == null ? "" : Number(r.n_2q)) +
-            "</td><td class=\"mono\" style=\"font-size:.85rem\">" + escapeHtml(r.worker) +
-            "</td><td style=\"font-size:.85rem\">" + escapeHtml(r.public_message) + "</td></tr>";
-        }).join("");
-        resultsTable.hidden = false;
       });
     });
   }
+
+  var refreshTimer = null;
+  function loadResults() {
+    var c = credentials();
+    if (!c.teamName || !c.password) {
+      resultsBanner("error", "위 폼에서 팀과 비밀번호를 먼저 입력해주세요.", "Enter your team and password in the form above first.");
+      return;
+    }
+    if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
+      resultsBanner("error", "아직 제출 시스템이 연결되지 않았습니다.", "Submissions aren't connected yet.");
+      return;
+    }
+    clearTimeout(refreshTimer);
+    loadNext(c);
+    window.QFF_SUPABASE.fetchMySubmissions(c.teamName, c.password).then(function (result) {
+      if (result.error) {
+        resultsTable.hidden = true;
+        resultsBanner("error", "불러오지 못했습니다: " + result.error, "Could not load: " + result.error);
+        return;
+      }
+      var rows = result.data || [];
+      if (rows.length === 0) {
+        resultsTable.hidden = true;
+        resultsBanner(null, "아직 제출이 없습니다.", "No submissions yet.");
+        return;
+      }
+      resultsStatus.hidden = true;
+      resultsBody.innerHTML = rows.map(function (r) {
+        var id = String(r.submission_id || "");
+        return "<tr><td class=\"mono\" style=\"font-size:.85rem\">" +
+          "<span class=\"submission-id\" title=\"" + escapeHtml(id) + "\" data-id=\"" + escapeHtml(id) +
+          "\" style=\"cursor:copy;font-weight:600\">" + escapeHtml(id.slice(0, 8)) + "</span><br>" +
+          escapeHtml(new Date(r.submitted_at).toLocaleString()) +
+          "</td><td>" + escapeHtml(statusLabel(r)) +
+          "</td><td class=\"score\">" + (r.score == null ? "" : Number(r.score).toExponential(2)) +
+          "</td><td class=\"mono\">" + (r.acceptance == null ? "" : Number(r.acceptance).toFixed(4)) +
+          "</td><td class=\"mono\">" + (r.n_2q == null ? "" : Number(r.n_2q)) +
+          "</td><td class=\"mono\" style=\"font-size:.85rem\">" + escapeHtml(r.worker) +
+          "</td><td style=\"font-size:.85rem\">" + escapeHtml(r.public_message) + "</td></tr>";
+      }).join("");
+      resultsTable.hidden = false;
+      // While anything is still queued or being graded, look again every 15 seconds.
+      if (rows.some(function (r) { return r.status === "queued" || r.status === "processing"; })) {
+        refreshTimer = setTimeout(loadResults, 15000);
+      }
+    });
+  }
+  if (resultsBtn) {
+    resultsBtn.addEventListener("click", function () {
+      resultsBanner(null, "불러오는 중...", "Loading...");
+      loadResults();
+    });
+  }
+  // Click a submission ID to copy the full ID (organizers look submissions up by it).
+  resultsBody.addEventListener("click", function (e) {
+    var el = e.target.closest(".submission-id");
+    if (!el || !navigator.clipboard) return;
+    navigator.clipboard.writeText(el.getAttribute("data-id")).then(function () {
+      el.textContent = isEn() ? "copied" : "복사됨";
+      setTimeout(function () { el.textContent = el.getAttribute("data-id").slice(0, 8); }, 1200);
+    });
+  });
   loadTeams();
 })();
 </script>

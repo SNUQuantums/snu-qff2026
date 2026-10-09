@@ -90,11 +90,30 @@
       });
   }
 
+  function fetchNextSubmission(teamName, password) {
+    if (!client) return Promise.resolve({ error: "not_configured" });
+
+    return client
+      .rpc(cfg.nextSubmissionFunction || "team_next_submission", {
+        p_team_name: teamName,
+        p_password: password,
+      })
+      .then(function (res) {
+        if (res.error) return { error: messageOf(res.error) };
+        var row = Array.isArray(res.data) ? res.data[0] : res.data;
+        return { data: row || null };
+      })
+      .catch(function (error) {
+        return { error: messageOf(error) };
+      });
+  }
+
   window.QFF_SUPABASE = {
     isConfigured: isConfigured,
     fetchTeams: fetchTeams,
     submitEntry: submitEntry,
     fetchLeaderboard: fetchLeaderboard,
     fetchMySubmissions: fetchMySubmissions,
+    fetchNextSubmission: fetchNextSubmission,
   };
 })();
