@@ -126,6 +126,7 @@
             <th>1-F</th>
             <th><span data-kr>Acceptance</span><span data-en>Acceptance</span></th>
             <th>2Q</th>
+            <th><span data-kr>채점 워커</span><span data-en>Worker</span></th>
             <th><span data-kr>메시지</span><span data-en>Message</span></th>
           </tr>
         </thead>
@@ -329,6 +330,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
             "</td><td class=\"score\">" + (r.score == null ? "" : Number(r.score).toExponential(2)) +
             "</td><td class=\"mono\">" + (r.acceptance == null ? "" : Number(r.acceptance).toFixed(4)) +
             "</td><td class=\"mono\">" + (r.n_2q == null ? "" : Number(r.n_2q)) +
+            "</td><td class=\"mono\" style=\"font-size:.85rem\">" + escapeHtml(r.worker) +
             "</td><td style=\"font-size:.85rem\">" + escapeHtml(r.public_message) + "</td></tr>";
         }).join("");
         resultsTable.hidden = false;

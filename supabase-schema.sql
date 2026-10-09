@@ -322,8 +322,10 @@ $$;
 
 -- A team's own recent submissions, with the judge's public message, so a team
 -- can see why a circuit failed. Authenticated like submit_solution; internal
--- errors and circuit text are not returned.
-create or replace function public.team_submissions(
+-- errors and circuit text are not returned. Dropped first because create or
+-- replace cannot change the columns a function returns.
+drop function if exists public.team_submissions(text, text, integer);
+create function public.team_submissions(
   p_team_name text,
   p_password text,
   p_limit integer default 20
@@ -336,7 +338,8 @@ returns table (
   score double precision,
   acceptance double precision,
   n_2q integer,
-  public_message text
+  public_message text,
+  worker text
 )
 language plpgsql
 stable
@@ -357,7 +360,8 @@ begin
   end if;
 
   return query
-  select s.id, s.status, s.submitted_at, s.scored_at, s.score_a, s.p_acc, s.n_2q, s.public_message
+  select s.id, s.status, s.submitted_at, s.scored_at, s.score_a, s.p_acc, s.n_2q, s.public_message,
+         s.worker_id
   from public.qff_submissions as s
   where s.team_id = v_team.id
   order by s.submitted_at desc
