@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
 <title>Submit a Circuit | QFF SNU 2026 Hackathon</title>
-<meta name="description" content="Circuit submission page for Qiskit Fall Fest 2026 Hackathon participants at Seoul National University. See submission instructions and system availability.">
+<meta name="description" content="Qiskit circuit submission page for Qiskit Fall Fest 2026 Hackathon participants at Seoul National University. See submission instructions and system availability.">
 <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/submit.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,11 +62,11 @@
         <span data-en>Submit your circuit</span>
       </h1>
       <p class="lede">
-        <span data-kr>해커톤 제출 폼입니다. 팀 이름, 제출 비밀번호, data qubit 배치와 회로(Stim 형식 텍스트)를 입력하세요.
+        <span data-kr>해커톤 제출 폼입니다. 팀 이름, 제출 비밀번호, data qubit 배치와 회로(Qiskit OpenQASM 2.0 + <code>// DETECTOR</code> 줄)를 입력하세요.
         제출 후 별도의 채점 서버가 회로를 채점하며(제출 하나에 몇 분 걸릴 수 있습니다), 결과는 아래 <b>내 제출 결과</b>와
         <a href="leaderboard.html" style="color:var(--accent);font-weight:600">리더보드</a>에 반영됩니다.</span>
         <span data-en>Hackathon submission form. Enter your team name, submission password, data-qubit placement,
-        and circuit (Stim-format text). A separate scoring backend grades each submission, which can take a few
+        and circuit (Qiskit OpenQASM 2.0 plus <code>// DETECTOR</code> lines). A separate scoring backend grades each submission, which can take a few
         minutes; results appear under <b>My results</b> below and on the
         <a href="leaderboard.html" style="color:var(--accent);font-weight:600">leaderboard</a>.</span>
       </p>
@@ -90,12 +90,13 @@
           <small class="submit-hint"><span data-kr>0부터 35까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Enter seven distinct physical qubits from 0 through 35, separated by commas.</span></small>
         </label>
         <label>
-          <span><span data-kr>회로 (Stim 형식)</span><span data-en>Circuit (Stim format)</span></span>
-          <textarea name="qasm" rows="12" maxlength="200000" required placeholder="H 0&#10;T 0&#10;CX 0 1&#10;...&#10;M 2&#10;DETECTOR rec[-1]"></textarea>
+          <span><span data-kr>회로 (OpenQASM 2.0)</span><span data-en>Circuit (OpenQASM 2.0)</span></span>
+          <textarea name="qasm" rows="12" maxlength="200000" required placeholder="OPENQASM 2.0;&#10;include &quot;qelib1.inc&quot;;&#10;qreg q[36];&#10;creg m[1];&#10;...&#10;measure q[8] -> m[0];&#10;// DETECTOR m[0]"></textarea>
+          <small class="submit-hint"><span data-kr>tprep.submission_text(qc, detectors)가 만든 텍스트를 그대로 붙여넣으세요.</span><span data-en>Paste the text from tprep.submission_text(qc, detectors).</span></small>
         </label>
         <div class="file-row">
-          <span data-kr>또는 .stim 파일 업로드</span><span data-en>or upload a .stim file</span>
-          <input type="file" id="qasm-file" accept=".stim,.txt" />
+          <span data-kr>또는 .qasm 파일 업로드</span><span data-en>or upload a .qasm file</span>
+          <input type="file" id="qasm-file" accept=".qasm,.txt" />
         </div>
         <button type="submit" class="btn btn-solid">
           <span data-kr>제출하기</span><span data-en>Submit entry</span>

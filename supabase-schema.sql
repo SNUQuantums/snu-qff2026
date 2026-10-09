@@ -5,7 +5,7 @@
 -- table without deleting data. A project created from the first version of
 -- this file is brought up to date by supabase-migrate-v2.sql instead.
 --
--- The `qasm` column holds the submitted circuit text (Stim format) and
+-- The `qasm` column holds the submitted circuit text (OpenQASM 2.0) and
 -- `score_a` holds the score 1-F; the names are historical.
 --
 -- Security model:
