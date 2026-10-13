@@ -84,6 +84,7 @@
             <th><span data-kr>팀</span><span data-en>Team</span></th>
             <th><span data-kr>1-F ↓</span><span data-en>1-F ↓</span></th>
             <th>2Q</th>
+            <th><span data-kr>Acceptance</span><span data-en>Acceptance</span></th>
             <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
           </tr>
         </thead>
@@ -117,7 +118,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 }
 </script>
 <script src="assets/supabase-config.js?v=20260924"></script>
-<script src="assets/supabase.js?v=20261010"></script>
+<script src="assets/supabase.js?v=20261013"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -176,6 +177,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
             "</td><td class=\"score\" title=\"" + Number(r.score_a).toPrecision(6) + "\">" +
             Number(r.score_key).toExponential(1) +
             "</td><td class=\"mono\">" + Number(r.n_2q) +
+            "</td><td class=\"mono\">" + (r.p_acc == null ? "–" : Number(r.p_acc).toFixed(3)) +
             "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + escapeHtml(when) + "</td></tr>"
           );
         })

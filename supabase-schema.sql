@@ -67,12 +67,16 @@ create table if not exists public.qff_leaderboard (
   score_key double precision not null,
   n_2q integer not null,
   n_ticks integer,
+  p_acc double precision,
   submitted_at timestamptz not null,
   updated_at timestamptz not null default now()
 );
 
 alter table public.qff_teams enable row level security;
 alter table public.qff_submissions enable row level security;
+-- Acceptance of the leaderboard entry (added after the first deployment; rerunnable).
+alter table public.qff_leaderboard add column if not exists p_acc double precision;
+
 alter table public.qff_leaderboard enable row level security;
 
 revoke all on table public.qff_teams from anon, authenticated;
@@ -352,12 +356,12 @@ begin
 
   if p_status = 'scored' then
     insert into public.qff_leaderboard (
-      team_id, submission_id, team_name, score_a, score_key, n_2q, n_ticks, submitted_at
+      team_id, submission_id, team_name, score_a, score_key, n_2q, n_ticks, p_acc, submitted_at
     )
     select s.team_id, s.id, t.team_name, s.score_a,
            -- two significant figures: 0.002597 -> 0.0026
            to_char(s.score_a, '9.9EEEE')::double precision,
-           s.n_2q, s.n_ticks, s.submitted_at
+           s.n_2q, s.n_ticks, s.p_acc, s.submitted_at
     from public.qff_submissions as s
     join public.qff_teams as t on t.id = s.team_id
     where s.id = v_submission.id
@@ -368,6 +372,7 @@ begin
           score_key = excluded.score_key,
           n_2q = excluded.n_2q,
           n_ticks = excluded.n_ticks,
+          p_acc = excluded.p_acc,
           submitted_at = excluded.submitted_at,
           updated_at = now()
       where (excluded.score_key, excluded.n_2q, excluded.submitted_at)
