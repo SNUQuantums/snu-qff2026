@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
-<title>Registration | QFF SNU 2026 · Qiskit Fall Fest</title>
-<meta name="description" content="Registration for Qiskit Fall Fest 2026 at Seoul National University opens on Friday, October 16, 2026. Choose your track: Seminar, Hackathon, Ideathon, or Poster Session.">
+<title>Register | QFF SNU 2026 · Qiskit Fall Fest</title>
+<meta name="description" content="Register for Qiskit Fall Fest 2026 at Seoul National University: Ideathon, Hackathon, speaker sessions, and poster submission.">
 <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/register.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=0639de8d794f">
+<link rel="stylesheet" href="assets/event.css?v=37f62790ab74">
 </head>
 <body>
 
@@ -32,79 +33,221 @@
     <nav class="primary-nav">
       <ul>
         <li><a href="index.html" data-nav="index.html"><span data-kr>홈</span><span data-en>Home</span></a></li>
-
         <li><a href="schedule.html" data-nav="schedule.html"><span data-kr>일정</span><span data-en>Schedule</span></a></li>
+        <li><a href="ideathon.html" data-nav="ideathon.html"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></a></li>
         <li><a href="hackathon.html" data-nav="hackathon.html"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
-        <li><a href="posters.html" data-nav="posters.html"><span data-kr>포스터 세션</span><span data-en>Posters</span></a></li>
+        <li><a href="register.html" data-nav="register.html"><span data-kr>신청</span><span data-en>Register</span></a></li>
         <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
-        <li class="mobile-leaderboard"><a href="leaderboard.html" data-nav="leaderboard.html"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a></li>
       </ul>
       <div class="nav-actions">
-        <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
-        <a href="register.html" class="btn btn-solid" aria-current="page"><span data-kr>신청하기</span><span data-en>Register</span></a>
+        <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
         <button class="menu-btn" aria-label="Menu"><span></span></button>
       </div>
     </nav>
   </div>
 </header>
 
-
-
 <main>
-  <section class="paper-surface">
-    <div class="wrap page-intro-layout">
-      <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/register.svg');-webkit-mask-image:url('assets/icons/register.svg')" aria-hidden="true"></span>
+  <section class="paper-surface" style="padding-block:clamp(32px,4vw,56px)">
+    <div class="wrap">
       <span class="eyebrow"><span data-kr>신청</span><span data-en>Register</span></span>
-      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)"><span data-kr>참가 방법을 선택하세요</span><span data-en>Choose how you'll take part</span></h1>
-      <p class="lede">
-        <span data-kr>아래 네 가지 중 자신에게 맞는 항목을 선택해 신청서를 작성해주세요. 전공과 상관없이 원하는 트랙을
-        선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다.</span>
-        <span data-en>Pick the option that fits you and fill in its form. Any major can choose any track,
-        but each participant may join only one track.</span>
+      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem);margin:.3rem 0 .4rem"><span data-kr>참가 방법을 선택하세요</span><span data-en>Choose how you'll take part</span></h1>
+      <p class="lede reg-page-lede" style="margin:0">
+        <span data-kr>네 가지 중 하나를 누르면 신청 창이 열립니다. 아이디어톤과 해커톤은 한 사람당 하나만 참가할 수 있습니다.</span>
+        <span data-en>Tap one of the four to open its form. Each participant may join only one of the Ideathon and the Hackathon.</span>
       </p>
+      <div id="reg-status" class="form-banner" hidden></div>
 
-      <div class="reg-open-callout" style="max-width:65ch;margin:1.5rem 0 .5rem;padding:1.15rem 1.3rem;border:1px solid var(--accent);border-left-width:5px;border-radius:var(--r-sm);background:var(--accent-tint)">
-        <p style="margin:0;font-size:1.08rem;font-weight:700;color:var(--accent-strong)">
-          <span data-kr>등록은 2026년 10월 16일 금요일에 시작됩니다.</span>
-          <span data-en>Registration opens on Friday, October 16, 2026.</span>
-        </p>
-        <p style="margin:.6rem 0 0;font-size:.95rem;line-height:1.6;color:var(--ink-soft)">
-          <span data-kr>그날 아래 네 가지 신청서 버튼이 모두 열립니다.</span>
-          <span data-en>All four forms below go live on that day.</span>
-        </p>
-      </div>
+      <div class="reg-grid">
+        <button type="button" class="reg-tile ideathon" data-overlay="ideathon">
+          <div>
+            <span class="kicker">01 · Ideathon</span>
+            <h2><span data-kr>아이디어톤</span><span data-en>Ideathon</span></h2>
+            <p><span data-kr>코딩이나 물리 배경이 없어도 괜찮습니다. 참가자 카드가 아이디어톤 페이지에 올라가고 단체 채팅방 링크를 받습니다.</span><span data-en>No coding or physics needed. Your card appears on the Ideathon page and you receive the group chat link.</span></p>
+          </div>
+          <div class="tile-foot"><span><span data-kr>신청서 열기 →</span><span data-en>Open the form →</span></span><span class="state" data-state="ideathon"></span></div>
+        </button>
 
-      <div class="route-grid">
-        <div class="route-card">
+        <button type="button" class="reg-tile hackathon" data-overlay="hackathon">
+          <div>
+            <span class="kicker">02 · Hackathon</span>
+            <h2><span data-kr>해커톤</span><span data-en>Hackathon</span></h2>
+            <p><span data-kr>팀 이름과 제출 비밀번호를 정합니다. 팀당 한 명만 등록하면 됩니다.</span><span data-en>Set a team name and submission password. One registration per team.</span></p>
+          </div>
+          <div class="tile-foot"><span><span data-kr>팀 등록하기 →</span><span data-en>Register a team →</span></span><span class="state" data-state="hackathon"></span></div>
+        </button>
 
-          <h3 style="margin-top:.6rem"><span data-kr>해커톤 (심화)</span><span data-en>Hackathon (advanced)</span></h3>
-          <p class="lede" style="font-size:.95rem"><span data-kr>Qiskit 또는 코딩 경험이 있다면 전공 상관없이 추천합니다. 관악캠퍼스 28동 101호 대면 진행(Zoom 송출), 자동 채점, 우수 팀은 시상식에서 발표.</span><span data-en>Recommended if you have coding or Qiskit experience, whatever your major. In person at Building 28, Room 101 on the Gwanak campus (streamed on Zoom), automatically scored, with top teams presenting at the awards ceremony.</span></p>
-          <button type="button" class="btn btn-solid" disabled aria-disabled="true"><span data-kr>해커톤 신청서 · 10월 16일(금) 오픈</span><span data-en>Hackathon form · opens Fri, Oct 16</span></button>
-          <p class="lede" style="font-size:.85rem;margin-top:.6rem"><span data-kr>이미 등록했다면 <a href="submit.html" style="color:var(--accent);font-weight:600">여기서 회로를 제출</a>하세요.</span><span data-en>Already registered? <a href="submit.html" style="color:var(--accent);font-weight:600">Submit your circuit here</a>.</span></p>
-        </div>
-        <div class="route-card">
+        <button type="button" class="reg-tile" data-overlay="speakers">
+          <div>
+            <span class="kicker">03 · Speaker sessions</span>
+            <h2><span data-kr>연사 세션</span><span data-en>Speaker sessions</span></h2>
+            <p><span data-kr>Day 1–2 초청 강연과 사전 온라인 세션에 참석하려면 RSVP 해주세요. 해커톤 신청 없이도 참석할 수 있습니다.</span><span data-en>RSVP for the Day 1–2 invited talks and the pre-festival online sessions. No hackathon registration needed.</span></p>
+          </div>
+          <div class="tile-foot"><span><span data-kr>RSVP →</span><span data-en>RSVP →</span></span><span class="state">Google Forms</span></div>
+        </button>
 
-          <h3 style="margin-top:.6rem"><span data-kr>아이디어톤 (입문)</span><span data-en>Ideathon (beginner)</span></h3>
-          <p class="lede" style="font-size:.95rem"><span data-kr>코딩, 물리 배경이 없어도 괜찮습니다. 테이크홈 + 주말 짧은 발표.</span><span data-en>No coding or physics background needed. Take-home work plus a short presentation over the weekend.</span></p>
-          <button type="button" class="btn btn-solid" disabled aria-disabled="true"><span data-kr>아이디어톤 신청서 · 10월 16일(금) 오픈</span><span data-en>Ideathon form · opens Fri, Oct 16</span></button>
-        </div>
-        <div class="route-card">
-          <span class="chip" style="background:transparent;border:1.5px solid var(--tag-teal);color:var(--tag-teal)">POSTER</span>
-          <h3 style="margin-top:.6rem"><span data-kr>포스터 세션</span><span data-en>Poster Session</span></h3>
-          <p class="lede" style="font-size:.95rem"><span data-kr>기존 연구 결과가 있는 학생을 위한 발표 자리입니다.</span><span data-en>A space for students to present research they have already done.</span></p>
-          <button type="button" class="btn btn-outline" style="border-color:var(--tag-teal);color:var(--tag-teal)" disabled aria-disabled="true"><span data-kr>포스터 제출 · 10월 16일(금) 오픈</span><span data-en>Poster submission · opens Fri, Oct 16</span></button>
-        </div>
-        <div class="route-card">
-          <span class="chip" style="background:transparent;border:1.5px solid var(--ink-soft);color:var(--ink-soft)">DAY 1</span>
-          <h3 style="margin-top:.6rem"><span data-kr>세미나만 참석</span><span data-en>Seminar only</span></h3>
-          <p class="lede" style="font-size:.95rem"><span data-kr>해커톤 신청 없이 세미나만 듣고 싶다면 여기로 RSVP하세요.</span><span data-en>Want to attend the talks without joining the Hackathon? RSVP here.</span></p>
-          <button type="button" class="btn btn-outline" disabled aria-disabled="true"><span data-kr>세미나 RSVP · 10월 16일(금) 오픈</span><span data-en>Seminar RSVP · opens Fri, Oct 16</span></button>
-        </div>
+        <button type="button" class="reg-tile" data-overlay="poster">
+          <div>
+            <span class="kicker">04 · Poster session</span>
+            <h2><span data-kr>포스터 제출</span><span data-en>Poster submission</span></h2>
+            <p><span data-kr>기존 연구 결과가 있는 학생을 위한 포스터 세션입니다. 10월 31일 (토) 14:10–16:40 발표.</span><span data-en>For students with existing research results. Presented Sat, Oct 31, 14:10–16:40.</span></p>
+          </div>
+          <div class="tile-foot"><span><span data-kr>초록 제출 →</span><span data-en>Submit an abstract →</span></span><span class="state">Google Forms</span></div>
+        </button>
       </div>
     </div>
   </section>
 </main>
+
+<!-- ======================= Ideathon overlay ======================= -->
+<dialog class="reg-dialog" id="dlg-ideathon">
+  <div class="reg-dialog-inner">
+    <div class="reg-dialog-head">
+      <h2><span data-kr>아이디어톤 참가 신청</span><span data-en>Ideathon registration</span></h2>
+      <button type="button" class="close" data-close aria-label="Close">×</button>
+    </div>
+    <div class="reg-dialog-body">
+      <div id="ideathon-closed" class="form-banner" hidden></div>
+      <form id="ideathon-form" class="reg-form" novalidate>
+        <p class="hint" style="margin:0">
+          <span data-kr>이름, 소속, 자기소개, 태그는 아이디어톤 페이지의 참가자 카드에 공개됩니다. 전화번호와 이메일, 팀 정보는 운영진만 확인하며 단체 채팅방 초대에 사용됩니다.</span>
+          <span data-en>Name, affiliation, self-introduction, and tags appear on your public participant card. Phone, email, and team details are seen only by organizers and used for the group chat invitation.</span>
+        </p>
+        <div class="row">
+          <label><span data-kr>이름</span><span data-en>Name</span><input type="text" name="name" maxlength="60" required></label>
+          <label><span data-kr>소속 (학교 · 학과 또는 회사)</span><span data-en>Affiliation (school and major, or company)</span><input type="text" name="affiliation" maxlength="120" required></label>
+        </div>
+        <label><span data-kr>자기소개 (PR)</span><span data-en>Self-introduction</span>
+          <textarea name="selfPr" maxlength="600" required placeholder="관심 분야, 할 수 있는 것, 함께하고 싶은 팀원 등 / Interests, what you bring, who you'd like to team up with"></textarea>
+          <span class="hint"><span data-kr>최대 600자</span><span data-en>Up to 600 characters</span></span>
+        </label>
+        <fieldset>
+          <legend><span data-kr>태그 (복수 선택)</span><span data-en>Tags (choose any)</span></legend>
+          <div class="option-grid">
+            <label><input type="checkbox" name="tags" value="Quantum Technology"><span data-kr>양자기술</span><span data-en>Quantum Technology</span></label>
+            <label><input type="checkbox" name="tags" value="Coding"><span data-kr>코딩</span><span data-en>Coding</span></label>
+            <label><input type="checkbox" name="tags" value="Design"><span data-kr>디자인</span><span data-en>Design</span></label>
+            <label><input type="checkbox" name="tags" value="Marketing"><span data-kr>마케팅</span><span data-en>Marketing</span></label>
+            <label><input type="checkbox" name="tags" value="Presentation"><span data-kr>발표</span><span data-en>Presentation</span></label>
+          </div>
+        </fieldset>
+        <div class="row">
+          <label><span data-kr>전화번호</span><span data-en>Phone number</span><input type="tel" name="phone" maxlength="30" required placeholder="010-0000-0000"></label>
+          <label><span data-kr>이메일</span><span data-en>Email</span><input type="email" name="email" maxlength="120" required></label>
+        </div>
+        <fieldset>
+          <legend><span data-kr>이미 팀을 구성했나요?</span><span data-en>Do you already have a team?</span></legend>
+          <div class="option-grid">
+            <label><input type="radio" name="hasTeam" value="no" checked><span data-kr>아니요, 팀원을 찾고 있어요</span><span data-en>No, I'm looking for teammates</span></label>
+            <label><input type="radio" name="hasTeam" value="yes"><span data-kr>네, 팀이 있어요</span><span data-en>Yes, I have a team</span></label>
+          </div>
+        </fieldset>
+        <div class="team-block" id="team-block" hidden>
+          <p class="hint" style="margin:0"><span data-kr><b>팀은 최대 4명</b>이며, <b>팀에서 한 명만</b> 신청하면 됩니다. 본인 외 팀원 정보를 아래에 적어주세요.</span><span data-en><b>Teams are up to 4 members</b> and <b>only one member</b> needs to register. List your teammates below.</span></p>
+          <label><span data-kr>팀 이름</span><span data-en>Team name</span><input type="text" name="teamName" maxlength="80"></label>
+          <div class="mate-row"><span class="mate-label"><span data-kr>팀원 1</span><span data-en>Teammate 1</span></span>
+            <input type="text" name="mate1name" maxlength="60" placeholder="이름 / Name"><input type="tel" name="mate1phone" maxlength="30" placeholder="전화번호 / Phone"><input type="email" name="mate1email" maxlength="120" placeholder="이메일 / Email"></div>
+          <div class="mate-row"><span class="mate-label"><span data-kr>팀원 2</span><span data-en>Teammate 2</span></span>
+            <input type="text" name="mate2name" maxlength="60" placeholder="이름 / Name"><input type="tel" name="mate2phone" maxlength="30" placeholder="전화번호 / Phone"><input type="email" name="mate2email" maxlength="120" placeholder="이메일 / Email"></div>
+          <div class="mate-row"><span class="mate-label"><span data-kr>팀원 3</span><span data-en>Teammate 3</span></span>
+            <input type="text" name="mate3name" maxlength="60" placeholder="이름 / Name"><input type="tel" name="mate3phone" maxlength="30" placeholder="전화번호 / Phone"><input type="email" name="mate3email" maxlength="120" placeholder="이메일 / Email"></div>
+        </div>
+        <div id="ideathon-error" class="form-banner error" hidden></div>
+        <div class="reg-actions">
+          <button type="submit" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></button>
+          <button type="button" class="btn btn-outline" data-close><span data-kr>취소</span><span data-en>Cancel</span></button>
+        </div>
+      </form>
+      <div id="ideathon-confirm" hidden>
+        <p class="lede" style="font-size:1rem;margin:0 0 var(--sp-2)"><span data-kr>입력한 내용을 확인해주세요.</span><span data-en>Please confirm your details.</span></p>
+        <dl class="confirm-list" id="ideathon-summary"></dl>
+        <div id="ideathon-confirm-error" class="form-banner error" hidden style="margin-bottom:var(--sp-2)"></div>
+        <div class="reg-actions">
+          <button type="button" class="btn btn-solid" id="ideathon-send"><span data-kr>확인하고 신청</span><span data-en>Confirm and register</span></button>
+          <button type="button" class="btn btn-outline" id="ideathon-back"><span data-kr>수정하기</span><span data-en>Edit</span></button>
+        </div>
+      </div>
+      <div id="ideathon-done" class="success-box" hidden>
+        <span data-kr>신청이 완료되었습니다. 참가자 카드가 <a href="ideathon.html">아이디어톤 페이지</a>에 올라갔고, 단체 채팅방 링크는 입력한 연락처로 보내드립니다.</span>
+        <span data-en>You're registered. Your card is now on the <a href="ideathon.html">Ideathon page</a>, and the group chat link will be sent to the contact you entered.</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ======================= Hackathon overlay ======================= -->
+<dialog class="reg-dialog" id="dlg-hackathon">
+  <div class="reg-dialog-inner">
+    <div class="reg-dialog-head">
+      <h2><span data-kr>해커톤 팀 등록</span><span data-en>Hackathon team registration</span></h2>
+      <button type="button" class="close" data-close aria-label="Close">×</button>
+    </div>
+    <div class="reg-dialog-body">
+      <div id="hackathon-closed" class="form-banner" hidden></div>
+      <form id="hackathon-form" class="reg-form" novalidate>
+        <p class="hint" style="margin:0">
+          <span data-kr>팀 이름은 리더보드에 공개됩니다. 제출 비밀번호는 회로를 제출하고 결과를 조회할 때 팀 전체가 사용하니 팀원과 공유하세요. 팀장 연락처는 운영진만 확인합니다.</span>
+          <span data-en>The team name appears on the leaderboard. The submission password is used by the whole team to submit circuits and view results, so share it with your teammates. Leader contact details are seen only by organizers.</span>
+        </p>
+        <div class="row">
+          <label><span data-kr>팀 이름</span><span data-en>Team name</span><input type="text" name="teamName" maxlength="80" required></label>
+          <label><span data-kr>제출 비밀번호 (8자 이상)</span><span data-en>Submission password (8+ characters)</span><input type="password" name="password" minlength="8" maxlength="200" autocomplete="new-password" required></label>
+        </div>
+        <div class="row">
+          <label><span data-kr>팀장 이름</span><span data-en>Team leader name</span><input type="text" name="leaderName" maxlength="60" required></label>
+          <label><span data-kr>팀장 전화번호</span><span data-en>Leader phone number</span><input type="tel" name="phone" maxlength="30" required placeholder="010-0000-0000"></label>
+        </div>
+        <label><span data-kr>팀장 이메일</span><span data-en>Leader email</span><input type="email" name="email" maxlength="120" required></label>
+        <div id="hackathon-error" class="form-banner error" hidden></div>
+        <div class="reg-actions">
+          <button type="submit" class="btn btn-solid"><span data-kr>등록하기</span><span data-en>Register</span></button>
+          <button type="button" class="btn btn-outline" data-close><span data-kr>취소</span><span data-en>Cancel</span></button>
+        </div>
+      </form>
+      <div id="hackathon-confirm" hidden>
+        <p class="lede" style="font-size:1rem;margin:0 0 var(--sp-2)"><span data-kr>입력한 내용을 확인해주세요. 비밀번호는 다시 보여드리지 않으니 기억해두세요.</span><span data-en>Please confirm your details. The password will not be shown again, so keep it safe.</span></p>
+        <dl class="confirm-list" id="hackathon-summary"></dl>
+        <div id="hackathon-confirm-error" class="form-banner error" hidden style="margin-bottom:var(--sp-2)"></div>
+        <div class="reg-actions">
+          <button type="button" class="btn btn-solid" id="hackathon-send"><span data-kr>확인하고 등록</span><span data-en>Confirm and register</span></button>
+          <button type="button" class="btn btn-outline" id="hackathon-back"><span data-kr>수정하기</span><span data-en>Edit</span></button>
+        </div>
+      </div>
+      <div id="hackathon-done" class="success-box" hidden>
+        <span data-kr>팀이 등록되었습니다. 문제가 공개되면 <a href="hackathon.html">해커톤 페이지</a>에서 팀 이름과 비밀번호로 회로를 제출하세요.</span>
+        <span data-en>Your team is registered. Once the problem is released, submit circuits with your team name and password on the <a href="hackathon.html">Hackathon page</a>.</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ======================= Google Forms overlays ======================= -->
+<dialog class="reg-dialog" id="dlg-speakers">
+  <div class="reg-dialog-inner">
+    <div class="reg-dialog-head">
+      <h2><span data-kr>연사 세션 RSVP</span><span data-en>Speaker sessions RSVP</span></h2>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <a class="btn btn-outline" style="font-size:.8rem" href="https://forms.gle/dfNdoTaK4kJY26Va6" target="_blank" rel="noopener"><span data-kr>새 창에서 열기</span><span data-en>Open in new tab</span></a>
+        <button type="button" class="close" data-close aria-label="Close">×</button>
+      </div>
+    </div>
+    <div class="reg-dialog-body embed"><iframe data-src="https://forms.gle/dfNdoTaK4kJY26Va6" title="Speaker sessions RSVP" loading="lazy"></iframe></div>
+  </div>
+</dialog>
+
+<dialog class="reg-dialog" id="dlg-poster">
+  <div class="reg-dialog-inner">
+    <div class="reg-dialog-head">
+      <h2><span data-kr>포스터 초록 제출</span><span data-en>Poster abstract submission</span></h2>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <a class="btn btn-outline" style="font-size:.8rem" href="https://forms.gle/UgdxmxE6zEuepfmbA" target="_blank" rel="noopener"><span data-kr>새 창에서 열기</span><span data-en>Open in new tab</span></a>
+        <button type="button" class="close" data-close aria-label="Close">×</button>
+      </div>
+    </div>
+    <div class="reg-dialog-body embed"><iframe data-src="https://forms.gle/UgdxmxE6zEuepfmbA" title="Poster abstract submission" loading="lazy"></iframe></div>
+  </div>
+</dialog>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -117,6 +260,210 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
+  document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
+}
+</script>
+<script src="assets/supabase-config.js?v=20260924"></script>
+<script src="assets/supabase.js?v=20261014"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
+<script>
+(function () {
+  var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
+  var t = function (kr, en) { return isEn() ? en : kr; };
+  var api = window.QFF_SUPABASE;
+  var TAG_KR = { "Quantum Technology": "양자기술", "Coding": "코딩", "Design": "디자인", "Marketing": "마케팅", "Presentation": "발표" };
+  var status = null;
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmtKST(iso) {
+    try {
+      return new Intl.DateTimeFormat(isEn() ? "en-US" : "ko-KR", { timeZone: "Asia/Seoul", month: "long", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+    } catch (e) { return iso; }
+  }
+  function show(el, kind, kr, en) {
+    el.hidden = false;
+    el.className = "form-banner" + (kind ? " " + kind : "");
+    el.textContent = t(kr, en);
+  }
+
+  // ---- overlays ---------------------------------------------------------
+  var dialogs = {
+    ideathon: document.getElementById("dlg-ideathon"),
+    hackathon: document.getElementById("dlg-hackathon"),
+    speakers: document.getElementById("dlg-speakers"),
+    poster: document.getElementById("dlg-poster"),
+  };
+  function openOverlay(key) {
+    var d = dialogs[key];
+    if (!d) return;
+    var frame = d.querySelector("iframe[data-src]");
+    if (frame && !frame.src) frame.src = frame.getAttribute("data-src");
+    if (!d.open) d.showModal();
+    if (history.replaceState) history.replaceState(null, "", "#" + key);
+  }
+  function closeOverlay(d) {
+    if (d.open) d.close();
+    if (history.replaceState) history.replaceState(null, "", location.pathname);
+  }
+  document.querySelectorAll(".reg-tile[data-overlay]").forEach(function (tile) {
+    tile.addEventListener("click", function () { openOverlay(tile.dataset.overlay); });
+  });
+  Object.keys(dialogs).forEach(function (key) {
+    var d = dialogs[key];
+    d.querySelectorAll("[data-close]").forEach(function (b) { b.addEventListener("click", function () { closeOverlay(d); }); });
+    d.addEventListener("click", function (e) { if (e.target === d) closeOverlay(d); });
+    d.addEventListener("cancel", function () { if (history.replaceState) history.replaceState(null, "", location.pathname); });
+  });
+  function openFromHash() {
+    var key = (location.hash || "").replace("#", "");
+    if (dialogs[key]) openOverlay(key);
+  }
+
+  // ---- event status gates ----------------------------------------------
+  function applyStatus(s) {
+    status = s;
+    var ideaState = document.querySelector('[data-state="ideathon"]');
+    var hackState = document.querySelector('[data-state="hackathon"]');
+    var ideaClosed = document.getElementById("ideathon-closed");
+    var hackClosed = document.getElementById("hackathon-closed");
+    if (s.ideathon_registration_open) {
+      ideaState.textContent = t("접수 중", "Open");
+      ideaClosed.hidden = true;
+      document.getElementById("ideathon-form").hidden = false;
+    } else {
+      ideaState.textContent = t(fmtKST(s.ideathon_registration_opens_at) + " 오픈", "Opens " + fmtKST(s.ideathon_registration_opens_at));
+      show(ideaClosed, null, "아이디어톤 신청은 " + fmtKST(s.ideathon_registration_opens_at) + "부터 받습니다.", "Ideathon registration opens " + fmtKST(s.ideathon_registration_opens_at) + " KST.");
+      document.getElementById("ideathon-form").hidden = true;
+    }
+    if (s.hackathon_registration_open) {
+      hackState.textContent = t("접수 중", "Open");
+      hackClosed.hidden = true;
+      document.getElementById("hackathon-form").hidden = false;
+    } else {
+      hackState.textContent = t(fmtKST(s.hackathon_registration_opens_at) + " 오픈", "Opens " + fmtKST(s.hackathon_registration_opens_at));
+      show(hackClosed, null, "해커톤 팀 등록은 " + fmtKST(s.hackathon_registration_opens_at) + "부터 받습니다.", "Hackathon registration opens " + fmtKST(s.hackathon_registration_opens_at) + " KST.");
+      document.getElementById("hackathon-form").hidden = true;
+    }
+  }
+
+  // ---- ideathon form ----------------------------------------------------
+  var iForm = document.getElementById("ideathon-form");
+  var iConfirm = document.getElementById("ideathon-confirm");
+  var iDone = document.getElementById("ideathon-done");
+  var iErr = document.getElementById("ideathon-error");
+  var iData = null;
+  iForm.querySelectorAll('input[name="hasTeam"]').forEach(function (r) {
+    r.addEventListener("change", function () { document.getElementById("team-block").hidden = iForm.hasTeam.value !== "yes"; });
+  });
+  function readIdeathon() {
+    var fd = new FormData(iForm);
+    var v = function (k) { return (fd.get(k) || "").toString().trim(); };
+    var d = { name: v("name"), affiliation: v("affiliation"), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String),
+      phone: v("phone"), email: v("email"), hasTeam: fd.get("hasTeam") === "yes", teamName: v("teamName"), teammates: [] };
+    for (var i = 1; i <= 3; i++) {
+      var n = v("mate" + i + "name"), p = v("mate" + i + "phone"), e = v("mate" + i + "email");
+      if (n || p || e) d.teammates.push({ name: n, phone: p, email: e });
+    }
+    return d;
+  }
+  function validateIdeathon(d) {
+    if (!d.name || !d.affiliation || !d.selfPr) return t("이름, 소속, 자기소개를 입력해주세요.", "Name, affiliation, and self-introduction are required.");
+    if (d.selfPr.length > 600) return t("자기소개는 600자 이하여야 합니다.", "Self-introduction must be 600 characters or fewer.");
+    if (d.phone.length < 5) return t("전화번호를 입력해주세요.", "A phone number is required.");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) return t("올바른 이메일을 입력해주세요.", "Enter a valid email address.");
+    if (d.hasTeam) {
+      if (!d.teamName) return t("팀 이름을 입력해주세요.", "Team name is required.");
+      for (var i = 0; i < d.teammates.length; i++) {
+        var m = d.teammates[i];
+        if (!m.name || m.phone.length < 5 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.email))
+          return t("팀원 " + (i + 1) + "의 이름, 전화번호, 이메일을 모두 입력해주세요.", "Teammate " + (i + 1) + " needs a name, phone number, and email.");
+      }
+    } else { d.teamName = ""; d.teammates = []; }
+    return null;
+  }
+  function row(dt, dd) { return "<dt>" + esc(dt) + "</dt><dd>" + esc(dd || "–") + "</dd>"; }
+  iForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    iErr.hidden = true;
+    var d = readIdeathon();
+    var err = validateIdeathon(d);
+    if (err) { show(iErr, "error", err, err); return; }
+    iData = d;
+    var tags = d.tags.map(function (x) { return isEn() ? x : (TAG_KR[x] || x); }).join(", ");
+    var html = row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + row(t("자기소개", "Self-introduction"), d.selfPr) +
+      row(t("태그", "Tags"), tags) + row(t("전화번호", "Phone"), d.phone) + row(t("이메일", "Email"), d.email) +
+      row(t("팀", "Team"), d.hasTeam ? d.teamName : t("팀원 찾는 중", "Looking for teammates"));
+    d.teammates.forEach(function (m, i) { html += row(t("팀원 " + (i + 1), "Teammate " + (i + 1)), m.name + " · " + m.phone + " · " + m.email); });
+    document.getElementById("ideathon-summary").innerHTML = html;
+    iForm.hidden = true; iConfirm.hidden = false;
+  });
+  document.getElementById("ideathon-back").addEventListener("click", function () { iConfirm.hidden = true; iForm.hidden = false; });
+  document.getElementById("ideathon-send").addEventListener("click", function () {
+    var btn = this, errEl = document.getElementById("ideathon-confirm-error");
+    errEl.hidden = true; btn.disabled = true;
+    api.registerIdeathon(iData).then(function (res) {
+      btn.disabled = false;
+      if (res.error) { show(errEl, "error", "신청하지 못했습니다: " + res.error, "Could not register: " + res.error); return; }
+      iConfirm.hidden = true; iDone.hidden = false;
+    });
+  });
+
+  // ---- hackathon form ---------------------------------------------------
+  var hForm = document.getElementById("hackathon-form");
+  var hConfirm = document.getElementById("hackathon-confirm");
+  var hDone = document.getElementById("hackathon-done");
+  var hErr = document.getElementById("hackathon-error");
+  var hData = null;
+  hForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    hErr.hidden = true;
+    var fd = new FormData(hForm);
+    var v = function (k) { return (fd.get(k) || "").toString(); };
+    var d = { teamName: v("teamName").trim(), password: v("password"), leaderName: v("leaderName").trim(), phone: v("phone").trim(), email: v("email").trim() };
+    var err = null;
+    if (!d.teamName) err = t("팀 이름을 입력해주세요.", "Team name is required.");
+    else if (d.password.length < 8) err = t("비밀번호는 8자 이상이어야 합니다.", "Password must be at least 8 characters.");
+    else if (!d.leaderName) err = t("팀장 이름을 입력해주세요.", "Team leader name is required.");
+    else if (d.phone.length < 5) err = t("전화번호를 입력해주세요.", "A phone number is required.");
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) err = t("올바른 이메일을 입력해주세요.", "Enter a valid email address.");
+    if (err) { show(hErr, "error", err, err); return; }
+    hData = d;
+    document.getElementById("hackathon-summary").innerHTML = row(t("팀 이름", "Team name"), d.teamName) +
+      row(t("제출 비밀번호", "Submission password"), d.password) + row(t("팀장", "Team leader"), d.leaderName) +
+      row(t("전화번호", "Phone"), d.phone) + row(t("이메일", "Email"), d.email);
+    hForm.hidden = true; hConfirm.hidden = false;
+  });
+  document.getElementById("hackathon-back").addEventListener("click", function () { hConfirm.hidden = true; hForm.hidden = false; });
+  document.getElementById("hackathon-send").addEventListener("click", function () {
+    var btn = this, errEl = document.getElementById("hackathon-confirm-error");
+    errEl.hidden = true; btn.disabled = true;
+    api.registerHackathonTeam(hData).then(function (res) {
+      btn.disabled = false;
+      if (res.error) { show(errEl, "error", "등록하지 못했습니다: " + res.error, "Could not register: " + res.error); return; }
+      hConfirm.hidden = true; hDone.hidden = false;
+    });
+  });
+
+  // ---- boot -------------------------------------------------------------
+  function boot() {
+    if (!api || !api.isConfigured) {
+      show(document.getElementById("reg-status"), "error", "신청 시스템이 아직 연결되지 않았습니다.", "Registration isn't connected yet.");
+    } else {
+      api.fetchEventStatus().then(function (res) { if (res.data) applyStatus(res.data); });
+    }
+    openFromHash();
+  }
+  window.addEventListener("hashchange", openFromHash);
+  document.querySelectorAll(".lang-toggle").forEach(function (b) { b.addEventListener("click", function () { setTimeout(function () { if (status) applyStatus(status); }, 0); }); });
+  document.addEventListener("DOMContentLoaded", boot);
+})();
+</script>
 </body>
 </html>

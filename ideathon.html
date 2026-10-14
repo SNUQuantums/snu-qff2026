@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko" data-lang="kr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<title>Ideathon | QFF SNU 2026 · Qiskit Fall Fest</title>
+<meta name="description" content="Qiskit Fall Fest 2026 Ideathon at Seoul National University: the topic, pitch templates, reference cases, and the participants looking for teammates.">
+<link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/ideathon.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
+<link rel="stylesheet" href="assets/reference-design.css?v=0639de8d794f">
+<link rel="stylesheet" href="assets/event.css?v=37f62790ab74">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="2.1" style="fill:var(--navy-ink)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(120 12 12)"/>
+        </svg>
+      </span>
+      Qiskit Fall Fest <small>@ SNU · SQRT</small>
+    </a>
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="index.html" data-nav="index.html"><span data-kr>홈</span><span data-en>Home</span></a></li>
+        <li><a href="schedule.html" data-nav="schedule.html"><span data-kr>일정</span><span data-en>Schedule</span></a></li>
+        <li><a href="ideathon.html" data-nav="ideathon.html"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></a></li>
+        <li><a href="hackathon.html" data-nav="hackathon.html"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
+        <li><a href="register.html" data-nav="register.html"><span data-kr>신청</span><span data-en>Register</span></a></li>
+        <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
+        <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
+        <button class="menu-btn" aria-label="Menu"><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="paper-surface">
+    <div class="wrap page-intro-layout">
+      <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/idea.svg');-webkit-mask-image:url('assets/icons/idea.svg')" aria-hidden="true"></span>
+      <div class="page-head">
+        <div>
+          <span class="eyebrow"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></span>
+          <h1><span data-kr>양자 시대의 비즈니스를 상상하다</span><span data-en>Imagining business in the quantum era</span></h1>
+          <p class="lede">
+            <span data-kr>코딩도, 물리도 필요 없습니다. 좋은 질문과 설득력 있는 제안이면 충분합니다. 팀원을 찾는 참가자는 아래 카드에서 확인하세요.</span>
+            <span data-en>No coding, no physics required. A sharp question and a convincing proposal are enough. Participants looking for teammates are listed below.</span>
+          </p>
+        </div>
+        <div class="page-head-actions">
+          <a href="register.html#ideathon" class="btn btn-solid"><span data-kr>참가 신청</span><span data-en>Register</span></a>
+          <a id="submission-link" href="#" class="btn btn-outline" aria-disabled="true"><span data-kr>제출하기</span><span data-en>Submit</span></a>
+        </div>
+      </div>
+
+      <div class="callout">
+        <h2><span data-kr>아이디어톤 주제</span><span data-en>Ideathon topic</span></h2>
+        <p class="topic">
+          <span data-kr>양자 시대의 비즈니스와 서비스 — 여러분은 어떤 문제를 해결하시겠습니까?</span>
+          <span data-en>Business and services in the quantum era — What problems will you solve?</span>
+        </p>
+        <ul class="callout-meta">
+          <li><strong><span data-kr>제출 마감</span><span data-en>Submission deadline</span></strong><b id="deadline-text"><span data-kr>10월 29일 (목) 17:00</span><span data-en>Thu, Oct 29, 17:00 KST</span></b></li>
+          <li><strong><span data-kr>본선 팀 발표</span><span data-en>Finalists announced</span></strong><b><span data-kr>10월 30일 (금) 13:00</span><span data-en>Fri, Oct 30, 13:00 KST</span></b></li>
+          <li><strong><span data-kr>피칭</span><span data-en>Pitching</span></strong><b><span data-kr>10월 31일 (토) 14:10–16:40 · 28동 103호</span><span data-en>Sat, Oct 31, 14:10–16:40 · Bldg 28, Rm 103</span></b></li>
+          <li><strong><span data-kr>팀 규모</span><span data-en>Team size</span></strong><b><span data-kr>개인 또는 최대 4명</span><span data-en>Solo or up to 4 members</span></b></li>
+        </ul>
+        <div class="callout-links">
+          <a class="btn btn-solid" href="assets/downloads/QFF_Ideathon_Pitch_Deck_16x9.pptx" download><span data-kr>IR 피칭 덱 템플릿 (.pptx)</span><span data-en>IR pitch deck template (.pptx)</span></a>
+          <a class="btn btn-solid" href="assets/downloads/QFF_Ideathon_Poster_Lean_Canvas.pptx" download><span data-kr>포스터 린 캔버스 템플릿 (.pptx)</span><span data-en>Poster lean canvas template (.pptx)</span></a>
+          <a class="btn btn-outline" href="ideathon-cases.html"><span data-kr>양자기술 활용 사례 보기</span><span data-en>See reference cases</span></a>
+        </div>
+        <p class="note" id="submission-note">
+          <span data-kr>제출 양식 링크는 공개되는 대로 위 "제출하기" 버튼에 연결됩니다. 피칭 덱과 린 캔버스를 함께 제출합니다.</span>
+          <span data-en>The submission form will be linked from the "Submit" button above once it is published. Submit the pitch deck together with the lean canvas.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt-surface">
+    <div class="wrap">
+      <span class="eyebrow"><span data-kr>참가자</span><span data-en>Participants</span></span>
+      <h2 style="margin:.3rem 0 .4rem"><span data-kr>함께할 팀원을 찾아보세요</span><span data-en>Find your teammates</span></h2>
+      <p class="lede" style="font-size:.95rem">
+        <span data-kr>아직 팀을 구하는 참가자가 먼저 보입니다. 태그를 고르면 모든 태그가 맞는 참가자가 먼저, 일부만 맞는 참가자가 그 뒤에 나옵니다. 연락은 신청 시 안내되는 단체 채팅방에서 하세요.</span>
+        <span data-en>Participants still looking for a team come first. Pick tags to see full matches first and partial matches after. Reach out through the group chat shared after you register.</span>
+      </p>
+
+      <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter by tag">
+        <span class="label"><span data-kr>태그</span><span data-en>Tags</span></span>
+        <span class="participant-count" id="participant-count"></span>
+      </div>
+
+      <div id="participants-status" class="form-banner" hidden></div>
+      <div class="participant-grid" id="participant-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="sponsor-strip"><span>SQRT · SNAAC · NextQuantum · IBM Quantum · Jane Street · QISCA</span></div>
+    <div class="footer-links">
+      <a href="mailto:snuquantums@gmail.com">Contact</a>
+      <a href="https://www.youtube.com/@sqrtsnuquantumresearchteam6066">YouTube</a>
+      <a href="https://sites.google.com/view/sqrt-quantum"><span data-kr>SQRT 소개</span><span data-en>About SQRT</span></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
+  document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
+}
+</script>
+<script src="assets/supabase-config.js?v=20260924"></script>
+<script src="assets/supabase.js?v=20261014"></script>
+<script src="assets/script.js?v=a6612f676125"></script>
+<script>
+(function () {
+  var TAGS = ["Quantum Technology", "Coding", "Design", "Marketing", "Presentation"];
+  var TAG_KR = { "Quantum Technology": "양자기술", "Coding": "코딩", "Design": "디자인", "Marketing": "마케팅", "Presentation": "발표" };
+  var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
+  var t = function (kr, en) { return isEn() ? en : kr; };
+  var grid = document.getElementById("participant-grid");
+  var statusEl = document.getElementById("participants-status");
+  var countEl = document.getElementById("participant-count");
+  var bar = document.getElementById("filter-bar");
+  var people = [];
+  var selected = new Set();
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function banner(kind, kr, en) {
+    statusEl.hidden = false;
+    statusEl.className = "form-banner" + (kind ? " " + kind : "");
+    statusEl.textContent = t(kr, en);
+  }
+  function tagLabel(tag) { return isEn() ? tag : (TAG_KR[tag] || tag); }
+
+  // Submission button: linked only once the organizers publish the form URL.
+  function applyStatus(s) {
+    var link = document.getElementById("submission-link");
+    var note = document.getElementById("submission-note");
+    if (s && s.ideathon_submission_url) {
+      link.href = s.ideathon_submission_url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.removeAttribute("aria-disabled");
+      note.hidden = true;
+    }
+  }
+
+  // Filter chips
+  var resetBtn = document.createElement("button");
+  resetBtn.type = "button";
+  resetBtn.className = "filter-chip reset";
+  resetBtn.innerHTML = '<span data-kr>전체</span><span data-en>All</span>';
+  resetBtn.addEventListener("click", function () { selected.clear(); syncChips(); render(); });
+  bar.insertBefore(resetBtn, countEl);
+  TAGS.forEach(function (tag) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "filter-chip";
+    b.dataset.tag = tag;
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = '<span data-kr>' + esc(TAG_KR[tag]) + '</span><span data-en>' + esc(tag) + '</span>';
+    b.addEventListener("click", function () {
+      if (selected.has(tag)) selected.delete(tag); else selected.add(tag);
+      syncChips(); render();
+    });
+    bar.insertBefore(b, countEl);
+  });
+  function syncChips() {
+    bar.querySelectorAll(".filter-chip[data-tag]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(selected.has(b.dataset.tag)));
+    });
+  }
+
+  function card(p, hits) {
+    var tags = (p.tags || []).map(function (tag) {
+      return '<span class="tag-chip' + (selected.has(tag) ? " hit" : "") + '">' + esc(tagLabel(tag)) + '</span>';
+    }).join("");
+    var badge = p.has_team
+      ? '<span class="badge team">' + t("팀 구성 완료", "Has a team") + '</span>'
+      : '<span class="badge open">' + t("팀원 찾는 중", "Looking for team") + '</span>';
+    return '<article class="pcard' + (hits === "partial" ? " partial" : "") + '">' +
+      '<div class="pcard-head"><div><div class="pcard-name">' + esc(p.name) + '</div>' +
+      '<div class="pcard-aff">' + esc(p.affiliation) + '</div></div>' + badge + '</div>' +
+      '<p class="pcard-pr">' + esc(p.self_pr) + '</p>' +
+      '<div class="tag-list">' + tags + '</div></article>';
+  }
+
+  function render() {
+    if (!people.length) {
+      grid.innerHTML = '<div class="empty-note" style="grid-column:1/-1">' +
+        t("아직 등록된 참가자가 없습니다. 첫 번째로 신청해 보세요.", "No participants yet. Be the first to register.") + '</div>';
+      countEl.textContent = "";
+      return;
+    }
+    var html = "";
+    if (selected.size === 0) {
+      html = people.map(function (p) { return card(p, "full"); }).join("");
+      countEl.textContent = t(people.length + "명", people.length + " participants");
+    } else {
+      var full = [], partial = [];
+      people.forEach(function (p) {
+        var tags = p.tags || [];
+        var n = 0;
+        selected.forEach(function (tag) { if (tags.indexOf(tag) !== -1) n++; });
+        if (n === selected.size) full.push(p); else if (n > 0) partial.push(p);
+      });
+      html += full.map(function (p) { return card(p, "full"); }).join("");
+      if (partial.length) {
+        html += '<div class="group-divider">' + t("일부 태그만 일치", "Partial matches") + '</div>';
+        html += partial.map(function (p) { return card(p, "partial"); }).join("");
+      }
+      if (!full.length && !partial.length) {
+        html = '<div class="empty-note" style="grid-column:1/-1">' + t("선택한 태그와 맞는 참가자가 없습니다.", "No participants match the selected tags.") + '</div>';
+      }
+      countEl.textContent = t(full.length + "명 전체 일치 · " + partial.length + "명 일부 일치", full.length + " full · " + partial.length + " partial");
+    }
+    grid.innerHTML = html;
+  }
+
+  function load() {
+    if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
+      banner("error", "참가자 목록이 아직 연결되지 않았습니다.", "The participant list is not connected yet.");
+      return;
+    }
+    window.QFF_SUPABASE.fetchEventStatus().then(function (res) { if (res.data) applyStatus(res.data); });
+    window.QFF_SUPABASE.fetchIdeathonParticipants().then(function (res) {
+      if (res.error) {
+        banner("error", "참가자 목록을 불러오지 못했습니다: " + res.error, "Could not load participants: " + res.error);
+        return;
+      }
+      statusEl.hidden = true;
+      people = res.data || [];
+      render();
+    });
+  }
+
+  document.querySelectorAll(".lang-toggle").forEach(function (b) { b.addEventListener("click", function () { setTimeout(render, 0); }); });
+  document.addEventListener("DOMContentLoaded", load);
+})();
+</script>
+</body>
+</html>

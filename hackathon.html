@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
-<title>Hackathon &amp; Ideathon | QFF SNU 2026</title>
-<meta name="description" content="Explore the Hackathon and beginner-friendly Ideathon at Qiskit Fall Fest 2026, Seoul National University. Find participation formats and submission guidance.">
+<title>Hackathon | QFF SNU 2026 · Qiskit Fall Fest</title>
+<meta name="description" content="Qiskit Fall Fest 2026 Hackathon at Seoul National University: the problem, team registration, circuit submission, and the live leaderboard.">
 <link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/hackathon.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=0639de8d794f">
+<link rel="stylesheet" href="assets/event.css?v=37f62790ab74">
 </head>
 <body>
 
@@ -32,15 +33,13 @@
     <nav class="primary-nav">
       <ul>
         <li><a href="index.html" data-nav="index.html"><span data-kr>홈</span><span data-en>Home</span></a></li>
-
         <li><a href="schedule.html" data-nav="schedule.html"><span data-kr>일정</span><span data-en>Schedule</span></a></li>
-        <li><a href="hackathon.html" data-nav="hackathon.html" aria-current="page"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
-        <li><a href="posters.html" data-nav="posters.html"><span data-kr>포스터 세션</span><span data-en>Posters</span></a></li>
+        <li><a href="ideathon.html" data-nav="ideathon.html"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></a></li>
+        <li><a href="hackathon.html" data-nav="hackathon.html"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
+        <li><a href="register.html" data-nav="register.html"><span data-kr>신청</span><span data-en>Register</span></a></li>
         <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
-        <li class="mobile-leaderboard"><a href="leaderboard.html" data-nav="leaderboard.html"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a></li>
       </ul>
       <div class="nav-actions">
-        <a href="leaderboard.html" class="btn btn-outline"><span data-kr>리더보드</span><span data-en>Leaderboard</span></a>
         <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
         <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
         <button class="menu-btn" aria-label="Menu"><span></span></button>
@@ -49,143 +48,159 @@
   </div>
 </header>
 
-
-
 <main>
-
-  <section class="paper-surface" style="padding-bottom: var(--sp-3)">
+  <section class="paper-surface">
     <div class="wrap page-intro-layout">
       <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/hackathon.svg');-webkit-mask-image:url('assets/icons/hackathon.svg')" aria-hidden="true"></span>
-      <span class="eyebrow"><span data-kr>해커톤</span><span data-en>Hackathon</span></span>
-      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">
-        <span data-kr>두 개의 트랙, 하나의 주말</span>
-        <span data-en>Two tracks. One weekend.</span>
-      </h1>
-      <p class="lede">
-        <span data-kr>Day 2-3 동안 두 트랙이 동시에 진행됩니다. 어느 쪽이든 SQRT와 SNAAC, NextQuantum, IBM Quantum, Jane Street, QISCA가 함께합니다. 전공과 관계없이 원하는 트랙을 선택할 수 있지만, 한 사람당 하나의 트랙에만 참가할 수 있습니다. 무엇을 선택할지 고민된다면 아래 비교표를 먼저 보세요.</span>
-        <span data-en>Both tracks run in parallel across Day 2-3, backed by SQRT together with SNAAC, NextQuantum, IBM Quantum, Jane Street, and QISCA. Pick whichever track fits you, regardless of major, but each participant may join only one track. Not sure which fits you? Start with the comparison below.</span>
-      </p>
-
-      <div class="comparison-scroll" role="region" aria-label="Hackathon and Ideathon comparison" tabindex="0"><table class="compare">
-        <thead>
-          <tr>
-            <th></th>
-            <th><span data-kr>해커톤</span><span data-en>Hackathon</span></th>
-            <th><span data-kr>아이디어톤</span><span data-en>Ideathon</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-label"><span data-kr>형식</span><span data-en>Format</span></td>
-            <td><span data-kr>대면 (관악캠퍼스 28동 101호, Zoom 송출)</span><span data-en>In person (SNU Gwanak campus, Bldg 28 Rm 101, streamed on Zoom)</span></td>
-            <td><span data-kr>테이크홈</span><span data-en>Take-home</span></td>
-          </tr>
-          <tr>
-            <td class="col-label"><span data-kr>사전 지식</span><span data-en>Prerequisites</span></td>
-            <td><span data-kr>Qiskit/코딩 경험 권장</span><span data-en>Some Qiskit or coding experience</span></td>
-            <td><span data-kr>없음</span><span data-en>None</span></td>
-          </tr>
-          <tr>
-            <td class="col-label"><span data-kr>문제</span><span data-en>Problem</span></td>
-            <td><span data-kr>오픈 문제 <span class="chip tbd">TBD</span></span><span data-en>Open-ended <span class="chip tbd">TBD</span></span></td>
-            <td><span data-kr>가이드 프롬프트, 전공 자유 선택</span><span data-en>Guided prompt, any field</span></td>
-          </tr>
-          <tr>
-            <td class="col-label"><span data-kr>결과물</span><span data-en>Deliverable</span></td>
-            <td><span data-kr>동작하는 노트북 (자동 채점)</span><span data-en>Working notebook (auto-graded)</span></td>
-            <td><span data-kr>아이디어 메모 또는 슬라이드 <span class="chip tbd">TBD</span></span><span data-en>Idea memo or slide deck <span class="chip tbd">TBD</span></span></td>
-          </tr>
-          <tr>
-            <td class="col-label"><span data-kr>팀 구성</span><span data-en>Team size</span></td>
-            <td><span class="chip tbd">TBD</span></td>
-            <td><span class="chip tbd">TBD</span></td>
-          </tr>
-          <tr>
-            <td class="col-label"><span data-kr>발표</span><span data-en>Presentation</span></td>
-            <td><span data-kr>우수 팀만 시상식에서 발표</span><span data-en>Top teams present at the awards ceremony</span></td>
-            <td><span data-kr>주말 발표 <span class="chip tbd">형식 TBD</span></span><span data-en>Weekend presentation <span class="chip tbd">format TBD</span></span></td>
-          </tr>
-        </tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <!-- ============================ IDEATHON ================================ -->
-  <section class="track-panel trackB diagonal-cut to-navy" id="trackB">
-    <div class="wrap">
-      <div>
-        <span class="track-badge"><span data-kr>입문</span><span data-en>BEGINNER</span></span>
-        <h2><span data-kr>아이디어톤</span><span data-en>Ideathon</span></h2>
-        <p class="lede" style="color:var(--ink-soft);font-weight:600">
-          <span data-kr>코딩 몰라도, 물리 몰라도 괜찮습니다.</span>
-          <span data-en>No coding. No physics. No prerequisites.</span>
-        </p>
-        <p class="lede">
-          <span data-kr>이 트랙은 처음 양자컴퓨팅을 접하는 학생, 특히 경제·경영·인문학·디자인 등 다양한 전공 학생을 위해 만들어졌습니다. 목표는 완성된 코드가 아니라 좋은 질문입니다.</span>
-          <span data-en>Built for students meeting quantum computing for the first time, especially those from econ, business, humanities, or design. The goal isn't writing finished code. It's asking a good question.</span>
-        </p>
-        <a href="register.html" class="btn btn-solid"><span data-kr>아이디어톤 신청하기</span><span data-en>Register for Ideathon</span></a>
-      </div>
-      <div>
-        <h3><span data-kr>이런 아이디어를 찾습니다</span><span data-en>The kind of ideas we're looking for</span></h3>
-        <ul class="feature-list">
-          <li><span data-kr><strong>경제·금융:</strong> 포트폴리오 최적화나 리스크 모델링에 양자 알고리즘을 적용한다면?</span><span data-en><strong>Econ / finance:</strong> Where could a quantum algorithm help with portfolio optimization or risk modeling?</span></li>
-          <li><span data-kr><strong>경영·전략:</strong> 신기술로서 양자컴퓨팅이 산업에 미칠 영향은?</span><span data-en><strong>Business / strategy:</strong> What could quantum computing mean for your industry in the next decade?</span></li>
-          <li><span data-kr><strong>인문학:</strong> 양자컴퓨팅은 지식, 언어, 윤리에 대해 어떤 새로운 질문을 던질까?</span><span data-en><strong>Humanities:</strong> What new questions does quantum computing raise about knowledge, language, or ethics?</span></li>
-          <li><span data-kr><strong>디자인·예술:</strong> 양자 난수나 양자 알고리즘을 창작 도구로 쓸 수 있을까?</span><span data-en><strong>Design / art:</strong> Could quantum randomness or algorithms become a creative tool?</span></li>
-        </ul>
-        <h3 style="margin-top:var(--sp-3)"><span data-kr>진행 방식</span><span data-en>How it works</span></h3>
-        <p class="lede" style="font-size:.95rem">
-          <span data-kr>Day 2 브리핑 세션에서 프롬프트를 받고, 정해진 기간 동안 개인 또는 팀으로 아이디어를 발전시켜 제출합니다. 해커톤과 마찬가지로 주말에 짧은 발표 시간을 갖습니다. 발표 형식은 <span class="chip tbd">TBD</span>입니다.</span>
-          <span data-en>Pick up the prompt at the Day 2 briefing, then develop your idea solo or in a team over the take-home window. Like Hackathon, you'll get a short weekend presentation slot. Presentation format is <span class="chip tbd">TBD</span>.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ HACKATHON ================================ -->
-  <section class="track-panel trackA diagonal-cut to-paper" id="trackA">
-    <div class="wrap">
-      <div>
-        <span class="track-badge"><span data-kr>심화</span><span data-en>ADVANCED</span></span>
-        <h2><span data-kr>해커톤</span><span data-en>Hackathon</span></h2>
-        <p class="lede">
-          <span data-kr>Qiskit 또는 코딩 경험이 있다면 전공에 상관없이 참여할 수 있는 몰입형 트랙입니다. 관악캠퍼스 28동 101호에서 대면으로 진행되며, Zoom으로도 참여할 수 있습니다. Day 2에 공개되는 오픈 문제를 풀어 제출하면 자동 채점 시스템으로 심사하고, 우수 팀은 시상식에서 발표합니다.</span>
-          <span data-en>An intensive track open to any major, as long as you have some Qiskit or coding experience. Runs in person at SNU's Gwanak campus (Building 28, Room 101), also streamed on Zoom. Submit your solution to the open-ended problem released Day 2 for automatic grading, and top teams present at the awards ceremony.</span>
-        </p>
-        <div style="display:flex; gap:.8rem; flex-wrap:wrap">
-          <a href="register.html" class="btn btn-outline on-navy-accent"><span data-kr>해커톤 신청하기</span><span data-en>Register for Hackathon</span></a>
-          <a href="submit.html" class="btn btn-solid"><span data-kr>이미 등록했다면, 회로 제출</span><span data-en>Already registered? Submit your circuit</span></a>
+      <div class="page-head">
+        <div>
+          <span class="eyebrow"><span data-kr>해커톤</span><span data-en>Hackathon</span></span>
+          <h1><span data-kr>회로를 짜고, 제출하고, 순위를 확인하세요</span><span data-en>Build a circuit, submit it, watch the board</span></h1>
+          <p class="lede">
+            <span data-kr>Qiskit 또는 코딩 경험이 있다면 전공과 관계없이 참여할 수 있습니다. 팀을 등록하고, 문제가 공개되면 회로를 제출하세요. 채점은 자동으로 이루어지며 결과는 아래 리더보드에 반영됩니다.</span>
+            <span data-en>Open to any major with some Qiskit or coding experience. Register a team, then submit circuits once the problem is released. Grading is automatic and results appear on the leaderboard below.</span>
+          </p>
         </div>
       </div>
-      <div>
-        <h3><span data-kr>진행 방식</span><span data-en>How it works</span></h3>
-        <ul class="feature-list">
-          <li><span data-kr>관악캠퍼스 28동 101호에서 대면으로 진행 (Zoom 송출 제공)</span><span data-en>Runs in person at SNU Gwanak campus, Building 28 Room 101 (also streamed on Zoom)</span></li>
-          <li><span data-kr>Day 2 오전, 문제 공개 <span class="mono chip tbd">problem released, TBD</span></span><span data-en>Day 2 morning: problem statement released <span class="mono chip tbd">TBD</span></span></li>
-          <li><span data-kr>Day 2-3, 멘토링과 함께하는 집중 개발 시간</span><span data-en>Day 2-3: focused build time with mentor support</span></li>
-          <li><span data-kr>Day 3 주말, 자동 채점 결과 발표 및 시상식 (우수 팀은 현장 발표)</span><span data-en>Day 3 weekend: auto-graded results announced at the awards ceremony, with top teams presenting</span></li>
-        </ul>
-        <h3 style="margin-top:var(--sp-3)"><span data-kr>심사 기준</span><span data-en>Judging criteria</span></h3>
-        <p class="lede" style="font-size:.95rem;color:var(--navy-ink-soft)">
-          <span data-kr>자동 채점 시스템으로 실행 결과, 문제별 성능 지표, 자원 효율성 등을 반영해 심사합니다.
-          세부 배점 기준은 <span class="chip tbd" style="border-color:var(--navy-line);color:var(--navy-ink-soft)">TBD</span>입니다.</span>
-          <span data-en>Judged by an automated grading system based on execution results, per-problem performance
-          metrics, and resource efficiency. Detailed scoring rubric is <span class="chip tbd" style="border-color:var(--navy-line);color:var(--navy-ink-soft)">TBD</span>.</span>
-        </p>
+
+      <div class="hack-layout">
+        <!-- Left: problem callout -->
+        <div>
+          <div class="callout locked" id="problem-callout">
+            <h2><span data-kr>해커톤 문제</span><span data-en>The problem</span></h2>
+            <p class="topic" id="problem-topic">
+              <span data-kr>문제는 10월 22일 (목) 22:00에 공개됩니다.</span>
+              <span data-en>The problem is released on Thu, Oct 22 at 22:00 KST.</span>
+            </p>
+            <div id="problem-brief" class="lede" style="font-size:.95rem;margin:0 0 var(--sp-2);white-space:pre-line" hidden></div>
+            <ul class="callout-meta">
+              <li><strong><span data-kr>문제 공개</span><span data-en>Problem release</span></strong><b><span data-kr>10월 22일 (목) 22:00 · 온라인 세션 중</span><span data-en>Thu, Oct 22, 22:00 KST · during the online session</span></b></li>
+              <li><strong><span data-kr>제출 마감</span><span data-en>Submission deadline</span></strong><b><span data-kr>10월 30일 (금) 12:00</span><span data-en>Fri, Oct 30, 12:00 KST</span></b></li>
+              <li><strong><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></strong><b><span data-kr>10월 30일 (금) 13:00</span><span data-en>Fri, Oct 30, 13:00 KST</span></b></li>
+              <li><strong><span data-kr>시상식</span><span data-en>Awards</span></strong><b><span data-kr>10월 31일 (토) 16:45 · 28동 103호</span><span data-en>Sat, Oct 31, 16:45 · Bldg 28, Rm 103</span></b></li>
+            </ul>
+            <div class="callout-links" id="problem-links" hidden>
+              <a id="problem-repo" class="btn btn-solid" href="#" target="_blank" rel="noopener"><span data-kr>문제 저장소 열기</span><span data-en>Open the problem repository</span></a>
+            </div>
+            <h3 style="margin:var(--sp-3) 0 .4rem;font-size:1rem"><span data-kr>참여 방법</span><span data-en>How it works</span></h3>
+            <ul class="feature-list" style="margin:0">
+              <li><span data-kr><b>팀 등록:</b> 오른쪽 "참가 신청"에서 팀 이름과 제출 비밀번호를 정합니다. 팀당 한 번만 등록하면 됩니다.</span><span data-en><b>Register a team:</b> choose a team name and a submission password under "Register" on the right. One registration per team.</span></li>
+              <li><span data-kr><b>회로 제출:</b> 팀 이름과 비밀번호, data qubit 배치, OpenQASM 2.0 파일을 올리면 채점 대기열에 들어갑니다.</span><span data-en><b>Submit a circuit:</b> upload your OpenQASM 2.0 file with the team name, password, and data-qubit placement. It enters the grading queue.</span></li>
+              <li><span data-kr><b>채점과 순위:</b> 1-F가 낮을수록 높은 순위이며, 같으면 2-qubit gate 수, 제출 시각 순입니다. 팀별 최고 결과만 리더보드에 올라갑니다.</span><span data-en><b>Grading and ranking:</b> lower 1-F ranks higher, with ties broken by two-qubit gate count, then submission time. Only each team's best result appears on the board.</span></li>
+              <li><span data-kr><b>재제출 제한:</b> 이전 제출이 채점 중이거나 마지막 제출 후 10분이 지나지 않았으면 다시 제출할 수 없습니다.</span><span data-en><b>Resubmission limit:</b> you cannot submit while a previous one is still being graded or within 10 minutes of your last submission.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: register + submit -->
+        <div class="panel-stack">
+          <div class="panel">
+            <h2><span data-kr>참가 신청</span><span data-en>Register</span></h2>
+            <p class="hint"><span data-kr>팀 이름, 제출 비밀번호, 팀장 연락처를 등록합니다. 신청 페이지의 해커톤 창이 바로 열립니다.</span><span data-en>Set your team name, submission password, and leader contact. This opens the Hackathon form on the Register page.</span></p>
+            <a href="register.html#hackathon" class="btn btn-solid"><span data-kr>팀 등록하기</span><span data-en>Register a team</span></a>
+          </div>
+
+          <div class="panel navy" id="submit-panel" data-disabled="true">
+            <h2><span data-kr>회로 제출</span><span data-en>Submit a circuit</span></h2>
+            <p class="hint" id="submit-hint"><span data-kr>문제가 공개되면 이곳에서 제출할 수 있습니다.</span><span data-en>Submissions open when the problem is released.</span></p>
+            <div id="submit-status" class="form-banner" hidden></div>
+            <form id="submit-form" class="submit-form" novalidate>
+              <label>
+                <span><span data-kr>팀 이름</span><span data-en>Team name</span></span>
+                <select name="teamName" id="team-name" required disabled>
+                  <option value="">Loading teams...</option>
+                </select>
+              </label>
+              <label>
+                <span><span data-kr>제출 비밀번호</span><span data-en>Submission password</span></span>
+                <input type="password" name="password" minlength="8" maxlength="200" autocomplete="current-password" required />
+              </label>
+              <label>
+                <span><span data-kr>Data qubits (code qubit 0–6 순서)</span><span data-en>Data qubits (in code-qubit 0–6 order)</span></span>
+                <input type="text" name="dataQubits" inputmode="numeric" placeholder="1, 2, 3, 6, 10, 9, 11" required />
+                <small class="submit-hint"><span data-kr>0부터 35까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Seven distinct physical qubits from 0 through 35, separated by commas.</span></small>
+              </label>
+              <div class="file-pick">
+                <label class="btn btn-outline on-navy-accent" for="qasm-file" style="cursor:pointer"><span data-kr>QASM 파일 선택</span><span data-en>Choose QASM file</span></label>
+                <input type="file" id="qasm-file" accept=".qasm,.txt" />
+                <span class="file-name" id="file-name"><span data-kr>선택된 파일 없음</span><span data-en>No file selected</span></span>
+              </div>
+              <small class="submit-hint"><span data-kr>tprep.submission_text(qc, detectors)가 만든 OpenQASM 2.0 텍스트(// DETECTOR 줄 포함)를 .qasm 파일로 저장해 올리세요. 200 KB 이하.</span><span data-en>Upload the OpenQASM 2.0 text from tprep.submission_text(qc, detectors), including the // DETECTOR lines, as a .qasm file. 200 KB max.</span></small>
+              <button type="submit" class="btn btn-solid" style="background:var(--accent-on-navy);color:var(--navy)">
+                <span data-kr>제출하기</span><span data-en>Submit</span>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section class="paper-surface" style="padding: var(--sp-4) 0">
-    <div class="wrap" style="text-align:center">
-      <p class="lede" style="margin:0 auto">
-        <span data-kr>아직 어떤 트랙이 맞는지 모르겠다면? <a href="faq.html" style="color:var(--accent);font-weight:600">FAQ</a>를 보거나 <a href="mailto:snuquantums@gmail.com" style="color:var(--accent);font-weight:600">SQRT에 문의</a>하세요.</span>
-        <span data-en>Still not sure which track fits? Check the <a href="faq.html" style="color:var(--accent);font-weight:600">FAQ</a> or <a href="mailto:snuquantums@gmail.com" style="color:var(--accent);font-weight:600">contact SQRT</a>.</span>
+      <!-- Leaderboard -->
+      <div class="section-title">
+        <h2><span data-kr>리더보드</span><span data-en>Leaderboard</span></h2>
+        <div class="leaderboard-toolbar" style="margin:0">
+          <button id="refresh-btn" class="btn btn-outline" style="font-size:.85rem"><span data-kr>새로고침</span><span data-en>Refresh</span></button>
+          <span id="last-updated" class="mono" style="font-size:.8rem;color:var(--ink-soft)"></span>
+        </div>
+      </div>
+      <p class="lede" style="font-size:.9rem;margin-top:.4rem">
+        <span data-kr>팀별 최고 제출작이 자동으로 반영됩니다. 1-F는 유효숫자 2자리로 비교합니다. 15초마다 새 점수를 확인합니다.</span>
+        <span data-en>Each team's best submission appears automatically. 1-F is compared at two significant figures. Scores refresh every 15 seconds.</span>
       </p>
+      <div id="leaderboard-status" class="form-banner" hidden></div>
+      <table class="compare leaderboard-table" id="leaderboard-table" hidden>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><span data-kr>팀</span><span data-en>Team</span></th>
+            <th>1-F ↓</th>
+            <th>2Q</th>
+            <th>Acceptance</th>
+            <th><span data-kr>제출 시각</span><span data-en>Submitted</span></th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+      <div class="pager" id="pager" hidden>
+        <button type="button" id="pager-prev">‹ <span data-kr>이전</span><span data-en>Prev</span></button>
+        <span class="range" id="pager-range"></span>
+        <button type="button" id="pager-next"><span data-kr>다음</span><span data-en>Next</span> ›</button>
+      </div>
+
+      <!-- Submission history -->
+      <div class="section-title">
+        <h2><span data-kr>내 제출 기록</span><span data-en>My submissions</span></h2>
+      </div>
+      <p class="lede" style="font-size:.9rem;margin-top:.4rem">
+        <span data-kr>팀 이름과 비밀번호로 최근 제출의 상태와 점수, 실패했다면 그 이유를 확인합니다. 제출이 정상적으로 들어갔는지 확인하는 용도입니다.</span>
+        <span data-en>Check the status, score, and any failure reason of your recent submissions with your team name and password. Use it to confirm a submission went through.</span>
+      </p>
+      <form id="history-form" class="history-form" novalidate>
+        <label><span data-kr>팀 이름</span><span data-en>Team name</span>
+          <select id="history-team" required><option value="">Loading teams...</option></select>
+        </label>
+        <label><span data-kr>제출 비밀번호</span><span data-en>Submission password</span>
+          <input type="password" id="history-password" minlength="8" maxlength="200" autocomplete="current-password" required />
+        </label>
+        <button type="submit" class="btn btn-outline"><span data-kr>조회</span><span data-en>Look up</span></button>
+      </form>
+      <div id="next-submit" class="form-banner" hidden></div>
+      <div id="history-status" class="form-banner" hidden></div>
+      <table class="compare leaderboard-table" id="history-table" hidden>
+        <thead>
+          <tr>
+            <th><span data-kr>제출 ID / 시각</span><span data-en>ID / submitted</span></th>
+            <th><span data-kr>상태</span><span data-en>Status</span></th>
+            <th>1-F</th>
+            <th>Acceptance</th>
+            <th>2Q</th>
+            <th><span data-kr>채점 워커</span><span data-en>Worker</span></th>
+            <th><span data-kr>메시지</span><span data-en>Message</span></th>
+          </tr>
+        </thead>
+        <tbody id="history-body"></tbody>
+      </table>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -199,6 +214,273 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
+  document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
+}
+</script>
+<script src="assets/supabase-config.js?v=20260924"></script>
+<script src="assets/supabase.js?v=20261014"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
+<script>
+(function () {
+  var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
+  var t = function (kr, en) { return isEn() ? en : kr; };
+  var api = window.QFF_SUPABASE;
+  var PAGE = 10;
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function bannerOn(el) {
+    return function (kind, kr, en) {
+      el.hidden = false;
+      el.className = "form-banner" + (kind ? " " + kind : "");
+      el.textContent = t(kr, en);
+    };
+  }
+  function fmtKST(iso) {
+    try {
+      return new Intl.DateTimeFormat(isEn() ? "en-US" : "ko-KR", { timeZone: "Asia/Seoul", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+    } catch (e) { return iso; }
+  }
+  function mmss(sec) {
+    var m = Math.floor(sec / 60), r = sec % 60;
+    return isEn() ? (m ? m + " min " : "") + r + " s" : (m ? m + "분 " : "") + r + "초";
+  }
+  var timers = {};
+  function countdown(key, seconds, render) {
+    clearInterval(timers[key]);
+    var end = Date.now() + seconds * 1000;
+    function tick() {
+      var left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+      render(left);
+      if (left === 0) clearInterval(timers[key]);
+    }
+    tick();
+    timers[key] = setInterval(tick, 1000);
+  }
+
+  // ---- event status: problem block and submission gate ------------------
+  var status = null;
+  function applyStatus(s) {
+    status = s;
+    var callout = document.getElementById("problem-callout");
+    var topic = document.getElementById("problem-topic");
+    var brief = document.getElementById("problem-brief");
+    var links = document.getElementById("problem-links");
+    var panel = document.getElementById("submit-panel");
+    var hint = document.getElementById("submit-hint");
+    if (s.hackathon_problem_open) {
+      callout.classList.remove("locked");
+      topic.innerHTML = '<span data-kr>문제가 공개되었습니다.</span><span data-en>The problem is live.</span>';
+      var text = isEn() ? (s.hackathon_problem_brief_en || s.hackathon_problem_brief_kr) : (s.hackathon_problem_brief_kr || s.hackathon_problem_brief_en);
+      if (text) { brief.textContent = text; brief.hidden = false; }
+      if (s.hackathon_problem_url) {
+        document.getElementById("problem-repo").href = s.hackathon_problem_url;
+        links.hidden = false;
+      }
+    }
+    if (s.hackathon_submissions_open) {
+      panel.removeAttribute("data-disabled");
+      hint.innerHTML = '<span data-kr>제출 마감: ' + esc(fmtKST(s.hackathon_deadline_at)) + ' KST</span><span data-en>Deadline: ' + esc(fmtKST(s.hackathon_deadline_at)) + ' KST</span>';
+    } else if (s.hackathon_problem_open) {
+      hint.innerHTML = '<span data-kr>제출이 마감되었습니다.</span><span data-en>Submissions are closed.</span>';
+    }
+  }
+
+  // ---- teams in both dropdowns -----------------------------------------
+  var teamSelect = document.getElementById("team-name");
+  var historyTeam = document.getElementById("history-team");
+  function fillTeams(teams) {
+    [teamSelect, historyTeam].forEach(function (sel) {
+      sel.innerHTML = "";
+      var ph = document.createElement("option");
+      ph.value = "";
+      ph.textContent = teams.length ? t("팀을 선택하세요", "Select your team") : t("등록된 팀이 없습니다", "No teams yet");
+      sel.appendChild(ph);
+      teams.forEach(function (name) {
+        var o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o);
+      });
+      sel.disabled = teams.length === 0;
+    });
+  }
+
+  // ---- submission -------------------------------------------------------
+  var submitBanner = bannerOn(document.getElementById("submit-status"));
+  var form = document.getElementById("submit-form");
+  var fileInput = document.getElementById("qasm-file");
+  var fileName = document.getElementById("file-name");
+  var qasmText = "";
+  fileInput.addEventListener("change", function (e) {
+    var file = e.target.files[0];
+    qasmText = "";
+    if (!file) { fileName.innerHTML = '<span data-kr>선택된 파일 없음</span><span data-en>No file selected</span>'; return; }
+    if (file.size > 200000) {
+      fileInput.value = "";
+      submitBanner("error", "회로 파일은 200 KB 이하여야 합니다.", "The circuit file must be 200 KB or smaller.");
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (ev) { qasmText = String(ev.target.result || ""); fileName.textContent = file.name + " · " + Math.ceil(file.size / 1024) + " KB"; };
+    reader.readAsText(file);
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var fd = new FormData(form);
+    var teamName = (fd.get("teamName") || "").toString().trim();
+    var password = (fd.get("password") || "").toString();
+    var dq = (fd.get("dataQubits") || "").toString().trim().split(/[\s,]+/).filter(Boolean).map(Number);
+    var valid = dq.length === 7 && dq.every(function (q) { return Number.isInteger(q) && q >= 0 && q < 36; }) && new Set(dq).size === 7;
+    var qasm = qasmText.trim();
+    if (!teamName || !password) { submitBanner("error", "팀 이름과 비밀번호를 입력해주세요.", "Team name and password are required."); return; }
+    if (!valid) { submitBanner("error", "Data qubits에는 0–35 사이의 서로 다른 정수 7개가 필요합니다.", "Data qubits must be seven distinct integers from 0 through 35."); return; }
+    if (!qasm) { submitBanner("error", "QASM 파일을 선택해주세요.", "Choose a QASM file first."); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    clearInterval(timers.submit);
+    submitBanner(null, "제출 중...", "Submitting...");
+    api.submitEntry({ teamName: teamName, password: password, qasm: qasm, dataQubits: dq }).then(function (res) {
+      btn.disabled = false;
+      if (res.error) {
+        var wait = /allowed in (\d+) seconds/.exec(res.error);
+        if (wait) {
+          countdown("submit", Number(wait[1]), function (left) {
+            if (left > 0) submitBanner("error", mmss(left) + " 뒤에 제출할 수 있습니다. (팀별 제출 간격 제한)", "You can submit again in " + mmss(left) + ". (submissions per team are rate-limited)");
+            else submitBanner("success", "지금 제출할 수 있습니다.", "You can submit now.");
+          });
+        } else if (/still queued or being graded/.test(res.error)) {
+          submitBanner("error", "이전 제출의 채점 결과가 나온 뒤에 제출할 수 있습니다.", "You can submit once your previous submission is graded.");
+        } else {
+          submitBanner("error", "제출하지 못했습니다: " + res.error, "Could not submit: " + res.error);
+        }
+        return;
+      }
+      var row = res.data || {};
+      var id = row.submission_id ? row.submission_id.slice(0, 8) : "";
+      var ahead = row.ahead == null ? 0 : Number(row.ahead);
+      submitBanner("success", "제출 완료! (ID " + id + ") 앞에 대기 중인 제출 " + ahead + "개. 아래 '내 제출 기록'에서 진행 상황을 확인하세요.",
+        "Submitted (ID " + id + "). " + ahead + " submission(s) ahead in the queue. Track it under 'My submissions' below.");
+      fileInput.value = ""; qasmText = "";
+      fileName.innerHTML = '<span data-kr>선택된 파일 없음</span><span data-en>No file selected</span>';
+      historyTeam.value = teamName;
+      document.getElementById("history-password").value = password;
+      loadHistory();
+    });
+  });
+
+  // ---- leaderboard with paging -----------------------------------------
+  var lbBanner = bannerOn(document.getElementById("leaderboard-status"));
+  var lbTable = document.getElementById("leaderboard-table");
+  var lbBody = document.getElementById("leaderboard-body");
+  var pager = document.getElementById("pager");
+  var rows = [], page = 0;
+  function renderBoard() {
+    var total = rows.length;
+    if (!total) {
+      lbTable.hidden = true; pager.hidden = true;
+      lbBanner(null, "아직 채점된 제출작이 없습니다.", "No scored entries yet.");
+      return;
+    }
+    document.getElementById("leaderboard-status").hidden = true;
+    var pages = Math.ceil(total / PAGE);
+    page = Math.min(page, pages - 1);
+    var slice = rows.slice(page * PAGE, page * PAGE + PAGE);
+    lbBody.innerHTML = slice.map(function (r, i) {
+      return "<tr><td class=\"rank\">" + (page * PAGE + i + 1) + "</td><td>" + esc(r.team_name) +
+        "</td><td class=\"score\" title=\"" + Number(r.score_a).toPrecision(6) + "\">" + Number(r.score_key).toExponential(1) +
+        "</td><td class=\"mono\">" + Number(r.n_2q) +
+        "</td><td class=\"mono\">" + (r.p_acc == null ? "–" : Number(r.p_acc).toFixed(3)) +
+        "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + esc(r.submitted_at ? new Date(r.submitted_at).toLocaleString() : "") + "</td></tr>";
+    }).join("");
+    lbTable.hidden = false;
+    pager.hidden = pages <= 1;
+    document.getElementById("pager-prev").disabled = page === 0;
+    document.getElementById("pager-next").disabled = page >= pages - 1;
+    document.getElementById("pager-range").textContent = (page * PAGE + 1) + "–" + Math.min(total, page * PAGE + PAGE) + " / " + total;
+  }
+  document.getElementById("pager-prev").addEventListener("click", function () { page = Math.max(0, page - 1); renderBoard(); });
+  document.getElementById("pager-next").addEventListener("click", function () { page = page + 1; renderBoard(); });
+  function loadBoard() {
+    api.fetchLeaderboard().then(function (res) {
+      if (res.error) { lbBanner("error", "리더보드를 불러오지 못했습니다: " + res.error, "Could not load leaderboard: " + res.error); return; }
+      rows = res.data || [];
+      renderBoard();
+      document.getElementById("last-updated").textContent = (isEn() ? "Updated " : "업데이트: ") + new Date().toLocaleTimeString();
+    });
+  }
+  document.getElementById("refresh-btn").addEventListener("click", loadBoard);
+  setInterval(function () { if (!document.hidden) loadBoard(); }, 15000);
+
+  // ---- history ----------------------------------------------------------
+  var hBanner = bannerOn(document.getElementById("history-status"));
+  var nextBanner = bannerOn(document.getElementById("next-submit"));
+  var hTable = document.getElementById("history-table");
+  var hBody = document.getElementById("history-body");
+  var STATUS = { queued: ["대기 중", "queued"], processing: ["채점 중", "grading"], scored: ["채점 완료", "scored"], invalid: ["실격", "invalid"], error: ["오류", "error"] };
+  var refreshTimer = null;
+  function statusLabel(r) {
+    var label = STATUS[r.status] ? STATUS[r.status][isEn() ? 1 : 0] : r.status;
+    if (r.status === "queued" && r.ahead != null) label += isEn() ? " — " + r.ahead + " ahead" : " — 앞에 " + r.ahead + "개";
+    return label;
+  }
+  function loadNext(team, pw) {
+    api.fetchNextSubmission(team, pw).then(function (res) {
+      if (res.error || !res.data) { document.getElementById("next-submit").hidden = true; return; }
+      var info = res.data;
+      countdown("next", Number(info.wait_seconds) || 0, function (left) {
+        if (info.pending) nextBanner(null, "이전 제출이 아직 대기 중이거나 채점 중입니다.", "Your previous submission is still queued or being graded.");
+        else if (left > 0) nextBanner(null, "다음 제출까지 " + mmss(left), "Next submission in " + mmss(left));
+        else nextBanner("success", "지금 제출할 수 있습니다.", "You can submit now.");
+      });
+    });
+  }
+  function loadHistory() {
+    var team = historyTeam.value.trim();
+    var pw = document.getElementById("history-password").value;
+    if (!team || !pw) { hBanner("error", "팀과 비밀번호를 입력해주세요.", "Enter your team and password."); return; }
+    clearTimeout(refreshTimer);
+    hBanner(null, "불러오는 중...", "Loading...");
+    loadNext(team, pw);
+    api.fetchMySubmissions(team, pw).then(function (res) {
+      if (res.error) { hTable.hidden = true; hBanner("error", "불러오지 못했습니다: " + res.error, "Could not load: " + res.error); return; }
+      var list = res.data || [];
+      if (!list.length) { hTable.hidden = true; hBanner(null, "아직 제출이 없습니다.", "No submissions yet."); return; }
+      document.getElementById("history-status").hidden = true;
+      hBody.innerHTML = list.map(function (r) {
+        var id = String(r.submission_id || "");
+        return "<tr><td class=\"mono\" style=\"font-size:.85rem\"><span title=\"" + esc(id) + "\" style=\"font-weight:600\">" + esc(id.slice(0, 8)) + "</span><br>" +
+          esc(new Date(r.submitted_at).toLocaleString()) + "</td><td>" + esc(statusLabel(r)) +
+          "</td><td class=\"score\">" + (r.score == null ? "" : Number(r.score).toExponential(2)) +
+          "</td><td class=\"mono\">" + (r.acceptance == null ? "" : Number(r.acceptance).toFixed(4)) +
+          "</td><td class=\"mono\">" + (r.n_2q == null ? "" : Number(r.n_2q)) +
+          "</td><td class=\"mono\" style=\"font-size:.85rem\">" + esc(r.worker) +
+          "</td><td style=\"font-size:.85rem\">" + esc(r.public_message) + "</td></tr>";
+      }).join("");
+      hTable.hidden = false;
+      if (list.some(function (r) { return r.status === "queued" || r.status === "processing"; })) refreshTimer = setTimeout(loadHistory, 15000);
+    });
+  }
+  document.getElementById("history-form").addEventListener("submit", function (e) { e.preventDefault(); loadHistory(); });
+
+  // ---- boot -------------------------------------------------------------
+  function boot() {
+    if (!api || !api.isConfigured) {
+      submitBanner("error", "아직 제출 시스템이 연결되지 않았습니다.", "Submissions aren't connected yet.");
+      lbBanner("error", "리더보드가 아직 연결되지 않았습니다.", "The leaderboard isn't connected yet.");
+      return;
+    }
+    api.fetchEventStatus().then(function (res) { if (res.data) applyStatus(res.data); });
+    api.fetchTeams().then(function (res) { fillTeams(res.data || []); });
+    loadBoard();
+  }
+  document.querySelectorAll(".lang-toggle").forEach(function (b) { b.addEventListener("click", function () { setTimeout(function () { if (status) applyStatus(status); renderBoard(); }, 0); }); });
+  document.addEventListener("DOMContentLoaded", boot);
+})();
+</script>
 </body>
 </html>

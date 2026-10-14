@@ -9,26 +9,29 @@ No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, 
 ```
 .
 ├── index.html          Home
-├── about.html          About SQRT / Qiskit Fall Fest
-├── schedule.html       3-day schedule
-├── hackathon.html      Hackathon + Ideathon details
-├── posters.html        Poster Session
+├── about.html          About SQRT / Qiskit Fall Fest (unlinked)
+├── schedule.html       Pre-festival online sessions and the 3-day schedule, incl. speakers
+├── ideathon.html       Ideathon topic, templates, reference cases, participant cards
+├── ideathon-cases.html Three reference cases of quantum technology in use
+├── hackathon.html      Problem (revealed on release), team registration link, circuit
+│                       submission, paged leaderboard, per-team submission history
+├── register.html       Four registration overlays: Ideathon, Hackathon, speaker RSVP,
+│                       poster abstract (the last two embed Google Forms)
 ├── faq.html
-├── register.html       Sign-up router (Hackathon / Ideathon / Poster / Day 1)
-├── submit.html         authenticated circuit + data-qubit submission, and the team's own results
-├── leaderboard.html    team-best standings (lower 1-F is better, two significant figures)
 ├── assets/
-│   ├── style.css              design system, incl. 4 switchable color themes
-│   ├── script.js               language toggle, theme switcher, mobile nav
-│   ├── supabase-config.js      project URL + public/anon key go here
-│   └── supabase.js             guarded RPC + public leaderboard wrapper
-├── supabase-schema.sql  private queue, team auth, worker RPCs, leaderboard
+│   ├── style.css              design system
+│   ├── event.css              Ideathon / Hackathon / Register components
+│   ├── script.js              language toggle, mobile nav
+│   ├── supabase-config.js     project URL + public/anon key go here
+│   ├── supabase.js            guarded RPC wrapper (registration, submission, leaderboard)
+│   └── downloads/             Ideathon pitch deck and lean canvas templates
+├── supabase-schema.sql  private queue, team auth, worker RPCs, leaderboard, registration
 └── .github/workflows/deploy-pages.yml   auto-deploy to GitHub Pages
 ```
 
 ## Previewing locally
 
-Opening `index.html` directly (`file://`) mostly works, but `submit.html` / `leaderboard.html` call `fetch` under the hood and some browsers restrict that from `file://`. Serve the folder instead:
+Opening `index.html` directly (`file://`) mostly works, but `hackathon.html`, `ideathon.html`, and `register.html` call `fetch` under the hood and some browsers restrict that from `file://`. Serve the folder instead:
 
 ```
 python3 -m http.server 8000
@@ -41,13 +44,15 @@ For a private end-to-end test with a localhost Supabase database and the real
 scoring worker, follow [LOCAL_TESTING.md](LOCAL_TESTING.md). Nothing is pushed
 to GitHub or a hosted Supabase project in that workflow.
 
-## Supabase setup (for submit.html / leaderboard.html)
+## Supabase setup (for hackathon.html / ideathon.html / register.html)
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. Open the SQL Editor and run `supabase-schema.sql`. (A project set up from the first version of this file runs `supabase-migrate-v2.sql` first, then `supabase-schema.sql` again.) It creates private team/submission tables, a public sanitized leaderboard, and the guarded RPCs used by the browser and worker.
 3. Project Settings → API → copy the **Project URL** and **public/anon** key (never the service-role key) into `assets/supabase-config.js`.
 4. Create teams in the SQL Editor with `select public.admin_upsert_team('Team name', 'random-password-at-least-8-chars');`.
 5. On the private scoring machine, configure and run the worker in the `snu-qff/worker` directory. Its service-role key belongs only in the worker's local `.env` file.
+
+Event timing (registration opening, problem release, deadlines) and the hackathon problem link live in `qff_settings`, never in this repository; `event_status()` reveals the link only after the release time. Ideathon participants and hackathon teams register themselves through `register_ideathon(...)` and `register_hackathon_team(...)`; contact details stay in private tables. See `supabase-migrate-v4-registration.sql` for the organizer notes.
 
 The browser can list active team display names for the submission dropdown, execute
 `submit_solution(...)`, read its own team's results through `team_submissions(...)`
@@ -56,7 +61,7 @@ internal error), and read `qff_leaderboard`. It never reads submitted circuits,
 password hashes, or internal judge diagnostics. Team/password validation happens inside the
 database function before a private queue row is created.
 
-Until step 3 is done, `submit.html` and `leaderboard.html` will show a clear "not connected yet" message instead of failing silently — that's expected on a fresh clone.
+Until step 3 is done, the Hackathon, Ideathon, and Register pages will show a clear "not connected yet" message instead of failing silently — that's expected on a fresh clone.
 
 ## Deploying to GitHub Pages
 
