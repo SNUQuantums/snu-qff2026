@@ -17,10 +17,11 @@
 // public judge, and updates the public leaderboard.
 
 // A generated localhost-only config may already have set this value.
+// testMode: true routes every call to the *_test mirror tables and functions
+// (supabase-test-schema.sql) and shows a red TEST MODE ribbon. Set it to false
+// (or delete the line) for the real launch.
 window.QFF_SUPABASE_CONFIG = window.QFF_SUPABASE_CONFIG || {
+  testMode: true,
   url: "https://ezebbyoxohgouodwvbfv.supabase.co",
   anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6ZWJieW94b2hnb3VvZHd2YmZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMTg4MjEsImV4cCI6MjEwNTg5NDgyMX0.WfLKHLMDpRjaKkFhbi_pGpN215pCxl4jZK3md55kIsE",
-  listTeamsFunction: "list_active_teams",
-  submitFunction: "submit_solution",
-  leaderboardTable: "qff_leaderboard",
 };

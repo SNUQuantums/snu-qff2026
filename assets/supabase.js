@@ -17,6 +17,19 @@
     isConfigured = false;
   }
 
+  // Test mode routes every call to the *_test mirror objects (see
+  // supabase-test-schema.sql) and shows a ribbon so testers know.
+  var T = cfg.testMode ? "_test" : "";
+  function fn(name) { return name + T; }
+  if (cfg.testMode) {
+    document.addEventListener("DOMContentLoaded", function () {
+      var r = document.createElement("div");
+      r.textContent = "TEST MODE · 테스트 모드 · data goes to the _test tables";
+      r.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:9999;padding:.45rem 1rem;background:#a3341c;color:#fff;font:600 .78rem/1.3 ui-monospace,monospace;text-align:center;letter-spacing:.04em";
+      document.body.appendChild(r);
+    });
+  }
+
   function messageOf(error) {
     return (error && (error.message || error.details || error.hint)) || "unknown_error";
   }
@@ -39,19 +52,19 @@
 
   // ---- event timing and gated content ------------------------------------
   function fetchEventStatus() {
-    return rpc(cfg.eventStatusFunction || "event_status", {}, true);
+    return rpc(fn(cfg.eventStatusFunction || "event_status"), {}, true);
   }
 
   // ---- hackathon ---------------------------------------------------------
   function fetchTeams() {
-    return rpc(cfg.listTeamsFunction || "list_active_teams").then(function (res) {
+    return rpc(fn(cfg.listTeamsFunction || "list_active_teams")).then(function (res) {
       if (res.error) return res;
       return { data: res.data.map(function (row) { return row.team_name; }) };
     });
   }
 
   function registerHackathonTeam(entry) {
-    return rpc(cfg.registerTeamFunction || "register_hackathon_team", {
+    return rpc(fn(cfg.registerTeamFunction || "register_hackathon_team"), {
       p_team_name: entry.teamName,
       p_password: entry.password,
       p_leader_name: entry.leaderName,
@@ -61,7 +74,7 @@
   }
 
   function submitEntry(entry) {
-    return rpc(cfg.submitFunction || "submit_solution", {
+    return rpc(fn(cfg.submitFunction || "submit_solution"), {
       p_team_name: entry.teamName,
       p_password: entry.password,
       p_qasm: entry.qasm,
@@ -72,7 +85,7 @@
   function fetchLeaderboard() {
     if (!client) return Promise.resolve({ error: "not_configured" });
     return client
-      .from(cfg.leaderboardTable || "qff_leaderboard")
+      .from(cfg.leaderboardTable || (cfg.testMode ? "qff_test_leaderboard" : "qff_leaderboard"))
       .select("team_name, score_a, score_key, n_2q, p_acc, submitted_at")
       .order("score_key", { ascending: true })   // 1-F at two significant figures
       .order("n_2q", { ascending: true })
@@ -87,14 +100,14 @@
   }
 
   function fetchMySubmissions(teamName, password) {
-    return rpc(cfg.teamSubmissionsFunction || "team_submissions", {
+    return rpc(fn(cfg.teamSubmissionsFunction || "team_submissions"), {
       p_team_name: teamName,
       p_password: password,
     });
   }
 
   function fetchNextSubmission(teamName, password) {
-    return rpc(cfg.nextSubmissionFunction || "team_next_submission", {
+    return rpc(fn(cfg.nextSubmissionFunction || "team_next_submission"), {
       p_team_name: teamName,
       p_password: password,
     }, true);
@@ -102,11 +115,11 @@
 
   // ---- ideathon ----------------------------------------------------------
   function fetchIdeathonParticipants() {
-    return rpc(cfg.listParticipantsFunction || "list_ideathon_participants");
+    return rpc(fn(cfg.listParticipantsFunction || "list_ideathon_participants"));
   }
 
   function registerIdeathon(entry) {
-    return rpc(cfg.registerIdeathonFunction || "register_ideathon", {
+    return rpc(fn(cfg.registerIdeathonFunction || "register_ideathon"), {
       p_name: entry.name,
       p_affiliation: entry.affiliation,
       p_self_pr: entry.selfPr,
@@ -121,6 +134,7 @@
 
   window.QFF_SUPABASE = {
     isConfigured: isConfigured,
+    testMode: !!cfg.testMode,
     fetchEventStatus: fetchEventStatus,
     fetchTeams: fetchTeams,
     registerHackathonTeam: registerHackathonTeam,
