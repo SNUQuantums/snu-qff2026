@@ -93,10 +93,6 @@
 .reg-tile p { margin:0; font-size:.95rem; color:var(--ink-soft); max-width:46ch; }
 .reg-tile .tile-foot { display:flex; justify-content:space-between; align-items:center; gap:.6rem; font-size:.85rem; font-weight:600; }
 .reg-tile .tile-foot .state { font-family:var(--font-mono); font-size:.72rem; color:var(--ink-soft); font-weight:500; }
-.reg-tile.ideathon { background:var(--accent-tint); }
-.reg-tile.hackathon { background:var(--navy); color:var(--navy-ink); border-color:var(--navy); }
-.reg-tile.hackathon p, .reg-tile.hackathon .tile-foot .state { color:var(--navy-ink-soft); }
-.reg-tile.hackathon .kicker { color:var(--accent-on-navy); }
 .reg-tile[aria-disabled="true"] { opacity:.6; cursor:not-allowed; }
 .reg-tile[aria-disabled="true"]:hover { transform:none; box-shadow:none; }
 
