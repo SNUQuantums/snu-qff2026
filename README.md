@@ -11,7 +11,6 @@ No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, 
 ├── index.html          Home
 ├── about.html          About SQRT / Qiskit Fall Fest
 ├── schedule.html       3-day schedule
-├── speakers.html       Speakers (IBM / SNU faculty / SQRT)
 ├── hackathon.html      Hackathon + Ideathon details
 ├── posters.html        Poster Session
 ├── faq.html
