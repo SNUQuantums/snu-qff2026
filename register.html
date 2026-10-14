@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=1a0a80a6299f">
-<link rel="stylesheet" href="assets/event.css?v=d2c9033ddd6c">
+<link rel="stylesheet" href="assets/event.css?v=b3e97114eb6f">
 </head>
 <body>
 
@@ -124,6 +124,9 @@
         </label>
         <fieldset class="emoji-field">
           <legend><span data-kr>카드 이모지 (프로필 사진 대신 카드에 표시됩니다)</span><span data-en>Card emoji (shown on your card instead of a photo)</span></legend>
+          <details class="emoji-toggle" id="emoji-toggle">
+            <summary><span class="emoji-preview" id="emoji-preview">🙂</span><span class="emoji-toggle-text"><span data-kr>이모지 고르기</span><span data-en>Choose an emoji</span></span><span class="emoji-toggle-hint"><span data-kr>선택 안 하면 🙂</span><span data-en>🙂 if you skip</span></span></summary>
+            <div class="emoji-panel">
           <div class="emoji-cat"><span class="emoji-cat-label"><span data-kr>과학 · 기술</span><span data-en>Science & tech</span></span><div class="option-grid emoji-grid">
             <label><input type="radio" name="emoji" value="🚀"><span>🚀</span></label>
             <label><input type="radio" name="emoji" value="🛰️"><span>🛰️</span></label>
@@ -334,6 +337,8 @@
             <input type="text" name="emojiCustom" maxlength="16" inputmode="text" placeholder="🙂" autocomplete="off">
             <span class="hint"><span data-kr>직접 입력한 이모지가 위 선택보다 우선합니다. 글자나 숫자는 쓸 수 없습니다.</span><span data-en>A typed emoji overrides the grid. Letters and digits are not accepted.</span></span>
           </label>
+            </div>
+          </details>
         </fieldset>
         <fieldset>
           <legend><span data-kr>태그 (복수 선택)</span><span data-en>Tags (choose any)</span></legend>
@@ -466,7 +471,8 @@
   <div class="wrap">
     <div class="sponsor-strip"><span>SQRT · SNAAC · NextQuantum · IBM Quantum · Jane Street · QISCA</span></div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/snu_sqrt/?hl=en" target="_blank" rel="noopener">Contact</a>
+      <a href="mailto:snuquantums@gmail.com">Contact</a>
+      <a href="https://www.instagram.com/snu_sqrt/?hl=en" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.youtube.com/@sqrtsnuquantumresearchteam6066">YouTube</a>
       <a href="https://sites.google.com/view/sqrt-quantum"><span data-kr>SQRT 소개</span><span data-en>About SQRT</span></a>
     </div>
@@ -572,6 +578,17 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   var iDone = document.getElementById("ideathon-done");
   var iErr = document.getElementById("ideathon-error");
   var iData = null;
+  (function () {
+    var preview = document.getElementById("emoji-preview");
+    var custom = iForm.querySelector('input[name="emojiCustom"]');
+    function sync() {
+      var typed = custom.value.trim();
+      var picked = iForm.querySelector('input[name="emoji"]:checked');
+      preview.textContent = typed || (picked ? picked.value : "🙂");
+    }
+    iForm.querySelectorAll('input[name="emoji"]').forEach(function (r) { r.addEventListener("change", sync); });
+    custom.addEventListener("input", sync);
+  })();
   iForm.querySelectorAll('input[name="hasTeam"]').forEach(function (r) {
     r.addEventListener("change", function () { document.getElementById("team-block").hidden = iForm.hasTeam.value !== "yes"; });
   });
