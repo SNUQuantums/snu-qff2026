@@ -35,8 +35,9 @@ header) for every page you visit.
 - [ ] Emoji box "직접 입력": type one emoji from your keyboard, it overrides
       the grid. Type a letter or two emojis: rejected with a clear message. Press 신청하기. A summary appears. Press 수정하기, change a
       field, press 신청하기 again: the summary reflects the change.
-- [ ] Press 확인하고 신청. A green success box appears with a link to the Ideathon
-      page and says the KakaoTalk link and password are being emailed.
+- [ ] Press 확인하고 신청. A green success box appears with a QR code, the
+      KakaoTalk open-chat link, and the entry password, and says the same
+      details are being emailed. Scanning the QR opens the chat.
 - [ ] Within about five minutes an email from snuquantums@gmail.com arrives at
       the address you entered, with the open-chat link and password. (Only once
       the organizers have set up the notifier script; ask in the group chat.)

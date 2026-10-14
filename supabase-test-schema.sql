@@ -1064,3 +1064,22 @@ revoke all on function public.ideathon_mark_notified_test(text, uuid[]) from pub
 grant execute on function public.notifier_token_ok_test(text) to service_role;
 grant execute on function public.ideathon_pending_notifications_test(text) to anon, authenticated, service_role;
 grant execute on function public.ideathon_mark_notified_test(text, uuid[]) to anon, authenticated, service_role;
+
+-- ===== v8: welcome details after registration (same statements as supabase-migrate-v8-welcome.sql) =====
+create or replace function public.ideathon_welcome_test(p_participant_id uuid)
+returns table (chat_url text, chat_password text)
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select s.ideathon_chat_url, s.ideathon_chat_password
+  from public.qff_test_settings as s
+  where exists (
+    select 1 from public.qff_test_ideathon_participants as p
+    where p.id = p_participant_id and p.active
+  );
+$$;
+
+revoke all on function public.ideathon_welcome_test(uuid) from public;
+grant execute on function public.ideathon_welcome_test(uuid) to anon, authenticated, service_role;

@@ -133,6 +133,10 @@
     });
   }
 
+  function fetchIdeathonWelcome(participantId) {
+    return rpc(fn(cfg.welcomeFunction || "ideathon_welcome"), { p_participant_id: participantId }, true);
+  }
+
   window.QFF_SUPABASE = {
     isConfigured: isConfigured,
     testMode: !!cfg.testMode,
@@ -145,5 +149,6 @@
     fetchNextSubmission: fetchNextSubmission,
     fetchIdeathonParticipants: fetchIdeathonParticipants,
     registerIdeathon: registerIdeathon,
+    fetchIdeathonWelcome: fetchIdeathonWelcome,
   };
 })();

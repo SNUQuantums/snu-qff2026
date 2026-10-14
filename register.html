@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=1a0a80a6299f">
-<link rel="stylesheet" href="assets/event.css?v=b3e97114eb6f">
+<link rel="stylesheet" href="assets/event.css?v=976c691caba6">
 </head>
 <body>
 
@@ -387,8 +387,22 @@
         </div>
       </div>
       <div id="ideathon-done" class="success-box" hidden>
-        <span data-kr>신청이 완료되었습니다. 참가자 카드가 <a href="ideathon.html">아이디어톤 페이지</a>에 올라갔습니다. 카카오톡 단체 채팅방 링크와 입장 비밀번호는 입력한 이메일로 곧 보내드립니다 (몇 분 정도 걸릴 수 있으며, 스팸함도 확인해주세요).</span>
-        <span data-en>You're registered. Your card is now on the <a href="ideathon.html">Ideathon page</a>. The KakaoTalk group chat link and its password will be emailed to the address you entered within a few minutes. Check your spam folder too.</span>
+        <p style="margin:0 0 .8rem">
+          <span data-kr>신청이 완료되었습니다. 참가자 카드가 <a href="ideathon.html">아이디어톤 페이지</a>에 올라갔습니다.</span>
+          <span data-en>You're registered. Your card is now on the <a href="ideathon.html">Ideathon page</a>.</span>
+        </p>
+        <div class="welcome" id="welcome" hidden>
+          <div class="welcome-qr" id="welcome-qr" aria-hidden="true"></div>
+          <div class="welcome-text">
+            <span class="welcome-label"><span data-kr>카카오톡 오픈채팅</span><span data-en>KakaoTalk open chat</span></span>
+            <a id="welcome-link" href="#" target="_blank" rel="noopener"></a>
+            <span class="welcome-pw"><span data-kr>입장 비밀번호</span><span data-en>Entry password</span> <b id="welcome-pw"></b></span>
+          </div>
+        </div>
+        <p class="welcome-note" style="margin:.9rem 0 0">
+          <span data-kr>같은 내용이 15분 이내에 <b>snuquantums@gmail.com</b>에서 입력한 이메일로 발송됩니다. 스팸함도 확인해주세요. 이 창을 닫아도 그 메일로 언제든 오픈채팅에 들어올 수 있습니다.</span>
+          <span data-en>The same details will be emailed from <b>snuquantums@gmail.com</b> to the address you entered within 15 minutes. Check your spam folder too. You can use that email to join the open chat later, even after closing this tab.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -480,13 +494,14 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
 }
 </script>
 <script src="assets/supabase-config.js?v=20261015"></script>
-<script src="assets/supabase.js?v=20261015b"></script>
+<script src="assets/supabase.js?v=20261015c"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -652,8 +667,30 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       btn.disabled = false;
       if (res.error) { show(errEl, "error", "신청하지 못했습니다: " + res.error, "Could not register: " + res.error); return; }
       iConfirm.hidden = true; iDone.hidden = false;
+      showWelcome(res.data);
     });
   });
+
+  // After a successful registration, fetch the open-chat details for this
+  // participant id and draw the QR code in the browser.
+  function showWelcome(participantId) {
+    if (!participantId) return;
+    api.fetchIdeathonWelcome(participantId).then(function (res) {
+      var w = res.data;
+      if (res.error || !w || !w.chat_url) return;
+      var link = document.getElementById("welcome-link");
+      link.href = w.chat_url;
+      link.textContent = w.chat_url;
+      document.getElementById("welcome-pw").textContent = w.chat_password || "";
+      try {
+        var qr = window.qrcode(0, "M");
+        qr.addData(w.chat_url);
+        qr.make();
+        document.getElementById("welcome-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
+      } catch (e) {}
+      document.getElementById("welcome").hidden = false;
+    });
+  }
 
   // ---- hackathon form ---------------------------------------------------
   var hForm = document.getElementById("hackathon-form");
