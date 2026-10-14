@@ -118,3 +118,7 @@ body.reference-home .program-item:hover .icon-art::after { background-position:9
  body.reference-home .reference-hero { background-size:auto 100%; background-position:38% center; }
  body.reference-home .reference-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,#0b1b40ed,#0b1b40bf); z-index:1; pointer-events:none; }
 }
+
+/* Home start-here blocks are whole-card links. */
+body.reference-home a.event-card { display:block; color:#fff; text-decoration:none; }
+body.reference-home .event-card .go { display:inline-flex; position:absolute; right:18px; bottom:18px; z-index:1; align-items:center; justify-content:center; width:44px; height:44px; border:1px solid rgba(255,255,255,.75); border-radius:50%; font-weight:900; }

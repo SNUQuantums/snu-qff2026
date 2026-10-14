@@ -23,6 +23,7 @@
 .callout-meta b { color:var(--ink); font-weight:600; }
 .callout-links { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.4rem; }
 .callout-links .btn { font-size:.88rem; }
+.callout .topic-en { font-size:.95rem; color:var(--ink-soft); line-height:1.55; margin:-.7rem 0 var(--sp-2); }
 .callout p.note { font-size:.85rem; color:var(--ink-soft); margin:.8rem 0 0; }
 .callout.locked { border-left-color:var(--ink-soft); background:var(--paper-alt); }
 .callout.locked .topic { color:var(--ink-soft); }
@@ -51,6 +52,9 @@
 .empty-note { padding:var(--sp-3); border:1px dashed var(--paper-line); border-radius:var(--r-md); color:var(--ink-soft); font-size:.92rem; text-align:center; }
 
 /* ---- hackathon layout -------------------------------------------------- */
+.submit-wide { margin-top:var(--sp-3); }
+.submit-wide .submit-form { grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem var(--sp-3); align-items:start; }
+.submit-wide .submit-form > .file-pick, .submit-wide .submit-form > small, .submit-wide .submit-form > button { grid-column:1 / -1; }
 .hack-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:var(--sp-4); align-items:start; margin-top:var(--sp-3); }
 .hack-layout .callout { margin-top:0; }
 .panel-stack { display:grid; gap:var(--sp-2); }
@@ -131,6 +135,7 @@
 /* ---- responsive -------------------------------------------------------- */
 @media (max-width: 900px) {
   .hack-layout { grid-template-columns:1fr; }
+  .submit-wide .submit-form { grid-template-columns:1fr; }
   /* Phones: four compact tiles that fit one screen, no page scroll. */
   .reg-page-lede { display:none; }
   .reg-grid { grid-template-columns:1fr; grid-template-rows:repeat(4,minmax(0,1fr)); min-height:0; height:calc(100dvh - 235px); max-height:calc(100dvh - 235px); gap:.6rem; margin-top:var(--sp-2); }
