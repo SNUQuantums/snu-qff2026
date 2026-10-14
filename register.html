@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=1a0a80a6299f">
-<link rel="stylesheet" href="assets/event.css?v=0622ec797d09">
+<link rel="stylesheet" href="assets/event.css?v=143f4346b8ce">
 </head>
 <body>
 
@@ -122,6 +122,35 @@
           <textarea name="selfPr" maxlength="600" required placeholder="관심 분야, 할 수 있는 것, 함께하고 싶은 팀원 등 / Interests, what you bring, who you'd like to team up with"></textarea>
           <span class="hint"><span data-kr>최대 600자</span><span data-en>Up to 600 characters</span></span>
         </label>
+        <fieldset>
+          <legend><span data-kr>카드 이모지 (프로필 사진 대신 카드에 표시됩니다)</span><span data-en>Card emoji (shown on your card instead of a photo)</span></legend>
+          <div class="option-grid emoji-grid">
+            <label><input type="radio" name="emoji" value="🚀"><span>🚀</span></label>
+            <label><input type="radio" name="emoji" value="⚛️"><span>⚛️</span></label>
+            <label><input type="radio" name="emoji" value="🧠"><span>🧠</span></label>
+            <label><input type="radio" name="emoji" value="💡"><span>💡</span></label>
+            <label><input type="radio" name="emoji" value="🔬"><span>🔬</span></label>
+            <label><input type="radio" name="emoji" value="🧪"><span>🧪</span></label>
+            <label><input type="radio" name="emoji" value="🧲"><span>🧲</span></label>
+            <label><input type="radio" name="emoji" value="💻"><span>💻</span></label>
+            <label><input type="radio" name="emoji" value="🎨"><span>🎨</span></label>
+            <label><input type="radio" name="emoji" value="📈"><span>📈</span></label>
+            <label><input type="radio" name="emoji" value="📣"><span>📣</span></label>
+            <label><input type="radio" name="emoji" value="🎤"><span>🎤</span></label>
+            <label><input type="radio" name="emoji" value="🛠️"><span>🛠️</span></label>
+            <label><input type="radio" name="emoji" value="🧩"><span>🧩</span></label>
+            <label><input type="radio" name="emoji" value="🌌"><span>🌌</span></label>
+            <label><input type="radio" name="emoji" value="🪐"><span>🪐</span></label>
+            <label><input type="radio" name="emoji" value="🔭"><span>🔭</span></label>
+            <label><input type="radio" name="emoji" value="🤖"><span>🤖</span></label>
+            <label><input type="radio" name="emoji" value="🦾"><span>🦾</span></label>
+            <label><input type="radio" name="emoji" value="🐱"><span>🐱</span></label>
+            <label><input type="radio" name="emoji" value="🐧"><span>🐧</span></label>
+            <label><input type="radio" name="emoji" value="🦊"><span>🦊</span></label>
+            <label><input type="radio" name="emoji" value="🐙"><span>🐙</span></label>
+            <label><input type="radio" name="emoji" value="🍀"><span>🍀</span></label>
+          </div>
+        </fieldset>
         <fieldset>
           <legend><span data-kr>태그 (복수 선택)</span><span data-en>Tags (choose any)</span></legend>
           <div class="option-grid">
@@ -267,7 +296,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 }
 </script>
 <script src="assets/supabase-config.js?v=20261015"></script>
-<script src="assets/supabase.js?v=20261015"></script>
+<script src="assets/supabase.js?v=20261015b"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -365,7 +394,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   function readIdeathon() {
     var fd = new FormData(iForm);
     var v = function (k) { return (fd.get(k) || "").toString().trim(); };
-    var d = { name: v("name"), affiliation: v("affiliation"), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String),
+    var d = { name: v("name"), affiliation: v("affiliation"), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String), emoji: v("emoji"),
       phone: v("phone"), email: v("email"), hasTeam: fd.get("hasTeam") === "yes", teamName: v("teamName"), teammates: [] };
     for (var i = 1; i <= 3; i++) {
       var n = v("mate" + i + "name"), p = v("mate" + i + "phone"), e = v("mate" + i + "email");
@@ -397,7 +426,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     if (err) { show(iErr, "error", err, err); return; }
     iData = d;
     var tags = d.tags.map(function (x) { return isEn() ? x : (TAG_KR[x] || x); }).join(", ");
-    var html = row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + row(t("자기소개", "Self-introduction"), d.selfPr) +
+    var html = row(t("이모지", "Emoji"), d.emoji || t("선택 안 함", "none")) + row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + row(t("자기소개", "Self-introduction"), d.selfPr) +
       row(t("태그", "Tags"), tags) + row(t("전화번호", "Phone"), d.phone) + row(t("이메일", "Email"), d.email) +
       row(t("팀", "Team"), d.hasTeam ? d.teamName : t("팀원 찾는 중", "Looking for teammates"));
     d.teammates.forEach(function (m, i) { html += row(t("팀원 " + (i + 1), "Teammate " + (i + 1)), m.name + " · " + m.phone + " · " + m.email); });

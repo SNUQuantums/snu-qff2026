@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=1a0a80a6299f">
-<link rel="stylesheet" href="assets/event.css?v=0622ec797d09">
+<link rel="stylesheet" href="assets/event.css?v=143f4346b8ce">
 </head>
 <body>
 
@@ -128,7 +128,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 }
 </script>
 <script src="assets/supabase-config.js?v=20261015"></script>
-<script src="assets/supabase.js?v=20261015"></script>
+<script src="assets/supabase.js?v=20261015b"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -202,7 +202,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       ? '<span class="badge team">' + t("팀 구성 완료", "Has a team") + '</span>'
       : '<span class="badge open">' + t("팀원 찾는 중", "Looking for team") + '</span>';
     return '<article class="pcard' + (hits === "partial" ? " partial" : "") + '">' +
-      '<div class="pcard-head"><div><div class="pcard-name">' + esc(p.name) + '</div>' +
+      '<div class="pcard-head"><span class="pcard-emoji" aria-hidden="true">' + esc(p.emoji || "🙂") + '</span><div class="pcard-id"><div class="pcard-name">' + esc(p.name) + '</div>' +
       '<div class="pcard-aff">' + esc(p.affiliation) + '</div></div>' + badge + '</div>' +
       '<p class="pcard-pr">' + esc(p.self_pr) + '</p>' +
       '<div class="tag-list">' + tags + '</div></article>';

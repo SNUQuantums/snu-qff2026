@@ -30,8 +30,8 @@ header) for every page you visit.
 - [ ] On a phone, all four tiles fit on one screen without scrolling.
 - [ ] Tap **Ideathon**: an overlay covers about 90% of the screen. Close with ×,
       with Esc, and by clicking the dark backdrop.
-- [ ] Ideathon form, no team: fill name, affiliation, self-PR, pick two tags,
-      phone, email. Press 신청하기. A summary appears. Press 수정하기, change a
+- [ ] Ideathon form, no team: fill name, affiliation, self-PR, pick an emoji
+      and two tags, phone, email. Press 신청하기. A summary appears. Press 수정하기, change a
       field, press 신청하기 again: the summary reflects the change.
 - [ ] Press 확인하고 신청. A green success box appears with a link to the Ideathon
       page.
@@ -60,6 +60,8 @@ header) for every page you visit.
 - [ ] 제출하기 opens the Google Form in a new tab.
 - [ ] Your registration from step 1 appears as a card. Cards of people without
       a team come first and carry a green "팀원 찾는 중" badge.
+- [ ] The emoji you picked is the card's avatar. A card registered without
+      one shows 🙂.
 - [ ] The card never shows phone, email, team name, or teammates.
 - [ ] Select one tag: cards with that tag come first. Select two tags: cards
       with both come first, cards with only one appear under "일부 태그만 일치".
