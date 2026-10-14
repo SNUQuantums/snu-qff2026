@@ -36,7 +36,10 @@ header) for every page you visit.
       the grid. Type a letter or two emojis: rejected with a clear message. Press 신청하기. A summary appears. Press 수정하기, change a
       field, press 신청하기 again: the summary reflects the change.
 - [ ] Press 확인하고 신청. A green success box appears with a link to the Ideathon
-      page.
+      page and says the KakaoTalk link and password are being emailed.
+- [ ] Within about five minutes an email from snuquantums@gmail.com arrives at
+      the address you entered, with the open-chat link and password. (Only once
+      the organizers have set up the notifier script; ask in the group chat.)
 - [ ] Register again with the **same email**: the error says the address is
       already registered.
 - [ ] Ideathon form, with team: choose "네, 팀이 있어요". Team name and three
