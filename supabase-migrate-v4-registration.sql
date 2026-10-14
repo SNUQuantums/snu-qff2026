@@ -168,6 +168,7 @@ end;
 $$;
 
 -- Public cards. Participants still looking for a team come first.
+drop function if exists public.list_ideathon_participants();
 create or replace function public.list_ideathon_participants()
 returns table (
   participant_id uuid,

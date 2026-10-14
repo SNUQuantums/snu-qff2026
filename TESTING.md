@@ -31,7 +31,9 @@ header) for every page you visit.
 - [ ] Tap **Ideathon**: an overlay covers about 90% of the screen. Close with ×,
       with Esc, and by clicking the dark backdrop.
 - [ ] Ideathon form, no team: fill name, affiliation, self-PR, pick an emoji
-      and two tags, phone, email. Press 신청하기. A summary appears. Press 수정하기, change a
+      from the grid and two tags, phone, email.
+- [ ] Emoji box "직접 입력": type one emoji from your keyboard, it overrides
+      the grid. Type a letter or two emojis: rejected with a clear message. Press 신청하기. A summary appears. Press 수정하기, change a
       field, press 신청하기 again: the summary reflects the change.
 - [ ] Press 확인하고 신청. A green success box appears with a link to the Ideathon
       page.

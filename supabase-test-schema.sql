@@ -660,7 +660,9 @@ begin
 end;
 $$;
 
--- Public cards. Participants still looking for a team come first.
+-- Public cards. Participants still looking for a team come first. Dropped first
+-- because a later section changes the returned columns.
+drop function if exists public.list_ideathon_participants_test();
 create or replace function public.list_ideathon_participants_test()
 returns table (
   participant_id uuid,
@@ -961,3 +963,14 @@ revoke all on function public.register_ideathon_test(text, text, text, text[], b
 revoke all on function public.list_ideathon_participants_test() from public;
 grant execute on function public.register_ideathon_test(text, text, text, text[], boolean, text, text, text, jsonb, text) to anon, authenticated, service_role;
 grant execute on function public.list_ideathon_participants_test() to anon, authenticated, service_role;
+
+-- ===== v6: any single emoji (same statements as supabase-migrate-v6-emoji-any.sql) =====
+alter table public.qff_test_ideathon_participants
+  drop constraint if exists qff_test_ideathon_participants_emoji_check;
+alter table public.qff_test_ideathon_participants
+  add constraint qff_test_ideathon_participants_emoji_check check (
+    emoji is null or (
+      char_length(emoji) between 1 and 8
+      and emoji ~ '^[\U0001F000-\U0001FAFF☀-➿⬀-⯿‍️⃣©®™〰〽㊗㊙]+$'
+    )
+  );
