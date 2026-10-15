@@ -72,7 +72,7 @@
       <div class="page-head">
         <div>
           <span class="eyebrow"><span data-kr>해커톤</span><span data-en>Hackathon</span></span>
-          <h1><span data-kr>회로를 짜고, 제출하고, 순위를 확인하세요</span><span data-en>Build a circuit, submit it, watch the board</span></h1>
+          <h1><span data-kr>회로를 제출하고 리더보드에서 순위를 확인하세요</span><span data-en>Submit your circuit and see where you rank.</span></h1>
           <p class="lede">
             <span data-kr>Qiskit 또는 코딩 경험이 있다면 전공과 관계없이 참여할 수 있습니다. 팀을 등록하고, 문제가 공개되면 회로를 제출하세요. 채점은 자동으로 이루어지며 결과는 아래 리더보드에 반영됩니다.</span>
             <span data-en>Open to any major with some Qiskit or coding experience. Register a team, then submit circuits once the problem is released. Grading is automatic and results appear on the leaderboard below.</span>
@@ -101,10 +101,10 @@
             </div>
             <h3 style="margin:var(--sp-3) 0 .4rem;font-size:1rem"><span data-kr>참여 방법</span><span data-en>How it works</span></h3>
             <ul class="feature-list" style="margin:0">
-              <li><span data-kr><b>팀 등록:</b> 오른쪽 "참가 신청"에서 팀 이름과 제출 비밀번호를 정합니다. 팀당 한 번만 등록하면 됩니다.</span><span data-en><b>Register a team:</b> choose a team name and a submission password under "Register" on the right. One registration per team.</span></li>
-              <li><span data-kr><b>회로 제출:</b> 팀 이름과 비밀번호, data qubit 배치, OpenQASM 2.0 파일을 올리면 채점 대기열에 들어갑니다.</span><span data-en><b>Submit a circuit:</b> upload your OpenQASM 2.0 file with the team name, password, and data-qubit placement. It enters the grading queue.</span></li>
-              <li><span data-kr><b>채점과 순위:</b> 1-F가 낮을수록 높은 순위이며, 같으면 2-qubit gate 수, 제출 시각 순입니다. 팀별 최고 결과만 리더보드에 올라갑니다.</span><span data-en><b>Grading and ranking:</b> lower 1-F ranks higher, with ties broken by two-qubit gate count, then submission time. Only each team's best result appears on the board.</span></li>
-              <li><span data-kr><b>재제출 제한:</b> 이전 제출이 채점 중이거나 마지막 제출 후 10분이 지나지 않았으면 다시 제출할 수 없습니다.</span><span data-en><b>Resubmission limit:</b> you cannot submit while a previous one is still being graded or within 10 minutes of your last submission.</span></li>
+              <li><span data-kr><b>팀 등록:</b> "참가 신청"에서 팀 이름과 제출 비밀번호를 정합니다. 팀에서 한 명만 등록하면 됩니다.</span><span data-en><b>Register your team:</b> pick a team name and a submission password under "Register". Only one person per team needs to do this.</span></li>
+              <li><span data-kr><b>회로 제출:</b> 팀 이름, 비밀번호, data qubit 배치를 입력하고 OpenQASM 2.0 파일을 올리면 채점 대기열에 들어갑니다.</span><span data-en><b>Submit a circuit:</b> enter your team name, password, and data-qubit placement, and upload an OpenQASM 2.0 file. It goes into the grading queue.</span></li>
+              <li><span data-kr><b>채점과 순위:</b> 1-F가 낮을수록 순위가 높습니다. 1-F가 같으면 2-qubit gate가 적은 팀이, 그것도 같으면 먼저 제출한 팀이 앞섭니다. 리더보드에는 팀별 최고 기록만 올라갑니다.</span><span data-en><b>Grading and ranking:</b> lower 1-F ranks higher. On a tie, fewer two-qubit gates wins, then earlier submission. Only each team's best result appears on the board.</span></li>
+              <li><span data-kr><b>재제출 제한:</b> 이전 제출이 아직 채점 중이거나, 마지막 제출 후 10분이 안 지났다면 다시 제출할 수 없습니다.</span><span data-en><b>Resubmission limit:</b> you cannot submit while a previous one is still being graded or within 10 minutes of your last submission.</span></li>
             </ul>
           </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="panel-stack">
           <div class="panel">
             <h2><span data-kr>참가 신청</span><span data-en>Register</span></h2>
-            <p class="hint"><span data-kr>팀 이름, 제출 비밀번호, 팀장 연락처를 등록합니다. 신청 페이지의 해커톤 창이 바로 열립니다.</span><span data-en>Set your team name, submission password, and leader contact. This opens the Hackathon form on the Register page.</span></p>
+            <p class="hint"><span data-kr>팀 이름, 제출 비밀번호, 팀장 연락처를 등록합니다. 버튼을 누르면 신청 페이지의 해커톤 신청서가 열립니다.</span><span data-en>You'll set a team name, a submission password, and the leader's contact details. The button opens the Hackathon form on the Register page.</span></p>
             <a href="register.html#hackathon" class="btn btn-solid"><span data-kr>팀 등록하기</span><span data-en>Register a team</span></a>
           </div>
 
@@ -138,7 +138,7 @@
               <label>
                 <span><span data-kr>Data qubits (code qubit 0–6 순서)</span><span data-en>Data qubits (in code-qubit 0–6 order)</span></span>
                 <input type="text" name="dataQubits" inputmode="numeric" placeholder="1, 2, 3, 6, 10, 9, 11" required />
-                <small class="submit-hint"><span data-kr>0부터 35까지 서로 다른 물리 qubit 7개를 쉼표로 구분하세요.</span><span data-en>Seven distinct physical qubits from 0 through 35, separated by commas.</span></small>
+                <small class="submit-hint"><span data-kr>0부터 35 사이의 서로 다른 물리 qubit 7개를 쉼표로 구분해 적어 주세요.</span><span data-en>Seven distinct physical qubits from 0 through 35, separated by commas.</span></small>
               </label>
               <div class="file-pick">
                 <label class="btn btn-outline on-navy-accent" for="qasm-file" style="cursor:pointer"><span data-kr>QASM 파일 선택</span><span data-en>Choose QASM file</span></label>
@@ -161,8 +161,8 @@
         </div>
       </div>
       <p class="lede" style="font-size:.9rem;margin-top:.4rem">
-        <span data-kr>팀별 최고 제출작이 자동으로 반영됩니다. 1-F는 유효숫자 2자리로 비교합니다. 15초마다 새 점수를 확인합니다.</span>
-        <span data-en>Each team's best submission appears automatically. 1-F is compared at two significant figures. Scores refresh every 15 seconds.</span>
+        <span data-kr>팀마다 가장 좋은 제출만 자동으로 올라갑니다. 1-F는 유효숫자 두 자리까지만 비교하고, 점수는 15초마다 새로 불러옵니다.</span>
+        <span data-en>Each team's best submission shows up here automatically. 1-F is compared to two significant figures, and scores refresh every 15 seconds.</span>
       </p>
       <div id="leaderboard-status" class="form-banner" hidden></div>
       <table class="compare leaderboard-table" id="leaderboard-table" hidden>
@@ -189,8 +189,8 @@
         <h2><span data-kr>내 제출 기록</span><span data-en>My submissions</span></h2>
       </div>
       <p class="lede" style="font-size:.9rem;margin-top:.4rem">
-        <span data-kr>팀 이름과 비밀번호로 최근 제출의 상태와 점수, 실패했다면 그 이유를 확인합니다. 제출이 정상적으로 들어갔는지 확인하는 용도입니다.</span>
-        <span data-en>Check the status, score, and any failure reason of your recent submissions with your team name and password. Use it to confirm a submission went through.</span>
+        <span data-kr>팀 이름과 비밀번호를 넣으면 최근 제출의 상태와 점수를 볼 수 있고, 실패했다면 이유도 나옵니다. 제출이 제대로 들어갔는지 확인할 때 쓰세요.</span>
+        <span data-en>Enter your team name and password to see the status and score of your recent submissions, and why one failed if it did. Use it to check that a submission went through.</span>
       </p>
       <form id="history-form" class="history-form" novalidate>
         <label><span data-kr>팀 이름</span><span data-en>Team name</span>
@@ -211,7 +211,7 @@
             <th>1-F</th>
             <th>Acceptance</th>
             <th>2Q</th>
-            <th><span data-kr>채점 워커</span><span data-en>Worker</span></th>
+            <th><span data-kr>채점 서버</span><span data-en>Grader</span></th>
             <th><span data-kr>메시지</span><span data-en>Message</span></th>
           </tr>
         </thead>
