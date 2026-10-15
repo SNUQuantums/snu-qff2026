@@ -57,7 +57,11 @@
 .submit-wide { margin-top:var(--sp-3); }
 .submit-wide .submit-form { grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem var(--sp-3); align-items:start; }
 .submit-wide .submit-form > .file-pick, .submit-wide .submit-form > small, .submit-wide .submit-form > button { grid-column:1 / -1; }
-.hack-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:var(--sp-4); align-items:start; margin-top:var(--sp-3); }
+.hack-layout { display:grid; grid-template-columns:1fr; gap:var(--sp-3); margin-top:var(--sp-3); }
+.panel.register-row { display:flex; align-items:center; justify-content:space-between; gap:var(--sp-3); flex-wrap:wrap; }
+.panel.register-row > div { min-width:0; max-width:60ch; }
+.panel.register-row h2 { margin-bottom:.2rem; }
+.panel.register-row p.hint { margin:0; }
 .hack-layout .callout { margin-top:0; }
 .panel-stack { display:grid; gap:var(--sp-2); }
 .panel { padding:var(--sp-3); border:1px solid var(--paper-line); border-radius:var(--r-md); background:var(--paper); }
