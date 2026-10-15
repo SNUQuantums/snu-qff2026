@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/downloads/
+
+Sitemap: https://snuquantums.github.io/snu-qff2026/sitemap.xml
