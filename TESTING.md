@@ -27,7 +27,8 @@ header) for every page you visit.
 ## 1. Register page (`register.html`)
 
 - [ ] Four tiles show. Ideathon and Hackathon say "접수 중 / Open".
-- [ ] On a phone, all four tiles fit on one screen without scrolling.
+- [ ] On a phone, the explanation under the title is visible and all four tiles
+      fit on one screen without scrolling.
 - [ ] Tap **Ideathon**: an overlay covers about 90% of the screen. Close with ×,
       with Esc, and by clicking the dark backdrop.
 - [ ] Ideathon form, no team: fill name, affiliation, self-PR, pick an emoji
@@ -48,6 +49,8 @@ header) for every page you visit.
       completely. Submit succeeds.
 - [ ] With team, fill a teammate's name but not the email: the error names the
       teammate row.
+- [ ] Choose "네, 1인 팀이에요": only the team-name field appears, no teammate
+      rows. The summary shows the team name with "(1인 팀)".
 - [ ] Tap **Hackathon**: register a team with an 8+ character password. Success.
       Register the same team name again: error says the name is taken.
 - [ ] Password shorter than 8 characters is rejected before sending.

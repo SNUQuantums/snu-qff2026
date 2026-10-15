@@ -159,8 +159,8 @@
   .hack-layout { grid-template-columns:1fr; }
   .submit-wide .submit-form { grid-template-columns:1fr; }
   /* Phones: four compact tiles that fit one screen, no page scroll. */
-  .reg-page-lede { display:none; }
-  .reg-grid { grid-template-columns:1fr; grid-template-rows:repeat(4,minmax(0,1fr)); min-height:0; height:calc(100dvh - 235px); max-height:calc(100dvh - 235px); gap:.6rem; margin-top:var(--sp-2); }
+  .reg-page-lede { font-size:.88rem; line-height:1.5; }
+  .reg-grid { grid-template-columns:1fr; grid-template-rows:repeat(4,minmax(0,1fr)); min-height:0; height:calc(100dvh - 330px); max-height:calc(100dvh - 330px); gap:.5rem; margin-top:var(--sp-2); }
   .reg-tile { padding:.8rem 1.1rem; gap:.3rem; border-radius:var(--r-md); justify-content:center; }
   .reg-tile .kicker { font-size:.62rem; }
   .reg-tile h2 { font-size:1.15rem; margin:.1rem 0 .2rem; }
