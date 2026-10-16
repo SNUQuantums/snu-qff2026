@@ -21,6 +21,8 @@
 .callout-meta li { font-size:.92rem; color:var(--ink-soft); }
 .callout-meta strong { display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-strong); margin-bottom:.2rem; }
 .callout-meta b { color:var(--ink); font-weight:600; }
+.callout-meta .meta-wide { grid-column:1 / -1; }
+.callout-meta .meta-wide b { font-variant-numeric:tabular-nums; }
 .callout-links { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.4rem; }
 .callout-links .btn { font-size:.88rem; }
 .callout .topic-en { font-size:.95rem; color:var(--ink-soft); line-height:1.55; margin:-.7rem 0 var(--sp-2); }

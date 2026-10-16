@@ -6,3 +6,4 @@
 - SNAAC: https://cdn.imweb.me/thumbnail/20260817/ac33467c17378.png (official header at https://snaac.co.kr/).
 
 Original artwork preserved; displayed without recoloring or distortion.
+- Norma: white wordmark supplied by the organizing team (norma.png).
