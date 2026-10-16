@@ -1,20 +1,24 @@
-# Tester checklist (reorg branch)
+# Tester checklist
 
-The `reorg` branch is the Oct 16 release candidate. It runs against the real
-Supabase project but, while `testMode: true` is set in
-`assets/supabase-config.js`, every call goes to separate `*_test` tables and
-functions. A red **TEST MODE** ribbon at the bottom of each page confirms this.
-Nothing you do here touches the real teams, participants, or leaderboard.
+The site is live on `main`. For testing, run it locally with the test-mode
+config: every call then goes to separate `*_test` tables and functions, and a
+red **TEST MODE** ribbon at the bottom of each page confirms it. Nothing you do
+in test mode touches the real teams, participants, or leaderboard.
 
 ## Run it locally
 
 Needs Git and Python 3.
 
 ```sh
-git clone -b reorg https://github.com/SNUQuantums/snu-qff2026.git
+git clone https://github.com/SNUQuantums/snu-qff2026.git
 cd snu-qff2026
+cp assets/supabase-config.local.example.js assets/supabase-config.local.js
 python -m http.server 8000
 ```
+
+The copied file turns on test mode for your local preview only; it is
+gitignored and never deployed. Without it, the local preview talks to the
+real tables exactly like the public site, so do not register test data then.
 
 Open <http://localhost:8000/>. Use a real browser (Chrome, Safari, Firefox) and
 also your phone if you can: on the same Wi-Fi, replace `localhost` with your
@@ -122,5 +126,5 @@ delete from public.qff_test_ideathon_participants;
 delete from public.qff_test_teams;
 ```
 
-To switch the site to production, set `testMode: false` in
-`assets/supabase-config.js`. The real tables keep their Oct 16 / Oct 22 gates.
+The public site is already in production mode. Test mode exists only in the
+gitignored local config file described above.

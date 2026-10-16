@@ -21,14 +21,31 @@
 .callout-meta li { font-size:.92rem; color:var(--ink-soft); }
 .callout-meta strong { display:block; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-strong); margin-bottom:.2rem; }
 .callout-meta b { color:var(--ink); font-weight:600; }
-.callout-meta .meta-wide { grid-column:1 / -1; }
-.callout-meta .meta-wide b { font-variant-numeric:tabular-nums; }
 .callout-links { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.4rem; }
 .callout-links .btn { font-size:.88rem; }
 .callout .topic-en { font-size:.95rem; color:var(--ink-soft); line-height:1.55; margin:-.7rem 0 var(--sp-2); }
 .callout p.note { font-size:.85rem; color:var(--ink-soft); margin:.8rem 0 0; }
 .callout.locked { border-left-color:var(--ink-soft); background:var(--paper-alt); }
 .callout.locked .topic { color:var(--ink-soft); }
+
+/* ---- prize banner (same design as the Ideathon detail page) ------------ */
+.prize-banner { position:relative; overflow:hidden; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:clamp(20px,4vw,48px); margin-top:var(--sp-3); padding:clamp(20px,3vw,28px) clamp(22px,3.4vw,36px); border-radius:var(--r-lg); background:linear-gradient(120deg,#ece3f9,#e0d3f3); border:1px solid #c9b6e6; color:var(--ink); box-shadow:0 14px 34px -26px rgba(71,43,108,.45); }
+.prize-banner::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:linear-gradient(90deg,#476fcb,#8ed9f6 38%,#b797ed 66%,#ffc18e); }
+.prize-label small { display:block; margin-bottom:6px; font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; color:var(--tag-violet); }
+.prize-label strong { display:block; font-size:clamp(1.4rem,2.6vw,1.8rem); line-height:1.1; letter-spacing:-.02em; white-space:nowrap; }
+.prize-banner ul { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.prize-banner li { padding:12px 16px; border:1px solid var(--paper-line); border-radius:var(--r-md); background:#fff; }
+.prize-banner li > span { display:block; margin-bottom:4px; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
+.prize-banner b { display:block; font-size:clamp(1.3rem,2.4vw,1.75rem); letter-spacing:-.02em; color:#4f2f86; white-space:nowrap; }
+.prize-banner li > small { display:block; margin-top:2px; font-size:.78rem; color:var(--ink-soft); }
+@media (max-width:760px) {
+  .prize-banner, .prize-banner ul { grid-template-columns:1fr; }
+  .prize-banner ul { gap:6px; }
+  .prize-banner li { display:grid; grid-template-columns:1fr auto; align-items:baseline; column-gap:12px; padding:10px 14px; }
+  .prize-banner li > span { margin:0; }
+  .prize-banner li > small { grid-column:2; text-align:right; }
+  .prize-banner b { font-size:1.15rem; }
+}
 
 /* ---- participants ------------------------------------------------------ */
 .filter-bar { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:var(--sp-2) 0 var(--sp-3); }
@@ -114,7 +131,9 @@
 .overlay-hint-embed { margin:var(--sp-2) var(--sp-3) 0; }
 .reg-dialog-body.embed { padding:0; }
 .reg-dialog-body iframe { width:100%; height:100%; border:0; display:block; }
-.reg-form { display:grid; gap:1rem; max-width:720px; }
+/* Centre the overlay content on wide screens instead of hugging the left edge. */
+.reg-dialog-body:not(.embed) > * { max-width:760px; margin-left:auto; margin-right:auto; }
+.reg-form { display:grid; gap:1rem; }
 .reg-form label, .reg-form fieldset { display:grid; gap:.4rem; font-size:.9rem; font-weight:600; color:var(--ink); margin:0; padding:0; border:0; min-width:0; }
 .reg-form legend { font-size:.9rem; font-weight:600; padding:0; margin-bottom:.4rem; }
 .reg-form input[type="text"], .reg-form input[type="email"], .reg-form input[type="tel"], .reg-form input[type="password"], .reg-form textarea, .reg-form select { font:inherit; font-size:.95rem; padding:.65rem .75rem; border:1px solid var(--paper-line); border-radius:var(--r-sm); background:#fff; color:var(--ink); width:100%; }
