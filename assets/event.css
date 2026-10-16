@@ -178,7 +178,7 @@ body.ideathon-page #participants { padding-top:calc(clamp(48px,6vw,88px) / 2); }
 .success-box { padding:var(--sp-3); border-radius:var(--r-md); background:var(--success-tint); color:var(--success); font-weight:600; line-height:1.6; }
 .success-box a { color:inherit; }
 .welcome { display:grid; grid-template-columns:150px minmax(0,1fr); gap:1rem; align-items:center; padding:1rem; border-radius:var(--r-md); background:#fff; color:var(--ink); font-weight:500; }
-.welcome-qr svg { display:block; width:150px; height:150px; }
+.welcome-qr svg, .welcome-qr img { display:block; width:150px; height:150px; border-radius:8px; }
 .welcome-text { display:grid; gap:.3rem; min-width:0; }
 .welcome-label { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-strong); }
 .welcome-text a { font-weight:700; color:var(--accent); overflow-wrap:anywhere; }

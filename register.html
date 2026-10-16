@@ -30,7 +30,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=a2546452fe24">
-<link rel="stylesheet" href="assets/event.css?v=d4d2e6785f61">
+<link rel="stylesheet" href="assets/event.css?v=d8e72a880ccb">
 </head>
 <body>
 
@@ -517,7 +517,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   document.write('<script src="assets/supabase-config.local.js?v=20260924"><\/script>');
@@ -710,12 +709,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       link.href = w.chat_url;
       link.textContent = w.chat_url;
       document.getElementById("welcome-pw").textContent = w.chat_password || "";
-      try {
-        var qr = window.qrcode(0, "M");
-        qr.addData(w.chat_url);
-        qr.make();
-        document.getElementById("welcome-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
-      } catch (e) {}
+      document.getElementById("welcome-qr").innerHTML = '<img src="assets/ideathon/openchat-qr.png" alt="" width="150" height="150">';
       document.getElementById("welcome").hidden = false;
     });
   }
