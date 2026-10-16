@@ -48,6 +48,10 @@
   .prize-banner b { font-size:1.15rem; }
 }
 
+/* Ideathon: halve the gap between the prize banner and the participant cards. */
+body.ideathon-page main > .paper-surface:first-child { padding-bottom:calc(clamp(48px,6vw,88px) / 2); }
+body.ideathon-page #participants { padding-top:calc(clamp(48px,6vw,88px) / 2); }
+
 /* ---- participants ------------------------------------------------------ */
 .filter-bar { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:var(--sp-2) 0 var(--sp-3); }
 .filter-bar .label { font-size:.82rem; font-weight:600; color:var(--ink-soft); margin-right:.3rem; }
