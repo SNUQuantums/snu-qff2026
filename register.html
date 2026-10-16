@@ -381,7 +381,7 @@
           </div>
         </fieldset>
         <div class="team-block" id="team-block" hidden>
-          <p class="hint" style="margin:0"><span data-kr><b>팀은 최대 4명</b>이고, <b>한 명만</b> 신청하면 됩니다. 나머지 팀원 정보를 아래에 적어 주세요.</span><span data-en><b>Teams can have up to 4 people</b>, and <b>only one of you</b> needs to register. Add your teammates below.</span></p>
+          <p class="hint" id="team-hint" style="margin:0"><span data-kr><b>팀은 최대 4명</b>이고, <b>한 명만</b> 신청하면 됩니다. 나머지 팀원 정보를 아래에 적어 주세요.</span><span data-en><b>Teams can have up to 4 people</b>, and <b>only one of you</b> needs to register. Add your teammates below.</span></p>
           <label><span data-kr>팀 이름</span><span data-en>Team name</span><input type="text" name="teamName" maxlength="80"></label>
           <div id="mate-rows" style="display:grid;gap:.6rem">
           <p class="hint" style="margin:0"><span data-kr>팀원 수만큼만 적으면 됩니다. 칸을 모두 채우지 않아도 괜찮습니다.</span><span data-en>Fill in as many rows as you have teammates. You don't have to use all three.</span></p>
@@ -643,6 +643,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       var v = iForm.hasTeam.value;
       document.getElementById("team-block").hidden = v === "no";
       document.getElementById("mate-rows").hidden = v !== "yes";
+      document.getElementById("team-hint").hidden = v !== "yes";
     });
   });
   function readIdeathon() {
