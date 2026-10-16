@@ -153,10 +153,9 @@ body.ideathon-page #participants { padding-top:calc(clamp(48px,6vw,88px) / 2); }
 .option-grid input { margin:0; accent-color:var(--accent); }
 .emoji-field { gap:.6rem; }
 .emoji-toggle { border:1px solid var(--paper-line); border-radius:var(--r-md); background:var(--paper); }
-.emoji-toggle summary { display:flex; align-items:center; gap:.8rem; padding:.6rem .9rem; cursor:pointer; list-style:none; font-weight:600; }
-.emoji-toggle summary::-webkit-details-marker { display:none; }
-.emoji-toggle summary::after { content:"▾"; margin-left:auto; color:var(--ink-soft); transition:transform .15s ease; }
-.emoji-toggle[open] summary::after { transform:rotate(180deg); }
+.emoji-toggle-btn { display:flex; width:100%; align-items:center; gap:.8rem; padding:.6rem .9rem; border:0; background:transparent; color:inherit; font:inherit; font-weight:600; text-align:left; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.emoji-toggle-btn::after { content:"▾"; margin-left:auto; color:var(--ink-soft); transition:transform .15s ease; }
+.emoji-toggle-btn[aria-expanded="true"]::after { transform:rotate(180deg); }
 .emoji-preview { width:40px; height:40px; display:grid; place-items:center; border-radius:50%; background:var(--accent-tint); font-size:1.4rem; line-height:1; }
 .emoji-toggle-hint { font-size:.78rem; font-weight:400; color:var(--ink-soft); }
 .emoji-panel { display:grid; gap:.8rem; padding:.4rem .9rem 1rem; border-top:1px solid var(--paper-line); }
@@ -164,7 +163,7 @@ body.ideathon-page #participants { padding-top:calc(clamp(48px,6vw,88px) / 2); }
 .emoji-cat-label { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); }
 .emoji-custom input { max-width:140px; font-size:1.3rem; text-align:center; }
 .emoji-grid { gap:.35rem; }
-.emoji-grid label { padding:.3rem; width:42px; height:42px; justify-content:center; font-size:1.45rem; line-height:1; border-radius:12px; }
+.emoji-grid label { position:relative; padding:.3rem; width:42px; height:42px; justify-content:center; font-size:1.45rem; line-height:1; border-radius:12px; }
 .emoji-grid input { position:absolute; width:1px; height:1px; opacity:0; }
 .emoji-grid label:has(input:checked) { background:var(--accent-tint); border-color:var(--accent); box-shadow:0 0 0 2px var(--accent); }
 .team-block { display:grid; gap:1rem; padding:var(--sp-2); border:1px dashed var(--paper-line); border-radius:var(--r-md); background:var(--paper-alt); }

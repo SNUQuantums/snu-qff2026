@@ -30,7 +30,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
 <link rel="stylesheet" href="assets/reference-design.css?v=a2546452fe24">
-<link rel="stylesheet" href="assets/event.css?v=d8e72a880ccb">
+<link rel="stylesheet" href="assets/event.css?v=8891b0867c2f">
 </head>
 <body>
 
@@ -141,9 +141,9 @@
         </label>
         <fieldset class="emoji-field">
           <legend><span data-kr>카드 이모지 (프로필 사진 대신 카드에 표시됩니다)</span><span data-en>Card emoji (shown on your card instead of a photo)</span></legend>
-          <details class="emoji-toggle" id="emoji-toggle">
-            <summary><span class="emoji-preview" id="emoji-preview">🙂</span><span class="emoji-toggle-text"><span data-kr>이모지 고르기</span><span data-en>Choose an emoji</span></span><span class="emoji-toggle-hint"><span data-kr>선택 안 하면 🙂</span><span data-en>🙂 if you skip</span></span></summary>
-            <div class="emoji-panel">
+          <div class="emoji-toggle" id="emoji-toggle">
+            <button type="button" class="emoji-toggle-btn" id="emoji-toggle-btn" aria-expanded="false" aria-controls="emoji-panel"><span class="emoji-preview" id="emoji-preview">🙂</span><span class="emoji-toggle-text"><span data-kr>이모지 고르기</span><span data-en>Choose an emoji</span></span><span class="emoji-toggle-hint"><span data-kr>선택 안 하면 🙂</span><span data-en>🙂 if you skip</span></span></button>
+            <div class="emoji-panel" id="emoji-panel" hidden>
           <div class="emoji-cat"><span class="emoji-cat-label"><span data-kr>과학 · 기술</span><span data-en>Science & tech</span></span><div class="option-grid emoji-grid">
             <label><input type="radio" name="emoji" value="🚀"><span>🚀</span></label>
             <label><input type="radio" name="emoji" value="🛰️"><span>🛰️</span></label>
@@ -355,7 +355,7 @@
             <span class="hint"><span data-kr>직접 입력한 이모지가 위 선택보다 우선합니다. 글자나 숫자는 쓸 수 없습니다.</span><span data-en>A typed emoji overrides the grid. Letters and digits are not accepted.</span></span>
           </label>
             </div>
-          </details>
+          </div>
         </fieldset>
         <fieldset>
           <legend><span data-kr>태그 (복수 선택)</span><span data-en>Tags (choose any)</span></legend>
@@ -616,6 +616,13 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   var iErr = document.getElementById("ideathon-error");
   var iData = null;
   (function () {
+    var btn = document.getElementById("emoji-toggle-btn");
+    var panel = document.getElementById("emoji-panel");
+    btn.addEventListener("click", function () {
+      var open = panel.hidden;
+      panel.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+    });
     var preview = document.getElementById("emoji-preview");
     var custom = iForm.querySelector('input[name="emojiCustom"]');
     function sync() {
