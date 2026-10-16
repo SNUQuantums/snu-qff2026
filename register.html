@@ -528,7 +528,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 }
 </script>
 <script src="assets/supabase-config.js?v=20261016"></script>
-<script src="assets/supabase.js?v=20261015c"></script>
+<script src="assets/supabase.js?v=20261016b"></script>
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
@@ -649,7 +649,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   function readIdeathon() {
     var fd = new FormData(iForm);
     var v = function (k) { return (fd.get(k) || "").toString().trim(); };
-    var d = { name: v("name"), org: v("org"), dept: v("dept"), affiliation: (v("org") + " " + v("dept")).trim(), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String), emoji: v("emojiCustom") || v("emoji"),
+    var d = { name: v("name"), org: v("org"), dept: v("dept"), affiliation: v("dept") || v("org"), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String), emoji: v("emojiCustom") || v("emoji"),
       phone: v("phone"), email: v("email"), hasTeam: fd.get("hasTeam") !== "no", solo: fd.get("hasTeam") === "solo", teamName: v("teamName"), teammates: [] };
     for (var i = 1; i <= 3; i++) {
       var n = v("mate" + i + "name"), p = v("mate" + i + "phone"), e = v("mate" + i + "email");
@@ -692,7 +692,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     if (err) { show(iErr, "error", err, err); return; }
     iData = d;
     var tags = d.tags.map(function (x) { return isEn() ? x : (TAG_KR[x] || x); }).join(", ");
-    var html = row(t("이모지", "Emoji"), d.emoji || t("선택 안 함", "none")) + row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + (d.dept ? "" : "") + row(t("자기소개", "Self-introduction"), d.selfPr) +
+    var html = row(t("이모지", "Emoji"), d.emoji || t("선택 안 함", "none")) + row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.org) + (d.dept ? row(t("학과 (카드에 표시)", "Department (shown on card)"), d.dept) : "") + row(t("자기소개", "Self-introduction"), d.selfPr) +
       row(t("태그", "Tags"), tags) + row(t("전화번호", "Phone"), d.phone) + row(t("이메일", "Email"), d.email) +
       row(t("팀", "Team"), d.hasTeam ? d.teamName + (d.solo ? t(" (1인 팀)", " (one-person team)") : "") : t("팀원 찾는 중", "Looking for teammates"));
     d.teammates.forEach(function (m, i) { html += row(t("팀원 " + (i + 1), "Teammate " + (i + 1)), m.name + " · " + m.phone + " · " + m.email); });

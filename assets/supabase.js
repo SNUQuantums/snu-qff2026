@@ -130,6 +130,7 @@
       p_email: entry.email,
       p_teammates: entry.teammates || [],
       p_emoji: entry.emoji || null,
+      p_organization: entry.org || null,
     });
   }
 
