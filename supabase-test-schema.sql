@@ -1167,3 +1167,33 @@ $$;
 
 revoke all on function public.register_ideathon_test(text, text, text, text[], boolean, text, text, text, jsonb, text, text) from public;
 grant execute on function public.register_ideathon_test(text, text, text, text[], boolean, text, text, text, jsonb, text, text) to anon, authenticated, service_role;
+
+-- ===== v10: organizer team-status helper (same statements as supabase-migrate-v10-team-status.sql) =====
+create or replace function public.admin_set_team_status_test(
+  p_keys text[],
+  p_has_team boolean,
+  p_team_name text default null
+)
+returns table (name text, email text, has_team boolean, team_name text)
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  return query
+  update public.qff_test_ideathon_participants as p
+  set has_team = p_has_team,
+      team_name = case
+        when not p_has_team then null
+        when p_team_name is not null then nullif(trim(p_team_name), '')
+        else p.team_name end,
+      teammates = case when p_has_team then p.teammates else '[]'::jsonb end
+  where p.active
+    and (lower(trim(p.email)) = any (select lower(trim(k)) from unnest(p_keys) as k)
+         or p.name = any (select trim(k) from unnest(p_keys) as k))
+  returning p.name, p.email, p.has_team, p.team_name;
+end;
+$$;
+
+revoke all on function public.admin_set_team_status_test(text[], boolean, text) from public, anon, authenticated;
+grant execute on function public.admin_set_team_status_test(text[], boolean, text) to service_role;
