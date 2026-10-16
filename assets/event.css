@@ -38,6 +38,7 @@
 .prize-banner li > span { display:block; margin-bottom:4px; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
 .prize-banner b { display:block; font-size:clamp(1.3rem,2.4vw,1.75rem); letter-spacing:-.02em; color:#4f2f86; white-space:nowrap; }
 .prize-banner li > small { display:block; margin-top:2px; font-size:.78rem; color:var(--ink-soft); }
+.prize-banner sup, .faq-item sup { font-size:.6em; line-height:0; position:relative; top:-.6em; vertical-align:baseline; margin-left:.04em; }
 @media (max-width:760px) {
   .prize-banner, .prize-banner ul { grid-template-columns:1fr; }
   .prize-banner ul { gap:6px; }
