@@ -110,7 +110,7 @@ function sendParticipantMail(r) {
     '<ul style="margin:6px 0 0;padding-left:18px">' +
     "<li>모든 공지는 이 오픈채팅에서만 이루어집니다. 꼭 들어와서 확인해 주세요.</li>" +
     "<li>카카오톡 <b>이모지 익명 프로필</b>로 입장해 주세요. 그래야 운영진이 개인 연락을 드릴 수 있습니다.</li>" +
-    "<li>입장 후 공지사항을 확인하고, 공지에 적힌 <b>이름 양식</b>에 맞춰 프로필 이름을 바꿔 주세요.</li>" +
+    "<li>입장 후 공지사항을 확인하고, 프로필 이름을 <b>이름 / 참가자 카드에 표시된 소속(학과 또는 기타 소속)</b>으로 설정해 주세요.</li>" +
     "</ul></div>";
 
   var noticeEn =
@@ -119,7 +119,7 @@ function sendParticipantMail(r) {
     '<ul style="margin:6px 0 0;padding-left:18px">' +
     "<li>All announcements are made only in this open chat, so please join and check it.</li>" +
     "<li>Join with a KakaoTalk <b>anonymous emoji profile</b>; that is how the organizers can message you directly.</li>" +
-    "<li>After joining, read the pinned notices and rename your profile to the <b>name format</b> given there.</li>" +
+    "<li>After joining, read the pinned notices and set your profile name to <b>Name / the affiliation shown on your participant card (department or other affiliation)</b>.</li>" +
     "</ul></div>";
 
   var html =
@@ -146,7 +146,7 @@ function sendParticipantMail(r) {
     "꼭 확인해 주세요\n" +
     "- 모든 공지는 이 오픈채팅에서만 이루어집니다. 꼭 들어와서 확인해 주세요.\n" +
     "- 카카오톡 이모지 익명 프로필로 입장해 주세요. 그래야 운영진이 개인 연락을 드릴 수 있습니다.\n" +
-    "- 입장 후 공지사항을 확인하고, 공지에 적힌 이름 양식에 맞춰 프로필 이름을 바꿔 주세요.\n\n" +
+    "- 입장 후 공지사항을 확인하고, 프로필 이름을 '이름 / 참가자 카드에 표시된 소속(학과 또는 기타 소속)'으로 설정해 주세요.\n\n" +
     (r.has_team ? "팀 " + r.team_name + "으로 신청하셨습니다. 이 메일은 적어 주신 팀원에게도 함께 보냈습니다.\n\n"
                 : "팀을 구하는 중으로 신청하셨습니다. 아이디어톤 페이지의 참가자 카드와 오픈채팅에서 팀원을 찾아보세요.\n\n") +
     "제출 마감: " + deadline + " KST\n본선 팀 발표: 10월 30일 (금) 13:00\n피칭: 10월 31일 (토) 14:10–16:40, 서울대 28동 103호\n\n" +
@@ -157,7 +157,7 @@ function sendParticipantMail(r) {
     "Please read\n" +
     "- All announcements are made only in this open chat, so please join and check it.\n" +
     "- Join with a KakaoTalk anonymous emoji profile; that is how the organizers can message you directly.\n" +
-    "- After joining, read the pinned notices and rename your profile to the name format given there.\n\n" +
+    "- After joining, read the pinned notices and set your profile name to 'Name / the affiliation shown on your participant card (department or other affiliation)'.\n\n" +
     (r.has_team ? "You registered as team " + r.team_name + ". This email was also sent to the teammates you listed.\n\n"
                 : "You registered as looking for a team. Find teammates through the participant cards on the Ideathon page and in the open chat.\n\n") +
     "Submission deadline: " + deadlineEn + " KST\nFinalists announced: Fri, Oct 30, 13:00\nPitching: Sat, Oct 31, 14:10–16:40, SNU Building 28, Room 103\n\n" +

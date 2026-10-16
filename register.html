@@ -131,9 +131,10 @@
           <span data-kr>이름, 소속, 자기소개, 태그, 이모지는 아이디어톤 페이지의 참가자 카드에 공개됩니다. 전화번호, 이메일, 팀 정보는 운영진만 확인하며 오픈채팅 안내에만 사용합니다.</span>
           <span data-en>Your name, affiliation, self-introduction, tags, and emoji appear on your public participant card. Only organizers see your phone, email, and team details, and they're used only to send you the open-chat details.</span>
         </p>
+        <label><span data-kr>이름</span><span data-en>Name</span><input type="text" name="name" maxlength="60" required></label>
         <div class="row">
-          <label><span data-kr>이름</span><span data-en>Name</span><input type="text" name="name" maxlength="60" required></label>
-          <label><span data-kr>소속 (학교 · 학과 또는 회사)</span><span data-en>Affiliation (school and major, or company)</span><input type="text" name="affiliation" maxlength="120" required></label>
+          <label><span data-kr>소속 (학교 또는 회사)</span><span data-en>Affiliation (school or company)</span><input type="text" name="org" maxlength="80" required placeholder="예: 서울대학교 / e.g. Seoul National University"></label>
+          <label><span data-kr>학과 (학교 소속일 때만)</span><span data-en>Department (only if your affiliation is a school)</span><input type="text" name="dept" maxlength="60" placeholder="예: 물리천문학부 / e.g. Physics"><span class="hint"><span data-kr>학교가 아니면 비워 두세요. 카드에는 "소속 학과" 또는 소속만 표시됩니다.</span><span data-en>Leave empty if not a school. Your card shows "affiliation department", or just the affiliation.</span></span></label>
         </div>
         <label><span data-kr>자기소개 (PR)</span><span data-en>Self-introduction</span>
           <textarea name="selfPr" maxlength="600" required placeholder="관심 분야, 할 수 있는 것, 함께하고 싶은 팀원 등 / Interests, what you bring, who you'd like to team up with"></textarea>
@@ -421,6 +422,10 @@
           </div>
         </div>
         <p class="welcome-note" style="margin:.9rem 0 0">
+          <span data-kr>오픈채팅에 들어오면 <b>이모지 익명 프로필</b>로 입장하고, 프로필 이름을 <b>이름 / 카드에 표시된 소속(학과 또는 기타 소속)</b>으로 설정해 주세요. 모든 공지는 오픈채팅에서 이루어집니다.</span>
+          <span data-en>In the open chat, join with an <b>anonymous emoji profile</b> and set your name to <b>Name / the affiliation shown on your card (department or other affiliation)</b>. All announcements are made in the chat.</span>
+        </p>
+        <p class="welcome-note" style="margin:.6rem 0 0">
           <span data-kr>같은 내용을 15분 안에 <b>snuquantums@gmail.com</b>에서 메일로도 보내 드립니다. 메일이 안 보이면 스팸함을 확인해 주세요. 이 창을 닫아도 메일에 있는 링크로 언제든 들어올 수 있습니다.</span>
           <span data-en>We'll also email these details from <b>snuquantums@gmail.com</b> within 15 minutes. If you don't see it, check your spam folder. You can use the link in that email to join any time, even after closing this page.</span>
         </p>
@@ -643,7 +648,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   function readIdeathon() {
     var fd = new FormData(iForm);
     var v = function (k) { return (fd.get(k) || "").toString().trim(); };
-    var d = { name: v("name"), affiliation: v("affiliation"), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String), emoji: v("emojiCustom") || v("emoji"),
+    var d = { name: v("name"), org: v("org"), dept: v("dept"), affiliation: (v("org") + " " + v("dept")).trim(), selfPr: v("selfPr"), tags: fd.getAll("tags").map(String), emoji: v("emojiCustom") || v("emoji"),
       phone: v("phone"), email: v("email"), hasTeam: fd.get("hasTeam") !== "no", solo: fd.get("hasTeam") === "solo", teamName: v("teamName"), teammates: [] };
     for (var i = 1; i <= 3; i++) {
       var n = v("mate" + i + "name"), p = v("mate" + i + "phone"), e = v("mate" + i + "email");
@@ -663,7 +668,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
   }
   function validateIdeathon(d) {
     if (d.emoji && !isOneEmoji(d.emoji)) return t("이모지는 한 개만 입력할 수 있습니다. 글자나 숫자는 쓸 수 없습니다.", "Enter exactly one emoji. Letters and digits are not accepted.");
-    if (!d.name || !d.affiliation || !d.selfPr) return t("이름, 소속, 자기소개를 입력해주세요.", "Name, affiliation, and self-introduction are required.");
+    if (!d.name || !d.org || !d.selfPr) return t("이름, 소속, 자기소개를 입력해주세요.", "Name, affiliation, and self-introduction are required.");
     if (d.selfPr.length > 600) return t("자기소개는 600자 이하여야 합니다.", "Self-introduction must be 600 characters or fewer.");
     if (d.phone.length < 5) return t("전화번호를 입력해주세요.", "A phone number is required.");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) return t("올바른 이메일을 입력해주세요.", "Enter a valid email address.");
@@ -686,7 +691,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     if (err) { show(iErr, "error", err, err); return; }
     iData = d;
     var tags = d.tags.map(function (x) { return isEn() ? x : (TAG_KR[x] || x); }).join(", ");
-    var html = row(t("이모지", "Emoji"), d.emoji || t("선택 안 함", "none")) + row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + row(t("자기소개", "Self-introduction"), d.selfPr) +
+    var html = row(t("이모지", "Emoji"), d.emoji || t("선택 안 함", "none")) + row(t("이름", "Name"), d.name) + row(t("소속", "Affiliation"), d.affiliation) + (d.dept ? "" : "") + row(t("자기소개", "Self-introduction"), d.selfPr) +
       row(t("태그", "Tags"), tags) + row(t("전화번호", "Phone"), d.phone) + row(t("이메일", "Email"), d.email) +
       row(t("팀", "Team"), d.hasTeam ? d.teamName + (d.solo ? t(" (1인 팀)", " (one-person team)") : "") : t("팀원 찾는 중", "Looking for teammates"));
     d.teammates.forEach(function (m, i) { html += row(t("팀원 " + (i + 1), "Teammate " + (i + 1)), m.name + " · " + m.phone + " · " + m.email); });
