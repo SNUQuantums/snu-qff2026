@@ -96,12 +96,11 @@
               <li><strong><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></strong><b><span data-kr>10월 30일 (금) 13:00</span><span data-en>Fri, Oct 30, 13:00 KST</span></b></li>
               <li><strong><span data-kr>시상식</span><span data-en>Awards</span></strong><b><span data-kr>10월 31일 (토) 16:30 · 28동 103호</span><span data-en>Sat, Oct 31, 16:30 · Bldg 28, Rm 103</span></b></li>
             </ul>
-            <div class="callout-links">
+            <div class="callout-links" id="problem-links">
+              <a id="problem-repo" class="btn btn-solid" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소 열기</span><span data-en>Open the problem repository</span></a>
               <a class="btn btn-outline" href="hackathon-detail.html"><span data-kr>해커톤 상세</span><span data-en>Hackathon details</span></a>
             </div>
-            <div class="callout-links" id="problem-links" hidden>
-              <a id="problem-repo" class="btn btn-solid" href="#" target="_blank" rel="noopener"><span data-kr>문제 저장소 열기</span><span data-en>Open the problem repository</span></a>
-            </div>
+            <p class="note" id="problem-repo-note"><span data-kr>문제 저장소는 10월 22일 (목) 22:00 공개와 함께 열립니다. 그 전에는 링크가 열리지 않습니다.</span><span data-en>The problem repository opens with the release on Thu, Oct 22 at 22:00 KST. The link won't open before then.</span></p>
             <h3 style="margin:var(--sp-3) 0 .4rem;font-size:1rem"><span data-kr>참여 방법</span><span data-en>How it works</span></h3>
             <ul class="feature-list" style="margin:0">
               <li><span data-kr><b>팀 등록:</b> "참가 신청"에서 팀 이름과 제출 비밀번호를 정합니다. 팀에서 한 명만 등록하면 됩니다.</span><span data-en><b>Register your team:</b> pick a team name and a submission password under "Register". Only one person per team needs to do this.</span></li>
@@ -315,6 +314,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
         document.getElementById("problem-repo").href = s.hackathon_problem_url;
         links.hidden = false;
       }
+      document.getElementById("problem-repo-note").hidden = true;
     }
     if (s.hackathon_submissions_open) {
       panel.removeAttribute("data-disabled");
