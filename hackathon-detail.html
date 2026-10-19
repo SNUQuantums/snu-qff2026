@@ -234,7 +234,10 @@
 .idd-prize small{ display:block; margin-top:2px; font-size:.8rem; font-weight:600; color:var(--ink-soft); text-align:right; }
 .idd-chat{ margin-top:16px; display:flex; align-items:center; gap:clamp(16px,3vw,28px); padding:clamp(18px,2.6vw,26px); background:var(--paper-alt); border:1px solid var(--idd-line); border-radius:var(--r-lg); }
 .idd-chat img{ flex:none; width:132px; height:132px; padding:8px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); image-rendering:pixelated; }
-.idd-chat strong{ font-size:1.12rem; }
+.idd-chat strong{ display:block; font-size:1.12rem; }
+.idd-chat--notice{ margin-top:12px; background:#fff6ec; border-color:#efc9a6; }
+.idd-chat--notice img{ width:112px; height:112px; }
+.idd-chat-tag{ display:inline-block; margin-bottom:4px; font-size:.82rem; font-weight:700; color:#a3541c; }
 .idd-chat p{ margin:6px 0 12px; max-width:62ch; color:var(--idd-body); line-height:1.7; }
 .idd-chat .idd-solo-actions{ justify-content:flex-start; }
 .idd-text p a,.idd-card p a,.faq-item p a,.event-timeline__body p a{ color:var(--idd-violet); font-weight:600; }
@@ -287,8 +290,8 @@
       <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/hackathon.svg');-webkit-mask-image:url('assets/icons/hackathon.svg')" aria-hidden="true"></span>
       <span class="eyebrow"><span data-kr>해커톤 · 상세 안내</span><span data-en>Hackathon · Guide</span></span>
       <h1 style="font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.2">
-        <span data-kr>Qiskit으로 설계하고, 리더보드로 겨루다</span>
-        <span data-en>Design in Qiskit, compete on the leaderboard</span>
+        <span data-kr>가장 정밀한 양자 회로를 설계하다</span>
+        <span data-en>Build the most precise quantum circuit</span>
       </h1>
       <p class="lede">
         <span data-kr>Qiskit 또는 코딩 경험이 있다면 전공과 관계없이 참여할 수 있습니다. 혼자 또는 팀으로 참가할 수 있고, 팀 인원 제한은 없습니다.</span>
@@ -316,9 +319,17 @@
         <li><small><span data-kr>채점</span><span data-en>Grading</span></small><strong><span data-kr>자동 채점 · 실시간 리더보드</span><span data-en>Automatic · live leaderboard</span></strong></li>
         <li class="is-key"><small><span data-kr>제출 마감</span><span data-en>Submission deadline</span></small><strong><span data-kr>10.30 (금) 12:00</span><span data-en>Fri 10.30, 12:00 KST</span></strong><a class="idd-fact-link" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a></li>
         <li><small><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></small><strong><span data-kr>10.30 (금) 13:00</span><span data-en>Fri 10.30, 13:00</span></strong></li>
-        <li><small><span data-kr>시상식</span><span data-en>Awards ceremony</span></small><strong><span data-kr>10.31 (토) 16:45 · 28동 103호</span><span data-en>Sat 10.31, 16:45 · Bldg 28, Rm 103</span></strong></li>
+        <li><small><span data-kr>시상식</span><span data-en>Awards ceremony</span></small><strong><span data-kr>10.31 (토) 16:30 · 28동 103호</span><span data-en>Sat 10.31, 16:30 · Bldg 28, Rm 103</span></strong></li>
       </ul>
-      <p class="idd-alert"><b><span data-kr>공지</span><span data-en>Notice</span></b><span><span data-kr>주요 공지는 해커톤 카카오톡 오픈채팅방으로 전달됩니다. <a href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener">오픈채팅방</a>에 꼭 입장해 주세요.</span><span data-en>All key announcements are posted in the Hackathon KakaoTalk <a href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener">open chat</a>. Please be sure to join.</span></span></p>
+      <div class="idd-chat idd-chat--notice">
+        <img src="assets/qr/hackathon-openchat.png" width="400" height="400" alt="해커톤 카카오톡 오픈채팅방 QR 코드">
+        <div>
+          <span class="idd-chat-tag"><span data-kr>공지</span><span data-en>Notice</span></span>
+          <strong><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></strong>
+          <p><span data-kr>주요 공지는 해커톤 카카오톡 오픈채팅방으로 전달됩니다. QR 코드를 찍거나 버튼을 눌러 꼭 입장해 주세요.</span><span data-en>All key announcements are posted in the Hackathon KakaoTalk open chat. Scan the QR code or tap the button to join.</span></p>
+          <div class="idd-solo-actions"><a class="btn btn-solid" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span> ↗</a></div>
+        </div>
+      </div>
       <nav class="idd-jump" aria-label="페이지 목차">
         <a href="#about"><span data-kr>대회 개요</span><span data-en>Overview</span></a>
         <a href="#join"><span data-kr>참가 방법</span><span data-en>How to join</span></a>
@@ -366,7 +377,7 @@
             <li><span class="idd-ses-date"><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00</span></span><strong><span data-kr>Qiskit 101 · 해커톤 문제 공개</span><span data-en>Qiskit 101 · problem release</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
             <li><span class="idd-ses-date"><span data-kr>10.23 (금) 22:00</span><span data-en>Fri 10.23, 22:00</span></span><strong><span data-kr>양자정보·양자컴퓨터 개론</span><span data-en>Intro to quantum information &amp; computers</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
             <li><span class="idd-ses-date"><span data-kr>10.25 (일) · 시간 추후 안내</span><span data-en>Sun 10.25 · time TBA</span></span><strong><span data-kr>Office Hour</span><span data-en>Office hour</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
-            <li><span class="idd-ses-date"><span data-kr>상시</span><span data-en>Anytime</span></span><strong><span data-kr>해커톤 오픈채팅 질의응답</span><span data-en>Q&amp;A in the Hackathon open chat</span></strong><a class="idd-ses-btn" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span></a></li>
+            <li><span class="idd-ses-date"><span data-kr>상시</span><span data-en>Anytime</span></span><strong><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></strong><a class="idd-ses-btn" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span></a></li>
           </ul>
         </div>
       </div>
@@ -494,7 +505,7 @@
           <div class="event-timeline__body"><h3><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></h3><p><span data-kr>수상 팀은 다음 날 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winning teams must send at least one member to the ceremony in person the next day.</span></p></div>
         </li>
         <li class="event-timeline__step">
-          <div class="event-timeline__date"><span>06 / AWARDS</span><strong><span data-kr>10.31 (토) 16:45</span><span data-en>Sat 10.31, 16:45</span></strong></div>
+          <div class="event-timeline__date"><span>06 / AWARDS</span><strong><span data-kr>10.31 (토) 16:30</span><span data-en>Sat 10.31, 16:30</span></strong></div>
           <div class="event-timeline__body"><h3><span data-kr>폐막식 · 시상식</span><span data-en>Closing &amp; awards ceremony</span></h3><p><span data-kr>관악캠퍼스 28동 103호에서 진행합니다.</span><span data-en>Held in Building 28, Room 103, Gwanak campus.</span></p></div>
         </li>
       </ol>
@@ -575,7 +586,7 @@
       <div>
         <span class="eyebrow">06 · AWARDS</span>
         <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.25"><span data-kr>시상</span><span data-en>Awards</span></h2>
-        <p class="lede" style="font-size:1rem"><span data-kr>수상 팀은 10월 30일(금) 13:00에 발표하고, 10월 31일(토) 16:45 폐막식·시상식(28동 103호)에서 시상합니다. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winners are announced on Fri Oct 30 at 13:00 and awarded at the closing and awards ceremony on Sat Oct 31 at 16:45 (Bldg 28, Rm 103). Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person.</span></p>
+        <p class="lede" style="font-size:1rem"><span data-kr>수상 팀은 10월 30일(금) 13:00에 발표하고, 10월 31일(토) 16:30 폐막식·시상식(28동 103호)에서 시상합니다. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winners are announced on Fri Oct 30 at 13:00 and awarded at the closing and awards ceremony on Sat Oct 31 at 16:30 (Bldg 28, Rm 103). Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person.</span></p>
       </div>
       <ul class="idd-awards">
         <li><span>1ST / GRAND PRIZE</span><strong><span data-kr>대상</span><span data-en>Grand Prize</span></strong><b class="idd-prize"><span data-kr>ħc × 10<sup>31</sup> 원</span><span data-en>ħc × 10<sup>31</sup> KRW</span><small><span data-kr>약 316,153원</span><span data-en>≈ KRW 316,153</span></small></b></li>
@@ -620,7 +631,7 @@
         </details>
         <details class="faq-item">
           <summary><span><span data-kr>수상하면 현장에 꼭 가야 하나요?</span><span data-en>Do winners have to attend in person?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
-          <p><span data-kr>네. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다. 시상식은 관악캠퍼스 28동 103호에서 16:45에 시작합니다.</span><span data-en>Yes. Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person. The ceremony starts at 16:45 in Building 28, Room 103, Gwanak campus.</span></p>
+          <p><span data-kr>네. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다. 시상식은 관악캠퍼스 28동 103호에서 16:30에 시작합니다.</span><span data-en>Yes. Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person. The ceremony starts at 16:30 in Building 28, Room 103, Gwanak campus.</span></p>
         </details>
       </div>
     </div>
