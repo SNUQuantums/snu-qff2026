@@ -21,7 +21,7 @@
 // copy assets/supabase-config.local.example.js to assets/supabase-config.local.js
 // (gitignored); pages served from localhost load that file first and it wins.
 window.QFF_SUPABASE_CONFIG = window.QFF_SUPABASE_CONFIG || {
-  testMode: false,
+  testMode: true,
   url: "https://ezebbyoxohgouodwvbfv.supabase.co",
   anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6ZWJieW94b2hnb3VvZHd2YmZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMTg4MjEsImV4cCI6MjEwNTg5NDgyMX0.WfLKHLMDpRjaKkFhbi_pGpN215pCxl4jZK3md55kIsE",
 };
