@@ -244,6 +244,12 @@
 .idd-res a:not([target]):not([download])::after{ content:"→"; }
 .idd-fact-link:not([target])::after{ content:" →"; }
 @media(max-width:600px){ .idd-chat{ flex-direction:column; align-items:flex-start; } .idd-chat img{ width:120px; height:120px; } .idd-prize-banner li{ display:grid; grid-template-columns:1fr auto; align-items:baseline; column-gap:12px; } .idd-prize-banner li small{ grid-column:2; margin-top:0; text-align:right; } }
+
+/* -- floating back button (appears after scrolling) -- */
+.idd-backfab{ position:fixed; left:clamp(12px,3vw,28px); bottom:clamp(12px,3vw,28px); z-index:60; display:inline-flex; align-items:center; gap:6px; padding:.65rem 1.05rem; border-radius:999px; background:var(--navy); color:#fff; font-size:.9rem; font-weight:700; text-decoration:none; box-shadow:0 12px 26px -14px rgba(11,28,64,.6); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .2s ease,transform .2s ease; }
+.idd-backfab.is-shown{ opacity:1; transform:none; pointer-events:auto; }
+.idd-backfab:hover{ background:#17294b; }
+@media(prefers-reduced-motion:reduce){ .idd-backfab{ transition:none; } }
 </style>
 </head>
 <body>
@@ -280,11 +286,13 @@
 </header>
 
 <main class="idd">
+  <a class="idd-backfab" href="hackathon.html" data-back="hackathon.html">← <span data-kr>해커톤으로</span><span data-en>Back to Hackathon</span></a>
+
 
   <!-- ============================ INTRO ================================ -->
   <section class="paper-surface" style="padding-top:0">
     <div class="wrap idd-back-wrap">
-      <a class="idd-back" href="hackathon.html">← <span data-kr>해커톤으로 돌아가기</span><span data-en>Back to Hackathon</span></a>
+      <a class="idd-back" href="hackathon.html" data-back="hackathon.html">← <span data-kr>해커톤으로 돌아가기</span><span data-en>Back to Hackathon</span></a>
     </div>
     <div class="wrap page-intro-layout idd-intro">
       <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/hackathon.svg');-webkit-mask-image:url('assets/icons/hackathon.svg')" aria-hidden="true"></span>
@@ -670,5 +678,27 @@
 </footer>
 
 <script src="assets/script.js?v=a6612f676125"></script>
+<script>
+/* Back links: return to the tab where the visitor came from (keeps its scroll position);
+   otherwise follow the link. The floating button shows after the intro is scrolled past. */
+(function () {
+  var fab = document.querySelector(".idd-backfab");
+  function onScroll() { if (fab) fab.classList.toggle("is-shown", window.scrollY > 480); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  document.querySelectorAll("[data-back]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      try {
+        var ref = document.referrer ? new URL(document.referrer) : null;
+        var target = a.getAttribute("data-back");
+        if (ref && ref.origin === location.origin && ref.pathname.split("/").pop() === target && history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      } catch (err) {}
+    });
+  });
+})();
+</script>
 </body>
 </html>
