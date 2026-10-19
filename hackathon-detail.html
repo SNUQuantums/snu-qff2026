@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="ko" data-lang="kr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>(function(){try{var l=localStorage.getItem('qff-lang')||'kr';document.documentElement.setAttribute('data-lang',l);}catch(e){}})();</script>
+<title>Hackathon Guide | QFF SNU 2026 · Qiskit Fall Fest</title>
+<meta name="description" content="해커톤 상세 안내: 양자 시대의 회로를 설계하다. Qiskit으로 양자 회로를 설계해 자동 채점 리더보드로 겨룹니다. 10월 22일 22:00 문제 공개, 10월 30일 12:00 제출 마감, 10월 31일 시상. 팀 인원 제한 없음. Qiskit Fall Fest 2026 @ SNU.">
+<link rel="canonical" href="https://snuquantums.github.io/snu-qff2026/hackathon-detail.html">
+<!-- seo:start -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Qiskit Fall Fest 2026 @ SNU">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Hackathon Guide | QFF SNU 2026">
+<meta property="og:description" content="해커톤 상세 안내: 양자 시대의 회로를 설계하다. Qiskit으로 양자 회로를 설계해 자동 채점 리더보드로 겨룹니다. 10월 22일 22:00 문제 공개, 10월 30일 12:00 제출 마감, 10월 31일 시상. 팀 인원 제한 없음. Qiskit Fall Fest 2026 @ SNU.">
+<meta property="og:url" content="https://snuquantums.github.io/snu-qff2026/hackathon-detail.html">
+<meta property="og:image" content="https://snuquantums.github.io/snu-qff2026/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Qiskit Fall Fest 2026 at Seoul National University, October 29–31, hosted by SQRT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hackathon Guide | QFF SNU 2026">
+<meta name="twitter:description" content="해커톤 상세 안내: 양자 시대의 회로를 설계하다. Qiskit으로 양자 회로를 설계해 자동 채점 리더보드로 겨룹니다. 10월 22일 22:00 문제 공개, 10월 30일 12:00 제출 마감, 10월 31일 시상. 팀 인원 제한 없음. Qiskit Fall Fest 2026 @ SNU.">
+<meta name="twitter:image" content="https://snuquantums.github.io/snu-qff2026/assets/og-card.jpg">
+<!-- seo:end -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=c713e26183e5" />
+<link rel="stylesheet" href="assets/reference-design.css?v=a2546452fe24">
+<style>
+/* Track guide (Hackathon) — page-scoped styles (idd-*) shared with ideathon-detail.html, built on the site tokens. */
+.idd{ --idd-violet:#65488b; --idd-violet-soft:#9770c5; --idd-line:#d5c7e8; --idd-body:#2c3750; --idd-warm:#ffc18e; word-break:keep-all; overflow-wrap:break-word; }
+.idd-sec{ background:var(--paper); }
+.idd-sec--alt{ background:var(--paper-alt); }
+
+/* -- intro -- */
+.idd-back-wrap{ padding-top:clamp(28px,4vw,44px); }
+.idd-back{ display:inline-flex; align-items:center; gap:.45rem; font-size:.9rem; font-weight:600; color:var(--ink-soft); text-decoration:none; }
+.idd-back:hover{ color:var(--idd-violet); }
+.idd-intro{ padding-top:clamp(20px,3vw,32px); }
+.idd-facts{ list-style:none; margin:12px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.idd-facts li{ padding:18px 20px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); }
+.idd-facts small{ display:block; margin-bottom:6px; font-size:.8rem; font-weight:600; color:var(--idd-violet); }
+.idd-facts strong{ font-size:1.15rem; letter-spacing:-.01em; }
+.idd-facts .is-key{ border-color:#efc9a6; background:#fff6ec; }
+.idd-facts .is-key small{ color:#a3541c; }
+.idd-jump{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.idd-jump a{ padding:.42rem .9rem; border:1px solid var(--paper-line); border-radius:999px; background:var(--paper); font-size:.88rem; font-weight:600; color:var(--ink-soft); text-decoration:none; transition:border-color .2s ease,color .2s ease; }
+.idd-jump a:hover{ border-color:var(--idd-violet-soft); color:var(--idd-violet); }
+
+/* -- prize banner + notice -- */
+.idd-prize-banner{ position:relative; overflow:hidden; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:clamp(20px,4vw,48px); margin-top:clamp(24px,3vw,36px); padding:clamp(20px,3vw,28px) clamp(22px,3.4vw,36px); border-radius:var(--r-lg); background:linear-gradient(120deg,#ece3f9,#e0d3f3); border:1px solid #c9b6e6; color:var(--ink); box-shadow:0 14px 34px -26px rgba(71,43,108,.45); }
+.idd-prize-banner::before{ content:""; position:absolute; left:0; right:0; top:0; height:3px; background:linear-gradient(90deg,#476fcb,#8ed9f6 38%,#b797ed 66%,#ffc18e); }
+.idd-prize-label small{ display:block; margin-bottom:6px; font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; color:var(--idd-violet); }
+.idd-prize-label strong{ display:block; font-size:clamp(1.4rem,2.6vw,1.8rem); line-height:1.1; letter-spacing:-.02em; white-space:nowrap; }
+.idd-prize-banner ul{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.idd-prize-banner li{ padding:12px 16px; border:1px solid var(--paper-line); border-radius:var(--r-md); background:#fff; }
+.idd-prize-banner li>span{ display:block; margin-bottom:4px; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
+.idd-prize-banner b{ font-size:clamp(1.35rem,2.4vw,1.75rem); letter-spacing:-.02em; color:#4f2f86; white-space:nowrap; }
+.idd-alert{ display:flex; gap:12px; align-items:flex-start; margin:12px 0 0; padding:12px 16px; border-left:3px solid var(--idd-warm); border-radius:0 var(--r-sm) var(--r-sm) 0; background:#fff6ec; color:var(--idd-body); font-size:.95rem; line-height:1.6; }
+.idd-alert b{ flex:none; padding-top:.05em; font-size:.85rem; color:#a3541c; }
+
+/* -- section heads -- */
+.idd-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:clamp(24px,3vw,40px); }
+.idd-head h2{ margin:0; font-size:clamp(1.6rem,3vw,2.3rem); line-height:1.25; }
+.idd-head>p{ margin:0; max-width:42ch; color:var(--ink-soft); line-height:1.7; }
+.idd-two{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start; }
+.idd-text p{ margin:0 0 1em; color:var(--idd-body); font-size:1.02rem; line-height:1.85; }
+
+/* -- about -- */
+.idd-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+.idd-tags>span{ padding:.3rem .7rem; border-radius:var(--r-sm); background:#fff; border:1px solid var(--paper-line); font-size:.85rem; font-weight:600; color:var(--ink); }
+.idd-flow{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.idd-flow li{ padding:18px 20px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); font-weight:700; line-height:1.4; }
+.idd-flow-num{ display:block; margin-bottom:8px; font-family:var(--font-mono); font-size:.75rem; font-weight:500; letter-spacing:.06em; color:var(--idd-violet); }
+.idd-flow-label{ display:block; margin-bottom:10px; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
+/* -- overview rows (label left, content right) -- */
+.idd-row{ display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(20px,4vw,56px); padding:clamp(22px,3vw,32px) 0; border-top:1px solid var(--paper-line); }
+.idd-row:last-child{ border-bottom:1px solid var(--paper-line); }
+.idd-label{ margin:0; display:flex; flex-direction:column; gap:6px; font-size:1.05rem; line-height:1.4; }
+.idd-label small{ font-family:var(--font-mono); font-size:.72rem; font-weight:500; letter-spacing:.08em; color:var(--idd-violet); }
+.idd-row .idd-text{ max-width:72ch; }
+.idd-row .idd-text>p:last-child{ margin-bottom:0; }
+.idd-topic{ margin:0 0 18px!important; font-size:clamp(1.08rem,2vw,1.28rem)!important; font-weight:700; line-height:1.55!important; color:var(--ink)!important; }
+.idd-text p.idd-lead{ font-size:1.12rem; font-weight:700; line-height:1.6; color:var(--ink); }
+.idd-text p.idd-note{ margin-top:14px; font-size:.92rem; color:var(--ink-soft); }
+.idd-text a{ color:var(--idd-violet); font-weight:600; }
+.idd-sessions{ list-style:none; margin:14px 0 0; padding:0; display:grid; gap:8px; }
+.idd-sessions li{ display:grid; grid-template-columns:170px minmax(0,1fr) auto; align-items:center; gap:14px; padding:12px 16px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); }
+.idd-ses-date{ font-size:.88rem; font-weight:600; color:var(--idd-violet); }
+.idd-sessions strong{ font-size:.98rem; }
+.idd-ses-btn{ display:inline-flex; align-items:center; gap:6px; padding:.38rem .85rem; border-radius:999px; background:var(--navy); color:#fff!important; font-size:.85rem; font-weight:700; text-decoration:none; white-space:nowrap; }
+.idd-ses-btn::after{ content:"→"; font-family:var(--font-mono); }
+.idd-ses-btn[aria-disabled="true"]{ background:transparent; border:1px dashed var(--ink-soft); color:var(--ink-soft)!important; font-weight:600; cursor:default; }
+.idd-ses-btn[aria-disabled="true"]::after{ content:none; }
+.idd-list{ margin:0; padding-left:1.15em; display:grid; gap:6px; color:var(--idd-body); line-height:1.75; }
+.idd-dl{ margin:0; display:grid; gap:10px; }
+.idd-dl div{ display:grid; grid-template-columns:150px 1fr; gap:12px; align-items:baseline; }
+.idd-dl dt{ font-size:.88rem; font-weight:600; color:var(--ink-soft); }
+.idd-dl dd{ margin:0; font-weight:600; color:var(--ink); }
+.idd-text p.idd-orgs{ font-weight:700; color:var(--ink); }
+
+/* -- host line above the summary cards -- */
+.idd-org{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px; margin-top:clamp(24px,3vw,36px); padding:16px 20px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); }
+.idd-org dl{ margin:0; display:flex; flex-wrap:wrap; gap:10px 36px; }
+.idd-org dt{ font-size:.78rem; font-weight:600; color:var(--idd-violet); }
+.idd-org dd{ margin:2px 0 0; font-weight:700; color:var(--ink); }
+.idd-org>a{ font-weight:700; color:var(--accent); text-decoration:none; white-space:nowrap; }
+
+/* -- how to join -- */
+.idd-join{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.idd-join li{ position:relative; padding:24px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-lg); }
+.idd-join li:not(:last-child)::after{ content:"→"; position:absolute; top:24px; right:-13px; z-index:1; font-family:var(--font-mono); color:var(--idd-violet-soft); }
+.idd-join-num{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; color:var(--idd-violet); }
+.idd-join h3{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:10px 0 8px; font-size:1.15rem; }
+.idd-join p{ margin:0; color:var(--ink-soft); font-size:.95rem; line-height:1.7; }
+.idd-solo{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:24px; padding:clamp(20px,2.6vw,28px); background:var(--paper-alt); border:1px solid var(--idd-line); border-radius:var(--r-lg); }
+.idd-solo strong{ font-size:1.12rem; }
+.idd-solo p{ margin:6px 0 0; max-width:70ch; color:var(--idd-body); line-height:1.75; }
+.idd-solo-actions{ flex:none; display:flex; flex-wrap:wrap; gap:10px; }
+
+/* -- dates (uses the shared .event-timeline) -- */
+.idd .event-timeline{ margin:0; }
+.idd .event-timeline__step{ padding-bottom:34px; }
+.idd .event-timeline__date strong{ font-size:1.05rem; font-weight:600; }
+.idd .event-timeline__body h3{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:0 0 6px; font-size:1.15rem; }
+.idd .event-timeline__body p{ margin:0; color:var(--idd-body); line-height:1.7; }
+.idd .event-timeline__body a,.idd-after-timeline a{ color:var(--idd-violet); font-weight:600; }
+.idd-after-timeline{ margin:4px 0 0; padding-top:18px; border-top:1px solid var(--paper-line); color:var(--ink-soft); font-size:.95rem; }
+.idd .event-timeline__step.is-key::after{ background:#e08a4a; box-shadow:0 0 0 5px #fde9d6; }
+.idd-badge{ padding:.12rem .5rem; border-radius:999px; background:#fff1e3; border:1px solid #efc9a6; font-size:.75rem; font-weight:700; color:#a3541c; }
+.idd-more{ margin-top:8px; border-top:1px solid var(--paper-line); }
+.idd-more p{ color:var(--idd-body); line-height:1.8; max-width:80ch; }
+.idd-more a{ color:var(--idd-violet); font-weight:600; }
+
+/* -- prepare & submit -- */
+.idd-cards{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.idd-card{ display:flex; flex-direction:column; gap:10px; padding:24px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-lg); }
+.idd-card--opt{ background:transparent; border-style:dashed; border-color:var(--idd-violet-soft); }
+.idd-card-top{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.idd-card-num{ font-family:var(--font-mono); font-size:.8rem; letter-spacing:.06em; color:var(--idd-violet); }
+.idd-chip{ padding:.22rem .6rem; border-radius:var(--r-sm); background:var(--accent-tint); font-size:.78rem; font-weight:600; color:var(--accent-strong); }
+.idd-card--opt .idd-chip{ background:#fff; }
+.idd-card h3{ margin:8px 0 0; font-size:1.2rem; }
+.idd-card p{ margin:0; color:var(--ink-soft); font-size:.95rem; line-height:1.7; }
+.idd-card-link{ margin-top:auto; padding-top:14px; border-top:1px solid var(--paper-line); display:flex; justify-content:space-between; align-items:center; gap:12px; font-weight:700; color:var(--accent); text-decoration:none; }
+.idd-card-link:hover{ color:var(--idd-violet); }
+.idd-card-link::after{ content:"↓"; font-family:var(--font-mono); color:var(--idd-violet); }
+.idd-card-link.is-page::after{ content:"→"; }
+.idd-submit{ margin-top:16px; padding:clamp(24px,3vw,36px); background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-lg); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px clamp(24px,4vw,56px); }
+.idd-submit h3{ margin:0 0 10px; font-size:1.35rem; }
+.idd-submit p{ margin:0; color:var(--idd-body); line-height:1.8; }
+.idd-steps{ list-style:none; margin:0; padding:0; display:grid; gap:12px; align-content:center; counter-reset:idd-step; }
+.idd-steps li{ counter-increment:idd-step; display:flex; align-items:center; gap:12px; font-weight:600; line-height:1.5; }
+.idd-steps li::before{ content:counter(idd-step); flex:none; display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--navy); color:#fff; font-family:var(--font-mono); font-size:.8rem; }
+.idd-submit-cta{ grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px; padding:14px 16px; border-radius:var(--r-md); background:var(--paper-alt); }
+.idd-submit-cta>span{ color:var(--ink-soft); font-size:.92rem; }
+.idd-steps a{ color:var(--idd-violet); }
+.idd-fact-link{ display:block; width:fit-content; margin-top:8px; font-size:.88rem; font-weight:700; color:#a3541c; text-decoration:none; }
+.idd-fact-link::after{ content:" ↗"; }
+.idd-fact-link:hover{ text-decoration:underline; }
+
+/* -- resources -- */
+.idd-res-group+.idd-res-group{ margin-top:clamp(22px,2.8vw,32px); }
+.idd-res-title{ margin:0 0 10px; font-size:1rem; }
+.idd-res{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.idd-res a{ position:relative; display:flex; flex-direction:column; gap:4px; height:100%; padding:14px 40px 14px 16px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); color:var(--ink); text-decoration:none; transition:border-color .2s ease,background-color .2s ease; }
+.idd-res a:hover{ border-color:var(--idd-violet-soft); background:#faf7ff; }
+.idd-res a::after{ content:"↗"; position:absolute; top:14px; right:14px; font-family:var(--font-mono); color:var(--idd-violet); }
+.idd-res a[download]::after{ content:"↓"; }
+.idd-res a[href="ideathon-cases.html"]::after{ content:"→"; }
+.idd-res strong{ font-size:.98rem; line-height:1.4; }
+.idd-res a>span{ font-size:.88rem; line-height:1.6; color:var(--ink-soft); }
+
+/* -- awards -- */
+.idd-awards{ list-style:none; margin:0; padding:0; border-top:1px solid var(--paper-line); }
+.idd-awards li{ display:grid; grid-template-columns:150px 1fr auto; align-items:center; gap:16px; padding:22px 0; border-bottom:1px solid var(--paper-line); }
+.idd-awards li>span{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.06em; color:var(--idd-violet); }
+.idd-awards strong{ font-size:1.35rem; letter-spacing:-.02em; }
+.idd-prize{ font-size:1.2rem; font-weight:700; letter-spacing:-.01em; color:#4f2f86; white-space:nowrap; }
+
+/* -- faq (uses the shared details.faq-item) -- */
+.idd-faq-side p{ color:var(--ink-soft); line-height:1.7; }
+.idd-faq-side a{ color:var(--idd-violet); font-weight:600; }
+.idd .faq-list{ border-top:1px solid var(--paper-line); }
+.idd details.faq-item p{ color:var(--idd-body); line-height:1.8; max-width:none; }
+
+/* -- closing -- */
+.idd-closing{ position:relative; overflow:hidden; padding:clamp(32px,5vw,64px); border-radius:var(--r-lg); background:#0b1b36; color:#faf9ff; }
+.idd-closing::before{ content:""; position:absolute; right:-120px; bottom:-160px; width:520px; height:320px; border:1px solid rgba(183,151,237,.55); border-radius:50%; transform:rotate(-24deg); pointer-events:none; }
+.idd-closing .eyebrow{ color:#d9c4ff; }
+.idd-closing h2{ position:relative; max-width:22ch; line-height:1.25; }
+.idd-closing p{ position:relative; max-width:56ch; color:#c5cee1; line-height:1.75; }
+.idd-actions{ position:relative; display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--sp-3); }
+.idd-closing .btn-solid{ background:#faf9ff; color:#0b1b36; }
+.idd-closing .btn-outline{ color:#faf9ff; border-color:rgba(250,249,255,.5); }
+.idd-closing .btn-outline:hover{ background:rgba(255,255,255,.08); }
+
+@media(max-width:900px){
+ .idd-head{ flex-direction:column; align-items:flex-start; }
+ .idd-two,.idd-submit{ grid-template-columns:1fr; }
+ .idd-cards,.idd-join,.idd-res{ grid-template-columns:1fr 1fr; }
+ .idd-card--opt{ grid-column:1/-1; }
+ .idd-join li::after{ display:none; }
+ .idd-row{ grid-template-columns:1fr; gap:10px; }
+ .idd-label{ flex-direction:row; align-items:baseline; gap:10px; }
+ .idd-solo{ flex-direction:column; align-items:flex-start; }
+}
+@media(max-width:600px){
+ .idd-cards,.idd-join,.idd-res{ grid-template-columns:1fr; }
+ .idd-prize-banner,.idd-prize-banner ul{ grid-template-columns:1fr; }
+ .idd-prize-banner ul{ gap:6px; }
+ .idd-prize-banner li{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:10px 14px; }
+ .idd-prize-banner li>span{ margin:0; }
+ .idd-prize-banner b{ font-size:1.15rem; }
+ .idd-facts{ grid-template-columns:1fr 1fr; }
+ .idd-facts li{ padding:14px 16px; }
+ .idd-facts strong{ font-size:1rem; }
+ .idd-dl div{ grid-template-columns:1fr; gap:2px; }
+ .idd-sessions li{ grid-template-columns:1fr; gap:6px; }
+ .idd-ses-btn{ justify-self:start; }
+ .idd-solo-actions,.idd-solo-actions .btn{ width:100%; }
+ .idd-awards li{ grid-template-columns:1fr auto; }
+ .idd-awards li>span{ grid-column:1/-1; }
+ .idd-actions .btn{ width:100%; }
+}
+
+/* -- hackathon guide additions -- */
+.idd-prize-banner sup,.idd-prize sup{ font-size:.58em; line-height:0; }
+.idd-prize-banner li small{ display:block; margin-top:4px; font-size:.82rem; font-weight:600; color:var(--ink-soft); }
+.idd-prize small{ display:block; margin-top:2px; font-size:.8rem; font-weight:600; color:var(--ink-soft); text-align:right; }
+.idd-chat{ margin-top:16px; display:flex; align-items:center; gap:clamp(16px,3vw,28px); padding:clamp(18px,2.6vw,26px); background:var(--paper-alt); border:1px solid var(--idd-line); border-radius:var(--r-lg); }
+.idd-chat img{ flex:none; width:132px; height:132px; padding:8px; background:#fff; border:1px solid var(--paper-line); border-radius:var(--r-md); image-rendering:pixelated; }
+.idd-chat strong{ display:block; font-size:1.12rem; }
+.idd-chat--notice{ margin-top:12px; background:#fff6ec; border-color:#efc9a6; }
+.idd-chat--notice img{ width:112px; height:112px; }
+.idd-chat-tag{ display:inline-block; margin-bottom:4px; font-size:.82rem; font-weight:700; color:#a3541c; }
+.idd-chat p{ margin:6px 0 12px; max-width:62ch; color:var(--idd-body); line-height:1.7; }
+.idd-chat .idd-solo-actions{ justify-content:flex-start; }
+.idd-text p a,.idd-card p a,.faq-item p a,.event-timeline__body p a{ color:var(--idd-violet); font-weight:600; }
+.idd-res a:not([target]):not([download])::after{ content:"→"; }
+.idd-fact-link:not([target])::after{ content:" →"; }
+@media(max-width:600px){ .idd-chat{ flex-direction:column; align-items:flex-start; } .idd-chat img{ width:120px; height:120px; } .idd-prize-banner li{ display:grid; grid-template-columns:1fr auto; align-items:baseline; column-gap:12px; } .idd-prize-banner li small{ grid-column:2; margin-top:0; text-align:right; } }
+
+/* -- floating back button (appears after scrolling) -- */
+.idd-backfab{ position:fixed; left:clamp(12px,3vw,28px); bottom:clamp(12px,3vw,28px); z-index:60; display:inline-flex; align-items:center; gap:6px; padding:.65rem 1.05rem; border-radius:999px; background:var(--navy); color:#fff; font-size:.9rem; font-weight:700; text-decoration:none; box-shadow:0 12px 26px -14px rgba(11,28,64,.6); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .2s ease,transform .2s ease; }
+.idd-backfab.is-shown{ opacity:1; transform:none; pointer-events:auto; }
+.idd-backfab:hover{ background:#17294b; }
+@media(prefers-reduced-motion:reduce){ .idd-backfab{ transition:none; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="2.1" style="fill:var(--navy-ink)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="12" rx="9" ry="3.6" style="stroke:var(--navy-ink)" stroke-width="1.1" transform="rotate(120 12 12)"/>
+        </svg>
+      </span>
+      Qiskit Fall Fest <small>@ SNU · SQRT</small>
+    </a>
+    <nav class="primary-nav">
+      <ul>
+        <li><a href="index.html" data-nav="index.html"><span data-kr>홈</span><span data-en>Home</span></a></li>
+        <li><a href="schedule.html" data-nav="schedule.html"><span data-kr>일정</span><span data-en>Schedule</span></a></li>
+        <li><a href="ideathon.html" data-nav="ideathon.html"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></a></li>
+        <li><a href="hackathon.html" data-nav="hackathon.html" aria-current="page"><span data-kr>해커톤</span><span data-en>Hackathon</span></a></li>
+        <li><a href="register.html" data-nav="register.html"><span data-kr>신청</span><span data-en>Register</span></a></li>
+        <li><a href="faq.html" data-nav="faq.html">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" data-disabled="false" aria-label="Toggle language">KR / EN</button>
+        <a href="register.html" class="btn btn-solid"><span data-kr>신청하기</span><span data-en>Register</span></a>
+        <button class="menu-btn" aria-label="Menu"><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="idd">
+  <a class="idd-backfab" href="hackathon.html" data-back="hackathon.html">← <span data-kr>해커톤으로</span><span data-en>Back to Hackathon</span></a>
+
+
+  <!-- ============================ INTRO ================================ -->
+  <section class="paper-surface" style="padding-top:0">
+    <div class="wrap idd-back-wrap">
+      <a class="idd-back" href="hackathon.html" data-back="hackathon.html">← <span data-kr>해커톤으로 돌아가기</span><span data-en>Back to Hackathon</span></a>
+    </div>
+    <div class="wrap page-intro-layout idd-intro">
+      <span class="page-intro-icon icon-art" style="mask-image:url('assets/icons/hackathon.svg');-webkit-mask-image:url('assets/icons/hackathon.svg')" aria-hidden="true"></span>
+      <span class="eyebrow"><span data-kr>해커톤 · 상세 안내</span><span data-en>Hackathon · Guide</span></span>
+      <h1 style="font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.2">
+        <span data-kr>양자 시대의 회로를 설계하다</span>
+        <span data-en>Designing circuits for the quantum era</span>
+      </h1>
+      <p class="lede">
+        <span data-kr>Qiskit 또는 코딩 경험이 있다면 전공과 관계없이 참여할 수 있습니다. 혼자 또는 팀으로 참가할 수 있고, 팀 인원 제한은 없습니다.</span>
+        <span data-en>Anyone with some Qiskit or coding experience can take part, whatever their major. Enter on your own or as a team, with no limit on team size.</span>
+      </p>
+
+      <div class="idd-prize-banner">
+        <div class="idd-prize-label"><small>PRIZES</small><strong><span data-kr>상금</span><span data-en>Prizes</span></strong></div>
+        <ul>
+          <li><span><span data-kr>1등 · 대상</span><span data-en>1st · Grand Prize</span></span><b><span data-kr>ħc × 10<sup>31</sup> 원</span><span data-en>ħc × 10<sup>31</sup> KRW</span></b><small><span data-kr>약 316,153원</span><span data-en>≈ KRW 316,153</span></small></li>
+          <li><span><span data-kr>2등 · 최우수상</span><span data-en>2nd · Excellence Award</span></span><b><span data-kr>|e × 10<sup>24</sup>| 원</span><span data-en>|e × 10<sup>24</sup>| KRW</span></b><small><span data-kr>약 160,218원</span><span data-en>≈ KRW 160,218</span></small></li>
+          <li><span><span data-kr>3등 · 우수상</span><span data-en>3rd · Merit Award</span></span><b><span data-kr>π<sup>10</sup> 원</span><span data-en>π<sup>10</sup> KRW</span></b><small><span data-kr>약 93,648원</span><span data-en>≈ KRW 93,648</span></small></li>
+        </ul>
+      </div>
+
+      <div class="idd-org">
+        <dl>
+          <div><dt><span data-kr>함께하는 기관</span><span data-en>Organizers &amp; partners</span></dt><dd>SQRT · SNAAC · NextQuantum · IBM Quantum · Jane Street · QISCA · Norma</dd></div>
+        </dl>
+        <a href="index.html"><span data-kr>행사 홈</span><span data-en>Event home</span> →</a>
+      </div>
+      <ul class="idd-facts" aria-label="대회 요약">
+        <li><small><span data-kr>문제 공개 · 팀 등록</span><span data-en>Problem release · team registration</span></small><strong><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00 KST</span></strong><a class="idd-fact-link" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소</span><span data-en>Problem repository</span></a></li>
+        <li><small><span data-kr>참가 형태</span><span data-en>Entry</span></small><strong><span data-kr>혼자 또는 팀 (인원 제한 없음)</span><span data-en>Solo or team (no size limit)</span></strong></li>
+        <li><small><span data-kr>채점</span><span data-en>Grading</span></small><strong><span data-kr>자동 채점 · 실시간 리더보드</span><span data-en>Automatic · live leaderboard</span></strong></li>
+        <li class="is-key"><small><span data-kr>제출 마감</span><span data-en>Submission deadline</span></small><strong><span data-kr>10.30 (금) 12:00</span><span data-en>Fri 10.30, 12:00 KST</span></strong><a class="idd-fact-link" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a></li>
+        <li><small><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></small><strong><span data-kr>10.30 (금) 13:00</span><span data-en>Fri 10.30, 13:00</span></strong></li>
+        <li><small><span data-kr>시상식</span><span data-en>Awards ceremony</span></small><strong><span data-kr>10.31 (토) 16:30 · 28동 103호</span><span data-en>Sat 10.31, 16:30 · Bldg 28, Rm 103</span></strong></li>
+      </ul>
+      <div class="idd-chat idd-chat--notice">
+        <img src="assets/qr/hackathon-openchat.png" width="400" height="400" alt="해커톤 카카오톡 오픈채팅방 QR 코드">
+        <div>
+          <span class="idd-chat-tag"><span data-kr>공지</span><span data-en>Notice</span></span>
+          <strong><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></strong>
+          <p><span data-kr>주요 공지는 해커톤 카카오톡 오픈채팅방으로 전달됩니다. QR 코드를 찍거나 버튼을 눌러 꼭 입장해 주세요.</span><span data-en>All key announcements are posted in the Hackathon KakaoTalk open chat. Scan the QR code or tap the button to join.</span></p>
+          <div class="idd-solo-actions"><a class="btn btn-solid" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span> ↗</a></div>
+        </div>
+      </div>
+      <nav class="idd-jump" aria-label="페이지 목차">
+        <a href="#about"><span data-kr>대회 개요</span><span data-en>Overview</span></a>
+        <a href="#join"><span data-kr>참가 방법</span><span data-en>How to join</span></a>
+        <a href="#dates"><span data-kr>주요 일정</span><span data-en>Key dates</span></a>
+        <a href="#submit"><span data-kr>제출·채점</span><span data-en>Submission &amp; scoring</span></a>
+        <a href="#resources"><span data-kr>자료·링크</span><span data-en>Resources</span></a>
+        <a href="#awards"><span data-kr>시상</span><span data-en>Awards</span></a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================ OVERVIEW ================================ -->
+  <section class="idd-sec idd-sec--alt" id="about">
+    <div class="wrap">
+      <div class="idd-head">
+        <div>
+          <span class="eyebrow">01 · OVERVIEW</span>
+          <h2><span data-kr>대회 개요</span><span data-en>Overview</span></h2>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>INTRO</small><span data-kr>소개</span><span data-en>Intro</span></h3>
+        <div class="idd-text">
+          <p class="idd-lead"><span data-kr>Qiskit으로 양자 회로를 설계해 제출하고, 자동 채점 결과로 순위를 겨루는 대회입니다.</span><span data-en>Design a quantum circuit in Qiskit, submit it, and compete on automatically graded results.</span></p>
+          <p><span data-kr>제출한 회로는 자동으로 채점되어 해커톤 페이지의 리더보드에 바로 반영됩니다. 마감까지 여러 번 제출할 수 있고, 팀별 최고 기록이 순위에 올라갑니다.</span><span data-en>Every submitted circuit is graded automatically and shows up on the leaderboard on the Hackathon page. You can submit several times until the deadline, and each team’s best result is ranked.</span></p>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>PROBLEM</small><span data-kr>문제</span><span data-en>Problem</span></h3>
+        <div class="idd-text">
+          <p><span data-kr>문제는 10월 22일(목) 22:00 Zoom 세션에서 공개되며, 그 전까지는 공개하지 않습니다. 문제 자료는 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub 문제 저장소</a>에서 받을 수 있으며, 저장소도 공개 시점에 함께 열립니다.</span><span data-en>The problem is revealed in the Zoom session on Thu Oct 22 at 22:00 and kept private until then. Get the problem materials from the <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub problem repository</a>, which opens at the same time.</span></p>
+          <p class="idd-note"><span data-kr>문제 자료는 영어로 제공됩니다. 공개 전에는 저장소 링크가 열리지 않습니다.</span><span data-en>Problem materials are provided in English. The repository link won’t open before the release.</span></p>
+          <div class="idd-solo-actions" style="margin-top:14px"><a class="btn btn-outline" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소 (GitHub)</span><span data-en>Problem repository (GitHub)</span> ↗</a></div>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>LEARNING</small><span data-kr>학습 지원</span><span data-en>Learning support</span></h3>
+        <div class="idd-text">
+          <p><span data-kr>사전 온라인 세션과 Office Hour를 Zoom으로 진행합니다. 세 세션 모두 같은 Zoom 링크를 사용하며, 질문은 오픈채팅방에서도 받습니다. SQRT가 정리한 <a href="https://app.notion.com/p/QISKIT-1-3f98a999eff180729aeac6d5452087d5?source=copy_link" target="_blank" rel="noopener">학습 자료(Notion)</a>도 함께 활용해 보세요.</span><span data-en>Pre-festival online sessions and office hours run on Zoom; all three use the same Zoom link. You can also ask questions in the open chat, and use the <a href="https://app.notion.com/p/QISKIT-1-3f98a999eff180729aeac6d5452087d5?source=copy_link" target="_blank" rel="noopener">SQRT study material (Notion)</a>.</span></p>
+          <ul class="idd-sessions">
+            <li><span class="idd-ses-date"><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00</span></span><strong><span data-kr>Qiskit 101 · 해커톤 문제 공개</span><span data-en>Qiskit 101 · problem release</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
+            <li><span class="idd-ses-date"><span data-kr>10.23 (금) 22:00</span><span data-en>Fri 10.23, 22:00</span></span><strong><span data-kr>양자정보·양자컴퓨터 개론</span><span data-en>Intro to quantum information &amp; computers</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
+            <li><span class="idd-ses-date"><span data-kr>10.25 (일) · 시간 추후 안내</span><span data-en>Sun 10.25 · time TBA</span></span><strong><span data-kr>Office Hour</span><span data-en>Office hour</span></strong><a class="idd-ses-btn" href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><span data-kr>Zoom 바로가기</span><span data-en>Join on Zoom</span></a></li>
+            <li><span class="idd-ses-date"><span data-kr>상시</span><span data-en>Anytime</span></span><strong><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></strong><a class="idd-ses-btn" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>ELIGIBILITY</small><span data-kr>참가 자격</span><span data-en>Eligibility</span></h3>
+        <div class="idd-text">
+          <ul class="idd-list">
+            <li><span data-kr>양자정보·양자컴퓨팅에 관심 있는 누구나 참가할 수 있습니다.</span><span data-en>Anyone interested in quantum information or computing can join.</span></li>
+            <li><span data-kr>전공은 상관없으며, Qiskit이나 코딩 경험이 있으면 좋습니다.</span><span data-en>Any major is welcome; some Qiskit or coding experience helps.</span></li>
+            <li><span data-kr>혼자 또는 팀으로 참가하며, 팀 인원 제한은 없습니다. 팀 등록은 팀에서 한 명만 하면 됩니다.</span><span data-en>Enter on your own or as a team, with no limit on team size. Only one person per team registers.</span></li>
+            <li><span data-kr>아이디어톤과 해커톤에 모두 참가할 수 있습니다.</span><span data-en>You can join both the Ideathon and the Hackathon.</span></li>
+            <li><span data-kr>수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person.</span></li>
+            <li><span data-kr>참가비는 무료입니다.</span><span data-en>Participation is free.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>RULES</small><span data-kr>규칙</span><span data-en>Rules</span></h3>
+        <div class="idd-text">
+          <ul class="idd-list">
+            <li><span data-kr>LLM 등 생성형 AI 도구를 사용할 수 있습니다.</span><span data-en>You may use LLMs and other generative AI tools.</span></li>
+            <li><span data-kr>이전 제출이 아직 채점 중이거나 마지막 제출 후 10분이 지나지 않았다면 다시 제출할 수 없습니다.</span><span data-en>You can’t resubmit while a previous submission is still being graded or within 10 minutes of your last one.</span></li>
+            <li><span data-kr>제출 비밀번호는 팀원 모두가 쓰므로 팀 안에서만 공유해 주세요.</span><span data-en>Your submission password is shared by the whole team, so keep it within your team.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>ORGANIZERS</small><span data-kr>함께하는 기관</span><span data-en>Organizers &amp; partners</span></h3>
+        <div class="idd-text">
+          <p class="idd-orgs">SQRT · SNAAC · NextQuantum · IBM Quantum · Jane Street · QISCA · Norma</p>
+        </div>
+      </div>
+
+      <div class="idd-row">
+        <h3 class="idd-label"><small>CONTACT</small><span data-kr>문의</span><span data-en>Contact</span></h3>
+        <div class="idd-text">
+          <dl class="idd-dl">
+            <div><dt><span data-kr>이메일</span><span data-en>Email</span></dt><dd><a href="mailto:snuquantums@gmail.com">snuquantums@gmail.com</a></dd></div>
+            <div><dt><span data-kr>참가 중 생기는 질문</span><span data-en>Questions during the event</span></dt><dd><a href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></a></dd></div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================ HOW TO JOIN ================================ -->
+  <section class="idd-sec" id="join">
+    <div class="wrap">
+      <div class="idd-head">
+        <div>
+          <span class="eyebrow">02 · HOW TO JOIN</span>
+          <h2><span data-kr>참가 방법</span><span data-en>How to join</span></h2>
+        </div>
+        <p><span data-kr>혼자 또는 팀으로 참가할 수 있고, 팀 인원 제한은 없습니다.</span><span data-en>Join on your own or as a team, with no limit on team size.</span></p>
+      </div>
+      <ol class="idd-join">
+        <li>
+          <span class="idd-join-num">STEP 1</span>
+          <h3><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span><span class="idd-badge"><span data-kr>필수</span><span data-en>Required</span></span></h3>
+          <p><span data-kr>아래 QR 코드나 링크로 해커톤 카카오톡 오픈채팅방에 들어옵니다. 주요 공지는 모두 이 방으로 전달됩니다.</span><span data-en>Join the Hackathon KakaoTalk open chat with the QR code or link below. All key announcements are posted there.</span></p>
+        </li>
+        <li>
+          <span class="idd-join-num">STEP 2</span>
+          <h3><span data-kr>Zoom 세션 참여</span><span data-en>Join the Zoom session</span></h3>
+          <p><span data-kr>10월 22일(목) 22:00 Zoom 세션에서 해커톤 문제가 공개되고 팀 등록이 열립니다.</span><span data-en>The problem is revealed and team registration opens in the Zoom session on Thu Oct 22 at 22:00.</span></p>
+        </li>
+        <li>
+          <span class="idd-join-num">STEP 3</span>
+          <h3><span data-kr>팀 등록</span><span data-en>Register your team</span></h3>
+          <p><span data-kr>신청 페이지에서 팀 이름, 제출 비밀번호, 팀장 연락처를 등록합니다. 팀에서 한 명만 등록하고, 혼자 참가해도 같은 방법으로 등록합니다.</span><span data-en>On the Register page, set a team name, a submission password and the leader’s contact details. One person per team registers; solo entrants register the same way.</span></p>
+        </li>
+        <li>
+          <span class="idd-join-num">STEP 4</span>
+          <h3><span data-kr>회로 제출</span><span data-en>Submit circuits</span></h3>
+          <p><span data-kr>해커톤 페이지에서 회로를 제출하고 리더보드에서 순위를 확인합니다. 마감은 10월 30일(금) 12:00입니다.</span><span data-en>Submit circuits on the Hackathon page and follow your rank on the leaderboard. The deadline is Fri Oct 30 at 12:00.</span></p>
+        </li>
+      </ol>
+      <div class="idd-chat">
+        <img src="assets/qr/hackathon-openchat.png" width="400" height="400" alt="해커톤 카카오톡 오픈채팅방 QR 코드">
+        <div>
+          <strong><span data-kr>해커톤 오픈채팅방</span><span data-en>Hackathon open chat</span></strong>
+          <p><span data-kr>주요 공지와 질의응답이 이 방에서 이뤄집니다. QR 코드를 찍거나 버튼을 눌러 꼭 입장해 주세요.</span><span data-en>Announcements and Q&amp;A happen here. Scan the QR code or tap the button to join.</span></p>
+          <div class="idd-solo-actions">
+            <a class="btn btn-solid" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span> ↗</a>
+            <a class="btn btn-outline" href="register.html#hackathon"><span data-kr>팀 등록하기</span><span data-en>Register a team</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DATES ================================ -->
+  <section class="idd-sec idd-sec--alt" id="dates">
+    <div class="wrap">
+      <div class="idd-head">
+        <div>
+          <span class="eyebrow">03 · KEY DATES</span>
+          <h2><span data-kr>주요 일정</span><span data-en>Key dates</span></h2>
+        </div>
+        <p><span data-kr>모든 시각은 한국시간(KST) 기준입니다.</span><span data-en>All times are Korea Standard Time (KST).</span></p>
+      </div>
+      <ol class="event-timeline">
+        <li class="event-timeline__step">
+          <div class="event-timeline__date"><span>01 / RELEASE</span><strong><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>문제 공개 · 팀 등록 시작</span><span data-en>Problem release · team registration opens</span></h3><p><span data-kr>Zoom 세션 중에 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">문제 저장소</a>를 공개하고 팀 등록을 엽니다. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Zoom 바로가기</a></span><span data-en>The <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">problem repository</a> goes public during the Zoom session, when team registration also opens. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Join on Zoom</a></span></p></div>
+        </li>
+        <li class="event-timeline__step">
+          <div class="event-timeline__date"><span>02 / SESSION</span><strong><span data-kr>10.23 (금) 22:00</span><span data-en>Fri 10.23, 22:00</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>양자정보·양자컴퓨터 개론</span><span data-en>Intro to quantum information &amp; computers</span></h3><p><span data-kr>같은 Zoom 링크로 진행합니다.</span><span data-en>Runs on the same Zoom link.</span></p></div>
+        </li>
+        <li class="event-timeline__step">
+          <div class="event-timeline__date"><span>03 / OFFICE HOUR</span><strong><span data-kr>10.25 (일)</span><span data-en>Sun 10.25</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>Office Hour</span><span data-en>Office hour</span></h3><p><span data-kr>문제를 풀며 막힌 부분을 운영진에게 물어보는 시간입니다. 시간은 추후 안내합니다.</span><span data-en>Ask organizers about whatever you got stuck on. Time to be announced.</span></p></div>
+        </li>
+        <li class="event-timeline__step is-key">
+          <div class="event-timeline__date"><span>04 / SUBMIT</span><strong><span data-kr>10.30 (금) 12:00</span><span data-en>Fri 10.30, 12:00</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>제출 마감</span><span data-en>Submission deadline</span><span class="idd-badge"><span data-kr>마감</span><span data-en>Deadline</span></span></h3><p><span data-kr>마감 전까지 해커톤 페이지에서 회로를 제출해 주세요.</span><span data-en>Submit your circuits on the Hackathon page before the deadline.</span></p></div>
+        </li>
+        <li class="event-timeline__step">
+          <div class="event-timeline__date"><span>05 / ANNOUNCE</span><strong><span data-kr>10.30 (금) 13:00</span><span data-en>Fri 10.30, 13:00</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>수상 팀 발표</span><span data-en>Winners announced</span></h3><p><span data-kr>수상 팀은 다음 날 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winning teams must send at least one member to the ceremony in person the next day.</span></p></div>
+        </li>
+        <li class="event-timeline__step">
+          <div class="event-timeline__date"><span>06 / AWARDS</span><strong><span data-kr>10.31 (토) 16:30</span><span data-en>Sat 10.31, 16:30</span></strong></div>
+          <div class="event-timeline__body"><h3><span data-kr>폐막식 · 시상식</span><span data-en>Closing &amp; awards ceremony</span></h3><p><span data-kr>관악캠퍼스 28동 103호에서 진행합니다.</span><span data-en>Held in Building 28, Room 103, Gwanak campus.</span></p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================ SUBMISSION & SCORING ================================ -->
+  <section class="idd-sec" id="submit">
+    <div class="wrap">
+      <div class="idd-head">
+        <div>
+          <span class="eyebrow">04 · SUBMISSION</span>
+          <h2><span data-kr>제출·채점</span><span data-en>Submission &amp; scoring</span></h2>
+        </div>
+        <p><span data-kr>제출과 채점은 모두 해커톤 페이지에서 이뤄집니다. 세부 형식은 공개되는 문제 자료를 따릅니다.</span><span data-en>Submission and grading both happen on the Hackathon page. Follow the problem materials for the exact format.</span></p>
+      </div>
+      <div class="idd-cards">
+        <article class="idd-card">
+          <div class="idd-card-top"><span class="idd-card-num">01</span><span class="idd-chip"><span data-kr>제출</span><span data-en>Submit</span></span></div>
+          <h3><span data-kr>회로 제출</span><span data-en>Submitting a circuit</span></h3>
+          <p><span data-kr>팀 이름과 제출 비밀번호, 문제에서 요구하는 정보를 입력하고 OpenQASM 2.0 파일(200KB 이하)을 올리면 채점 대기열에 들어갑니다.</span><span data-en>Enter your team name, submission password and the details the problem asks for, then upload an OpenQASM 2.0 file (200 KB max). It joins the grading queue.</span></p>
+          <a class="idd-card-link is-page" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a>
+        </article>
+        <article class="idd-card">
+          <div class="idd-card-top"><span class="idd-card-num">02</span><span class="idd-chip"><span data-kr>채점</span><span data-en>Scoring</span></span></div>
+          <h3><span data-kr>채점과 순위</span><span data-en>Grading and ranking</span></h3>
+          <p><span data-kr>1-F가 낮을수록 순위가 높습니다. 1-F가 같으면 2-qubit gate가 적은 팀이, 그것도 같으면 먼저 제출한 팀이 앞섭니다. 1-F는 유효숫자 두 자리까지 비교하고, 팀별 최고 기록만 리더보드에 오릅니다.</span><span data-en>Lower 1-F ranks higher. On a tie, fewer two-qubit gates wins, then the earlier submission. 1-F is compared to two significant figures, and only each team’s best result appears on the leaderboard.</span></p>
+          <a class="idd-card-link is-page" href="hackathon.html#leaderboard"><span data-kr>리더보드 보기</span><span data-en>See the leaderboard</span></a>
+        </article>
+        <article class="idd-card">
+          <div class="idd-card-top"><span class="idd-card-num">03</span><span class="idd-chip"><span data-kr>확인</span><span data-en>Check</span></span></div>
+          <h3><span data-kr>재제출과 제출 확인</span><span data-en>Resubmitting and checking</span></h3>
+          <p><span data-kr>이전 제출이 채점 중이거나 마지막 제출 후 10분이 지나지 않았다면 다시 제출할 수 없습니다. ‘내 제출 기록’에서 팀 이름과 비밀번호로 상태와 점수, 실패 이유를 확인할 수 있습니다.</span><span data-en>You can’t resubmit while a previous submission is being graded or within 10 minutes of your last one. In “My submissions”, enter your team name and password to see status, score and any failure reason.</span></p>
+          <a class="idd-card-link is-page" href="hackathon.html#history"><span data-kr>내 제출 기록</span><span data-en>My submissions</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ RESOURCES ================================ -->
+  <section class="idd-sec idd-sec--alt" id="resources">
+    <div class="wrap">
+      <div class="idd-head">
+        <div>
+          <span class="eyebrow">05 · RESOURCES</span>
+          <h2><span data-kr>자료·링크</span><span data-en>Resources</span></h2>
+        </div>
+        <p><span data-kr>해커톤에 필요한 바로가기와 Qiskit 학습 자료를 모았습니다.</span><span data-en>Shortcuts for the Hackathon and resources for learning Qiskit.</span></p>
+      </div>
+
+      <div class="idd-res-group">
+        <h3 class="idd-res-title"><span data-kr>해커톤 바로가기</span><span data-en>Hackathon shortcuts</span></h3>
+        <ul class="idd-res">
+          <li><a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><strong><span data-kr>문제 저장소 (GitHub)</span><span data-en>Problem repository (GitHub)</span></strong><span><span data-kr>10.22 (목) 22:00 공개 · 문제 설명과 자료</span><span data-en>Public from Thu 10.22, 22:00 · problem statement and materials</span></span></a></li>
+          <li><a href="hackathon.html"><strong><span data-kr>해커톤 페이지</span><span data-en>Hackathon page</span></strong><span><span data-kr>회로 제출, 리더보드, 내 제출 기록</span><span data-en>Circuit submission, leaderboard and your submission history</span></span></a></li>
+          <li><a href="register.html#hackathon"><strong><span data-kr>팀 등록</span><span data-en>Team registration</span></strong><span><span data-kr>10.22 (목) 22:00 Zoom 세션 중 열림</span><span data-en>Opens during the Zoom session on Thu 10.22 at 22:00</span></span></a></li>
+          <li><a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><strong><span data-kr>Zoom 세션</span><span data-en>Zoom sessions</span></strong><span><span data-kr>Qiskit 101 · 양자정보 개론 · Office Hour 공통 링크</span><span data-en>Shared link for Qiskit 101, the intro lecture and office hours</span></span></a></li>
+          <li><a href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><strong><span data-kr>해커톤 오픈채팅</span><span data-en>Hackathon open chat</span></strong><span><span data-kr>주요 공지와 질의응답</span><span data-en>Announcements and Q&amp;A</span></span></a></li>
+        </ul>
+      </div>
+
+      <div class="idd-res-group" id="res-learning">
+        <h3 class="idd-res-title"><span data-kr>Qiskit·양자컴퓨팅 학습</span><span data-en>Learn Qiskit and quantum computing</span></h3>
+        <ul class="idd-res">
+          <li><a href="https://app.notion.com/p/QISKIT-1-3f98a999eff180729aeac6d5452087d5?source=copy_link" target="_blank" rel="noopener"><strong><span data-kr>SQRT 학습 자료 (Notion)</span><span data-en>SQRT study material (Notion)</span></strong><span><span data-kr>Qiskit 세션 내용과 참고 자료를 정리한 페이지</span><span data-en>Notes and references from the Qiskit sessions</span></span></a></li>
+          <li><a href="https://quantum.cloud.ibm.com/learning" target="_blank" rel="noopener"><strong>IBM Quantum Learning</strong><span><span data-kr>양자컴퓨팅 기초부터 Qiskit 실습까지 이어지는 무료 강좌</span><span data-en>Free courses from quantum basics to hands-on Qiskit</span></span></a></li>
+          <li><a href="https://quantum.cloud.ibm.com/docs" target="_blank" rel="noopener"><strong><span data-kr>Qiskit 공식 문서</span><span data-en>Qiskit documentation</span></strong><span><span data-kr>설치 방법, 가이드, API 레퍼런스</span><span data-en>Installation, guides and API reference</span></span></a></li>
+          <li><a href="https://quantum.cloud.ibm.com/docs/en/api/qiskit/qasm2" target="_blank" rel="noopener"><strong><span data-kr>Qiskit OpenQASM 2 문서</span><span data-en>Qiskit OpenQASM 2 docs</span></strong><span><span data-kr>Qiskit 회로를 OpenQASM 2.0으로 내보내고 읽는 방법</span><span data-en>Exporting and loading Qiskit circuits as OpenQASM 2.0</span></span></a></li>
+          <li><a href="https://openqasm.com/" target="_blank" rel="noopener"><strong>OpenQASM</strong><span><span data-kr>OpenQASM 언어 공식 사이트</span><span data-en>Official site of the OpenQASM language</span></span></a></li>
+          <li><a href="https://github.com/Qiskit/qiskit" target="_blank" rel="noopener"><strong>Qiskit GitHub</strong><span><span data-kr>Qiskit 소스 코드와 예제</span><span data-en>Qiskit source code and examples</span></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ AWARDS ================================ -->
+  <section class="idd-sec" id="awards">
+    <div class="wrap idd-two">
+      <div>
+        <span class="eyebrow">06 · AWARDS</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.25"><span data-kr>시상</span><span data-en>Awards</span></h2>
+        <p class="lede" style="font-size:1rem"><span data-kr>수상 팀은 10월 30일(금) 13:00에 발표하고, 10월 31일(토) 16:30 폐막식·시상식(28동 103호)에서 시상합니다. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다.</span><span data-en>Winners are announced on Fri Oct 30 at 13:00 and awarded at the closing and awards ceremony on Sat Oct 31 at 16:30 (Bldg 28, Rm 103). Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person.</span></p>
+      </div>
+      <ul class="idd-awards">
+        <li><span>1ST / GRAND PRIZE</span><strong><span data-kr>대상</span><span data-en>Grand Prize</span></strong><b class="idd-prize"><span data-kr>ħc × 10<sup>31</sup> 원</span><span data-en>ħc × 10<sup>31</sup> KRW</span><small><span data-kr>약 316,153원</span><span data-en>≈ KRW 316,153</span></small></b></li>
+        <li><span>2ND / EXCELLENCE</span><strong><span data-kr>최우수상</span><span data-en>Excellence Award</span></strong><b class="idd-prize"><span data-kr>|e × 10<sup>24</sup>| 원</span><span data-en>|e × 10<sup>24</sup>| KRW</span><small><span data-kr>약 160,218원</span><span data-en>≈ KRW 160,218</span></small></b></li>
+        <li><span>3RD / MERIT</span><strong><span data-kr>우수상</span><span data-en>Merit Award</span></strong><b class="idd-prize"><span data-kr>π<sup>10</sup> 원</span><span data-en>π<sup>10</sup> KRW</span><small><span data-kr>약 93,648원</span><span data-en>≈ KRW 93,648</span></small></b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ FAQ ================================ -->
+  <section class="idd-sec idd-sec--alt" id="faq">
+    <div class="wrap idd-two">
+      <div class="idd-faq-side">
+        <span class="eyebrow">07 · FAQ</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.25"><span data-kr>자주 묻는 질문</span><span data-en>FAQ</span></h2>
+        <p><span data-kr>질문을 눌러 답을 확인하세요. 다른 질문은 <a href="faq.html">전체 FAQ</a>에서 볼 수 있습니다.</span><span data-en>Open a question to see the answer. More questions are in the <a href="faq.html">full FAQ</a>.</span></p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span><span data-kr>Qiskit이나 코딩 경험이 꼭 있어야 하나요?</span><span data-en>Do I need Qiskit or coding experience?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>전공은 상관없고, Qiskit이나 코딩을 해 본 분이라면 참가하기 좋습니다. 처음이라면 Zoom 세션과 <a href="https://app.notion.com/p/QISKIT-1-3f98a999eff180729aeac6d5452087d5?source=copy_link" target="_blank" rel="noopener">SQRT 학습 자료(Notion)</a>, IBM Quantum Learning을 함께 활용해 보세요.</span><span data-en>Any major is welcome; some Qiskit or coding experience helps. If you’re new, use the Zoom sessions together with the <a href="https://app.notion.com/p/QISKIT-1-3f98a999eff180729aeac6d5452087d5?source=copy_link" target="_blank" rel="noopener">SQRT study material (Notion)</a> and IBM Quantum Learning.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>팀은 몇 명까지 구성할 수 있나요?</span><span data-en>How big can a team be?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>팀 인원 제한은 없고, 혼자 참가해도 됩니다. 팀 등록은 팀에서 한 명만 하면 됩니다.</span><span data-en>There is no limit on team size, and you can also enter on your own. Only one person per team registers.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>LLM 같은 생성형 AI 도구를 써도 되나요?</span><span data-en>Can we use LLMs and other generative AI tools?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>네. LLM 등 생성형 AI 도구를 사용할 수 있습니다.</span><span data-en>Yes. You may use LLMs and other generative AI tools.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>아이디어톤과 해커톤에 모두 참가할 수 있나요?</span><span data-en>Can I join both the Ideathon and the Hackathon?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>네. 두 트랙 모두 신청하고 제출할 수 있습니다.</span><span data-en>Yes. You can register for and submit to both tracks.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>문제는 어떤 언어로 제공되나요?</span><span data-en>What language are the problem materials in?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>문제 자료는 영어로 제공되며, 10월 22일(목) 22:00에 공개되는 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub 문제 저장소</a>에서 받을 수 있습니다.</span><span data-en>The problem materials are in English and live in the <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub problem repository</a>, which goes public on Thu Oct 22 at 22:00.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>제출이 제대로 들어갔는지 어떻게 확인하나요?</span><span data-en>How do I check that my submission went through?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>해커톤 페이지의 ‘내 제출 기록’에서 팀 이름과 비밀번호를 입력하면 최근 제출의 상태와 점수를 볼 수 있고, 실패했다면 이유도 나옵니다.</span><span data-en>In “My submissions” on the Hackathon page, enter your team name and password to see the status and score of recent submissions, and why one failed if it did.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><span><span data-kr>수상하면 현장에 꼭 가야 하나요?</span><span data-en>Do winners have to attend in person?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <p><span data-kr>네. 수상 팀은 10월 31일(토) 시상식에 팀원 중 최소 1명이 현장에 직접 참석해야 합니다. 시상식은 관악캠퍼스 28동 103호에서 16:30에 시작합니다.</span><span data-en>Yes. Winning teams must have at least one member attend the awards ceremony on Sat Oct 31 in person. The ceremony starts at 16:30 in Building 28, Room 103, Gwanak campus.</span></p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CLOSING ================================ -->
+  <section class="paper-surface">
+    <div class="wrap">
+      <div class="idd-closing">
+        <span class="eyebrow">Qiskit Fall Fest 2026 · Hackathon</span>
+        <h2><span data-kr>해커톤 참가하기</span><span data-en>Join the Hackathon</span></h2>
+        <p><span data-kr>오픈채팅방에 들어오고, 10월 22일(목) 22:00 Zoom 세션에서 문제를 확인하세요.</span><span data-en>Join the open chat and catch the problem release in the Zoom session on Thu Oct 22 at 22:00.</span></p>
+        <div class="idd-actions">
+          <a href="register.html#hackathon" class="btn btn-solid"><span data-kr>팀 등록하기</span><span data-en>Register a team</span></a>
+          <a class="btn btn-outline" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span> ↗</a>
+          <a class="btn btn-outline" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소</span><span data-en>Problem repository</span> ↗</a>
+          <a class="btn btn-outline" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="sponsor-strip"><span>SQRT · SNAAC · NextQuantum · Norma · IBM Quantum · Jane Street · QISCA</span></div>
+    <div class="footer-links">
+      <a href="mailto:snuquantums@gmail.com">Contact</a>
+      <a href="https://www.instagram.com/snu_sqrt/?hl=en" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@sqrtsnuquantumresearchteam6066">YouTube</a>
+      <a href="https://sites.google.com/view/sqrt-quantum"><span data-kr>SQRT 소개</span><span data-en>About SQRT</span></a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js?v=a6612f676125"></script>
+<script>
+/* Back links: return to the tab where the visitor came from (keeps its scroll position);
+   otherwise follow the link. The floating button shows after the intro is scrolled past. */
+(function () {
+  var fab = document.querySelector(".idd-backfab");
+  function onScroll() { if (fab) fab.classList.toggle("is-shown", window.scrollY > 480); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  document.querySelectorAll("[data-back]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      try {
+        var ref = document.referrer ? new URL(document.referrer) : null;
+        var target = a.getAttribute("data-back");
+        if (ref && ref.origin === location.origin && ref.pathname.split("/").pop() === target && history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      } catch (err) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -63,7 +63,7 @@ create table if not exists public.qff_leaderboard (
   submission_id uuid not null unique references public.qff_submissions(id),
   team_name text not null,
   score_a double precision not null,
-  -- score_a at two significant figures, the precision the ranking uses
+  -- score_a at three significant figures, the precision the ranking uses
   score_key double precision not null,
   n_2q integer not null,
   n_ticks integer,
@@ -303,7 +303,7 @@ end;
 $$;
 
 -- Finishes a leased job and updates the team's best public result when the new
--- result wins by (1-F at two significant figures, two-qubit gates, submission
+-- result wins by (1-F at three significant figures, two-qubit gates, submission
 -- time).
 create or replace function public.finish_submission(
   p_submission_id uuid,
@@ -359,8 +359,8 @@ begin
       team_id, submission_id, team_name, score_a, score_key, n_2q, n_ticks, p_acc, submitted_at
     )
     select s.team_id, s.id, t.team_name, s.score_a,
-           -- two significant figures: 0.002597 -> 0.0026
-           to_char(s.score_a, '9.9EEEE')::double precision,
+           -- three significant figures: 0.0025971 -> 0.00260
+           to_char(s.score_a, '9.99EEEE')::double precision,
            s.n_2q, s.n_ticks, s.p_acc, s.submitted_at
     from public.qff_submissions as s
     join public.qff_teams as t on t.id = s.team_id
