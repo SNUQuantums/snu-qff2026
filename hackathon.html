@@ -173,8 +173,8 @@
         </div>
       </div>
       <p class="lede" style="font-size:.9rem;margin-top:.4rem">
-        <span data-kr>팀마다 가장 좋은 제출만 자동으로 올라갑니다. 1-F는 유효숫자 두 자리까지만 비교하고, 점수는 15초마다 새로 불러옵니다.</span>
-        <span data-en>Each team's best submission shows up here automatically. 1-F is compared to two significant figures, and scores refresh every 15 seconds.</span>
+        <span data-kr>팀마다 가장 좋은 제출만 자동으로 올라갑니다. 1-F는 유효숫자 세 자리까지 비교하고, 점수는 15초마다 새로 불러옵니다.</span>
+        <span data-en>Each team's best submission shows up here automatically. 1-F is compared to three significant figures, and scores refresh every 15 seconds.</span>
       </p>
       <div id="leaderboard-status" class="form-banner" hidden></div>
       <table class="compare leaderboard-table" id="leaderboard-table" hidden>
@@ -424,7 +424,7 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
     var slice = rows.slice(page * PAGE, page * PAGE + PAGE);
     lbBody.innerHTML = slice.map(function (r, i) {
       return "<tr><td class=\"rank\">" + (page * PAGE + i + 1) + "</td><td>" + esc(r.team_name) +
-        "</td><td class=\"score\" title=\"" + Number(r.score_a).toPrecision(6) + "\">" + Number(r.score_key).toExponential(1) +
+        "</td><td class=\"score\" title=\"" + Number(r.score_a).toPrecision(6) + "\">" + Number(r.score_key).toExponential(2) +
         "</td><td class=\"mono\">" + Number(r.n_2q) +
         "</td><td class=\"mono\">" + (r.p_acc == null ? "–" : Number(r.p_acc).toFixed(3)) +
         "</td><td class=\"mono\" style=\"font-size:.85rem;color:var(--ink-soft)\">" + esc(r.submitted_at ? new Date(r.submitted_at).toLocaleString() : "") + "</td></tr>";
