@@ -237,7 +237,7 @@
 .idd-chat strong{ font-size:1.12rem; }
 .idd-chat p{ margin:6px 0 12px; max-width:62ch; color:var(--idd-body); line-height:1.7; }
 .idd-chat .idd-solo-actions{ justify-content:flex-start; }
-.idd-text p a,.idd-card p a{ color:var(--idd-violet); font-weight:600; }
+.idd-text p a,.idd-card p a,.faq-item p a,.event-timeline__body p a{ color:var(--idd-violet); font-weight:600; }
 .idd-res a:not([target]):not([download])::after{ content:"→"; }
 .idd-fact-link:not([target])::after{ content:" →"; }
 @media(max-width:600px){ .idd-chat{ flex-direction:column; align-items:flex-start; } .idd-chat img{ width:120px; height:120px; } .idd-prize-banner li{ display:grid; grid-template-columns:1fr auto; align-items:baseline; column-gap:12px; } .idd-prize-banner li small{ grid-column:2; margin-top:0; text-align:right; } }
@@ -311,7 +311,7 @@
         <a href="index.html"><span data-kr>행사 홈</span><span data-en>Event home</span> →</a>
       </div>
       <ul class="idd-facts" aria-label="대회 요약">
-        <li><small><span data-kr>문제 공개 · 팀 등록</span><span data-en>Problem release · team registration</span></small><strong><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00 KST</span></strong></li>
+        <li><small><span data-kr>문제 공개 · 팀 등록</span><span data-en>Problem release · team registration</span></small><strong><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00 KST</span></strong><a class="idd-fact-link" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소</span><span data-en>Problem repository</span></a></li>
         <li><small><span data-kr>참가 형태</span><span data-en>Entry</span></small><strong><span data-kr>혼자 또는 팀 (인원 제한 없음)</span><span data-en>Solo or team (no size limit)</span></strong></li>
         <li><small><span data-kr>채점</span><span data-en>Grading</span></small><strong><span data-kr>자동 채점 · 실시간 리더보드</span><span data-en>Automatic · live leaderboard</span></strong></li>
         <li class="is-key"><small><span data-kr>제출 마감</span><span data-en>Submission deadline</span></small><strong><span data-kr>10.30 (금) 12:00</span><span data-en>Fri 10.30, 12:00 KST</span></strong><a class="idd-fact-link" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a></li>
@@ -352,8 +352,9 @@
       <div class="idd-row">
         <h3 class="idd-label"><small>PROBLEM</small><span data-kr>문제</span><span data-en>Problem</span></h3>
         <div class="idd-text">
-          <p><span data-kr>문제는 10월 22일(목) 22:00 Zoom 세션에서 공개되며, 그 전까지는 공개하지 않습니다. 공개 후 <a href="hackathon.html">해커톤 페이지</a>의 ‘문제 저장소 열기’ 버튼으로 문제 자료를 받을 수 있습니다.</span><span data-en>The problem is revealed in the Zoom session on Thu Oct 22 at 22:00 and kept private until then. After that, get the problem materials from the “Open the problem repository” button on the <a href="hackathon.html">Hackathon page</a>.</span></p>
-          <p class="idd-note"><span data-kr>문제 자료는 영어로 제공됩니다.</span><span data-en>Problem materials are provided in English.</span></p>
+          <p><span data-kr>문제는 10월 22일(목) 22:00 Zoom 세션에서 공개되며, 그 전까지는 공개하지 않습니다. 문제 자료는 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub 문제 저장소</a>에서 받을 수 있으며, 저장소도 공개 시점에 함께 열립니다.</span><span data-en>The problem is revealed in the Zoom session on Thu Oct 22 at 22:00 and kept private until then. Get the problem materials from the <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub problem repository</a>, which opens at the same time.</span></p>
+          <p class="idd-note"><span data-kr>문제 자료는 영어로 제공됩니다. 공개 전에는 저장소 링크가 열리지 않습니다.</span><span data-en>Problem materials are provided in English. The repository link won’t open before the release.</span></p>
+          <div class="idd-solo-actions" style="margin-top:14px"><a class="btn btn-outline" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소 (GitHub)</span><span data-en>Problem repository (GitHub)</span> ↗</a></div>
         </div>
       </div>
 
@@ -474,7 +475,7 @@
       <ol class="event-timeline">
         <li class="event-timeline__step">
           <div class="event-timeline__date"><span>01 / RELEASE</span><strong><span data-kr>10.22 (목) 22:00</span><span data-en>Thu 10.22, 22:00</span></strong></div>
-          <div class="event-timeline__body"><h3><span data-kr>문제 공개 · 팀 등록 시작</span><span data-en>Problem release · team registration opens</span></h3><p><span data-kr>Zoom 세션 중에 문제를 공개하고 팀 등록을 엽니다. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Zoom 바로가기</a></span><span data-en>Revealed during the Zoom session, when team registration also opens. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Join on Zoom</a></span></p></div>
+          <div class="event-timeline__body"><h3><span data-kr>문제 공개 · 팀 등록 시작</span><span data-en>Problem release · team registration opens</span></h3><p><span data-kr>Zoom 세션 중에 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">문제 저장소</a>를 공개하고 팀 등록을 엽니다. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Zoom 바로가기</a></span><span data-en>The <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">problem repository</a> goes public during the Zoom session, when team registration also opens. <a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener">Join on Zoom</a></span></p></div>
         </li>
         <li class="event-timeline__step">
           <div class="event-timeline__date"><span>02 / SESSION</span><strong><span data-kr>10.23 (금) 22:00</span><span data-en>Fri 10.23, 22:00</span></strong></div>
@@ -547,7 +548,8 @@
       <div class="idd-res-group">
         <h3 class="idd-res-title"><span data-kr>해커톤 바로가기</span><span data-en>Hackathon shortcuts</span></h3>
         <ul class="idd-res">
-          <li><a href="hackathon.html"><strong><span data-kr>해커톤 페이지</span><span data-en>Hackathon page</span></strong><span><span data-kr>문제 저장소, 회로 제출, 리더보드</span><span data-en>Problem repository, circuit submission and leaderboard</span></span></a></li>
+          <li><a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><strong><span data-kr>문제 저장소 (GitHub)</span><span data-en>Problem repository (GitHub)</span></strong><span><span data-kr>10.22 (목) 22:00 공개 · 문제 설명과 자료</span><span data-en>Public from Thu 10.22, 22:00 · problem statement and materials</span></span></a></li>
+          <li><a href="hackathon.html"><strong><span data-kr>해커톤 페이지</span><span data-en>Hackathon page</span></strong><span><span data-kr>회로 제출, 리더보드, 내 제출 기록</span><span data-en>Circuit submission, leaderboard and your submission history</span></span></a></li>
           <li><a href="register.html#hackathon"><strong><span data-kr>팀 등록</span><span data-en>Team registration</span></strong><span><span data-kr>10.22 (목) 22:00 Zoom 세션 중 열림</span><span data-en>Opens during the Zoom session on Thu 10.22 at 22:00</span></span></a></li>
           <li><a href="https://snu-ac-kr.zoom.us/j/82403714072?pwd=g57sZkOaUlokeHneY0z1XJdoDVh6QC.1" target="_blank" rel="noopener"><strong><span data-kr>Zoom 세션</span><span data-en>Zoom sessions</span></strong><span><span data-kr>Qiskit 101 · 양자정보 개론 · Office Hour 공통 링크</span><span data-en>Shared link for Qiskit 101, the intro lecture and office hours</span></span></a></li>
           <li><a href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><strong><span data-kr>해커톤 오픈채팅</span><span data-en>Hackathon open chat</span></strong><span><span data-kr>주요 공지와 질의응답</span><span data-en>Announcements and Q&amp;A</span></span></a></li>
@@ -610,7 +612,7 @@
         </details>
         <details class="faq-item">
           <summary><span><span data-kr>문제는 어떤 언어로 제공되나요?</span><span data-en>What language are the problem materials in?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
-          <p><span data-kr>문제 자료는 영어로 제공됩니다.</span><span data-en>The problem materials are in English.</span></p>
+          <p><span data-kr>문제 자료는 영어로 제공되며, 10월 22일(목) 22:00에 공개되는 <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub 문제 저장소</a>에서 받을 수 있습니다.</span><span data-en>The problem materials are in English and live in the <a href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener">GitHub problem repository</a>, which goes public on Thu Oct 22 at 22:00.</span></p>
         </details>
         <details class="faq-item">
           <summary><span><span data-kr>제출이 제대로 들어갔는지 어떻게 확인하나요?</span><span data-en>How do I check that my submission went through?</span></span><span class="faq-toggle" aria-hidden="true"></span></summary>
@@ -634,6 +636,7 @@
         <div class="idd-actions">
           <a href="register.html#hackathon" class="btn btn-solid"><span data-kr>팀 등록하기</span><span data-en>Register a team</span></a>
           <a class="btn btn-outline" href="https://open.kakao.com/o/gVDJ6bTi" target="_blank" rel="noopener"><span data-kr>오픈채팅 입장</span><span data-en>Join the open chat</span> ↗</a>
+          <a class="btn btn-outline" href="https://github.com/SNUQuantums/snu-qff2026-problem" target="_blank" rel="noopener"><span data-kr>문제 저장소</span><span data-en>Problem repository</span> ↗</a>
           <a class="btn btn-outline" href="hackathon.html#submit-panel"><span data-kr>회로 제출하기</span><span data-en>Submit a circuit</span></a>
         </div>
       </div>
