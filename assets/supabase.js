@@ -87,7 +87,7 @@
     return client
       .from(cfg.leaderboardTable || (cfg.testMode ? "qff_test_leaderboard" : "qff_leaderboard"))
       .select("team_name, score_a, score_key, n_2q, p_acc, submitted_at")
-      .order("score_key", { ascending: true })   // 1-F at two significant figures
+      .order("score_key", { ascending: true })   // 1-F at three significant figures
       .order("n_2q", { ascending: true })
       .order("submitted_at", { ascending: true })
       .then(function (res) {
