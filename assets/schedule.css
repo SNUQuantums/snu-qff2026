@@ -23,6 +23,7 @@
 .pre-session-list strong > span { display:block; font-size:.72rem; font-weight:500; color:#6d6680; font-family:var(--font-mono); margin-top:3px; }
 .pre-session-list h3 { margin:0; font-size:.98rem; line-height:1.45; letter-spacing:-.02em; }
 .pre-session-list p { margin:6px 0 0; font-size:.78rem; color:#65718a; }
+.pre-session-list .video-btn { margin-top:10px; padding:.35rem .9rem; font-size:.78rem; }
 .schedule-days { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; align-items:start; }
 .schedule-day { min-width:0; scroll-margin-top:24px; background:#fffdfa; border-radius:14px; overflow:hidden; border:1px solid #e3dfeb; }
 .day-head { padding:26px 24px 24px; background:#102344; color:#fff; }
