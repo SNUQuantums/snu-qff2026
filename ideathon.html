@@ -74,8 +74,8 @@
           <span class="eyebrow"><span data-kr>아이디어톤</span><span data-en>Ideathon</span></span>
           <h1><span data-kr>양자 시대의 비즈니스를 상상하다</span><span data-en>Imagining business in the quantum era</span></h1>
           <p class="lede">
-            <span data-kr>코딩이나 물리 지식은 없어도 됩니다. 좋은 질문과 설득력 있는 제안이면 충분합니다. 팀원을 구한다면 아래 참가자 카드를 둘러보세요.</span>
-            <span data-en>You don't need coding or physics. Find a problem worth solving and make a convincing case for how you'd solve it. Looking for teammates? Browse the participant cards below.</span>
+            <span data-kr>코딩이나 물리 지식은 없어도 됩니다. 좋은 질문과 설득력 있는 제안이면 충분합니다.</span>
+            <span data-en>You don't need coding or physics. Find a problem worth solving and make a convincing case for how you'd solve it.</span>
           </p>
         </div>
         <div class="page-head-actions">
@@ -117,24 +117,6 @@
     </div>
   </section>
 
-  <section class="alt-surface" id="participants">
-    <div class="wrap">
-      <span class="eyebrow"><span data-kr>참가자</span><span data-en>Participants</span></span>
-      <h2 style="margin:.3rem 0 .4rem"><span data-kr>함께할 팀원을 찾아보세요</span><span data-en>Find your teammates</span></h2>
-      <p class="lede" style="font-size:.95rem">
-        <span data-kr>팀을 구하는 중인 참가자가 맨 위에 나옵니다. 태그를 고르면 고른 태그가 모두 맞는 사람이 먼저, 일부만 맞는 사람이 그 아래에 보입니다. 연락은 신청 시 안내되는 카카오톡 오픈채팅에서 하시면 됩니다.</span>
-        <span data-en>People still looking for a team are shown first. Pick tags to see everyone who matches all of them, then those who match some. To get in touch, use the KakaoTalk open chat you get when you register.</span>
-      </p>
-
-      <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter by tag">
-        <span class="label"><span data-kr>태그</span><span data-en>Tags</span></span>
-        <span class="participant-count" id="participant-count"></span>
-      </div>
-
-      <div id="participants-status" class="form-banner" hidden></div>
-      <div class="participant-grid" id="participant-grid"></div>
-    </div>
-  </section>
 </main>
 
 <footer class="site-footer">
@@ -160,33 +142,9 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
 <script src="assets/script.js?v=a6612f676125"></script>
 <script>
 (function () {
-  var TAGS = ["Quantum Technology", "Coding", "Design", "Marketing", "Presentation"];
-  var TAG_KR = { "Quantum Technology": "양자기술", "Coding": "코딩", "Design": "디자인", "Marketing": "마케팅", "Presentation": "발표" };
-  var isEn = function () { return document.documentElement.getAttribute("data-lang") === "en"; };
-  var t = function (kr, en) { return isEn() ? en : kr; };
-  var grid = document.getElementById("participant-grid");
-  var statusEl = document.getElementById("participants-status");
-  var countEl = document.getElementById("participant-count");
-  var bar = document.getElementById("filter-bar");
-  var people = [];
-  var selected = new Set();
-
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function banner(kind, kr, en) {
-    statusEl.hidden = false;
-    statusEl.className = "form-banner" + (kind ? " " + kind : "");
-    statusEl.textContent = t(kr, en);
-  }
-  function tagLabel(tag) { return isEn() ? tag : (TAG_KR[tag] || tag); }
-
   // Submission button: linked only once the organizers publish the form URL.
   function applyStatus(s) {
     var link = document.getElementById("submission-link");
-    var note = document.getElementById("submission-note");
     if (s && s.ideathon_submission_url) {
       link.href = s.ideathon_submission_url;
       link.target = "_blank";
@@ -194,98 +152,11 @@ if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
       link.removeAttribute("aria-disabled");
     }
   }
-
-  // Filter chips
-  var resetBtn = document.createElement("button");
-  resetBtn.type = "button";
-  resetBtn.className = "filter-chip reset";
-  resetBtn.innerHTML = '<span data-kr>전체</span><span data-en>All</span>';
-  resetBtn.addEventListener("click", function () { selected.clear(); syncChips(); render(); });
-  bar.insertBefore(resetBtn, countEl);
-  TAGS.forEach(function (tag) {
-    var b = document.createElement("button");
-    b.type = "button";
-    b.className = "filter-chip";
-    b.dataset.tag = tag;
-    b.setAttribute("aria-pressed", "false");
-    b.innerHTML = '<span data-kr>' + esc(TAG_KR[tag]) + '</span><span data-en>' + esc(tag) + '</span>';
-    b.addEventListener("click", function () {
-      if (selected.has(tag)) selected.delete(tag); else selected.add(tag);
-      syncChips(); render();
-    });
-    bar.insertBefore(b, countEl);
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.QFF_SUPABASE && window.QFF_SUPABASE.isConfigured) {
+      window.QFF_SUPABASE.fetchEventStatus().then(function (res) { if (res.data) applyStatus(res.data); });
+    }
   });
-  function syncChips() {
-    bar.querySelectorAll(".filter-chip[data-tag]").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(selected.has(b.dataset.tag)));
-    });
-  }
-
-  function card(p, hits) {
-    var tags = (p.tags || []).map(function (tag) {
-      return '<span class="tag-chip' + (selected.has(tag) ? " hit" : "") + '">' + esc(tagLabel(tag)) + '</span>';
-    }).join("");
-    var badge = p.has_team
-      ? '<span class="badge team">' + t("팀 구성 완료", "Has a team") + '</span>'
-      : '<span class="badge open">' + t("팀원 찾는 중", "Looking for team") + '</span>';
-    return '<article class="pcard' + (hits === "partial" ? " partial" : "") + '">' +
-      '<div class="pcard-head"><span class="pcard-emoji" aria-hidden="true">' + esc(p.emoji || "🙂") + '</span><div class="pcard-id"><div class="pcard-name">' + esc(p.name) + '</div>' +
-      '<div class="pcard-aff">' + esc(p.affiliation) + '</div></div>' + badge + '</div>' +
-      '<p class="pcard-pr">' + esc(p.self_pr) + '</p>' +
-      '<div class="tag-list">' + tags + '</div></article>';
-  }
-
-  function render() {
-    if (!people.length) {
-      grid.innerHTML = '<div class="empty-note" style="grid-column:1/-1">' +
-        t("아직 등록된 참가자가 없습니다. 첫 번째로 신청해 보세요.", "No participants yet. Be the first to register.") + '</div>';
-      countEl.textContent = "";
-      return;
-    }
-    var html = "";
-    if (selected.size === 0) {
-      html = people.map(function (p) { return card(p, "full"); }).join("");
-      countEl.textContent = t(people.length + "명", people.length + " participants");
-    } else {
-      var full = [], partial = [];
-      people.forEach(function (p) {
-        var tags = p.tags || [];
-        var n = 0;
-        selected.forEach(function (tag) { if (tags.indexOf(tag) !== -1) n++; });
-        if (n === selected.size) full.push(p); else if (n > 0) partial.push(p);
-      });
-      html += full.map(function (p) { return card(p, "full"); }).join("");
-      if (partial.length) {
-        html += '<div class="group-divider">' + t("일부 태그만 일치", "Partial matches") + '</div>';
-        html += partial.map(function (p) { return card(p, "partial"); }).join("");
-      }
-      if (!full.length && !partial.length) {
-        html = '<div class="empty-note" style="grid-column:1/-1">' + t("선택한 태그와 맞는 참가자가 없습니다.", "No participants match the selected tags.") + '</div>';
-      }
-      countEl.textContent = t(full.length + "명 전체 일치 · " + partial.length + "명 일부 일치", full.length + " full · " + partial.length + " partial");
-    }
-    grid.innerHTML = html;
-  }
-
-  function load() {
-    if (!window.QFF_SUPABASE || !window.QFF_SUPABASE.isConfigured) {
-      banner("error", "참가자 목록이 아직 연결되지 않았습니다.", "The participant list is not connected yet.");
-      return;
-    }
-    window.QFF_SUPABASE.fetchEventStatus().then(function (res) { if (res.data) applyStatus(res.data); });
-    window.QFF_SUPABASE.fetchIdeathonParticipants().then(function (res) {
-      if (res.error) {
-        banner("error", "참가자 목록을 불러오지 못했습니다: " + res.error, "Could not load participants: " + res.error);
-        return;
-      }
-      statusEl.hidden = true;
-      people = res.data || [];
-      render();
-    });
-  }
-
-  document.querySelectorAll(".lang-toggle").forEach(function (b) { b.addEventListener("click", function () { setTimeout(render, 0); }); });
-  document.addEventListener("DOMContentLoaded", load);
 })();
 </script>
 </body>

@@ -11,7 +11,7 @@ No framework, no bundler, no `npm install` — every page is plain HTML/CSS/JS, 
 ├── index.html          Home
 ├── about.html          About SQRT / Qiskit Fall Fest (unlinked)
 ├── schedule.html       Pre-festival online sessions and the 3-day schedule, incl. speakers
-├── ideathon.html       Ideathon topic, templates, reference cases, participant cards
+├── ideathon.html       Ideathon topic, templates, reference cases
 ├── ideathon-cases.html Three reference cases of quantum technology in use
 ├── hackathon.html      Problem (revealed on release), team registration link, circuit
 │                       submission, paged leaderboard, per-team submission history
